@@ -1,0 +1,15 @@
+{
+  "note": "Partial adxlet checkpoint-storage example only. Replace paths and actual JuiceFS format UUID; validate the complete deployment with adxctl. This file contains no credentials.",
+  "checkpoint_dir": null,
+  "checkpoint_storage": {
+    "kind": "shared_fs",
+    "root": "/mnt/crossnode-juicefs/checkpoints",
+    "local_root": "/srv/crossnode-node/local-checkpoints",
+    "volume_uuid": "00000000-0000-0000-0000-000000000000",
+    "mount_root": "/mnt/crossnode-juicefs"
+  },
+  "checkpoint_gc": {
+    "enabled": false
+  }
+}
+

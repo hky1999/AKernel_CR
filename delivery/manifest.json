@@ -1,0 +1,127 @@
+{
+  "schema": "akernel-crossnode-delivery-manifest/v1",
+  "date": "2026-10-21",
+  "parent_repository": "https://github.com/hky1999/AKernel_CR.git",
+  "publication": "Curated clean parent history; not a mirror of the internal development repository",
+  "components": [
+    {
+      "path": "agent-dx",
+      "repository": "https://github.com/hky1999/agent-dx.git",
+      "branch": "crossnode/accepted-20261021",
+      "commit": "d66150a0d37c1413f22499e81d95a88e297ead7a",
+      "role": "ADX control plane, native Environment SDK, persisted checkpoint reader and shared-volume lifecycle",
+      "base": "ce80a189f352f1ee2ebb6a9f30ee218f2ae896d3"
+    },
+    {
+      "path": "AKernel",
+      "repository": "https://github.com/hky1999/AKernel.git",
+      "branch": "crossnode/accepted-20261021",
+      "commit": "2163fc77390c1ddc2aa66ac6a9d6f0d7a9bd1459",
+      "role": "Public AKernel SDK and isolated JuiceFS/ADX deployment helpers",
+      "base": "9f24718638131b09ad03a274b9ba52ff76396a38"
+    },
+    {
+      "path": "sandboxd",
+      "repository": "https://github.com/hky1999/sandboxd.git",
+      "branch": "crossnode/accepted-20261021",
+      "commit": "3da34daf860de80a0adea64a457646cd208d4aa4",
+      "role": "Runtime integration, durable operation identities, bounded integrity verification",
+      "base": "d5886b42ceff89bf0bf9baf7f73f5c534f689dee"
+    },
+    {
+      "path": "gvisor-akernel-dev",
+      "repository": "https://github.com/hky1999/gvisor.git",
+      "branch": "crossnode/accepted-20261021",
+      "commit": "93425aec2c93d07a38e021916dda8967743c46b0",
+      "role": "Execution retirement proof and restore-worker synchronization",
+      "base": "7fdef444b108f898d0d2959bc2d9d43b2ffb53ee"
+    },
+    {
+      "path": "firecracker",
+      "repository": "https://github.com/hky1999/firecracker.git",
+      "branch": "crossnode/runtime-baseline-20261021",
+      "commit": "b9a362d1070ee17991e7388d3b53a9ccce25ecca",
+      "role": "Existing accepted VMM release baseline; no new VMM changes or build"
+    }
+  ],
+  "comparison": {
+    "serial_sandboxd": {
+      "repository": "https://github.com/hky1999/sandboxd.git",
+      "branch": "crossnode/serial-baseline-20261021",
+      "commit": "fc5eda63350f5bd106104176011370a14611d951"
+    },
+    "parallel_sandboxd": {
+      "commit": "3da34daf860de80a0adea64a457646cd208d4aa4",
+      "concurrency_limit": 2
+    },
+    "historical_measured_binaries": "evidence/performance-six-pairs.json",
+    "new_builds_not_performance_rebenchmarked": true
+  },
+  "storage": {
+    "metadata": "PostgreSQL 17 (observed historical server version 17.11)",
+    "objects": "Ceph RGW S3, Ceph v20.2.4",
+    "juicefs_version": "1.4.1+2026-07-30.0b90c7d",
+    "writeback_enabled": false,
+    "dependencies": {
+      "scope": "task-private image metadata only, no container/service modification",
+      "images": [
+        {
+          "reference": "docker.io/library/postgres:17",
+          "rc": 0,
+          "repo_digests": [
+            "docker.io/library/postgres@sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+            "docker.io/library/postgres@sha256:3cec7eb015ba8adb28139fa5c83b8489cdf0e666e53dfdf20f598ae0cc8739e3"
+          ]
+        },
+        {
+          "reference": "quay.io/ceph/ceph:v20.2.4",
+          "rc": 0,
+          "repo_digests": [
+            "quay.io/ceph/ceph@sha256:09ee90f6f3e0c7b9954f71d214ee05e9bbaaaea3716b1dd619603283b829f8b8",
+            "quay.io/ceph/ceph@sha256:6bb1c8a42fbc0bf87938946990b65174466997bc11c31eb5a323225a779fd8f9"
+          ]
+        }
+      ],
+      "juicefs_binary": {
+        "sha256": "1e111b642668992e04d62377e218a24e263f76af12370facb9097353e5b8d208",
+        "bytes": 125664624
+      }
+    },
+    "example_configurations": "configs/",
+    "generated_credentials": "Generated per task outside Git; never reuse historical credentials"
+  },
+  "runtime_release_baseline": {
+    "firecracker": {
+      "version": "v1.16.1-akernel.3",
+      "archive_sha256": "1592ca4b4dd8b88971ce93d27e5c64055d729b77f8047f7f71ba91e94f275553",
+      "url": "https://github.com/akernel-dev/firecracker/releases/download/v1.16.1-akernel.3/firecracker-v1.16.1-akernel.3-x86_64.tgz",
+      "source_commit": "b9a362d1070ee17991e7388d3b53a9ccce25ecca"
+    },
+    "runtime_bundle_pins_changed": false,
+    "custom_runsc_requires_explicit_staging": true,
+    "guest_agent_and_initrd": "Build from matching sandboxd; regenerate template compatibility pins"
+  },
+  "SDK": {
+    "public_source_version": "0.1.6rc9",
+    "native_source_version": "0.1.0rc1",
+    "pypi_release_performed": false,
+    "installation": "Install native Environment SDK and public AKernel SDK from the pinned source trees"
+  },
+  "gates": "evidence/delivery-gates.json",
+  "exclusions": [
+    "Unaccepted Coordinator shutdown/stream-cancellation candidate",
+    "Three unrelated AFS edits",
+    "Other developers' dirty working files",
+    "Historical private credentials, generated configuration, raw journals, binaries, rootfs/images and internal parent history"
+  ],
+  "reproducibility": {
+    "source_obtainable_by_exact_gitlinks": true,
+    "component_gates_and_helpers": "Remote isolated gates passed except disclosed optional AFS workspace lint and default privileged skips",
+    "paired_point_estimates_recomputed": true,
+    "clean_host_full_sdk_and_retirement_matrix_replayed": false,
+    "portable_one_command_full_matrix_launcher": false,
+    "full_public_failover_reload_combined_acceptance": false
+  },
+  "promotion": "No rollout, runtime bundle release, package release or production-readiness claim"
+}
+

@@ -1,0 +1,17 @@
+# Partial source-only example. Merge with the complete task-owned configuration.
+# gVisor uses this stable JuiceFS filestore path inside each private mount namespace.
+[plugin.runtime]
+filestore_dir = "/mnt/crossnode-juicefs/runtime/filestore"
+filestore_dir_size = ""
+
+[plugin.runtime.checkpoint_sync]
+sync_output = true
+
+[plugin.runtime.runsc]
+background_restore = true
+
+# Firecracker live private ext4 disks stay on local XFS in the accepted experiment.
+# This must not overlap filestore_dir, sandboxd rootDir, or the runtime root.
+# Choose it before starting any instance; this option is not a storage migration.
+[plugin.runtime.firecracker]
+storage_dir = "/srv/crossnode-xfs/private-firecracker"

@@ -1,0 +1,809 @@
+{
+  "schema": "akernel-crossnode-source-delivery/v1",
+  "date": "2026-10-21",
+  "components": [
+    {
+      "path": "agent-dx",
+      "repository": "https://github.com/hky1999/agent-dx.git",
+      "branch": "crossnode/accepted-20261021",
+      "commit": "d66150a0d37c1413f22499e81d95a88e297ead7a",
+      "role": "ADX control plane, native Environment SDK, persisted checkpoint reader and shared-volume lifecycle",
+      "base": "ce80a189f352f1ee2ebb6a9f30ee218f2ae896d3"
+    },
+    {
+      "path": "AKernel",
+      "repository": "https://github.com/hky1999/AKernel.git",
+      "branch": "crossnode/accepted-20261021",
+      "commit": "2163fc77390c1ddc2aa66ac6a9d6f0d7a9bd1459",
+      "role": "Public AKernel SDK and isolated JuiceFS/ADX deployment helpers",
+      "base": "9f24718638131b09ad03a274b9ba52ff76396a38"
+    },
+    {
+      "path": "sandboxd",
+      "repository": "https://github.com/hky1999/sandboxd.git",
+      "branch": "crossnode/accepted-20261021",
+      "commit": "3da34daf860de80a0adea64a457646cd208d4aa4",
+      "role": "Runtime integration, durable operation identities, bounded integrity verification",
+      "base": "d5886b42ceff89bf0bf9baf7f73f5c534f689dee"
+    },
+    {
+      "path": "gvisor-akernel-dev",
+      "repository": "https://github.com/hky1999/gvisor.git",
+      "branch": "crossnode/accepted-20261021",
+      "commit": "93425aec2c93d07a38e021916dda8967743c46b0",
+      "role": "Execution retirement proof and restore-worker synchronization",
+      "base": "7fdef444b108f898d0d2959bc2d9d43b2ffb53ee"
+    },
+    {
+      "path": "firecracker",
+      "repository": "https://github.com/hky1999/firecracker.git",
+      "branch": "crossnode/runtime-baseline-20261021",
+      "commit": "b9a362d1070ee17991e7388d3b53a9ccce25ecca",
+      "role": "Existing accepted VMM release baseline; no new VMM changes or build"
+    }
+  ],
+  "remote_only": true,
+  "local_builds_or_tests": false,
+  "shared_services_modified": false,
+  "production_deployment": false,
+  "runtime": {
+    "remote_root": "$TASK",
+    "source_changed_by_worker": false,
+    "services_or_sdk_or_vm_started": false,
+    "sandboxd": {
+      "source_base": "d5886b42ceff89bf0bf9baf7f73f5c534f689dee",
+      "source_overlay": "accepted phase69 candidate source exported by parent",
+      "go_version": "go version go1.27.2 linux/amd64",
+      "gates": {
+        "check_fmt": {
+          "actual_wait_returncode": 0,
+          "elapsed_seconds": 0.20786786079406738,
+          "record": "$TASK/gate-output/sandboxd/records/04-make-check-fmt-terminal.json"
+        },
+        "vet": {
+          "actual_wait_returncode": 0,
+          "elapsed_seconds": 62.404133796691895,
+          "record": "$TASK/gate-output/sandboxd/records/05-make-vet-terminal.json"
+        },
+        "full_make_test": {
+          "actual_wait_returncode": 0,
+          "elapsed_seconds": 18.284939289093018,
+          "record": "$TASK/gate-output/sandboxd/records/12-make-test-private-tmp-terminal.json",
+          "top_level_test_events": {
+            "run": 911,
+            "pass": 906,
+            "fail": 0,
+            "skip": 5
+          },
+          "test_events": {
+            "run": 1420,
+            "pass": 1415,
+            "fail": 0,
+            "skip": 5
+          },
+          "nonzero_tests_observed": true,
+          "failed_packages": [],
+          "skipped_tests": [
+            {
+              "package": "github.com/inclusionAI/sandboxd/pkg/cgroupmanager",
+              "test": "TestCgroupV2ExplicitKillDoesNotPoisonReusedGroup"
+            },
+            {
+              "package": "github.com/inclusionAI/sandboxd/pkg/imagemanager/distillfs",
+              "test": "TestChunkDBCapacityIntegration"
+            },
+            {
+              "package": "github.com/inclusionAI/sandboxd/pkg/runtime/internal/common",
+              "test": "TestEROFSLoopDeviceDirIntegration"
+            },
+            {
+              "package": "github.com/inclusionAI/sandboxd/pkg/runtime/runsc",
+              "test": "TestOpenTAPClearsInheritedChecksumOffload"
+            },
+            {
+              "package": "github.com/inclusionAI/sandboxd/pkg/volumemanager",
+              "test": "TestLoopBackedFilestoreIntegration"
+            }
+          ]
+        },
+        "race_server": {
+          "actual_wait_returncode": 0,
+          "elapsed_seconds": 89.73358297348022,
+          "record": "$TASK/gate-output/sandboxd/records/08-race-server-terminal.json",
+          "top_level_test_events": {
+            "run": 81,
+            "pass": 81,
+            "fail": 0,
+            "skip": 0
+          },
+          "test_events": {
+            "run": 134,
+            "pass": 134,
+            "fail": 0,
+            "skip": 0
+          },
+          "nonzero_tests_observed": true,
+          "failed_packages": []
+        },
+        "race_firecracker": {
+          "actual_wait_returncode": 0,
+          "elapsed_seconds": 8.625867366790771,
+          "record": "$TASK/gate-output/sandboxd/records/09-race-firecracker-terminal.json",
+          "top_level_test_events": {
+            "run": 35,
+            "pass": 35,
+            "fail": 0,
+            "skip": 0
+          },
+          "test_events": {
+            "run": 83,
+            "pass": 83,
+            "fail": 0,
+            "skip": 0
+          },
+          "nonzero_tests_observed": true,
+          "failed_packages": []
+        },
+        "race_runsc": {
+          "actual_wait_returncode": 0,
+          "elapsed_seconds": 2.8803200721740723,
+          "record": "$TASK/gate-output/sandboxd/records/10-race-runsc-terminal.json",
+          "top_level_test_events": {
+            "run": 12,
+            "pass": 12,
+            "fail": 0,
+            "skip": 0
+          },
+          "test_events": {
+            "run": 29,
+            "pass": 29,
+            "fail": 0,
+            "skip": 0
+          },
+          "nonzero_tests_observed": true,
+          "failed_packages": []
+        },
+        "release_equivalent_build": {
+          "actual_wait_returncode": 0,
+          "elapsed_seconds": 3.472278356552124,
+          "record": "$TASK/gate-output/sandboxd/records/13-release-equivalent-build-terminal.json"
+        }
+      },
+      "artifact": {
+        "path": "$TASK/gate-output/sandboxd/artifacts/sandboxd",
+        "sha256": "6b2f5aca7e5ea42acdd10e798d7ffa999e791fcb807b543fa420a02d584d1f04",
+        "bytes": 84237580,
+        "Go": "go1.27.2 linux/amd64",
+        "runtime_not_launched": true
+      },
+      "namespace": {
+        "parent_mount_ns": "mnt:[REDACTED]",
+        "worker_mount_ns": "mnt:[REDACTED]",
+        "distinct_confirmed_before_bind": true
+      }
+    },
+    "gvisor": {
+      "source": {
+        "source_base": "7fdef444b108f898d0d2959bc2d9d43b2ffb53ee",
+        "source_tree": "1e16effbd98a59b5bc8954c0006f39dad20eb00d",
+        "source_ready_explicit_parent": true,
+        "changed_files": [
+          "pkg/sentry/kernel/BUILD",
+          "pkg/sentry/kernel/kernel_restore.go",
+          "pkg/sentry/kernel/kernel_restore_wait_test.go",
+          "runsc/cmd/delete.go",
+          "runsc/container/BUILD",
+          "runsc/container/container.go",
+          "runsc/container/retirement.go",
+          "runsc/container/retirement_test.go",
+          "runsc/container/state_file.go"
+        ],
+        "physical_tmp": "$TASK/gate-output/gvisor/tmp",
+        "tmp_exposure": "private mount namespace bind onto /tmp; host mounts unchanged"
+      },
+      "go_version": "go version go1.26.3 linux/amd64",
+      "gates": {
+        "format_seven_changed_go_files": {
+          "actual_wait_returncode": 0,
+          "elapsed_seconds": 0.012500286102294922,
+          "record": "$TASK/gate-output/gvisor/records/00-format-terminal.json",
+          "top_level_test_events": {
+            "run": 0,
+            "pass": 0,
+            "fail": 0,
+            "skip": 0
+          },
+          "test_events": {
+            "run": 0,
+            "pass": 0,
+            "fail": 0,
+            "skip": 0
+          },
+          "nonzero_tests_observed": null
+        },
+        "retirement_serialization": {
+          "actual_wait_returncode": 0,
+          "elapsed_seconds": 39.00573968887329,
+          "record": "$TASK/gate-output/gvisor/records/01-focused-green-terminal.json",
+          "top_level_test_events": {
+            "run": 14,
+            "pass": 14,
+            "fail": 0,
+            "skip": 0
+          },
+          "test_events": {
+            "run": 19,
+            "pass": 19,
+            "fail": 0,
+            "skip": 0
+          },
+          "nonzero_tests_observed": true
+        },
+        "retirement_serialization_race": {
+          "actual_wait_returncode": 0,
+          "elapsed_seconds": 31.147120475769043,
+          "record": "$TASK/gate-output/gvisor/records/02-focused-race-terminal.json",
+          "top_level_test_events": {
+            "run": 14,
+            "pass": 14,
+            "fail": 0,
+            "skip": 0
+          },
+          "test_events": {
+            "run": 19,
+            "pass": 19,
+            "fail": 0,
+            "skip": 0
+          },
+          "nonzero_tests_observed": true
+        },
+        "waiter_three_regressions": {
+          "actual_wait_returncode": 0,
+          "elapsed_seconds": 18.395578622817993,
+          "record": "$TASK/gate-output/gvisor/records/03-waiter-three-regressions-terminal.json",
+          "top_level_test_events": {
+            "run": 3,
+            "pass": 3,
+            "fail": 0,
+            "skip": 0
+          },
+          "test_events": {
+            "run": 5,
+            "pass": 5,
+            "fail": 0,
+            "skip": 0
+          },
+          "nonzero_tests_observed": true
+        },
+        "waiter_three_regressions_race": {
+          "actual_wait_returncode": 0,
+          "elapsed_seconds": 21.629730701446533,
+          "record": "$TASK/gate-output/gvisor/records/05-waiter-race-terminal.json",
+          "top_level_test_events": {
+            "run": 3,
+            "pass": 3,
+            "fail": 0,
+            "skip": 0
+          },
+          "test_events": {
+            "run": 5,
+            "pass": 5,
+            "fail": 0,
+            "skip": 0
+          },
+          "nonzero_tests_observed": true
+        },
+        "runsc_optimized_build": {
+          "actual_wait_returncode": 0,
+          "elapsed_seconds": 51.533432722091675,
+          "record": "$TASK/gate-output/gvisor/records/04-runsc-build-terminal.json",
+          "top_level_test_events": {
+            "run": 0,
+            "pass": 0,
+            "fail": 0,
+            "skip": 0
+          },
+          "test_events": {
+            "run": 0,
+            "pass": 0,
+            "fail": 0,
+            "skip": 0
+          },
+          "nonzero_tests_observed": null
+        },
+        "runsc_build_info": {
+          "actual_wait_returncode": 0,
+          "elapsed_seconds": null,
+          "record": "$TASK/gate-output/gvisor/records/06-runsc-build-info-terminal.json"
+        }
+      },
+      "artifact": {
+        "path": "$TASK/gate-output/gvisor/artifacts/runsc",
+        "sha256": "a4c84b051a402ba07c169c71ac9784bfd2f54662d3c3271a5230d82fae9c8982",
+        "bytes": 105585738,
+        "runtime_not_launched": true,
+        "status_script": "$TASK/gate-output/gvisor/tools/workspace-status"
+      },
+      "namespace": {
+        "parent_mount_ns": "mnt:[REDACTED]",
+        "worker_mount_ns": "mnt:[REDACTED]",
+        "distinct_confirmed_before_bind": true
+      },
+      "native_retirement_test": {
+        "name": "TestRetirementWaitsForBothNamespacesAndDescendants",
+        "normal": "observed RUN and PASS",
+        "race": "observed RUN and PASS",
+        "skipped": false
+      }
+    },
+    "retained_attempts": [
+      {
+        "component": "sandboxd",
+        "path": "$TASK/gate-output/sandboxd-attempt01-toolchain-correction",
+        "reason": "parent corrected initial erroneous Go1.26.3 instruction to accepted Go1.27.2; initial check-fmt rc2 and interrupted in-flight vet retained; excluded from final gates"
+      },
+      {
+        "component": "sandboxd",
+        "reason": "long absolute TMP path caused four AF_UNIX bind invalid argument failures",
+        "result": {
+          "actual_wait_returncode": 2,
+          "elapsed_seconds": 34.192111015319824,
+          "record": "$TASK/gate-output/sandboxd/records/06-make-test-terminal.json",
+          "top_level_test_events": {
+            "run": 911,
+            "pass": 902,
+            "fail": 4,
+            "skip": 5
+          },
+          "test_events": {
+            "run": 1420,
+            "pass": 1411,
+            "fail": 4,
+            "skip": 5
+          },
+          "nonzero_tests_observed": true,
+          "failed_packages": [
+            "github.com/inclusionAI/sandboxd/internal/firecrackerproto",
+            "github.com/inclusionAI/sandboxd/pkg/resourcemanager",
+            "github.com/inclusionAI/sandboxd/pkg/runtime/firecracker"
+          ]
+        }
+      },
+      {
+        "component": "sandboxd",
+        "reason": "/proc FD TMP path incompatible with tests requiring ordinary absolute paths; package tests failed and one concurrent-checkpoint test remained waiting; only identified owned server.test a recorded task-owned PID and start time was terminated after recording exact ELF/cwd/namespaces",
+        "result": {
+          "actual_wait_returncode": 2,
+          "elapsed_seconds": 574.2087860107422,
+          "record": "$TASK/gate-output/sandboxd/records/11-make-test-short-tmp-terminal.json",
+          "top_level_test_events": {
+            "run": 759,
+            "pass": 737,
+            "fail": 16,
+            "skip": 5
+          },
+          "test_events": {
+            "run": 1178,
+            "pass": 1149,
+            "fail": 23,
+            "skip": 5
+          },
+          "nonzero_tests_observed": true,
+          "failed_packages": [
+            "github.com/inclusionAI/sandboxd/pkg/runtime/firecracker",
+            "github.com/inclusionAI/sandboxd/pkg/runtime/kata",
+            "github.com/inclusionAI/sandboxd/pkg/runtime/runc",
+            "github.com/inclusionAI/sandboxd/internal/server"
+          ]
+        },
+        "interruption_record": "$TASK/gate-output/sandboxd/records/11-proc-fd-runner-interruption-complete-thread-tree.json"
+      },
+      {
+        "component": "gvisor",
+        "reason": "fresh output base missing cached Bazel module-extension resolution; all four test/build gates rc48 with zero tests before hidden output MODULE.bazel.lock cache was independently copied; source lock unchanged, downloads remained disabled",
+        "path": "$TASK/gate-output/gvisor/attempt01-records-unprimed"
+      }
+    ],
+    "final_all_gate_returncodes_zero": true,
+    "finished_unix": 1792557594.794149
+  },
+  "adx_and_sdk": {
+    "attempt_disclosures": [
+      {
+        "attempt": "adx/terminal.json",
+        "classification": "runner_environment_and_selector_errors",
+        "details": "Initial integration launch omitted the owned Redis executable setting. Broad protocol selection also included unrelated afs-protocol and exposed missing protoc. Original failures retained."
+      },
+      {
+        "attempt": "adx-integration02/terminal.json",
+        "classification": "runner_fixture_configuration_error",
+        "details": "Redis/protoc settings supplied; non-RPC 13+13+3 passed. Two RPC groups stopped on a missing owned TLS fixture setting before business assertions."
+      },
+      {
+        "attempt": "adx-rpc-fixture03/terminal.json",
+        "classification": "fixture_environment_corrected",
+        "details": "Both already-compiled RPC suites passed 8+8 with original owned TLS fixtures. Source-refresh04 later recompiles and passes the changed execution-RPC suite."
+      },
+      {
+        "attempt": "adx/40-workspace-allfeatures-clippy.terminal.json",
+        "classification": "missing_private_tool_path",
+        "details": "Strict workspace lint initially stopped during etcd-client protobuf generation before linting because protoc was not configured."
+      },
+      {
+        "attempt": "adx-focused-clippy03/terminal.json",
+        "classification": "test_style_lint",
+        "details": "Two field_reassign_with_default findings; parent applied equivalent test-only initializers. Refreshed focused lint passed."
+      },
+      {
+        "attempt": "adx-source-refresh04/03-development-docs-check.terminal.json",
+        "classification": "source_export_missing_git_metadata",
+        "details": "check.py file discovery requires git ls-files. A task-external empty Git metadata directory fixes discovery; no source Git marker or source edits were created."
+      },
+      {
+        "attempt": "sdk/terminal.json",
+        "classification": "missing_test_dependency",
+        "details": "Existing client had no pytest. SDK test processes did not execute; helper56 and all five CLI help commands passed."
+      },
+      {
+        "attempt": "sdk-private02/terminal.json",
+        "classification": "missing_bootstrap_dependency",
+        "details": "Existing client also lacked pip. No SDK tests executed in that attempt; static performance recomputation, acceptance-helper19 and JuiceFS version query passed."
+      },
+      {
+        "attempt": "sdk-bootstrap03/terminal.json",
+        "classification": "native_sdk_pass_and_incomplete_export",
+        "details": "SHA256-verified private pip wheel and task-local test dependencies supplied. Native306 passed; public collection lacked unchanged standalone deployment inputs; initial standalone shared-volume selector used the wrong directory."
+      },
+      {
+        "attempt": "sdk-public04/terminal.json",
+        "classification": "missing_public_sdk_dependency",
+        "details": "Complete public unit collection executed305:220 passed,85 failed. Every JUnit failure message was the identical missing dockerfile_parse module; separate public shared-volume6 passed. No unit files excluded."
+      },
+      {
+        "attempt": "sdk-public05/terminal.json",
+        "classification": "private_dependency_corrected",
+        "details": "Added fixed dockerfile-parse only into a new task-local dependency target, then reran all public unit files and the separate shared-volume test."
+      }
+    ],
+    "final_gates": {
+      "acceptance_helpers": {
+        "counts": {
+          "executed_not_skipped": 19,
+          "skipped": 0,
+          "tests": 19
+        },
+        "elapsed_seconds": 0.29,
+        "record": "sdk-private02/05-static-acceptance-helper-unit.terminal.json",
+        "returncode": 0
+      },
+      "adx_development_docs": {
+        "elapsed_seconds": 0.205,
+        "note": "Export lacks Git metadata. Temporary external GIT_DIR enables file discovery without source/.git, source edits, commits or remotes.",
+        "record": "adx-docs05/02-development-docs-check.terminal.json",
+        "returncode": 0
+      },
+      "adx_focused_all_targets_all_features_clippy": {
+        "elapsed_seconds": 22.921,
+        "note": "Exact seven CrossNode components; not a replacement for full-workspace lint.",
+        "record": "adx-source-refresh04/01-focused-clippy.terminal.json",
+        "returncode": 0
+      },
+      "adx_focused_unit_packages": [
+        {
+          "counts": {
+            "failed": 0,
+            "ignored": 0,
+            "passed": 3
+          },
+          "elapsed_seconds": 15.586,
+          "package": "adx-agent-core",
+          "record": "adx/04-unit-adx-agent-core.terminal.json",
+          "returncode": 0
+        },
+        {
+          "counts": {
+            "failed": 0,
+            "ignored": 0,
+            "passed": 55
+          },
+          "elapsed_seconds": 121.265,
+          "package": "adx-apiserver",
+          "record": "adx/05-unit-adx-apiserver.terminal.json",
+          "returncode": 0
+        },
+        {
+          "counts": {
+            "failed": 0,
+            "ignored": 0,
+            "passed": 12
+          },
+          "elapsed_seconds": 8.05,
+          "package": "adx-core",
+          "record": "adx/06-unit-adx-core.terminal.json",
+          "returncode": 0
+        },
+        {
+          "counts": {
+            "failed": 0,
+            "ignored": 0,
+            "passed": 7
+          },
+          "elapsed_seconds": 31.602,
+          "package": "adx-protocol",
+          "record": "adx/07-unit-adx-protocol.terminal.json",
+          "returncode": 0
+        },
+        {
+          "counts": {
+            "failed": 0,
+            "ignored": 0,
+            "passed": 94
+          },
+          "elapsed_seconds": 90.293,
+          "note": "One nested subprocess pass is not counted again.",
+          "package": "adx-execd",
+          "record": "adx/08-unit-adx-execd.terminal.json",
+          "returncode": 0
+        },
+        {
+          "counts": {
+            "failed": 0,
+            "ignored": 1,
+            "passed": 44
+          },
+          "elapsed_seconds": 58.766,
+          "package": "adxlet",
+          "record": "adx/09-unit-adxlet.terminal.json",
+          "returncode": 0
+        },
+        {
+          "counts": {
+            "failed": 0,
+            "ignored": 0,
+            "passed": 19
+          },
+          "elapsed_seconds": 61.497,
+          "package": "adx-coordinator",
+          "record": "adx/10-unit-adx-coordinator.terminal.json",
+          "returncode": 0
+        }
+      ],
+      "adx_focused_unit_total": {
+        "failed": 0,
+        "ignored": 1,
+        "nested_execd_subprocess_not_double_counted": true,
+        "passed": 234
+      },
+      "adx_integration_total": {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 45
+      },
+      "adx_integrations": {
+        "shared_volume_execution": {
+          "counts": {
+            "failed": 0,
+            "ignored": 0,
+            "passed": 13
+          },
+          "elapsed_seconds": 1.918,
+          "record": "adx-integration02/03-shared_volume_execution.terminal.json",
+          "returncode": 0
+        },
+        "shared_volume_execution_rpc": {
+          "counts": {
+            "failed": 0,
+            "ignored": 0,
+            "passed": 8
+          },
+          "elapsed_seconds": 110.299,
+          "record": "adx-source-refresh04/02-refreshed-rpc-suite.terminal.json",
+          "returncode": 0
+        },
+        "shared_volumes": {
+          "counts": {
+            "failed": 0,
+            "ignored": 0,
+            "passed": 13
+          },
+          "elapsed_seconds": 2.03,
+          "record": "adx-integration02/04-shared_volumes.terminal.json",
+          "returncode": 0
+        },
+        "shared_volumes_rpc": {
+          "counts": {
+            "failed": 0,
+            "ignored": 0,
+            "passed": 8
+          },
+          "elapsed_seconds": 0.231,
+          "note": "Already-compiled test ELF from isolated integration02; only its missing private TLS fixture setting changed.",
+          "record": "adx-rpc-fixture03/shared_volumes_rpc.terminal.json",
+          "returncode": 0
+        },
+        "snapshots": {
+          "counts": {
+            "failed": 0,
+            "ignored": 0,
+            "passed": 3
+          },
+          "elapsed_seconds": 1.468,
+          "record": "adx-integration02/06-snapshots.terminal.json",
+          "returncode": 0
+        }
+      },
+      "adx_workspace_fmt": {
+        "elapsed_seconds": 3.021,
+        "record": "adx-source-refresh04/00-workspace-fmt.terminal.json",
+        "returncode": 0
+      },
+      "helper_cli_help": [
+        {
+          "elapsed_seconds": 0.065,
+          "record": "sdk/04-help-lab.terminal.json",
+          "returncode": 0
+        },
+        {
+          "elapsed_seconds": 0.071,
+          "record": "sdk/05-help-native_profile.terminal.json",
+          "returncode": 0
+        },
+        {
+          "elapsed_seconds": 0.076,
+          "record": "sdk/06-help-runtime_nodes.terminal.json",
+          "returncode": 0
+        },
+        {
+          "elapsed_seconds": 0.068,
+          "record": "sdk/07-help-node_network.terminal.json",
+          "returncode": 0
+        },
+        {
+          "elapsed_seconds": 0.081,
+          "record": "sdk/08-help-short_profile.terminal.json",
+          "returncode": 0
+        }
+      ],
+      "juicefs_adx_lab_helpers": {
+        "counts": {
+          "executed_not_skipped": 56,
+          "skipped": 0,
+          "tests": 56
+        },
+        "elapsed_seconds": 0.348,
+        "record": "sdk/03-lab-helper-unit.terminal.json",
+        "returncode": 0
+      },
+      "native_sdk": {
+        "counts": {
+          "errors": 0,
+          "executed_not_skipped": 306,
+          "failures": 0,
+          "skipped": 0,
+          "tests": 306
+        },
+        "elapsed_seconds": 23.93,
+        "record": "sdk-bootstrap03/01-native-sdk-unit.terminal.json",
+        "returncode": 0
+      },
+      "performance_point_estimate_recompute": {
+        "elapsed_seconds": 0.054,
+        "note": "Recomputes medians and paired geometric ratios from existing six-pair data; registered bootstrap intervals are not recomputed; no new performance experiment.",
+        "record": "sdk-private02/04-static-performance-recompute.terminal.json",
+        "returncode": 0
+      },
+      "public_sdk_all_unit_files": {
+        "counts": {
+          "errors": 0,
+          "executed_not_skipped": 305,
+          "failures": 0,
+          "skipped": 0,
+          "tests": 305
+        },
+        "elapsed_seconds": 74.272,
+        "record": "sdk-public05/01-public-sdk-unit.terminal.json",
+        "returncode": 0
+      },
+      "public_shared_volumes": {
+        "counts": {
+          "errors": 0,
+          "executed_not_skipped": 6,
+          "failures": 0,
+          "skipped": 0,
+          "tests": 6
+        },
+        "elapsed_seconds": 0.298,
+        "record": "sdk-public05/02-public-shared-volumes-unit.terminal.json",
+        "returncode": 0
+      },
+      "release_build_apiserver": {
+        "elapsed_seconds": 280.935,
+        "note": "Build before final test-initializer, source-metadata and documentation refresh; not deployed.",
+        "record": "adx/51-release-adx-apiserver.terminal.json",
+        "returncode": 0
+      },
+      "release_build_coordinator": {
+        "elapsed_seconds": 222.182,
+        "note": "Build before final test-initializer, source-metadata and documentation refresh; not deployed.",
+        "record": "adx/50-release-adx-coordinator.terminal.json",
+        "returncode": 0
+      }
+    },
+    "finished_unix": 1792558328.351917,
+    "historical_release_artifacts": [
+      {
+        "bytes": 22697008,
+        "component": "adx-coordinator",
+        "deployment_changed_by_this_work": false,
+        "provenance": "historical accepted clone58 release-build01 artifact receipt",
+        "sha256": "15471e76c8ef398d59bcfe1ebe73736dc6f4fd1eea41a41863649f39ff5d36fb"
+      },
+      {
+        "bytes": 32957880,
+        "component": "adx-apiserver",
+        "deployment_changed_by_this_work": false,
+        "provenance": "historical accepted clone58 release-build01 artifact receipt",
+        "sha256": "2ab4db1fec856b701b9368765842d4a0d91d72268879a61f48c5809aca578f12"
+      }
+    ],
+    "known_boundaries": [
+      "Strict whole-workspace all-features clippy remains blocked by missing AFS RDMA system headers; it did not pass.",
+      "No full runtime integration suite, clean-host cluster rollout, production promotion or new performance run was performed.",
+      "Historical SDK and performance acceptance remains separate from these source-delivery gates."
+    ],
+    "records_relative_to": "gate-output",
+    "schema": "akernel-crossnode-adx-sdk-delivery-gates/v1",
+    "scope": {
+      "new_sdk_or_vm_integration_runs": false,
+      "original_workspaces_modified": false,
+      "production_promotion_or_deployment": false,
+      "remote_only": true,
+      "runtime_component_gates": "Reported separately by the runtime gate worker.",
+      "shared_services_modified": false,
+      "worker_source_edits": false
+    },
+    "source_refinement": {
+      "description": "Replace Default followed by expressions assignment with equivalent LabelSelector struct initializers.",
+      "documentation": "Development documentation checked; architecture HTML regeneration not required.",
+      "equivalent_test_only_initializer_cleanups": 2,
+      "production_logic_changes_by_worker": false,
+      "test_file": "platform/coordinator/tests/shared_volume_execution_rpc.rs",
+      "version_binding_only": "third_party/sandboxd-proto source metadata pins sandboxd 3da34daf860de80a0adea64a457646cd208d4aa4; vendored proto digest unchanged."
+    },
+    "status": "scoped_gates_passed_with_strict_workspace_environment_block",
+    "strict_full_workspace_clippy": {
+      "all_features": true,
+      "all_targets": true,
+      "classification": "blocked_environment",
+      "component": "afs-transport/native/rdma.c",
+      "missing_system_header": "infiniband/verbs.h",
+      "passed": false,
+      "record": "adx-clippy02/02-strict-workspace-clippy.terminal.json",
+      "returncode": 101,
+      "shared_system_packages_installed": false,
+      "warnings_denied": true
+    },
+    "tools": {
+      "cargo": {
+        "returncode": 0,
+        "version": "cargo 1.95.0 (f2d3ce0bd 2026-03-21)"
+      },
+      "dockerfile_parse": "2.0.1",
+      "jobs": 2,
+      "juicefs": "1.4.1+2026-07-30.0b90c7d",
+      "private_pip_bootstrap": "25.2",
+      "pytest": "8.4.2",
+      "pytest_asyncio": "1.2.0",
+      "python": {
+        "returncode": 0,
+        "version": "Python 3.14.4"
+      },
+      "python_test_plugin_autoload_disabled": true,
+      "rustc": {
+        "returncode": 0,
+        "version": "rustc 1.95.0 (59807616e 2026-04-14)"
+      }
+    }
+  }
+}
+

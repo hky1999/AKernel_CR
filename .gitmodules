@@ -1,0 +1,25 @@
+[submodule "agent-dx"]
+	path = agent-dx
+	url = https://github.com/hky1999/agent-dx.git
+	branch = crossnode/accepted-20261021
+
+[submodule "AKernel"]
+	path = AKernel
+	url = https://github.com/hky1999/AKernel.git
+	branch = crossnode/accepted-20261021
+
+[submodule "sandboxd"]
+	path = sandboxd
+	url = https://github.com/hky1999/sandboxd.git
+	branch = crossnode/accepted-20261021
+
+[submodule "gvisor-akernel-dev"]
+	path = gvisor-akernel-dev
+	url = https://github.com/hky1999/gvisor.git
+	branch = crossnode/accepted-20261021
+
+[submodule "firecracker"]
+	path = firecracker
+	url = https://github.com/hky1999/firecracker.git
+	branch = crossnode/runtime-baseline-20261021
+

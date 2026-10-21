@@ -1,0 +1,187 @@
+{
+  "schema": 1,
+  "date": "2026-10-20",
+  "measurement": "Public AKernel SDK create start to first successful business-ready response after checkpoint restore",
+  "topology": "One BareMetal host, two isolated logical nodes, two independent JuiceFS mounts of the same volume; not two physical compute hosts",
+  "samples": {
+    "registered_pairs": 6,
+    "formal_sdk_operations": 24,
+    "warmup_sdk_operations": 24
+  },
+  "versions": {
+    "A": {
+      "sandboxd_elf_sha256": "9e555c43f0e2d8b33ead0ad8abd5cf5695cfb0c2145296e003f825f42a8f17ea",
+      "description": "Complete integrity verification, serial component SHA256; includes timing instrumentation"
+    },
+    "B": {
+      "sandboxd_elf_sha256": "4806b036d23470c966265bce97986d36256cb223e0ab3792b35ac0173d1399af",
+      "description": "Complete integrity verification, component SHA256 concurrency bounded to two"
+    }
+  },
+  "statistics": {
+    "runsc": {
+      "status": "complete_registered_six_pairs",
+      "runtime": "runsc",
+      "primary_metric": "create_begin_to_first_ready_response_ns",
+      "pairs": [
+        {
+          "block": 1,
+          "B": 5000033279,
+          "A": 2938655973,
+          "ratio_B_over_A": 1.7014694217151223,
+          "relative_change": 0.7014694217151223
+        },
+        {
+          "block": 2,
+          "A": 4124998885,
+          "B": 4242643635,
+          "ratio_B_over_A": 1.0285199471029676,
+          "relative_change": 0.02851994710296757
+        },
+        {
+          "block": 3,
+          "B": 2506231640,
+          "A": 5855570648,
+          "ratio_B_over_A": 0.4280080953093814,
+          "relative_change": -0.5719919046906186
+        },
+        {
+          "block": 4,
+          "A": 3289616803,
+          "B": 2967417455,
+          "ratio_B_over_A": 0.9020556595813327,
+          "relative_change": -0.09794434041866729
+        },
+        {
+          "block": 5,
+          "B": 3002922097,
+          "A": 2769061694,
+          "ratio_B_over_A": 1.0844547463520688,
+          "relative_change": 0.08445474635206884
+        },
+        {
+          "block": 6,
+          "A": 3109059170,
+          "B": 3278673481,
+          "ratio_B_over_A": 1.0545548674778036,
+          "relative_change": 0.05455486747780358
+        }
+      ],
+      "version_descriptive": {
+        "A": {
+          "median": 3199337986.5,
+          "min": 2769061694,
+          "max": 5855570648
+        },
+        "B": {
+          "median": 3140797789,
+          "min": 2506231640,
+          "max": 5000033279
+        }
+      },
+      "R_geometric_mean_ratio": 0.9579300565130987,
+      "bootstrap95_type7": [
+        0.6634868977962164,
+        1.3050906863669538
+      ],
+      "seed": 7373,
+      "resamples": 20000,
+      "index_stream": {
+        "encoding": "one uint8 index per draw, row-major20000x6",
+        "sha256": "0fc24896f585cee793a31682ae9eb7dc4f3431769ae787b01bd70176b636472e",
+        "bytes": 120000
+      },
+      "sign_flip_two_sided_p": 0.84375,
+      "decision": "uncertain",
+      "not_production_P95": true
+    },
+    "firecracker": {
+      "status": "complete_registered_six_pairs",
+      "runtime": "firecracker",
+      "primary_metric": "create_begin_to_first_ready_response_ns",
+      "pairs": [
+        {
+          "block": 1,
+          "B": 2374362171,
+          "A": 4273566060,
+          "ratio_B_over_A": 0.5555927152322995,
+          "relative_change": -0.44440728476770053
+        },
+        {
+          "block": 2,
+          "A": 4155694094,
+          "B": 2337144779,
+          "ratio_B_over_A": 0.5623957697883428,
+          "relative_change": -0.4376042302116572
+        },
+        {
+          "block": 3,
+          "B": 2349480856,
+          "A": 4229676534,
+          "ratio_B_over_A": 0.5554753033982244,
+          "relative_change": -0.4445246966017756
+        },
+        {
+          "block": 4,
+          "A": 4207752252,
+          "B": 2386453102,
+          "ratio_B_over_A": 0.5671562770516462,
+          "relative_change": -0.4328437229483538
+        },
+        {
+          "block": 5,
+          "B": 2348664666,
+          "A": 4166517888,
+          "ratio_B_over_A": 0.5636996477956799,
+          "relative_change": -0.43630035220432006
+        },
+        {
+          "block": 6,
+          "A": 4070279235,
+          "B": 2262290865,
+          "ratio_B_over_A": 0.5558072884893854,
+          "relative_change": -0.44419271151061457
+        }
+      ],
+      "version_descriptive": {
+        "A": {
+          "median": 4187135070,
+          "min": 4070279235,
+          "max": 4273566060
+        },
+        "B": {
+          "median": 2349072761,
+          "min": 2262290865,
+          "max": 2386453102
+        }
+      },
+      "R_geometric_mean_ratio": 0.5600021329572109,
+      "bootstrap95_type7": [
+        0.5567174227928134,
+        0.5638441732217278
+      ],
+      "seed": 7373,
+      "resamples": 20000,
+      "index_stream": {
+        "encoding": "one uint8 index per draw, row-major20000x6",
+        "sha256": "0fc24896f585cee793a31682ae9eb7dc4f3431769ae787b01bd70176b636472e",
+        "bytes": 120000
+      },
+      "sign_flip_two_sided_p": 0.03125,
+      "decision": "registered_FC_stable_benefit",
+      "not_production_P95": true
+    }
+  },
+  "not_measured": [
+    "physical cross-host migration",
+    "cold S3 restore",
+    "production P95/P99",
+    "SDK failover/reload combined path",
+    "steady-state checkpoint guest pause"
+  ],
+  "findings": {
+    "firecracker": "All six pairs improved; geometric mean new/old ratio 0.5600021329572109; approximately 44% faster for this metric",
+    "gvisor": "Uncertain; confidence interval includes improvement and regression. Not proof of equivalence or zero regression"
+  }
+}
+
