@@ -1,18 +1,18 @@
-# Reproducing the accepted source delivery
+# 已验收源码交付的复现说明
 
-## 1. Safety and prerequisites
+## 1. 安全边界与前置条件
 
-Use a dedicated Linux x86_64 test host or your own isolated test environment. Builds and tests must not run on the local development workstation. Do not stop or modify somebody else's sandboxd, Redis, JuiceFS, containers, mounts or network rules.
+使用专用 Linux x86_64 远端测试机或任务独立环境，不在本地开发机编译测试。不停止或修改他人的 sandboxd、Redis、JuiceFS、容器、挂载和网络规则。
 
-The runtime experiment needs KVM, FUSE, cgroup v2, mount/network namespaces and a reflink-capable XFS filesystem. Filestore and templates must meet the selected runtime's filesystem constraints. Use short, stable mount paths: Linux Unix-domain socket names have a 108-byte upper bound. The same guest-visible filestore path must be available in both node mount namespaces.
+运行时实验需要 KVM、FUSE、cgroup v2、挂载/网络命名空间，以及支持 reflink（共享数据块的快速文件克隆）的 XFS 文件系统。filestore 和模板必须满足所选运行时的文件系统约束。使用短而稳定的挂载路径：Linux Unix socket 地址上限为108字节。两节点挂载命名空间中的 filestore 路径必须一致。
 
-Use fresh task state and credentials. Do not copy the original experiment's private configuration or an old checkpoint made with different kernel/initrd/VMM compatibility pins.
+每个任务使用新状态和新凭据。不复制历史私有配置，不复用 kernel/initrd/VMM 兼容摘要不同的旧 checkpoint。
 
-## 2. Source and component gates
+## 2. 源码与组件门禁
 
-Exact commands and test environment requirements are recorded in `Docs/reproduction-adx-sdk.md` and `Docs/reproduction-runtime.md`. These appendices distinguish direct repository tests from generated harnesses and private fixture prerequisites.
+精确命令和环境要求见 `Docs/reproduction-adx-sdk.md`、`Docs/reproduction-runtime.md`。附录区分直接运行的仓库测试、临时测试辅助入口及私有材料前置条件。
 
-Clone recursively and keep the commits in `delivery/manifest.json`. On the remote test host:
+递归克隆仓库，保持 `delivery/manifest.json` 中的提交。以下命令只在远端执行：
 
 ```bash
 cd sandboxd
@@ -24,15 +24,15 @@ cargo fmt --all -- --check
 cargo clippy --workspace --all-targets --all-features -- -D warnings
 ```
 
-Some optional ADX all-features dependencies require system libraries. A missing library or a failing unrelated baseline is a failed/unavailable gate, not permission to modify shared services or a reason to silently report green.
+ADX 可选 all-features 依赖需要额外系统库。库缺失或无关基线失败必须记为失败/无法执行，不能修改共享服务来绕过，也不能静默报告全绿。
 
-Build ADX using its native Makefile/package workflow. The historic component builds used the pinned Rust toolchain and `cargo build --locked --release -p adx-coordinator --bin adx-coordinator` (and the corresponding API Server/adxlet targets). Build sandboxd and its matching static Firecracker guest agent using the sandboxd Makefile. The guest initrd must match sandboxd; changing its bytes invalidates old templates. Do not use a dynamic guest agent.
+按 ADX 原生 Makefile/包工作流构建。历史组件使用固定 Rust 工具链，Coordinator 命令为 `cargo build --locked --release -p adx-coordinator --bin adx-coordinator`，API Server/adxlet 使用各自目标。按 sandboxd Makefile 构建 sandboxd 及匹配的静态 Firecracker guest agent。initrd 必须与 sandboxd 匹配，字节变化会使旧模板失效，不能使用动态链接 guest agent。
 
-Build gVisor from the pinned source using its Bazel version and adjacent helper packaging rules; do not combine an arbitrary runsc executable and helpers from another release. The published runtime bundle pins in `sandboxd/third_party/runtime-versions.env` remain distinct from these experimental source commits.
+gVisor 使用固定源码、Bazel 版本和配套打包规则构建，不能混用不同发布版本的 runsc 与辅助程序。`sandboxd/third_party/runtime-versions.env` 的正式发布固定版本，与本实验源码提交分别管理。
 
-## 3. Install the matching SDK sources
+## 3. 安装匹配的 SDK 源码
 
-Use a new virtual environment on the remote host:
+在远端新建虚拟环境：
 
 ```bash
 python3 -m venv out/client
@@ -40,25 +40,25 @@ out/client/bin/pip install -e ./agent-dx/platform/sdk/environment/python
 out/client/bin/pip install -e ./AKernel/sdk/python
 ```
 
-The accepted experiment used source extensions. Installing only the published `akernel-sdk` / `adx-environment` packages can omit those extensions.
+已验收实验使用源码扩展，仅安装已发布 `akernel-sdk` / `adx-environment` 包，可能缺少这些能力。
 
-## 4. JuiceFS deployment helpers
+## 4. JuiceFS 部署辅助脚本
 
-The reusable, secret-generating lab helpers and their tests are in:
+可复用、按任务生成私有凭据的部署辅助脚本及其测试位于：
 
 `AKernel/deploy/experimental/juicefs-adx/`
 
-They include `lab.py`, `node_network.py`, `runtime_nodes.py`, `private_pki.py`, `native_profile.py`, `short_profile.py`, runtime downloads and initrd construction. Read their `--help` before creating a new task. Their state directories are private; generated environment files, passwords, certificates and actual deployment YAML are not repository contents.
+包含 `lab.py`、`node_network.py`、`runtime_nodes.py`、`private_pki.py`、`native_profile.py`、`short_profile.py`、运行时下载和 initrd 构建。创建任务前先看 `--help`。生成的环境文件、密码、证书和真实部署 YAML 不进入仓库。
 
-The lab has fixed reserved addresses and ports and refuses conflicts. Do not alter an existing environment to make it fit. Run it on an unused dedicated host or an independently isolated outer namespace. PostgreSQL uses fsync and synchronous commit. JuiceFS must use the same volume UUID in both node clients and must not enable writeback for this acceptance.
+实验使用预留地址和端口并拒绝冲突，不为实验修改既有环境。应在空闲专用主机或独立外层命名空间运行。PostgreSQL 开启 fsync/synchronous commit，两节点 JuiceFS 挂载同一格式 UUID，验收中不启用 writeback。
 
-`configs/adx-shared-storage.example.json` is a partial storage example, not a complete launch configuration. Merge it through the ADX deployment tools and validate the generated `.yaml` with `adxctl` before launch. Do not keep the legacy `checkpoint_dir` alongside `checkpoint_storage`. Do not disable cgroups or certificate verification to get a demo running.
+`configs/adx-shared-storage.example.json` 是部分存储配置，不能直接启动完整系统。通过 ADX 部署工具合并并生成 `.yaml`，启动前用 `adxctl` 校验。不能同时保留旧 `checkpoint_dir` 和 `checkpoint_storage`，也不能关闭 cgroup 或证书校验。
 
-The original A0 generators are retained as tested source material, not a promise that their old default runtime binaries already include the new commits. Stage the newly built source versions, regenerate the package/profile and guest compatibility pins, and run the gates before accepting that profile.
+原 A0 生成器保留为已测试的源码材料，不代表其旧默认运行时二进制已经包含当前提交。应放置新构建版本，重新生成部署配置及 guest 兼容摘要，并验收后再认可新配置。
 
-## 5. Diagnostic checkpoint/restore probe
+## 5. checkpoint/restore 诊断探针
 
-`tools/acceptance/shared_fs_probe.py` and `probe_cleanup.py` are reused from the accepted A0 diagnostic chain. They exercise real native ADX SDK pause/resume/snapshot/clone, verify actual source/target node placement and private filesystem branch isolation, and record owned cleanup.
+`tools/acceptance/shared_fs_probe.py` 和 `probe_cleanup.py` 复用已验收 A0 诊断链，调用真实原生 ADX SDK 的 pause/resume/snapshot/clone，检查实际源/目标节点、私有文件系统分支隔离，并记录本任务资源清理。
 
 ```bash
 out/client/bin/python tools/acceptance/shared_fs_probe.py \
@@ -71,25 +71,25 @@ out/client/bin/python tools/acceptance/shared_fs_probe.py \
   --output /YOUR-TASK-DIR/results/runsc-01
 ```
 
-Repeat in a fresh output directory with `--runtime firecracker`. Use runtime-compatible rootfs/bootstrap profiles. This native diagnostic probe is not by itself the complete public AKernel SDK acceptance and does not establish restart/fault safety.
+使用新的输出目录，以 `--runtime firecracker` 重复，并提供匹配运行时的 rootfs/启动配置。该原生探针不等于完整公共 SDK 验收，也不能证明重启/故障安全。
 
-## 6. Public SDK and reader-protection acceptance
+## 6. 公共 SDK 与读者保护验收
 
-The accepted full chain creates through the public `Sandbox` facade; internal checkpoint coordination and clone use the existing native Environment interface. It does not add a public checkpoint catalog API.
+历史完整链路通过公共 `Sandbox` 入口创建；内部 checkpoint 协调和克隆仍使用现有原生 Environment 接口，不新增公开 checkpoint catalog API。
 
-Required evidence includes: actual node assignment, restored volatile memory and an open file descriptor, immutable parent/private clone isolation, RW writer / independent-tenant RO reader behavior, explicit EROFS refusal, durable reader reservation before runtime start, and positive retirement proof before collection. A process exit code or successful SDK delete alone is insufficient.
+必须保留的证据包括实际节点落点、恢复的内存与已打开文件描述符、不可变父快照/私有克隆隔离、读写者与独立租户只读者行为、显式拒绝向 EROFS 写入、启动前持久化读者预留，以及回收前的可靠运行时退出证明。进程退出码或 SDK 删除成功不能单独替代这些证据。
 
-Historical accepted scope and omissions are recorded in `Docs/acceptance-scope.md`. The raw host-bound orchestration scripts and private journals are deliberately not advertised as a portable one-command launcher. A clean-host replay of the complete SDK + retirement matrix is a separate delivery gate and must not be inferred from component tests.
+历史验收边界见 `Docs/acceptance-scope.md`。绑定原主机身份的编排与私有记录不包装成可移植的一键入口。全新主机完整 SDK/读者退出矩阵需单独验收，不能从组件单测推导完成。
 
-## 7. Recompute published performance points
+## 7. 重算公开性能样本的点估计
 
 ```bash
 python3 tools/performance/recompute.py evidence/performance-six-pairs.json
 ```
 
-This verifies all paired point estimates from the published samples. Registered confidence intervals are included as accepted results; this minimal helper does not claim to recompute their bootstrap stream. No live infrastructure or credentials are needed. New runtime samples require the original metric definition and the same registered alternating-version design.
+脚本核对全部配对样本的中位数与配对几何均值耗时比。登记的置信区间保留为历史结果；此最小脚本不重放 bootstrap 随机流。计算不需要在线环境或凭据。新增采样必须沿用原指标定义与登记的新旧版本交替方案。
 
-## 8. Cleanup
+## 8. 清理
 
-Use normal APIs for resources created by your task and verify execution-bound retirement. Keep dependencies when an operation has an unknown outcome. Never use global process-name kills, global GC, forced unmounts of shared mounts, or delete-by-age as a substitute for ownership proof.
+只通过正常 API 清理本任务资源，并确认与执行实例绑定的退出证明。结果不确定时保留依赖。不能按进程名全局杀进程、运行全局 GC、强制卸载共享挂载，或以按年龄删除代替所有权证明。
 

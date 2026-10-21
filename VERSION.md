@@ -1,48 +1,54 @@
-# CrossNode source delivery versions
+# CrossNode 源码交付版本台账
 
-Date: 2026-10-21. This ledger is the source of truth for this sanitized GitHub delivery. Source commits, historic measured binaries and newly rebuilt binaries are different identities.
+日期：2026-10-21。本文件是本次脱敏 GitHub 交付的版本事实来源。源码提交、历史实测二进制和新构建产物是不同身份，不能混记。
 
-## Obtainable source
+## 可获取的源码
 
-| Component | GitHub repository and commit | Delivery branch | Exact commit |
+| 组件 | GitHub 仓库及提交 | 交付分支 | 精确提交 |
 |---|---|---|---|
-| agent-dx | [hky1999/agent-dx](https://github.com/hky1999/agent-dx/commit/d66150a0d37c1413f22499e81d95a88e297ead7a) | `crossnode/accepted-20261021` | `d66150a0d37c1413f22499e81d95a88e297ead7a` |
-| AKernel | [hky1999/AKernel](https://github.com/hky1999/AKernel/commit/2163fc77390c1ddc2aa66ac6a9d6f0d7a9bd1459) | `crossnode/accepted-20261021` | `2163fc77390c1ddc2aa66ac6a9d6f0d7a9bd1459` |
+| agent-dx | [hky1999/agent-dx](https://github.com/hky1999/agent-dx/commit/aac2b487c829aaf7d34b4bdce9a4a57c4c78841b) | `crossnode/accepted-20261021` | `aac2b487c829aaf7d34b4bdce9a4a57c4c78841b` |
+| AKernel | [hky1999/AKernel](https://github.com/hky1999/AKernel/commit/645a07e061f649ecdbe3a86c686c445ea371f722) | `crossnode/accepted-20261021` | `645a07e061f649ecdbe3a86c686c445ea371f722` |
 | sandboxd | [hky1999/sandboxd](https://github.com/hky1999/sandboxd/commit/3da34daf860de80a0adea64a457646cd208d4aa4) | `crossnode/accepted-20261021` | `3da34daf860de80a0adea64a457646cd208d4aa4` |
 | gvisor-akernel-dev | [hky1999/gvisor](https://github.com/hky1999/gvisor/commit/93425aec2c93d07a38e021916dda8967743c46b0) | `crossnode/accepted-20261021` | `93425aec2c93d07a38e021916dda8967743c46b0` |
 | firecracker | [hky1999/firecracker](https://github.com/hky1999/firecracker/commit/b9a362d1070ee17991e7388d3b53a9ccce25ecca) | `crossnode/runtime-baseline-20261021` | `b9a362d1070ee17991e7388d3b53a9ccce25ecca` |
 
-The parent Git links, not the branch tips, fix the reproducible combination. AKernel also fixes its nested ADX/sandboxd Git links to these commits. No upstream default branch was changed.
+由父仓子模块提交指针固定版本组合，而不是跟随分支最新提交。AKernel 内嵌的 ADX/sandboxd 指针也固定相应提交，未修改组织上游默认分支。
 
-## Runtime and SDK provenance
+## 运行时与 SDK 来源
 
-- Serial digest comparison source: sandboxd `fc5eda63350f5bd106104176011370a14611d951` on `crossnode/serial-baseline-20261021`.
-- Parallel digest source: sandboxd `3da34daf860de80a0adea64a457646cd208d4aa4`; complete SHA-256 verification with at most two concurrent component checks.
-- Historic measured sandboxd ELF A: `9e555c43f0e2d8b33ead0ad8abd5cf5695cfb0c2145296e003f825f42a8f17ea`.
-- Historic measured sandboxd ELF B: `4806b036d23470c966265bce97986d36256cb223e0ab3792b35ac0173d1399af`.
-- New remote sandboxd ELF: `6b2f5aca7e5ea42acdd10e798d7ffa999e791fcb807b543fa420a02d584d1f04`. Built but not run, deployed or rebenchmarked.
-- New remote runsc ELF: `a4c84b051a402ba07c169c71ac9784bfd2f54662d3c3271a5230d82fae9c8982`; matches historical accepted runsc bytes. Built, not deployed this round.
-- Firecracker existing release: `v1.16.1-akernel.3`, source `b9a362d1070ee17991e7388d3b53a9ccce25ecca`. No new VMM source change/build this round.
-- SDK source package versions remain public `0.1.6rc9` and native `0.1.0rc1`; install from pinned source, not arbitrary PyPI releases. No SDK package release performed.
-- Formal sandboxd runtime bundle pins are not promoted by these experimental source commits. Matching guest agent/initrd and template compatibility digests must be regenerated for a new deployment.
+- 串行摘要校验对照：sandboxd `fc5eda63350f5bd106104176011370a14611d951`，分支 `crossnode/serial-baseline-20261021`。
+- 并行摘要校验：sandboxd `3da34daf860de80a0adea64a457646cd208d4aa4`，保留完整 SHA-256 校验，独立组件并发上限为2。
+- 历史实测 sandboxd ELF A：`9e555c43f0e2d8b33ead0ad8abd5cf5695cfb0c2145296e003f825f42a8f17ea`。
+- 历史实测 sandboxd ELF B：`4806b036d23470c966265bce97986d36256cb223e0ab3792b35ac0173d1399af`。
+- 新远端 sandboxd ELF：`6b2f5aca7e5ea42acdd10e798d7ffa999e791fcb807b543fa420a02d584d1f04`；仅构建，未运行、部署或重测性能。
+- 新远端 runsc ELF：`a4c84b051a402ba07c169c71ac9784bfd2f54662d3c3271a5230d82fae9c8982`，与历史已验收 runsc 字节一致，本轮未部署。
+- Firecracker 已有发布：`v1.16.1-akernel.3`，源码 `b9a362d1070ee17991e7388d3b53a9ccce25ecca`，本轮无新增 VMM 修改或构建。
+- SDK 源码包版本仍为公共 `0.1.6rc9`、原生 `0.1.0rc1`，需从固定源码安装，不能用任意 PyPI 版本替代；未发布 SDK 包。
+- 实验源码提交不等于正式运行时 bundle 已升级。新部署需重新生成匹配的 guest agent/initrd 与模板兼容摘要。
 
-## Toolchain and storage
+## 工具链与存储
 
-- sandboxd: Go 1.27.2; gVisor: Go 1.26.3 and Bazel 8.3.1; ADX: Rust/Cargo 1.95.0; SDK gates: Python 3.14.4.
-- JuiceFS: `1.4.1+2026-07-30.0b90c7d`, writeback disabled. PostgreSQL metadata plus Ceph RGW S3 data, not the SeaweedFS arrangement in an earlier architecture illustration.
-- Container image digests and JuiceFS binary digest: `delivery/manifest.json`. The two observed RepoDigests are recorded without guessing architecture/index roles.
+- sandboxd：Go 1.27.2；gVisor：Go 1.26.3/Bazel 8.3.1；ADX：Rust/Cargo 1.95.0；SDK 门禁：Python 3.14.4。
+- JuiceFS：`1.4.1+2026-07-30.0b90c7d`，关闭 writeback。PostgreSQL 保存元数据，Ceph RGW 提供 S3 数据服务，不是较早架构图中的 SeaweedFS 组合。
+- 容器镜像及 JuiceFS 二进制摘要见 `delivery/manifest.json`；保留两个实测 RepoDigests，不猜测架构/索引角色。
 
-## Acceptance and remaining work
+## 验收与遗留项
 
-All builds/tests were remote and task-isolated. ADX scoped tests, both SDKs, helper tests, sandboxd full default suite and selected race tests, and gVisor targeted tests/build passed. Five sandboxd privileged tests were skipped by default and one ADX test ignored. Strict whole-workspace all-features clippy is blocked by optional AFS RDMA headers (`infiniband/verbs.h`), not green.
+上一轮所有构建测试均在远端独立任务环境执行。ADX 相关测试、两套 SDK、辅助脚本、sandboxd 默认全仓及选定 race、gVisor 针对性测试和构建通过。sandboxd 五个特权测试默认跳过，ADX 一个测试忽略。严格全工作区 all-features clippy 因可选 AFS 缺少 RDMA 头文件 `infiniband/verbs.h` 受阻，不计通过。
 
-Historic six-pair performance: Firecracker SDK-create-to-first-ready median 4.187 s to 2.349 s, paired geometric new/old ratio 0.5600. gVisor median 3.199 s to 3.141 s but confidence interval crosses both benefit and regression, so improvement is unproven. One physical host/two logical nodes; not guest pause or cold-S3 latency.
+本次中文文档提交不改变产品源码，也不重新执行编译或测试。上述门禁仍对应 `evidence/delivery-gates.json` 中记录的原验收提交 ADX `d66150a`、公共 SDK `2163fc7`；最新提交只调整文档及关联子模块指针。
 
-Clean-host replay of the complete public SDK and reader-retirement fault matrix remains open. Published probes and helpers do not themselves close that gate. See `Docs/plans/20261021T-source-delivery-followups.md`.
+历史六组对照：Firecracker 从 SDK 发起恢复创建到首次业务就绪的中位数4.187秒→2.349秒，配对几何均值新/旧0.5600。gVisor 中位数3.199秒→3.141秒，但置信区间同时覆盖改善与变慢，不能证明收益。环境为同物理机两个逻辑节点，不能当作 guest 停顿或冷 S3 延迟。
 
-## Changelog
+全新主机的完整公共 SDK/读者退出故障矩阵仍待重放，公开探针与辅助脚本不直接关闭该门禁。见 `Docs/plans/20261021T-source-delivery-followups.md`。
 
-### 2026-10-21
+## 变更记录
 
-Published accepted ADX, SDK, sandboxd and gVisor source on separate GitHub delivery branches; registered the matching existing Firecracker release source; added sanitized configurations, deployment helpers, diagnostic acceptance scripts, gate summaries and six-pair raw durations. Excluded unaccepted source candidates and preserved original dirty workspaces. This clean GitHub parent history intentionally omits the internal parent history and private evidence. No production deployment or shared service change.
+### 2026-10-21：文档统一中文
+
+交付入口、架构、部署、复现、验收边界、后续工作、版本台账，以及 ADX/公共 SDK 新增说明统一使用中文。命令、配置字段、接口及历史测试/性能数据保持原样。更新文档提交对应的组件指针，不改运行时，不编译测试，不改共享服务。
+
+### 2026-10-21：已验收源码发布
+
+将 ADX、公共 SDK、sandboxd 和 gVisor 已验收源码发布到独立 GitHub 分支，补齐已有 Firecracker 发布对应源码、脱敏配置、部署辅助脚本、诊断探针、门禁汇总和六组原始耗时。未验收候选保留在原工作区。新父仓历史不包含内部父仓历史或私有证据，未生产部署或修改共享服务。
 

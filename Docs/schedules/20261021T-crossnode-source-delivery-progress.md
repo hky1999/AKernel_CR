@@ -1,4 +1,4 @@
-# CrossNode source publication progress (2026-10-21)
+# CrossNode 源码发布进度（2026-10-21）
 
 ## 开发内容
 
@@ -6,11 +6,11 @@
 
 ## 修改内容
 
-- agent-dx: `d66150a0d37c1413f22499e81d95a88e297ead7a`，ADX control plane, native Environment SDK, persisted checkpoint reader and shared-volume lifecycle。
-- AKernel: `2163fc77390c1ddc2aa66ac6a9d6f0d7a9bd1459`，Public AKernel SDK and isolated JuiceFS/ADX deployment helpers。
-- sandboxd: `3da34daf860de80a0adea64a457646cd208d4aa4`，Runtime integration, durable operation identities, bounded integrity verification。
-- gvisor-akernel-dev: `93425aec2c93d07a38e021916dda8967743c46b0`，Execution retirement proof and restore-worker synchronization。
-- firecracker: `b9a362d1070ee17991e7388d3b53a9ccce25ecca`，Existing accepted VMM release baseline; no new VMM changes or build。
+- agent-dx: `d66150a0d37c1413f22499e81d95a88e297ead7a`，ADX 控制面、原生 Environment SDK、持久化的快照读者与共享卷生命周期。
+- AKernel: `2163fc77390c1ddc2aa66ac6a9d6f0d7a9bd1459`，公共 AKernel SDK 与独立 JuiceFS/ADX 部署辅助脚本。
+- sandboxd: `3da34daf860de80a0adea64a457646cd208d4aa4`，运行时集成、持久化操作身份与限制并发的完整性校验。
+- gvisor-akernel-dev: `93425aec2c93d07a38e021916dda8967743c46b0`，执行实例退出证明与后台恢复工作线程同步。
+- firecracker: `b9a362d1070ee17991e7388d3b53a9ccce25ecca`，已有已验收 VMM 发布基线，本轮无新增 VMM 修改或构建。
 - sandboxd 串行校验对照单独保留 `fc5eda63350f5bd106104176011370a14611d951`，新版本仅将独立文件 SHA-256 校验并发限制为2，不跳过完整性。
 - ADX 两处 LabelSelector 测试初始化器做等价 lint 清理；不改变产品逻辑。公共 SDK 公开受控共享卷能力，新增 JuiceFS 独立实验部署辅助脚本，并固定嵌套组件指针。
 - 父仓新增配置片段、架构/复现/验收边界说明、诊断脚本、六组配对性能样本、脱敏门禁汇总及精确版本清单；内部父仓历史与私有运行产物不发布。

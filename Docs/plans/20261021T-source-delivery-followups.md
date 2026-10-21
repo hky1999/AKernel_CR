@@ -1,20 +1,20 @@
-# Remaining source-delivery and product gates
+# 源码交付与产品验收的后续工作
 
-## Priority 1: fresh isolated deployment and portable full-chain acceptance
+## 第一优先级：全新独立部署与可移植的完整验收
 
-1. Stage the exact pinned binaries and matching Firecracker guest initrd in a new task. Regenerate deployment profiles and compatibility pins; validate real node registration/resources and Unix socket path lengths.
-2. Generate new JuiceFS credentials, separate node mounts of the same UUID, control-plane state and private TLS fixtures. Preserve writeback=false, synchronization barriers and isolation.
-3. Port the host-bound historical full SDK orchestration into a parameterized runner. Retain true node assignment, RAM/open-FD checks, private clone isolation, independent-tenant RW/RO shared-volume checks and execution-bound cleanup proofs.
-4. Replay process restart, unknown timeout outcomes, reader retirement and collection races. A native SDK smoke test or returned delete code is insufficient. Do not enable automatic collection while these gates remain open.
-5. Repeat formal A/B performance using the newly staged ELF identities before attributing historical numbers to a new rebuild.
+1. 在新任务中放置精确固定的组件二进制与匹配的 Firecracker guest initrd。重新生成部署配置和兼容版本摘要，检查真实节点注册、可用资源及 Unix socket 路径长度。
+2. 生成新的 JuiceFS 凭据、挂载同一 UUID 的两个独立客户端、控制面状态和任务私有 TLS 材料。保持 writeback=false、同步屏障和资源隔离。
+3. 将历史上绑定具体机器身份的完整 SDK 编排改为参数化入口。保留真实节点落点、内存/已打开文件描述符恢复、私有克隆隔离、不同租户的共享卷读写/只读检查，以及绑定执行实例的清理证明。
+4. 重跑进程重启、超时结果不确定、读者退出确认与回收竞争。原生 SDK 冒烟成功或删除 API 返回成功都不足以替代该门禁；门禁未完成前不启用自动回收。
+5. 用本轮新构建二进制重新执行正式 A/B 性能对照，不能直接将历史数字归属于任意新产物。
 
-## Priority 2: performance attribution
+## 第二优先级：性能归因
 
-Investigate gVisor CPU/read I/O by actual process role using task-scoped identities. Preserve the registered six-pair results unchanged. Measure checkpoint guest pause separately from recovery-to-ready. Then measure genuine two-compute-host transfer and cold-S3 bytes, not only warm cache wall time.
+按任务身份采集 gVisor 各实际进程角色的 CPU/读 I/O，保持登记的六组结果原样。分别测量 checkpoint 的 guest 停顿和恢复到业务就绪耗时，再测量真实两台计算机之间的传输与冷 S3 读取量，不能只看热缓存墙钟时间。
 
-## Priority 3: production release
+## 第三优先级：生产发布
 
-Close public failover/reload combined acceptance; establish storage HA, durability under failures, tenant authorization, operational recovery and P95/P99. Promote runtime bundles and package versions only after those gates. Optional AFS full-workspace lint requires a dedicated environment with RDMA development headers; current focused lint is not that gate.
+补齐公共 failover/reload 组合验收，验证存储高可用、故障持久性、租户授权、运维恢复及 P95/P99。门禁通过后再升级正式运行时 bundle 和 SDK 包。AFS 全工作区 lint 需要具备 RDMA 开发头文件的专用环境，当前局部 lint 不能替代。
 
-No timeline or competitor superiority is asserted by this source publication.
+本次源码发布不承诺上述工作的完成日期，也不宣称已经领先竞品。
 

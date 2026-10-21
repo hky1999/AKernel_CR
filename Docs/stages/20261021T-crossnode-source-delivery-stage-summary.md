@@ -1,4 +1,4 @@
-# CrossNode accepted-source delivery stage (2026-10-21)
+# CrossNode 已验收源码交付阶段总结（2026-10-21）
 
 ## 阶段定位
 

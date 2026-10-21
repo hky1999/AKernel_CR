@@ -1,8 +1,8 @@
-# CrossNode checkpoint/restore: accepted source delivery
+# CrossNode checkpoint/restore：已验收源码交付
 
-This repository contains the sanitized source manifest, component Git submodules, deployment helpers, acceptance probes and paired performance data for the ADX / JuiceFS CrossNode experiment.
+本仓库管理 ADX / JuiceFS CrossNode 实验的脱敏交付清单、组件 Git submodule（子模块）、部署辅助脚本、验收探针和配对性能数据。
 
-## Start here
+## 从这里开始
 
 ```bash
 git clone --recurse-submodules git@github.com:hky1999/AKernel_CR.git
@@ -11,17 +11,19 @@ cat VERSION.md
 cat Docs/reproduction.md
 ```
 
-Do not use `git submodule update --remote`: the Git links select the reviewed versions. Install both SDKs from these source checkouts, not only the currently published PyPI packages. See `Docs/reproduction.md`.
+不要使用 `git submodule update --remote`：父仓的子模块提交指针已经固定交付版本。两套 SDK 都应从指定源码安装，不能仅安装当前 PyPI 包。详见 `Docs/reproduction.md`。
 
-## Scope and limits
+## 范围与边界
 
-- ADX owns Environment lifecycle, checkpoint references, persisted reader reservations and shared-volume admission.
-- JuiceFS provides one shared namespace through independent node mounts. Its metadata and S3 object data are separate from ADX's Redis state.
-- Shared application volumes and private writable root filesystems are different contracts. Shared volume contents are not rolled back by a sandbox checkpoint.
-- The Firecracker private writable disk in the accepted performance runs remains local XFS-backed ext4. Checkpoint artifacts are published into JuiceFS. This is not a production OverlayBD integration.
-- The accepted performance environment has one physical host and two isolated logical nodes. It does not establish two-physical-host migration, storage high availability or production latency percentiles.
-- Firecracker improved on the registered recovery metric; gVisor remains statistically uncertain. See `evidence/performance-six-pairs.json`.
-- Unaccepted Coordinator shutdown changes, unrelated AFS edits, raw private configurations, tokens, process inventories and historical internal documents are excluded.
+- ADX 负责 Environment 生命周期、快照引用、持久化的读者预留和共享卷挂载准入。
+- JuiceFS 通过各节点独立挂载提供共同命名空间。JuiceFS 的文件元数据与 S3 对象数据，不等同于 ADX 使用的 Redis 控制状态。
+- 应用共享卷与沙箱私有可写根文件系统是不同契约。恢复 checkpoint 不会回滚共享卷内容。
+- 已验收性能实验中，Firecracker 的私有可写盘仍为本地 XFS 上的 ext4 镜像，checkpoint 工件发布到 JuiceFS；不是生产 OverlayBD 集成。
+- 已验收环境是一台物理机上的两个隔离逻辑节点，不能据此宣称真实跨物理机迁移、存储高可用或生产尾延迟已经验收。
+- Firecracker 在登记的恢复指标上有收益；gVisor 的收益仍不确定。原始样本见 `evidence/performance-six-pairs.json`。
+- 未验收的 Coordinator 退出候选、无关 AFS 修改、私有配置、凭据、进程清单和内部历史文档，不进入本次交付。
 
-This is an experimental accepted-source delivery, not a claim that all production rollout and runtime-release promotion gates are complete. Exact newly executed gate results belong in `evidence/delivery-gates.json`; unavailable or failing gates must remain visible.
+这是已验收实验源码的整理交付，不代表生产发布或正式运行时版本升级已经完成。本轮真实门禁及未通过/无法执行的项目见 `evidence/delivery-gates.json`。
+
+仓库说明文档默认使用中文；配置字段、接口名、命令、路径和必要的技术标识保持原样。
 

@@ -8,7 +8,7 @@
       "path": "agent-dx",
       "repository": "https://github.com/hky1999/agent-dx.git",
       "branch": "crossnode/accepted-20261021",
-      "commit": "d66150a0d37c1413f22499e81d95a88e297ead7a",
+      "commit": "aac2b487c829aaf7d34b4bdce9a4a57c4c78841b",
       "role": "ADX control plane, native Environment SDK, persisted checkpoint reader and shared-volume lifecycle",
       "base": "ce80a189f352f1ee2ebb6a9f30ee218f2ae896d3"
     },
@@ -16,7 +16,7 @@
       "path": "AKernel",
       "repository": "https://github.com/hky1999/AKernel.git",
       "branch": "crossnode/accepted-20261021",
-      "commit": "2163fc77390c1ddc2aa66ac6a9d6f0d7a9bd1459",
+      "commit": "645a07e061f649ecdbe3a86c686c445ea371f722",
       "role": "Public AKernel SDK and isolated JuiceFS/ADX deployment helpers",
       "base": "9f24718638131b09ad03a274b9ba52ff76396a38"
     },
@@ -122,6 +122,15 @@
     "portable_one_command_full_matrix_launcher": false,
     "full_public_failover_reload_combined_acceptance": false
   },
-  "promotion": "No rollout, runtime bundle release, package release or production-readiness claim"
+  "promotion": "No rollout, runtime bundle release, package release or production-readiness claim",
+  "documentation": {
+    "language": "zh-CN",
+    "changes": "仅文档及关联组件指针调整，产品源码与历史验收数据不变",
+    "previous_tested_commits": {
+      "ADX": "d66150a0d37c1413f22499e81d95a88e297ead7a",
+      "AKernel": "2163fc77390c1ddc2aa66ac6a9d6f0d7a9bd1459"
+    },
+    "builds_or_tests_rerun": false
+  }
 }
 

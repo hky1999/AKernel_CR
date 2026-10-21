@@ -1,4 +1,4 @@
-# CrossNode accepted-source delivery check (2026-10-21)
+# CrossNode 已验收源码交付检查（2026-10-21）
 
 ## 1. 问题
 

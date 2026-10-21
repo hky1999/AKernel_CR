@@ -1,14 +1,14 @@
-# Accepted scope and exclusions
+# 已验收范围与排除项
 
-The historical accepted experiment used two isolated logical nodes on one BareMetal host, separate JuiceFS clients, ADX control-plane/SDK integration, gVisor and Firecracker.
+历史验收在一台 BareMetal 物理机上运行两个隔离逻辑节点，使用独立 JuiceFS 客户端，覆盖 ADX 控制面/SDK 集成以及 gVisor、Firecracker 两种运行时。
 
-Accepted historical scopes include the basic shared-volume RW/RO public chain, private checkpoint/clone restoration for both runtimes, real RAM/open-FD restoration checks, persisted execution-bound reader/attachment reservations and retirement checks, plus the registered six-pair recovery comparison.
+历史已验收范围包括公共共享卷的基本读写者/只读者链路、两种运行时的私有 checkpoint/克隆恢复、真实内存及已打开文件描述符的恢复检查、持久化且绑定执行实例的读者/挂载预留与退出确认，以及登记的六组配对恢复性能对照。
 
-These are different from new delivery gates. Newly compiled source commits, clean-host deployment, runtime bundle promotion and a newly portable SDK/retirement launcher need their own evidence; historical binary hashes do not prove that an arbitrary rebuild or deployment works.
+历史验收与本轮源码交付门禁不同。新提交的源码、新环境部署、正式运行时发布及可移植的完整 SDK/读者退出验收入口，都需要各自的证据；历史二进制摘要不能证明任意重建或部署已经通过。
 
-Excluded source candidates: Coordinator shutdown/stream-cancellation preparation not yet built or tested; unrelated AFS changes; other developers' local modifications. Their original workspaces are preserved.
+排除的源码候选包括尚未构建或测试的 Coordinator 退出/流取消准备、无关 AFS 改动，以及其他开发者的本地修改。原工作区均保留。
 
-Remaining product/performance work includes full public failover/reload combined acceptance, additional active-reader crash cases where not already accepted, physical cross-host measurements, cold-S3 per-operation read attribution, production HA, P95/P99 and dynamic runtime/function attribution for gVisor variance.
+产品与性能遗留项包括公共 failover/reload（故障接管/重新加载）组合链路、尚未覆盖的活跃读者崩溃场景、真实跨物理机测量、冷 S3 按操作读取量归因、生产高可用和 P95/P99，以及 gVisor 波动的运行时进程/函数级归因。
 
-Do not claim that this route already exceeds E2B, AgentEnv or CubeSandbox. The paired numbers are for our own two sandboxd versions, not an equivalent workload comparison against those products.
+不能据此宣称已经超过 E2B、AgentEnv 或 CubeSandbox。当前配对数据比较的是我们自己的两个 sandboxd 版本，不是同口径竞品横向对照。
 

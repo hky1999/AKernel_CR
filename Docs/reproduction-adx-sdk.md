@@ -1,15 +1,12 @@
-# ADX / SDK source-delivery gate command appendix
+# ADX / SDK 源码交付门禁命令附录
 
-This appendix records the commands used for source-delivery checks. It does
-not claim fresh-host installation, new SDK/VM end-to-end acceptance, production
-deployment, or a new performance experiment. Run only in an independent remote
-task, never against shared services or another developer's writable caches.
+本附录记录源码交付门禁实际使用的命令，不代表已完成全新主机安装、新的 SDK/VM 端到端验收、生产部署或新性能实验。只在远端独立任务中运行，不操作共享服务，也不写入其他开发者的缓存。
 
-## 1. Paths and prerequisites
+## 1. 路径与前置条件
 
 ```bash
 export SRC=/path/to/version-pinned-source-checkouts
-# SRC/agent-dx, SRC/AKernel and SRC/AKernel_CR must exist.
+# SRC 下必须已有 agent-dx、AKernel 和 AKernel_CR 源码目录。
 export TASK=/path/to/new-independent-task
 mkdir -p "$TASK/home" "$TASK/tmp" "$TASK/cargo-home" \
   "$TASK/cargo-target" "$TASK/python-deps" "$TASK/logs"
@@ -25,33 +22,19 @@ export ADX_TEST_REDIS_SERVER="$TASK/tools/redis-server"
 export ADX_TEST_TLS_DIR="$TASK/fixtures/control-rpc-tls"
 ```
 
-Actual checked tools: Rust/Cargo 1.95.0, Python 3.14.4,
-JuiceFS `1.4.1+2026-07-30.0b90c7d`.
+实际检查的工具版本：Rust/Cargo 1.95.0、Python 3.14.4、JuiceFS `1.4.1+2026-07-30.0b90c7d`。
 
-The task must already have the locked Cargo dependencies in its own cache.
-This round copied an existing cache and used `--offline --locked`; fresh-host
-dependency bootstrapping was not validated. Do not make an old/shared cache
-writable to avoid preparing a task-local copy.
+任务私有缓存必须已有锁定的 Cargo 依赖。本轮独立复制已有缓存并使用 `--offline --locked`；没有验收全新主机的依赖初始化。不能为省去独立复制而将旧缓存或共享缓存改为可写。
 
-The prepared Python interpreter must provide the runtime dependencies declared
-by both SDKs' `pyproject.toml` files. This round reused the independent lab's
-interpreter and added missing test/parser packages only into private targets.
-A new clean Python environment was not independently accepted here.
+Python 解释器必须具备两套 SDK 的 `pyproject.toml` 声明的运行依赖。本轮复用独立实验环境解释器，仅向任务私有目录补充缺失的测试/解析包，没有单独验收一个全新 Python 环境。
 
-### Required control-RPC TLS fixture
+### 控制面 RPC 测试所需的 TLS 材料
 
-`ADX_TEST_TLS_DIR` must contain the control-RPC test identities expected by the
-pinned tests. The recorded run reused a task-owned fixture, not production
-credentials.
+`ADX_TEST_TLS_DIR` 必须包含固定版本控制面 RPC 测试要求的身份材料。历史记录使用任务自有测试材料，不使用生产凭据。
 
-**No verified repository command for generating this fixture was recorded in
-this round. Fixture generation remains a prerequisite to configure.** No
-certificate filenames, identities, or generation command are invented here.
-Obtain the generator and fixture contract for the pinned source version or
-provide a new isolated fixture satisfying that contract. Never publish the
-original private fixture or real service private keys.
+**本轮未记录经过验证的仓库内 TLS 材料生成命令，此前置条件仍需补齐。** 此处不虚构证书文件名、身份或生成命令。应取得固定源码版本的生成器/材料契约，或生成符合该契约的独立测试材料；不发布原私有材料或真实服务私钥。
 
-## 2. ADX formatting and seven component unit suites
+## 2. ADX 格式检查与七组件单测
 
 ```bash
 cd "$SRC/agent-dx"
@@ -64,10 +47,9 @@ do
 done
 ```
 
-Observed top-level totals: 234 passed, zero failed, one ignored in `adxlet`.
-An additional nested `execd` subprocess summary was not counted twice.
+实际顶层测试合计234通过、零失败，`adxlet` 中1项忽略。嵌套的 `execd` 子进程测试汇总没有重复计数。
 
-## 3. Focused lint and five Coordinator integration suites
+## 3. 七组件严格 lint 与五组 Coordinator 集成测试
 
 ```bash
 cd "$SRC/agent-dx"
@@ -76,7 +58,7 @@ cargo clippy --offline --locked \
   -p adx-coordinator -p adx-apiserver -p adx-execd \
   --all-targets --all-features -- -D warnings
 
-# Requires the task-owned Redis executable and TLS fixture configured above.
+# 需要上面配置的本任务 Redis 可执行文件及 TLS 测试材料。
 for suite in \
   shared_volume_execution_rpc shared_volume_execution \
   shared_volumes shared_volumes_rpc snapshots
@@ -86,14 +68,9 @@ do
 done
 ```
 
-Observed integration counts: 8 + 13 + 13 + 8 + 3 = 45 passed, zero ignored.
-After final equivalent test-initializer cleanup, the execution-RPC suite was
-recompiled and passed all eight cases. The other RPC suite passed using its
-already-compiled isolated test ELF after supplying its missing fixture setting.
-Two test-only `LabelSelector` initializers were equivalently rewritten to fix
-`field_reassign_with_default`; no lint suppression was added.
+实际集成测试8 + 13 + 13 + 8 + 3 = 45通过，零忽略。对测试初始化器做最终等价清理后，execution-RPC 重新编译并通过8项；另一组 RPC 在补上缺失材料配置后，使用先前独立编译的测试 ELF 通过。两处测试用 `LabelSelector` 初始化器仅作等价改写以消除 `field_reassign_with_default`，未增加 lint 豁免。
 
-### Strict full-workspace lint remains blocked
+### 严格全工作区 lint 仍受环境依赖阻塞
 
 ```bash
 cd "$SRC/agent-dx"
@@ -101,22 +78,18 @@ cargo clippy --offline --locked --workspace \
   --all-targets --all-features -- -D warnings
 ```
 
-The strict command returned 101 after `protoc` was supplied because
-`afs-transport/native/rdma.c` lacked `infiniband/verbs.h`. No shared system
-packages were installed. The focused lint pass does not replace or imply a
-successful full-workspace pass.
+补齐 `protoc` 后，严格命令因 `afs-transport/native/rdma.c` 缺少 `infiniband/verbs.h` 返回101。没有向共享系统安装依赖包。七组件 lint 通过不等于全工作区通过。
 
-## 4. Development-documentation check
+## 4. 开发文档检查
 
-For a normal Git checkout:
+正常 Git 工作区执行：
 
 ```bash
 cd "$SRC/agent-dx"
 python3 build/docs/check.py
 ```
 
-The export had no Git metadata; its first check stopped at `git ls-files`
-before checking content. This export-only file-discovery setup then passed:
+源码导出没有 Git 元数据，初次检查在 `git ls-files` 阶段停止，尚未检查正文。仅为导出目录提供以下临时文件发现环境后，检查通过：
 
 ```bash
 git init --bare "$TASK/docs-metadata.git"
@@ -126,13 +99,11 @@ GIT_DIR="$TASK/docs-metadata.git" GIT_WORK_TREE="$SRC/agent-dx" \
   python3 build/docs/check.py
 ```
 
-This creates no `source/.git`, commit, remote, or product source change.
-Development documentation did not require architecture HTML regeneration.
+该方式不在 `source/.git` 创建元数据，不创建提交或远端，也不改产品源码。此次开发文档不需要重新生成架构 HTML。
 
-## 5. Task-private Python test dependencies
+## 5. 任务私有 Python 测试依赖
 
-Tested additions: `pytest==8.4.2`, `pytest-asyncio==1.2.0`, and
-`dockerfile-parse==2.0.1`. If the prepared interpreter already has pip:
+本轮补充的固定依赖为 `pytest==8.4.2`、`pytest-asyncio==1.2.0`、`dockerfile-parse==2.0.1`。若已准备的解释器包含 pip：
 
 ```bash
 "$PYTHON" -m pip install --disable-pip-version-check --no-cache-dir \
@@ -140,10 +111,7 @@ Tested additions: `pytest==8.4.2`, `pytest-asyncio==1.2.0`, and
   pytest==8.4.2 pytest-asyncio==1.2.0 dockerfile-parse==2.0.1
 ```
 
-The actual interpreter lacked pip, ensurepip, and uv. It loaded the official
-pip 25.2 wheel from a task-local path after SHA256 verification against HTTPS
-PyPI metadata, then ran the same private-target installation. That bootstrap,
-with public placeholders:
+实际解释器没有 pip、ensurepip 和 uv。通过 HTTPS PyPI 元数据校验 SHA-256 后，从任务私有路径加载官方 pip 25.2 wheel，再安装到同样的任务私有目录。对应初始化方式如下，路径使用公开占位符：
 
 ```bash
 export PIP_WHEEL="$("$PYTHON" - <<'PY'
@@ -166,10 +134,9 @@ PYTHONPATH="$PIP_WHEEL" PIP_CONFIG_FILE=/dev/null \
   pytest==8.4.2 pytest-asyncio==1.2.0 dockerfile-parse==2.0.1
 ```
 
-No TLS verification was disabled. No old virtual environment or global package
-installation was changed. Choose one preparation route, not both.
+未关闭 TLS 校验，也未修改原虚拟环境或全局安装。上述两种准备方式选择一种即可。
 
-## 6. Native and public SDK tests
+## 6. 原生与公共 SDK 测试
 
 ```bash
 export PYTHONPATH="$TASK/python-deps:$SRC/agent-dx/platform/sdk/environment/python:$SRC/AKernel/sdk/python"
@@ -189,15 +156,11 @@ export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
   "$SRC/AKernel/sdk/python/tests/test_shared_volumes.py"
 ```
 
-The unchanged `AKernel/deploy/standalone`, builder inputs, and root Makefile
-must be present: unit collection imports deployment helpers. Do not exclude
-`test_standalone_environment.py` to compensate for a partial source export.
+必须保留未改动的 `AKernel/deploy/standalone`、builder 输入及根 Makefile，因为单测收集会导入部署辅助模块。不能为弥补不完整导出而排除 `test_standalone_environment.py`。
 
-Observed final counts: native 306, complete public-unit directory 305, and
-standalone public shared-volume file 6 passed; all had zero skipped or failed.
-The separate shared-volume test is under `tests/`, not `tests/unit/`.
+最终实际结果：原生 SDK306项、公共 SDK 完整 unit 目录305项、公共共享卷独立文件6项通过，均零跳过、零失败。独立共享卷测试位于 `tests/`，不是 `tests/unit/`。
 
-## 7. Pure helper checks and CLI help
+## 7. 纯辅助脚本测试与 CLI 帮助
 
 ```bash
 "$PYTHON" -m unittest discover \
@@ -212,34 +175,20 @@ cd "$SRC/AKernel_CR"
 "$PYTHON" -m unittest discover -s tools/acceptance -p 'test_*.py'
 ```
 
-Observed: lab helpers 56 passed, acceptance helpers 19 passed, zero skipped;
-all five help commands returned zero. These commands do not launch the actual
-SDK probe, a sandbox, a JuiceFS mount, or cluster services.
+实际结果：实验部署辅助脚本56项、验收辅助脚本19项通过，零跳过；五个帮助命令均返回0。这些命令不会启动实际 SDK 探针、沙箱、JuiceFS 挂载或集群服务。
 
-## 8. Recompute existing performance point estimates
+## 8. 重算已有性能样本的点估计
 
 ```bash
 cd "$SRC/AKernel_CR"
 "$PYTHON" tools/performance/recompute.py evidence/performance-six-pairs.json
 ```
 
-This checks medians and paired geometric new/old ratios from the existing six
-pairs. Firecracker: 4.187135070 s to 2.349072761 s, ratio 0.560002133.
-gVisor: 3.199337987 s to 3.140797789 s, ratio 0.957930057; its registered result
-remains uncertain. The script does not recompute registered bootstrap
-intervals, execute a new benchmark, establish cold-S3 performance, or compare
-competitors.
+根据已有六组样本核对中位数及配对几何均值新/旧耗时比。Firecracker：4.187135070秒→2.349072761秒，耗时比0.560002133；gVisor：3.199337987秒→3.140797789秒，耗时比0.957930057，但登记结论仍为不确定。脚本不重算登记的 bootstrap 区间，不新增性能实验，不证明冷 S3 性能，也不比较竞品。
 
-## 9. Evidence and remaining scope
+## 9. 证据与剩余范围
 
-`adx-sdk-gates-summary.json` records actual return codes, nonzero counts,
-ignored counts, versions, and relative per-attempt evidence paths. Earlier
-missing environment settings, pytest/pip/parser packages, unchanged deployment
-inputs, wrong shared-volume selector, and export-only Git discovery failures
-were retained rather than overwritten.
+`adx-sdk-gates-summary.json` 保留真实返回码、实际执行/忽略数量、版本及各次尝试的相对证据路径。此前的环境配置缺失、pytest/pip/解析包缺失、未改动部署输入缺失、共享卷测试路径错误，以及导出目录 Git 文件发现失败，都保留记录而未被覆盖。
 
-The full runtime integration suite, clean-host cluster setup, TLS-fixture
-generation procedure, and production promotion were not completed by this
-source-delivery gate round. Shared services and live sandboxes were not
-modified or replaced.
+本轮源码交付门禁没有完成完整运行时集成套件、全新主机集群搭建、TLS 测试材料生成流程或正式生产发布；未修改/替换共享服务与正在运行的沙箱。
 

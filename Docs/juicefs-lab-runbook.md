@@ -1,12 +1,12 @@
-# Independent JuiceFS functional lab
+# 独立 JuiceFS 功能实验部署说明
 
-Use a dedicated remote test host. Do not run this against the original shared machine's occupied ports or existing services. The helpers refuse conflicts instead of stopping another task.
+使用专用远端测试机，不占用原共享机器已使用的端口或服务。辅助脚本发现冲突时会拒绝继续，不会停止其他任务。
 
-The accepted client reports `juicefs version 1.4.1+2026-07-30.0b90c7d`. The original functional backend used PostgreSQL 17 (observed 17.11) and Ceph 20.2.4 RGW. Deployment image tags in historical helpers are not a production HA design or immutable image digests.
+已验收客户端版本为 `juicefs version 1.4.1+2026-07-30.0b90c7d`。历史功能环境使用 PostgreSQL 17（实测17.11）和 Ceph 20.2.4 RGW。脚本中的历史镜像标签不是生产高可用设计，也不能替代不可变镜像摘要。
 
-Copy only helper source into a new private task profile; never copy the original `secrets/`, generated YAML, Redis data or `.config` contents into Git. Install the pinned JuiceFS client into the task's private `bin/` and prepend that directory to PATH. Stage ADX, sandboxd and runtime artifacts built/verified from the delivery manifest, including a matching static guest-agent initrd.
+仅将辅助脚本源码放入新任务配置；不要把历史 `secrets/`、生成的 YAML、Redis 数据或 JuiceFS `.config` 内容放进 Git。将固定版本 JuiceFS 客户端安装到任务私有 `bin/` 并置于 PATH 前部。ADX、sandboxd 和运行时产物必须对应交付清单，并配套正确的静态 guest agent/initrd。
 
-The existing source helpers expose these commands:
+现有辅助脚本提供以下入口：
 
 ```text
 lab.py --root ROOT {init,start,format,mount,unmount,stop,status,check-data,exec}
@@ -16,14 +16,14 @@ runtime_nodes.py --root ROOT --generation GEN --node {source,target} {setup,stat
 short_profile.py --root ROOT --generation GEN [--node NODE] {prepare,activate,filestore,...}
 ```
 
-Use `--help` for node-specific mount/exec options. Native generation names use `native` followed by two digits. A task root must have the `cn-a0-adx-juicefs-` prefix, be canonical, and not be group/world writable.
+节点专用的 mount/exec 参数见各入口的 `--help`。配置代次名采用 `native` 加两位数字。任务根目录必须以 `cn-a0-adx-juicefs-` 开头，使用规范化路径，且不可被组用户或其他用户写入。
 
-The deployment order is storage initialization/start/format, task-owned network creation, two independent client mounts, volume UUID equality check, native profile generation, runtime namespace/cgroup setup, short stable filestore binding, config validation, node/resource readiness, then SDK probes. Do not launch the SDK before both nodes register and become ready.
+部署顺序为：初始化/启动/格式化存储，创建本任务网络，启动两个独立客户端挂载，确认卷 UUID 相同，生成 native 配置，创建运行时命名空间与 cgroup，绑定短而稳定的 filestore 路径，校验配置，确认节点注册和资源就绪，最后运行 SDK 探针。两节点就绪前不运行 SDK。
 
-Read only the format UUID when configuring ADX; do not print the complete JuiceFS `.config`, which may contain object-store credentials. The two mounts must have the same format UUID, while each node keeps independent mount and cache state. Writeback is disabled for the accepted durability contract. PostgreSQL fsync and synchronous commit stay enabled.
+配置 ADX 时只读取格式 UUID，不打印可能含对象存储凭据的完整 JuiceFS `.config`。两个挂载使用相同 UUID，但各自保留独立挂载和缓存状态。已验收持久化契约要求关闭 writeback，PostgreSQL 的 fsync 和 synchronous commit 保持开启。
 
-The partial examples in `configs/` are not a complete deployment. Keep `checkpoint_dir` unset when `checkpoint_storage` is present. Keep checkpoint automatic GC disabled until the relevant reader-retirement gates are accepted in the new environment. Do not remove cgroup isolation, use unsafe filesystem aliases, or disable TLS verification to bypass an admission error.
+`configs/` 下仅提供配置片段，不是完整部署配置。启用 `checkpoint_storage` 时不保留旧 `checkpoint_dir`。新环境相关读者退出确认门禁通过前，保持 checkpoint 自动 GC 关闭。不能通过关闭 cgroup 隔离、使用不安全路径别名或关闭 TLS 校验来绕过准入错误。
 
-The original profile generator defaults are historical scaffolding: explicitly stage the newly built component versions, set the accepted Firecracker local `storage_dir`, and keep the same short gVisor filestore path inside both task mount namespaces. Never change `storage_dir` beneath an existing Firecracker runtime; its source rejects an identity/root mismatch rather than hiding live state.
+原配置生成器默认值属于历史实验骨架。应明确放置新构建组件，配置已验收的 Firecracker 本地 `storage_dir`，并在两个任务挂载命名空间内保持同一个短 gVisor filestore 路径。不能在运行中的 Firecracker 实例下更改 `storage_dir`；源码会拒绝存储身份/根目录不匹配，而不是掩盖存量状态。
 
-The source delivery includes helpers and configuration contracts, not the private original environment. A full fresh-host replay, including reader-proof collection and the complete public SDK matrix, is not established merely by re-running pure unit tests. Record that separately before treating a newly generated deployment as accepted.
+交付内容包含辅助脚本和配置契约，不包含原私有环境。仅重跑纯单测，不能证明全新主机部署、读者退出证明与安全回收、完整公共 SDK 矩阵已经通过。新部署应单独验收并留档。
