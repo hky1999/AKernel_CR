@@ -2,7 +2,17 @@
 
 日期：2026-10-21。本文件是本次脱敏 GitHub 交付的版本事实来源。源码提交、历史实测二进制和新构建产物是不同身份，不能混记。
 
-## 可获取的源码
+## 2026-10-22：PR #119 Pod 复现预检，尚未部署
+
+本轮单独固定 PR #119 `6ea004125eb4365ba06ba3c7b21c4fd80e4cdaac`、sandboxd `d5acc3b5b673074e20fd8b7733d4035dbaeae1b0`、ADX `59fa7912f875832c8ab053148ae8fd17b7c25a23`，公共 SDK / 原生依赖 `0.2.0rc3` / `0.1.0rc2`。这组实验输入不同于下方 2026-10-21 已验收交付；没有替换父仓子模块指针，也没有修改产品源码。
+
+远端私有 Podman 执行官方两阶段镜像构建、载荷检查及 OCI 导出，实际返回码均为 0。OCI 653,413,376 字节，SHA-256 `105c7c345407c853fe95f8d60f08540611276c405f5ac80a13bfa30644b76d87`。SDK 安装及 `pip check` 通过，但没有创建 Sandbox。新 Kubernetes 集群、Pod、SDK checkpoint/reload 和 JuiceFS 双节点验收均为 0，不计通过。
+
+当前宿主缺少完整 ACL 链所需的活动网络模块。至少 `br_netfilter`、`ip_set`、`ip_set_hash_ip`、`xt_set`、`xt_conntrack` 及其依赖需要受控核对；模块加载会改变共享内核状态，尚未执行，等待操作边界确认。没有修改共享 sysctl/NAT、关闭网络策略或使用额外测试虚拟机。
+
+新任务约 7.17 GiB，磁盘审计时 XFS 可用约 844.7 GiB，删除日志/缓存/构建数据 0 字节；仅回收一个本任务空 cgroup。详见 `Docs/checks/20261022T-pr119-pod-baremetal-preflight.md`、同目录命令附录、`Docs/schedules/20261022T-pr119-pod-preparation-progress.md` 和 `evidence/pr119-pod-20261022/preflight.json`。本分支是预检记录，不是已跑通部署或性能验收。
+
+## 可获取的源码（2026-10-21 已验收交付）
 
 | 组件 | GitHub 仓库及提交 | 交付分支 | 精确提交 |
 |---|---|---|---|
@@ -43,6 +53,10 @@
 全新主机的完整公共 SDK/读者退出故障矩阵仍待重放，公开探针与辅助脚本不直接关闭该门禁。见 `Docs/plans/20261021T-source-delivery-followups.md`。
 
 ## 变更记录
+
+### 2026-10-22：新增 Pod 复现预检记录
+
+独立分支 `repro/pr119-pod-baremetal-20261022` 整理当前 PR 的镜像、SDK、宿主与磁盘预检。所有编译检查在远端执行；未启动集群、未修改共享网络模块、未混入原父仓内部历史或未验收源码。动态验收待宿主前置条件对齐后继续。
 
 ### 2026-10-21：文档统一中文
 

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-22",
+  "report_kind": "bounded_preflight_not_end_to_end_acceptance",
+  "source": {
+    "akernel_pr": 119,
+    "url": "https://github.com/inclusionAI/AKernel/pull/119",
+    "akernel_commit": "6ea004125eb4365ba06ba3c7b21c4fd80e4cdaac",
+    "sandboxd_commit": "d5acc3b5b673074e20fd8b7733d4035dbaeae1b0",
+    "adx_commit": "59fa7912f875832c8ab053148ae8fd17b7c25a23",
+    "archive_sha256": "af6d623d89689154a0b5fbe99a107eb56fc29a888dd33cbeddd3ef5421f56ad6",
+    "product_source_modified": false,
+    "existing_delivery_gitlinks_changed": false
+  },
+  "preparation": {
+    "execution_location": "remote BareMetal private task",
+    "build_entrypoint": "deploy/scripts/build-image.sh",
+    "build_engine": "Podman via build-only Docker CLI shim; not Docker BuildKit",
+    "runtime_build_rc": 0,
+    "node_build_rc": 0,
+    "build_elapsed_seconds_approx": 371.7,
+    "payload_check_rc": 0,
+    "oci_export_rc": 0,
+    "oci_bytes": 653413376,
+    "oci_sha256": "105c7c345407c853fe95f8d60f08540611276c405f5ac80a13bfa30644b76d87",
+    "exported_manifest_sha256": "2fe4ad3de728f7fdeb2be1fef1e036dfa236fe7df000f12e2cf67699471bce72",
+    "sdk_public": "0.2.0rc3",
+    "sdk_native": "0.1.0rc2",
+    "sdk_install_and_check_stages_rc0": 9,
+    "pip_check_rc": 0,
+    "low_water_guard_checks_during_build": 0
+  },
+  "acceptance": {
+    "new_kubernetes_clusters": 0,
+    "new_pods": 0,
+    "sdk_sandbox_requests": 0,
+    "runsc_checkpoint_reload": "not_run",
+    "firecracker_checkpoint_reload": "not_run",
+    "juicefs_dual_node": "not_run",
+    "checkpoint_reload_performance_samples": 0,
+    "helm_template": "not_run",
+    "physical_hosts": 1,
+    "extra_test_vms": 0
+  },
+  "host_preflight": {
+    "kernel": "7.0.0-31-generic",
+    "devices_present": [
+      "/dev/kvm",
+      "/dev/fuse",
+      "/dev/net/tun"
+    ],
+    "usable_existing_cluster_identified": false,
+    "discovery_scope": "known Kubernetes/CRI process names and common kubeconfig locations; not universal absence proof",
+    "missing_active_and_builtin_network_modules": [
+      "br_netfilter",
+      "ip_set",
+      "ip_set_hash_ip",
+      "xt_set",
+      "xt_conntrack"
+    ],
+    "module_dependency_resolution_command": "modprobe --show-depends",
+    "module_dependency_resolution_commands_rc0": 15,
+    "shared_network_module_change_approval": "pending",
+    "modules_loaded_by_this_task": [],
+    "shared_sysctl_or_nat_modified": false,
+    "network_policy_disabled": false,
+    "cni_selection": "pending",
+    "module_evidence": {
+      "relative_path": "cluster/prepare02/module-dependencies.json",
+      "bytes": 7422,
+      "sha256": "4929e7da1f49c83d2057ede5a41309a10f7ffe66e1efe21e9c6050307f2062dc"
+    }
+  },
+  "disk_audit": {
+    "filesystem": "XFS",
+    "task_usage_gib_approx": 7.17,
+    "image_build_usage_gib_approx": 7.11,
+    "filesystem_available_gib_at_audit_approx": 844.7,
+    "measured_peak": false,
+    "deleted_data_bytes": 0,
+    "own_empty_cgroups_removed": 1,
+    "receipt_sha256": "d68856fc9a538fe7fd4b8155d5edc2afb3ff46faa9f378b0719578336a05d136"
+  },
+  "limitations": [
+    "Image build, payload checks and pip checks are not public SDK acceptance.",
+    "No checkpoint/reload or cold S3 performance claims.",
+    "No host module load, shared service change, VM or Pod deployment.",
+    "Proposed same-host logical nodes are not cross-physical-machine or storage-HA validation.",
+    "Builds use some floating base tags/APT inputs; byte-identical rebuilds are not asserted.",
+    "Raw credentials, OCI images, runtime data and full logs are not included."
+  ]
+}
