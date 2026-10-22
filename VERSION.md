@@ -1,5 +1,36 @@
 # CrossNode 源码交付版本台账
 
+## 2026-10-22 本轮收尾：固定 PR #119 的核心 SDK 链路通过
+
+- 组件二进制不变。两种运行时的本地 checkpoint/reload、真实 JuiceFS 同节点回滚、公共 SDK 跨逻辑节点故障接管通过；1 MiB 根 RWFS、512 MiB 完整内存、进程身份和打开文件一致。
+- gVisor A→B 两轮、Firecracker B→A 一轮根 RWFS 用例通过；源节点重新加入后，目标内容和运行时身份未变，测试沙箱删除成功。此前另有 gVisor B→A、Firecracker A→B 内存用例通过。
+- 首轮 gVisor EIO 受到 DNS 与故障节点共址污染：已仅将本任务 CoreDNS 迁至控制节点，相同方向重测通过。三次更早的创建就绪超时仍未归因，未用后续成功静默关闭。
+- 实际 FD/maps：恢复后 Firecracker overlay.ext4 位于目标 XFS；memory 位于 JuiceFS，rw-p 私有写时复制映射。gVisor 根文件语义通过，但未采到恢复后的 filestore FD，实际介质路径不能只靠配置推断。
+- 最终 etcd/API 健康、三个节点和任务 Pod Ready，现有权威目录没有 Environment 记录。rook-ceph 为 Ready/HEALTH_WARN，单副本及认证兼容告警不构成生产验收。宿主可用约 789 GiB。
+- 临时 inotify=1024 未持久化；独立集群仍保留，退役且确认全局依赖后再恢复原值 128。没有重启其他使用者的共享服务。
+
+### Changelog（本轮）
+
+新增真实存储、DNS 故障域、公共 SDK 故障接管及只读运行时观察工具，补根 RWFS 覆盖和中文复现入口。全量并发、超时、上传失败、断连、目标进程重启及 GC 门禁未全部执行；没有 guest 停顿/S3 字节/SOTA 或生产高可用结论。只交付父仓工具与脱敏证据，不产生产品运行时新提交、不修改三个 gitlink。
+
+复现入口：Docs/stages/20261022T-pr119-pod-baremetal-reproduction-stage-summary.md；检查与数据见同日 juicefs-sdk-failover 文档及 evidence/pr119-pod-20261022/juicefs-sdk-failover.json。
+
+## 2026-10-22：Firecracker 公共 SDK 故障接管通过，独立集群 DNS 故障域已修正
+
+- 固定组件及二进制不变。源执行节点 A 停止时，同一个公共 AKernel SDK 对象在节点 B 恢复了 Firecracker 的私有文件、512 MiB 完整内存、进程身份和已打开文件；源节点恢复健康，沙箱删除。单样本 checkpoint 5845 ms，故障开始到完整内存校验 48389.492106 ms，含故障处理和路由/SDK 重试，不是 VMM 核心耗时。
+- gVisor 首次目标节点内存读取 EIO 与 JuiceFS 无法解析 PostgreSQL 同时出现；两个 CoreDNS 副本原来均位于故障节点 B。已仅修正本任务集群 DNS 的放置位置，并通过两端服务名解析检查，正在重测，未把原失败算作数据损坏证据。
+- Firecracker 后 gVisor 创建超时、节点重启后通过的混合运行时现象仍待定位。私有 RWFS filestore 配置为本地 XFS，不代表已确认 Firecracker 所有运行态内存映射与 I/O 也都在本地。
+
+
+## 2026-10-22：真实 JuiceFS 已接入独立 Pod 集群，跨节点验收进行中
+
+- `fs.inotify.max_user_instances` 经用户批准临时从 128 调到 1024，未持久化，未重启共享服务；独立集群 etcd、API Server、三个 Kubernetes 节点健康检查通过。
+- 固定 PR #119 的组件与二进制不变。本地磁盘 SDK 验收共 14 次 checkpoint/reload，包含两种运行时各五轮连续回滚、八项非法参数及 512 MiB 内存、进程身份和打开文件校验。
+- 本任务 Rook/Ceph、PostgreSQL、JuiceFS 已实际启动。三个节点真实挂载 `fuse.juicefs`；4 KiB 文件经 `fsync` 后跨客户端摘要一致；PostgreSQL 三项持久化设置均为 `on`。ADX checkpoint 使用 `distributed_fs`，私有运行文件仍为节点本地 XFS。
+- 共享存储配置下，gVisor 和 Firecracker 各通过一次基本 SDK 回滚和一次 512 MiB 内存完整校验；源节点离线后的跨节点恢复及剩余故障、并发、引用回收验收尚未据此关闭。
+- 单 OSD、单副本和专属 40 GiB loop 镜像仅用于独立测试；Ceph 为 `HEALTH_WARN`，不代表生产高可用或原生裸盘性能。原始失败和凭据不入库，独立集群使用中，暂不恢复 inotify 原值。
+
+
 ## 2026-10-22：runsc/Firecracker 本地 SDK 基础回滚通过，JuiceFS 验收尚未完成
 
 两种运行时各通过首轮、5 轮回滚及 8 个非法参数用例、完整 512 MiB 内存/PID/进程身份/打开文件内容校验；合计 14 次 checkpoint/reload，测试沙箱已删除。每实例 1 vCPU/2 GiB、本地 XFS；未额外填内存的 5 轮 checkpoint 请求总耗时 P50 为 runsc 64 ms、Firecracker 2590 ms，不是 guest 停顿或竞品对比。

@@ -1,0 +1,97 @@
+{
+  "image": {
+    "repository": "localhost/akernel-pr119",
+    "tag": "6ea004125eb4-runsc-firecracker",
+    "pullPolicy": "Never"
+  },
+  "adx": {
+    "namespace": "akernel",
+    "tls": {
+      "existingSecret": "akernel-adx-tls"
+    },
+    "redis": {
+      "persistence": {
+        "enabled": true,
+        "storageClassName": "standard",
+        "size": "4Gi"
+      }
+    },
+    "coordinator": {
+      "resources": {
+        "requests": {
+          "cpu": "250m",
+          "memory": "256Mi"
+        },
+        "limits": {
+          "cpu": "1",
+          "memory": "1Gi"
+        }
+      }
+    },
+    "ingressApi": {
+      "resources": {
+        "requests": {
+          "cpu": "500m",
+          "memory": "256Mi"
+        },
+        "limits": {
+          "cpu": "1",
+          "memory": "1Gi"
+        }
+      }
+    }
+  },
+  "node": {
+    "resources": {
+      "requests": {
+        "cpu": "250m",
+        "memory": "512Mi",
+        "ephemeral-storage": "8Gi"
+      },
+      "limits": {
+        "cpu": "4",
+        "memory": "8Gi",
+        "ephemeral-storage": "20Gi"
+      }
+    },
+    "affinity": {
+      "nodeAffinity": {
+        "requiredDuringSchedulingIgnoredDuringExecution": {
+          "nodeSelectorTerms": [
+            {
+              "matchExpressions": [
+                {
+                  "key": "akernel.dev/role",
+                  "operator": "In",
+                  "values": [
+                    "execution"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "hostDiskPath": "/home/akernel",
+    "homeDisk": {
+      "useEphemeralPVC": false
+    },
+    "config": {
+      "resourceControl": {
+        "memoryLimit": "8G",
+        "cpuQuota": "300%"
+      },
+      "sandboxd": {
+        "chunkDbSize": "1GiB",
+        "config": "rootDir=\"/home/akernel/sandboxd/root\"\nstoreDir=\"/home/akernel/sandboxd/store\"\n\n[plugin]\ndisable_tcp_service=false\nstream_idle_timeout=\"\"\nstream_server_address=\"\"\nstream_server_port=\"\"\n\n[plugin.network]\nip_range=\"10.88.0.1/16\"\nnat_backend=\"iptables\"\nenable_network_acl=true\n\n[plugin.resource]\ncgroup_cache_size=2\npids_max=4096\nnetns_cache_size=2\ninterface_cache_size=2\ncgroup_root_name=\"/akernel-pr119-pod-20261022\"\nmax_instance_num=8\nenable_cache_in_stock_mode=true\n\n[plugin.runtime]\nimage_lib_dir=\"/home/akernel/images\"\nresolv_conf_path=\"/etc/resolv_akernel.conf\"\n# A configured size creates a loop-backed bounded filestore. ext4 is\n# used by default; set filestore_xfs_enabled=true to select XFS.\nfilestore_dir=\"/home/akernel/filestore\"\nfilestore_dir_size=\"\"\nfilestore_xfs_enabled=false\nloop_device_dir=\"/dev\"\noverlay_tmpfs_size=\"1G\"\n\n[plugin.runtime.checkpoint_sync]\nsync_output=true\n\n[plugin.runtime.runsc]\nbackground_restore=true\n\n[plugin.runtime.basic_spec]\nrunsc=\"/home/akernel/images/config.json\"\nrunc=\"\"\nfirecracker=\"/home/akernel/images/config.json\"\n\n[plugin.runtime.runtime_binary]\nrunsc=\"/usr/local/bin/runsc\"\nkata=\"\"\nfirecracker=\"/usr/local/bin/firecracker\"\n# AKERNEL_RUNTIME_RUNC\n\n[plugin.runtime.firecracker]\nvirtiofs_enabled=false\nvirtiofsd_path=\"/usr/local/bin/virtiofsd\"\nwritable_io_engine=\"Async\"\nwritable_cache_type=\"Writeback\"\n\n[plugin.runtime.kata]\nconfig_path=\"/opt/kata/share/defaults/kata-containers/runtime-rs/configuration-dragonball.toml\"\nkvm_device=\"/dev/kvm\"\ndan_config_dir=\"/run/kata-containers/dans\"\nlogger_binary=\"/usr/local/bin/sandbox-logger\"\n\n[plugin.runtime.runc]\nstate_root=\"/run/sandboxd/runc\"\nshim_binary=\"/usr/local/bin/runc-shim\"\nkvm_device=\"/dev/kvm\"\n\n# image-manager config. root holds image-manager runtime state\n# (daemons/, mount_records.db) and is wiped on pod change; input\n# configs live under /home/akernel/sandboxd/config/ so the wipe never\n# hits the read-only bind-mounted config files.\n[plugin.image]\n# AKERNEL_CHUNK_DB_SIZE\nroot=\"/home/akernel/sandboxd/image_manager\"\ndistill_fs_bin=\"/usr/local/bin/distill_fs\"\noss_template=\"/home/akernel/sandboxd/config/oss.json\"\nnydus_template=\"/home/akernel/sandboxd/config/registry.json\"\nnydus_suffix=\"_nydus_v3\"\noss_auths_path=\"/home/akernel/sandboxd/config/oss_auths.json\"\nregistry_auths_path=\"/home/akernel/sandboxd/config/registry_auths.json\"\ncgroup_memory_limit=\"2GiB\"\n\n# Adxlet reads scheduling capacity and devices from this resource socket.\n[plugin.node_resource]\nprovider=\"kubernetes\"\nsock_path=\"/var/run/resource.sock\"\n"
+      },
+      "registry": {
+        "registry": {
+          "skip_verify": false
+        }
+      }
+    }
+  },
+  "createNamespace": false
+}

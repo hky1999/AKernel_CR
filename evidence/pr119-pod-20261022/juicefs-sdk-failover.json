@@ -1,0 +1,1062 @@
+{
+  "schema_version": 1,
+  "scope": "固定 PR #119 独立 Pod 核心 SDK 链路；不是完整故障矩阵、生产 HA 或 SOTA 验收",
+  "versions": {
+    "akernel": "6ea004125eb4365ba06ba3c7b21c4fd80e4cdaac",
+    "sandboxd": "d5acc3b5b673074e20fd8b7733d4035dbaeae1b0",
+    "adx": "59fa7912f875832c8ab053148ae8fd17b7c25a23",
+    "public_sdk": "0.2.0rc3",
+    "native_sdk": "0.1.0rc2",
+    "gvisor_release": "release-20260817.0-akernel.4",
+    "gvisor_build": "release-20260817.0-akernel.3-2-g7fdef444b108",
+    "firecracker": "v1.16.1-akernel.3",
+    "juicefs": "1.4.1+2026-07-30.0b90c7db",
+    "kubernetes": "1.35.8",
+    "rook_chart": "1.21.0"
+  },
+  "artifact_pins": {
+    "node_image_config_sha256": "d1316b767b570f12a2eb5156fd0af80dfbcd783a9ba853a308fe872a4394dee0",
+    "sandboxd_elf_sha256": "cc8f871d690b1c95017f92802bc95a0f079639ec618f39ce001ce9ba84338cfb",
+    "initrd_sha256": "360a0b3bc1faf51fefd2e389208622d1343e8e020aa271a306cf8fbf698cad1b",
+    "go_probe_sha256": "8779ebeb60652c8552710fa7246506c0846a5421fe50bd3b4ab1619a0f1a7b91"
+  },
+  "topology": {
+    "physical_hosts": 1,
+    "kind_node_containers": 3,
+    "execution_nodes": 2,
+    "infrastructure_vms_added": 0,
+    "akernel_pods": 5,
+    "juicefs_clients": 3,
+    "object_backend": "Ceph RGW S3",
+    "metadata_backend": "PostgreSQL 17",
+    "catalog": "ADX Coordinator/Redis",
+    "configured_private_filestore": "node-local XFS",
+    "juicefs_block_cache_mib": 0,
+    "writeback": false,
+    "storage_osds": 1,
+    "storage_replicas": 1,
+    "osd_backing_gib": 40
+  },
+  "same_node_512m": [
+    {
+      "job": "runsc-memory20",
+      "runtime": "runsc",
+      "backend": "local-xfs",
+      "n": 1,
+      "checkpoint_ms": 729,
+      "reload_ms": 1014.590153,
+      "file_ms": 1057.440765,
+      "full_memory_ms": 2752.881082
+    },
+    {
+      "job": "shared-runsc-memory37",
+      "runtime": "runsc",
+      "backend": "juicefs",
+      "n": 1,
+      "checkpoint_ms": 1117,
+      "reload_ms": 3061.137188,
+      "file_ms": 3105.027649,
+      "full_memory_ms": 4826.546557
+    },
+    {
+      "job": "fc-memory21",
+      "runtime": "firecracker",
+      "backend": "local-xfs",
+      "n": 1,
+      "checkpoint_ms": 2668,
+      "reload_ms": 2681.093655,
+      "file_ms": 2725.392089,
+      "full_memory_ms": 4619.319453
+    },
+    {
+      "job": "shared-fc-memory37",
+      "runtime": "firecracker",
+      "backend": "juicefs",
+      "n": 1,
+      "checkpoint_ms": 5973,
+      "reload_ms": 6712.45171,
+      "file_ms": 6758.835785,
+      "full_memory_ms": 9966.751406
+    }
+  ],
+  "local_five_round": [
+    {
+      "job": "runsc-five20",
+      "checkpoint_ms": [
+        65,
+        73,
+        64,
+        63,
+        63
+      ],
+      "reload_ms": [
+        202.32668,
+        260.944892,
+        254.159087,
+        243.449864,
+        195.882177
+      ],
+      "checkpoint_p50_ms": 64,
+      "reload_p50_ms": 243.449864,
+      "invalid_parameter_cases": 8
+    },
+    {
+      "job": "fc-five21",
+      "checkpoint_ms": [
+        2590,
+        2784,
+        2572,
+        2838,
+        2565
+      ],
+      "reload_ms": [
+        2640.631113,
+        2661.710603,
+        2655.709093,
+        2704.546283,
+        2165.584091
+      ],
+      "checkpoint_p50_ms": 2590,
+      "reload_p50_ms": 2655.709093,
+      "invalid_parameter_cases": 8
+    }
+  ],
+  "failover_cases": [
+    {
+      "job": "fc45",
+      "dns_corrected": false,
+      "disk_rwfs": false,
+      "events": [
+        {
+          "event": "created",
+          "unix_ns": 1792661169807687200,
+          "sandbox_id": "default-environment-b8aa160c-6360-4375-88c7-703e1de07b93",
+          "runtime": "firecracker",
+          "hard_node_pin": false
+        },
+        {
+          "event": "memory_ready",
+          "unix_ns": 1792661173846268200,
+          "fd_content": "open-fd-before",
+          "memory_bytes": 536870912,
+          "pid": 22,
+          "sha256": "8d9866eba7fdc8987fbacbda5290425f09b15cbfa6b7c9d2ce3e3d3ead45f8f6"
+        },
+        {
+          "event": "checkpoint_reply",
+          "unix_ns": 1792661179885885200,
+          "http_status": 200,
+          "body": "{\"status\":\"completed\"}",
+          "elapsed_ms": 5845
+        },
+        {
+          "event": "shared_checkpoint_committed",
+          "unix_ns": 1792661180319856400,
+          "source_node": "akcr119-20261022-worker",
+          "point": {
+            "origin": null,
+            "id": "execd-1792661173720175947-1",
+            "artifact": {
+              "storage": "akernel-checkpoints",
+              "location": "e0211128-007f-4015-857d-b9812430cf73",
+              "size_bytes": 3221240290
+            },
+            "expires_at_unix_seconds": null,
+            "source_runtime_id": "default-environment-b8aa160c-6360-4375-88c7-703e1de07b93-19"
+          }
+        },
+        {
+          "event": "source_stopped",
+          "unix_ns": 1792661192958645200,
+          "node": "akcr119-20261022-worker"
+        },
+        {
+          "event": "public_sdk_failover_passed",
+          "unix_ns": 1792661230616479500,
+          "source_node": "akcr119-20261022-worker",
+          "target_node": "akcr119-20261022-worker2",
+          "checkpoint_until_http_completed_ms": 5845,
+          "read_trigger_until_first_verified_file_ms": 33535.96047,
+          "read_trigger_until_full_memory_verified_ms": 36657.526334,
+          "fault_until_full_memory_verified_ms": 48389.492106,
+          "memory_bytes": 536870912,
+          "sha256": "8d9866eba7fdc8987fbacbda5290425f09b15cbfa6b7c9d2ce3e3d3ead45f8f6",
+          "explicit_reload_called": false,
+          "source_offline": true,
+          "retryable_read_error_types": [
+            "BackendOperationError",
+            "BackendOperationError"
+          ],
+          "recovery_operation": {
+            "id": "recover-20",
+            "kind": "Resume",
+            "expected_revision": 1
+          }
+        },
+        {
+          "event": "source_restarted",
+          "unix_ns": 1792661230934427400,
+          "node": "akcr119-20261022-worker"
+        },
+        {
+          "event": "source_healthy_again",
+          "unix_ns": 1792661285073117700,
+          "node": "akcr119-20261022-worker"
+        },
+        {
+          "event": "sandbox_deleted",
+          "unix_ns": 1792661287174437000,
+          "sandbox_id": "default-environment-b8aa160c-6360-4375-88c7-703e1de07b93"
+        }
+      ]
+    },
+    {
+      "job": "runsc48",
+      "dns_corrected": true,
+      "disk_rwfs": false,
+      "events": [
+        {
+          "event": "created",
+          "unix_ns": 1792662043259929300,
+          "sandbox_id": "default-environment-a53d4d29-89f3-43e8-80df-49b790a2a006",
+          "runtime": "runsc",
+          "hard_node_pin": false
+        },
+        {
+          "event": "memory_ready",
+          "unix_ns": 1792662047503930000,
+          "fd_content": "open-fd-before",
+          "memory_bytes": 536870912,
+          "pid": 14,
+          "sha256": "8d9866eba7fdc8987fbacbda5290425f09b15cbfa6b7c9d2ce3e3d3ead45f8f6"
+        },
+        {
+          "event": "checkpoint_reply",
+          "unix_ns": 1792662049304720000,
+          "http_status": 200,
+          "body": "{\"status\":\"completed\"}",
+          "elapsed_ms": 1028
+        },
+        {
+          "event": "shared_checkpoint_committed",
+          "unix_ns": 1792662049724008400,
+          "source_node": "akcr119-20261022-worker2",
+          "point": {
+            "origin": null,
+            "id": "execd-1792662047514760510-1",
+            "artifact": {
+              "storage": "akernel-checkpoints",
+              "location": "d36b8e9a-d9d7-4d53-8d96-4e1eb313f1dc",
+              "size_bytes": 552762127
+            },
+            "expires_at_unix_seconds": null,
+            "source_runtime_id": "default-environment-a53d4d29-89f3-43e8-80df-49b790a2a006-21"
+          }
+        },
+        {
+          "event": "source_stopped",
+          "unix_ns": 1792662062111882200,
+          "node": "akcr119-20261022-worker2"
+        },
+        {
+          "event": "public_sdk_failover_passed",
+          "unix_ns": 1792662088271556000,
+          "source_node": "akcr119-20261022-worker2",
+          "target_node": "akcr119-20261022-worker",
+          "checkpoint_until_http_completed_ms": 1028,
+          "read_trigger_until_first_verified_file_ms": 3562.724355,
+          "read_trigger_until_full_memory_verified_ms": 5181.595749,
+          "fault_until_full_memory_verified_ms": 36786.381814,
+          "memory_bytes": 536870912,
+          "sha256": "8d9866eba7fdc8987fbacbda5290425f09b15cbfa6b7c9d2ce3e3d3ead45f8f6",
+          "explicit_reload_called": false,
+          "source_offline": true,
+          "retryable_read_error_types": [
+            "BackendOperationError"
+          ],
+          "recovery_operation": {
+            "id": "recover-22",
+            "kind": "Resume",
+            "expected_revision": 1
+          }
+        },
+        {
+          "event": "source_restarted",
+          "unix_ns": 1792662088582204400,
+          "node": "akcr119-20261022-worker2"
+        },
+        {
+          "event": "source_healthy_again",
+          "unix_ns": 1792662145299069700,
+          "node": "akcr119-20261022-worker2"
+        },
+        {
+          "event": "sandbox_deleted",
+          "unix_ns": 1792662145441047800,
+          "sandbox_id": "default-environment-a53d4d29-89f3-43e8-80df-49b790a2a006"
+        }
+      ]
+    },
+    {
+      "job": "runsc49",
+      "dns_corrected": true,
+      "disk_rwfs": true,
+      "events": [
+        {
+          "event": "created",
+          "unix_ns": 1792662596710747400,
+          "sandbox_id": "default-environment-7f3d94f5-505e-4d67-bc11-9db8129db146",
+          "runtime": "runsc",
+          "hard_node_pin": false,
+          "disk_rwfs_bytes": 1048576
+        },
+        {
+          "event": "memory_ready",
+          "unix_ns": 1792662600783448000,
+          "fd_content": "open-fd-before",
+          "memory_bytes": 536870912,
+          "pid": 14,
+          "sha256": "8d9866eba7fdc8987fbacbda5290425f09b15cbfa6b7c9d2ce3e3d3ead45f8f6"
+        },
+        {
+          "event": "root_filesystem_payload_ready",
+          "unix_ns": 1792662601183735300,
+          "path": "/pr119-disk-rwfs-state",
+          "bytes": 1048576,
+          "root_and_tmp_mounts": [
+            "none / overlay rw,size=1048576k 0 0",
+            "none /tmp tmpfs rw,mode=01777 0 0"
+          ]
+        },
+        {
+          "event": "checkpoint_reply",
+          "unix_ns": 1792662602982944800,
+          "http_status": 200,
+          "body": "{\"status\":\"completed\"}",
+          "elapsed_ms": 1055
+        },
+        {
+          "event": "shared_checkpoint_committed",
+          "unix_ns": 1792662603406258700,
+          "source_node": "akcr119-20261022-worker",
+          "point": {
+            "origin": null,
+            "id": "execd-1792662601194148254-1",
+            "artifact": {
+              "storage": "akernel-checkpoints",
+              "location": "f2e8d9b5-c744-4b06-b7f5-0596714e63d3",
+              "size_bytes": 553791650
+            },
+            "expires_at_unix_seconds": null,
+            "source_runtime_id": "default-environment-7f3d94f5-505e-4d67-bc11-9db8129db146-23"
+          }
+        },
+        {
+          "event": "source_stopped",
+          "unix_ns": 1792662615663682300,
+          "node": "akcr119-20261022-worker"
+        },
+        {
+          "event": "disk_rwfs_verified",
+          "unix_ns": 1792662639653597200,
+          "path": "/pr119-disk-rwfs-state",
+          "bytes": 1048576,
+          "sha256": "9bc1b2a288b26af7257a36277ae3816a7d4f16e89c1e7e77d0a5c48bad62b360",
+          "read_trigger_until_disk_verified_ms": 2030.716328
+        },
+        {
+          "event": "public_sdk_failover_passed",
+          "unix_ns": 1792662641874500400,
+          "source_node": "akcr119-20261022-worker",
+          "target_node": "akcr119-20261022-worker2",
+          "checkpoint_until_http_completed_ms": 1055,
+          "read_trigger_until_first_verified_file_ms": 1931.82017,
+          "read_trigger_until_full_memory_verified_ms": 3656.91381,
+          "fault_until_full_memory_verified_ms": 36706.872935,
+          "memory_bytes": 536870912,
+          "sha256": "8d9866eba7fdc8987fbacbda5290425f09b15cbfa6b7c9d2ce3e3d3ead45f8f6",
+          "explicit_reload_called": false,
+          "source_offline": true,
+          "retryable_read_error_types": [],
+          "recovery_operation": {
+            "id": "recover-24",
+            "kind": "Resume",
+            "expected_revision": 1
+          }
+        },
+        {
+          "event": "source_restarted",
+          "unix_ns": 1792662642191486000,
+          "node": "akcr119-20261022-worker"
+        },
+        {
+          "event": "source_healthy_again",
+          "unix_ns": 1792662696355748000,
+          "node": "akcr119-20261022-worker"
+        },
+        {
+          "event": "target_survived_source_rejoin",
+          "unix_ns": 1792662698514256600,
+          "target_node": "akcr119-20261022-worker2",
+          "runtime_id": "default-environment-7f3d94f5-505e-4d67-bc11-9db8129db146-24-r3"
+        },
+        {
+          "event": "sandbox_deleted",
+          "unix_ns": 1792662698643448300,
+          "sandbox_id": "default-environment-7f3d94f5-505e-4d67-bc11-9db8129db146"
+        }
+      ]
+    },
+    {
+      "job": "fc50",
+      "dns_corrected": true,
+      "disk_rwfs": true,
+      "events": [
+        {
+          "event": "created",
+          "unix_ns": 1792663015379447800,
+          "sandbox_id": "default-environment-79ee0711-75e4-47fc-8f9a-80ca5102bb6e",
+          "runtime": "firecracker",
+          "hard_node_pin": false,
+          "disk_rwfs_bytes": 1048576
+        },
+        {
+          "event": "memory_ready",
+          "unix_ns": 1792663019618937300,
+          "fd_content": "open-fd-before",
+          "memory_bytes": 536870912,
+          "pid": 23,
+          "sha256": "8d9866eba7fdc8987fbacbda5290425f09b15cbfa6b7c9d2ce3e3d3ead45f8f6"
+        },
+        {
+          "event": "root_filesystem_payload_ready",
+          "unix_ns": 1792663020018842400,
+          "path": "/pr119-disk-rwfs-state",
+          "bytes": 1048576,
+          "root_and_tmp_mounts": [
+            "overlay / overlay rw,nodev,relatime,lowerdir=/container/lower,upperdir=/container/overlay/upper,workdir=/container/overlay/work 0 0",
+            "tmpfs /tmp tmpfs rw,nosuid,nodev,relatime 0 0"
+          ]
+        },
+        {
+          "event": "checkpoint_reply",
+          "unix_ns": 1792663026219465500,
+          "http_status": 200,
+          "body": "{\"status\":\"completed\"}",
+          "elapsed_ms": 6030
+        },
+        {
+          "event": "shared_checkpoint_committed",
+          "unix_ns": 1792663026687084300,
+          "source_node": "akcr119-20261022-worker2",
+          "point": {
+            "origin": null,
+            "id": "execd-1792663019891893289-1",
+            "artifact": {
+              "storage": "akernel-checkpoints",
+              "location": "c24e7d1c-e17e-472f-8051-227b7205a08e",
+              "size_bytes": 3221240291
+            },
+            "expires_at_unix_seconds": null,
+            "source_runtime_id": "default-environment-79ee0711-75e4-47fc-8f9a-80ca5102bb6e-25"
+          }
+        },
+        {
+          "event": "source_stopped",
+          "unix_ns": 1792663039167618600,
+          "node": "akcr119-20261022-worker2"
+        },
+        {
+          "event": "disk_rwfs_verified",
+          "unix_ns": 1792663062967754500,
+          "path": "/pr119-disk-rwfs-state",
+          "bytes": 1048576,
+          "sha256": "9bc1b2a288b26af7257a36277ae3816a7d4f16e89c1e7e77d0a5c48bad62b360",
+          "read_trigger_until_disk_verified_ms": 4861.987573
+        },
+        {
+          "event": "public_sdk_failover_passed",
+          "unix_ns": 1792663066332504300,
+          "source_node": "akcr119-20261022-worker2",
+          "target_node": "akcr119-20261022-worker",
+          "checkpoint_until_http_completed_ms": 6030,
+          "read_trigger_until_first_verified_file_ms": 4547.889956,
+          "read_trigger_until_full_memory_verified_ms": 7646.182575,
+          "fault_until_full_memory_verified_ms": 37730.984651,
+          "memory_bytes": 536870912,
+          "sha256": "8d9866eba7fdc8987fbacbda5290425f09b15cbfa6b7c9d2ce3e3d3ead45f8f6",
+          "explicit_reload_called": false,
+          "source_offline": true,
+          "retryable_read_error_types": [
+            "BackendOperationError",
+            "BackendOperationError"
+          ],
+          "recovery_operation": {
+            "id": "recover-26",
+            "kind": "Resume",
+            "expected_revision": 1
+          }
+        },
+        {
+          "event": "source_restarted",
+          "unix_ns": 1792663066641967000,
+          "node": "akcr119-20261022-worker2"
+        },
+        {
+          "event": "source_healthy_again",
+          "unix_ns": 1792663123301695500,
+          "node": "akcr119-20261022-worker2"
+        },
+        {
+          "event": "target_survived_source_rejoin",
+          "unix_ns": 1792663125767336200,
+          "target_node": "akcr119-20261022-worker",
+          "runtime_id": "default-environment-79ee0711-75e4-47fc-8f9a-80ca5102bb6e-26-r3"
+        },
+        {
+          "event": "sandbox_deleted",
+          "unix_ns": 1792663128343813000,
+          "sandbox_id": "default-environment-79ee0711-75e4-47fc-8f9a-80ca5102bb6e"
+        }
+      ]
+    },
+    {
+      "job": "runsc51",
+      "dns_corrected": true,
+      "disk_rwfs": true,
+      "events": [
+        {
+          "event": "created",
+          "unix_ns": 1792663323322580500,
+          "sandbox_id": "default-environment-e3cc56c1-3ebf-468d-aa92-dd2b0aeb3b3f",
+          "runtime": "runsc",
+          "hard_node_pin": false,
+          "disk_rwfs_bytes": 1048576
+        },
+        {
+          "event": "memory_ready",
+          "unix_ns": 1792663327402445300,
+          "fd_content": "open-fd-before",
+          "memory_bytes": 536870912,
+          "pid": 14,
+          "sha256": "8d9866eba7fdc8987fbacbda5290425f09b15cbfa6b7c9d2ce3e3d3ead45f8f6"
+        },
+        {
+          "event": "root_filesystem_payload_ready",
+          "unix_ns": 1792663327802899000,
+          "path": "/pr119-disk-rwfs-state",
+          "bytes": 1048576,
+          "root_and_tmp_mounts": [
+            "none / overlay rw,size=1048576k 0 0",
+            "none /tmp tmpfs rw,mode=01777 0 0"
+          ]
+        },
+        {
+          "event": "checkpoint_reply",
+          "unix_ns": 1792663329603914500,
+          "http_status": 200,
+          "body": "{\"status\":\"completed\"}",
+          "elapsed_ms": 1026
+        },
+        {
+          "event": "shared_checkpoint_committed",
+          "unix_ns": 1792663330037295400,
+          "source_node": "akcr119-20261022-worker",
+          "point": {
+            "origin": null,
+            "id": "execd-1792663327813086983-1",
+            "artifact": {
+              "storage": "akernel-checkpoints",
+              "location": "2cee3136-3e93-4c47-8c9b-752ccb636db8",
+              "size_bytes": 553914055
+            },
+            "expires_at_unix_seconds": null,
+            "source_runtime_id": "default-environment-e3cc56c1-3ebf-468d-aa92-dd2b0aeb3b3f-27"
+          }
+        },
+        {
+          "event": "source_stopped",
+          "unix_ns": 1792663342403332000,
+          "node": "akcr119-20261022-worker"
+        },
+        {
+          "event": "disk_rwfs_verified",
+          "unix_ns": 1792663365981438000,
+          "path": "/pr119-disk-rwfs-state",
+          "bytes": 1048576,
+          "sha256": "9bc1b2a288b26af7257a36277ae3816a7d4f16e89c1e7e77d0a5c48bad62b360",
+          "read_trigger_until_disk_verified_ms": 3265.110595
+        },
+        {
+          "event": "public_sdk_failover_passed",
+          "unix_ns": 1792663368191559700,
+          "source_node": "akcr119-20261022-worker",
+          "target_node": "akcr119-20261022-worker2",
+          "checkpoint_until_http_completed_ms": 1026,
+          "read_trigger_until_first_verified_file_ms": 3160.1784,
+          "read_trigger_until_full_memory_verified_ms": 4880.728385,
+          "fault_until_full_memory_verified_ms": 36407.04706,
+          "memory_bytes": 536870912,
+          "sha256": "8d9866eba7fdc8987fbacbda5290425f09b15cbfa6b7c9d2ce3e3d3ead45f8f6",
+          "explicit_reload_called": false,
+          "source_offline": true,
+          "retryable_read_error_types": [],
+          "recovery_operation": {
+            "id": "recover-28",
+            "kind": "Resume",
+            "expected_revision": 1
+          }
+        },
+        {
+          "event": "source_restarted",
+          "unix_ns": 1792663368508439000,
+          "node": "akcr119-20261022-worker"
+        },
+        {
+          "event": "source_healthy_again",
+          "unix_ns": 1792663425199728400,
+          "node": "akcr119-20261022-worker"
+        },
+        {
+          "event": "target_survived_source_rejoin",
+          "unix_ns": 1792663427301803000,
+          "target_node": "akcr119-20261022-worker2",
+          "runtime_id": "default-environment-e3cc56c1-3ebf-468d-aa92-dd2b0aeb3b3f-28-r3"
+        },
+        {
+          "event": "sandbox_deleted",
+          "unix_ns": 1792663427432865300,
+          "sandbox_id": "default-environment-e3cc56c1-3ebf-468d-aa92-dd2b0aeb3b3f"
+        }
+      ]
+    }
+  ],
+  "runtime_observations": {
+    "firecracker": {
+      "status": "captured",
+      "rc": 0,
+      "read_only": true,
+      "target_node": "akcr119-20261022-worker",
+      "observed_unix_ns": 1792663066994659000,
+      "processes": [
+        {
+          "executable": "firecracker",
+          "fds": [
+            {
+              "fd": 13,
+              "path": "/mnt/akernel-shared/akernel/checkpoints/artifacts/c24e7d1c-e17e-472f-8051-227b7205a08e/memory"
+            },
+            {
+              "fd": 24,
+              "path": "/home/akernel/filestore/.firecracker/sbox-ae6fe7a3-c7d2-480f-bf8f-ec1e3baa8317/overlay.ext4"
+            }
+          ],
+          "mappings": [
+            {
+              "permissions": "rw-p",
+              "file_offset": "00000000",
+              "path": "/mnt/akernel-shared/akernel/checkpoints/artifacts/c24e7d1c-e17e-472f-8051-227b7205a08e/memory"
+            },
+            {
+              "permissions": "rw-s",
+              "file_offset": "00000000",
+              "path": "/memfd:iov_deque (deleted)"
+            },
+            {
+              "permissions": "rw-s",
+              "file_offset": "00000000",
+              "path": "/memfd:iov_deque (deleted)"
+            },
+            {
+              "permissions": "rw-s",
+              "file_offset": "00000000",
+              "path": "/memfd:iov_deque (deleted)"
+            },
+            {
+              "permissions": "rw-s",
+              "file_offset": "00000000",
+              "path": "/memfd:iov_deque (deleted)"
+            }
+          ],
+          "filesystems": [
+            {
+              "directory": "/home/akernel/adx/run/node/logs/runtime",
+              "filesystem": "xfs",
+              "rc": 0
+            },
+            {
+              "directory": "/home/akernel/filestore/.firecracker/sbox-ae6fe7a3-c7d2-480f-bf8f-ec1e3baa8317",
+              "filesystem": "xfs",
+              "rc": 0
+            },
+            {
+              "directory": "/mnt/akernel-shared/akernel/checkpoints/artifacts/c24e7d1c-e17e-472f-8051-227b7205a08e",
+              "filesystem": "fuse.juicefs",
+              "rc": 0
+            }
+          ]
+        }
+      ]
+    },
+    "gvisor": {
+      "status": "captured",
+      "rc": 0,
+      "read_only": true,
+      "target_node": "akcr119-20261022-worker2",
+      "observed_unix_ns": 1792663369370868200,
+      "processes": [
+        {
+          "executable": "runsc-gofer",
+          "fds": [
+            {
+              "fd": 17,
+              "path": "/memfd:flipcall_packet_windows (deleted)"
+            },
+            {
+              "fd": 19,
+              "path": "/memfd:flipcall_packet_windows (deleted)"
+            },
+            {
+              "fd": 20,
+              "path": "/memfd:flipcall_packet_windows (deleted)"
+            }
+          ],
+          "mappings": [],
+          "filesystems": [
+            {
+              "directory": "/home/akernel/sandboxd/root/containers/sbox-36909a77-dc7e-45e5-a7cb-a915dc68ee80",
+              "filesystem": "xfs",
+              "rc": 0
+            }
+          ]
+        },
+        {
+          "executable": "runsc-sandbox",
+          "fds": [
+            {
+              "fd": 9,
+              "path": "/memfd:memory-usage (deleted)"
+            },
+            {
+              "fd": 12,
+              "path": "/memfd:systrap-memory (deleted)"
+            },
+            {
+              "fd": 31,
+              "path": "/memfd:runsc-memory (deleted)"
+            },
+            {
+              "fd": 32,
+              "path": "/memfd:systrap-memory (deleted)"
+            }
+          ],
+          "mappings": [
+            {
+              "permissions": "rw-s",
+              "file_offset": "00000000",
+              "path": "/memfd:systrap-memory (deleted)"
+            },
+            {
+              "permissions": "rw-s",
+              "file_offset": "00000000",
+              "path": "/memfd:runsc-memory (deleted)"
+            },
+            {
+              "permissions": "rw-s",
+              "file_offset": "39f9a000",
+              "path": "/memfd:systrap-memory (deleted)"
+            },
+            {
+              "permissions": "rw-s",
+              "file_offset": "39fa2000",
+              "path": "/memfd:systrap-memory (deleted)"
+            },
+            {
+              "permissions": "rw-s",
+              "file_offset": "39fa6000",
+              "path": "/memfd:systrap-memory (deleted)"
+            },
+            {
+              "permissions": "rw-s",
+              "file_offset": "3dfe2000",
+              "path": "/memfd:systrap-memory (deleted)"
+            },
+            {
+              "permissions": "rw-s",
+              "file_offset": "3eff5000",
+              "path": "/memfd:systrap-memory (deleted)"
+            },
+            {
+              "permissions": "rw-s",
+              "file_offset": "3eff5000",
+              "path": "/memfd:systrap-memory (deleted)"
+            },
+            {
+              "permissions": "rw-s",
+              "file_offset": "00000000",
+              "path": "/memfd:systrap-memory (deleted)"
+            },
+            {
+              "permissions": "rw-s",
+              "file_offset": "3dfe0000",
+              "path": "/memfd:systrap-memory (deleted)"
+            },
+            {
+              "permissions": "rw-s",
+              "file_offset": "3efef000",
+              "path": "/memfd:systrap-memory (deleted)"
+            },
+            {
+              "permissions": "rw-s",
+              "file_offset": "3fffe000",
+              "path": "/memfd:systrap-memory (deleted)"
+            },
+            {
+              "permissions": "rw-s",
+              "file_offset": "3fff5000",
+              "path": "/memfd:systrap-memory (deleted)"
+            },
+            {
+              "permissions": "rw-s",
+              "file_offset": "00000000",
+              "path": "/memfd:memory-usage (deleted)"
+            }
+          ],
+          "filesystems": [
+            {
+              "directory": "/home/akernel/adx/run/node/logs/runtime",
+              "filesystem": "xfs",
+              "rc": 0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "final_health": {
+    "checked_utc": "2026-10-22T10:12:17Z",
+    "checks": {
+      "apiserver-readyz": {
+        "rc": 0,
+        "passed": true
+      },
+      "etcd-endpoint-health": {
+        "rc": 0,
+        "health": [
+          {
+            "endpoint": "https://127.0.0.1:2379",
+            "health": true,
+            "took": "6.571903ms"
+          }
+        ]
+      },
+      "nodes": {
+        "rc": 0,
+        "nodes": [
+          {
+            "name": "akcr119-20261022-control-plane",
+            "ready": true
+          },
+          {
+            "name": "akcr119-20261022-worker",
+            "ready": true
+          },
+          {
+            "name": "akcr119-20261022-worker2",
+            "ready": true
+          }
+        ]
+      },
+      "adx-pods": {
+        "rc": 0,
+        "pods": [
+          {
+            "name": "akernel-adx-coordinator-67bdbdf45b-msgjv",
+            "node": "akcr119-20261022-control-plane",
+            "phase": "Running",
+            "ready": true
+          },
+          {
+            "name": "akernel-adx-ingress-api-fd6b77cd4-hgpvd",
+            "node": "akcr119-20261022-control-plane",
+            "phase": "Running",
+            "ready": true
+          },
+          {
+            "name": "akernel-adx-redis-0",
+            "node": "akcr119-20261022-control-plane",
+            "phase": "Running",
+            "ready": true
+          },
+          {
+            "name": "akernel-node-nd54h",
+            "node": "akcr119-20261022-worker2",
+            "phase": "Running",
+            "ready": true
+          },
+          {
+            "name": "akernel-node-rf2m6",
+            "node": "akcr119-20261022-worker",
+            "phase": "Running",
+            "ready": true
+          }
+        ]
+      },
+      "dns-pods": {
+        "rc": 0,
+        "pods": [
+          {
+            "name": "coredns-669c6ff896-lhjn7",
+            "node": "akcr119-20261022-control-plane",
+            "phase": "Running",
+            "ready": true
+          },
+          {
+            "name": "coredns-669c6ff896-n8qg9",
+            "node": "akcr119-20261022-control-plane",
+            "phase": "Running",
+            "ready": true
+          }
+        ]
+      },
+      "storage-pods": {
+        "rc": 0,
+        "pods": [
+          {
+            "name": "akcr119-juicefs-client-45fz6",
+            "node": "akcr119-20261022-worker",
+            "phase": "Running",
+            "ready": true
+          },
+          {
+            "name": "akcr119-juicefs-client-f2hcw",
+            "node": "akcr119-20261022-control-plane",
+            "phase": "Running",
+            "ready": true
+          },
+          {
+            "name": "akcr119-juicefs-client-zskv8",
+            "node": "akcr119-20261022-worker2",
+            "phase": "Running",
+            "ready": true
+          },
+          {
+            "name": "akcr119-juicefs-format-75a22b4f-mwkfw",
+            "node": "akcr119-20261022-control-plane",
+            "phase": "Succeeded",
+            "ready": false
+          },
+          {
+            "name": "akcr119-juicefs-postgres-0",
+            "node": "akcr119-20261022-control-plane",
+            "phase": "Running",
+            "ready": true
+          },
+          {
+            "name": "rook-ceph-exporter-akcr119-20261022-control-plane-86cd9b49955dm",
+            "node": "akcr119-20261022-control-plane",
+            "phase": "Running",
+            "ready": true
+          },
+          {
+            "name": "rook-ceph-mgr-a-79bd9f7497-xlwkw",
+            "node": "akcr119-20261022-control-plane",
+            "phase": "Running",
+            "ready": true
+          },
+          {
+            "name": "rook-ceph-mon-a-c8c6d6d48-wgtqf",
+            "node": "akcr119-20261022-control-plane",
+            "phase": "Running",
+            "ready": true
+          },
+          {
+            "name": "rook-ceph-operator-57ff76dd7b-xrkbq",
+            "node": "akcr119-20261022-control-plane",
+            "phase": "Running",
+            "ready": true
+          },
+          {
+            "name": "rook-ceph-osd-0-5b58784469-xzld5",
+            "node": "akcr119-20261022-control-plane",
+            "phase": "Running",
+            "ready": true
+          },
+          {
+            "name": "rook-ceph-osd-prepare-checkpoint-osd-data-0jxpvs-dcg74",
+            "node": "akcr119-20261022-control-plane",
+            "phase": "Succeeded",
+            "ready": false
+          },
+          {
+            "name": "rook-ceph-rgw-checkpoints-a-7d648f99c7-nx5xk",
+            "node": "akcr119-20261022-control-plane",
+            "phase": "Running",
+            "ready": true
+          }
+        ]
+      },
+      "ceph-cluster": {
+        "rc": 1,
+        "error": "Error from server (NotFound): cephclusters.ceph.rook.io \"akcr119-ceph\" not found\n"
+      }
+    },
+    "environments": {},
+    "inotify_max_user_instances": 1024,
+    "disk_free_bytes": 847172513792
+  },
+  "ceph_actual_status": {
+    "read_only": true,
+    "previous_named_lookup_was_wrong": true,
+    "clusters": [
+      {
+        "name": "rook-ceph",
+        "phase": "Ready",
+        "health": "HEALTH_WARN",
+        "health_details": {
+          "AUTH_INSECURE_KEYS_ALLOWED": {
+            "message": "Monitors are configured to allow auth using insecure key types",
+            "severity": "HEALTH_WARN"
+          },
+          "AUTH_INSECURE_KEYS_CREATABLE": {
+            "message": "Monitors are configured to allow creation of insecure key types",
+            "severity": "HEALTH_WARN"
+          },
+          "POOL_NO_REDUNDANCY": {
+            "message": "8 pool(s) have no replicas configured",
+            "severity": "HEALTH_WARN"
+          },
+          "TOO_FEW_OSDS": {
+            "message": "OSD count 1 < osd_pool_default_size 3",
+            "severity": "HEALTH_WARN"
+          }
+        }
+      }
+    ],
+    "checked_utc": "2026-10-22T10:16:50Z"
+  },
+  "fixture_dns": {
+    "old_nodes": [
+      "worker2",
+      "worker2"
+    ],
+    "new_nodes": [
+      "control-plane",
+      "control-plane"
+    ],
+    "affected_case": "public-failover-runsc44",
+    "error": "源节点停机时 DNS 同时消失，JuiceFS 无法解析 PostgreSQL；目标内存读取 EIO，恢复初始化超时",
+    "retest": "固定二进制不变，DNS 迁至控制节点后相同 B→A 512MiB 负载通过",
+    "original_logs_preserved": true
+  },
+  "limits": {
+    "full_fault_matrix_complete": false,
+    "production_ready": false,
+    "physical_cross_host": false,
+    "guest_pause_measured": false,
+    "s3_wire_bytes_measured": false,
+    "immediate_ack_power_loss": false,
+    "earlier_unexplained_create_timeouts": 3,
+    "gvisor_restored_filestore_fd_proven": false
+  }
+}

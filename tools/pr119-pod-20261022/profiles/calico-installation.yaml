@@ -1,0 +1,26 @@
+{
+  "apiVersion": "operator.tigera.io/v1",
+  "kind": "Installation",
+  "metadata": {
+    "name": "default"
+  },
+  "spec": {
+    "calicoNetwork": {
+      "linuxDataplane": "Nftables",
+      "bgp": "Enabled",
+      "nodeAddressAutodetectionV4": {
+        "interface": "eth0"
+      },
+      "ipPools": [
+        {
+          "name": "default-ipv4-ippool",
+          "cidr": "10.220.0.0/16",
+          "blockSize": 26,
+          "encapsulation": "None",
+          "natOutgoing": "Enabled",
+          "nodeSelector": "all()"
+        }
+      ]
+    }
+  }
+}
