@@ -1,5 +1,19 @@
 # CrossNode 源码交付版本台账
 
+## 2026-10-22：runsc/Firecracker 本地 SDK 基础回滚通过，JuiceFS 验收尚未完成
+
+两种运行时各通过首轮、5 轮回滚及 8 个非法参数用例、完整 512 MiB 内存/PID/进程身份/打开文件内容校验；合计 14 次 checkpoint/reload，测试沙箱已删除。每实例 1 vCPU/2 GiB、本地 XFS；未额外填内存的 5 轮 checkpoint 请求总耗时 P50 为 runsc 64 ms、Firecracker 2590 ms，不是 guest 停顿或竞品对比。
+
+JuiceFS 测试使用任务专属 40 GiB loop 和静态 PV，不使用其他宿主盘。首次存储 Helm 安装等待返回 1，失败记录保留；已补 Kind 私有 loop 设备节点与 6 个 CSI API 定义，不开启驱动、不加载新模块。OSD、RGW、真实挂载及源节点失联恢复还在验收，不能称完整通过。
+
+运行时版本、镜像与 submodule 指针不变；新增的是隔离环境及验收脚本。inotify 1024 仍为临时设置。详细口径及完整交接矩阵未完成项见 `Docs/checks/20261022T-pr119-pod-resume-local-sdk-acceptance.md`。本轮 changelog 仅将已取得的动态结果归档，不把准备和失败写成通过。
+
+## 2026-10-22：授权后的临时配额变更与集群恢复
+
+仅临时将 `fs.inotify.max_user_instances` 从 128 改为 1024，其他两个 inotify 参数不变，未持久化或重启共享服务。原三个 Kind 容器已恢复，没有重建数据；API Server readyz 全项通过，etcd endpoint health/status 通过，三个节点 Ready。上述检查通过后才解除执行 DaemonSet 暂停，两个执行 Pod rollout 返回 0，五个 AKernel Pod Running。
+
+正在继续运行时服务、TLS 和三条完整 SDK 验收，Pod Running 不等于验收完成。PR 源码、镜像、二进制和 submodule 指针未改变；先前 blocked 是获准恢复之前的历史记录。原值、变更、健康检查证据留在任务 `cluster/resume18/`，最终中文报告随后补齐。
+
 ## 2026-10-22 14:28：任务因宿主参数确认受阻，未完成验收
 
 远端复查：`fs.inotify.max_user_instances=128`，宿主监听器探针成功，三个实验 Kind 容器仍 Exited。没有恢复集群，没有部署/SDK 验收后台任务；三条完整 checkpoint/reload 链路仍未完成。

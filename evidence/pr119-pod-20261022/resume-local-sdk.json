@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-22",
+  "scope": "local SDK checkpoint/reload baseline; shared backend not accepted",
+  "temporary_inotify": {"before": 128, "after": 1024, "watches": 1048576, "queue": 16384, "persistent_config_written": false},
+  "recovery": {"api_readyz": true, "etcd_endpoint_health": true, "ready_nodes": 3, "execution_daemonset_rollout_rc": 0, "tls_verified": true},
+  "sandbox_spec": {"cpu_millicores": 1000, "memory_mib": 2048, "storage_mb": 1024, "storage": "node-local XFS", "global_page_cache_dropped": false},
+  "runsc_five_rounds_ms": {
+    "checkpoint_http_completed": [65, 73, 64, 63, 63],
+    "sdk_reload": [202.32668, 260.944892, 254.159087, 243.449864, 195.882177],
+    "file_verified": [245.14402, 303.748345, 296.907083, 286.157898, 239.558989]
+  },
+  "firecracker_five_rounds_ms": {
+    "checkpoint_http_completed": [2590, 2784, 2572, 2838, 2565],
+    "sdk_reload": [2640.631113, 2661.710603, 2655.709093, 2704.546283, 2165.584091],
+    "file_verified": [2684.43019, 2705.35573, 2700.593623, 2749.375698, 2208.531572]
+  },
+  "memory_512mib_single_samples_ms": {
+    "runsc": {"checkpoint_http_completed": 729, "sdk_reload": 1014.590153, "file_verified": 1057.440765, "full_memory_verified": 2752.881082},
+    "firecracker": {"checkpoint_http_completed": 2668, "sdk_reload": 2681.093655, "file_verified": 2725.392089, "full_memory_verified": 4619.319453}
+  },
+  "successful_checkpoint_reload_count": {"runsc": 7, "firecracker": 7},
+  "invalid_parameter_cases_rejected": {"runsc": 8, "firecracker": 8},
+  "memory_assertions_passed": ["full SHA256 recomputed", "PID", "process random identity", "memory size", "open FD content"],
+  "all_local_test_sandboxes_deleted": true,
+  "initial_juicefs_install_rc": 1,
+  "task_raw_block_bytes": 42949672960,
+  "extra_csi_schemas_installed": 6,
+  "csi_driver_workloads_installed_by_schema_helper": 0,
+  "shared_cross_node_accepted": false,
+  "full_handover_fault_matrix_completed": false,
+  "overall_goal_completed": false
+}
