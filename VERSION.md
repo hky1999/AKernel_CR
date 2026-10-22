@@ -1,5 +1,13 @@
 # CrossNode 源码交付版本台账
 
+## 2026-10-22 14:28：任务因宿主参数确认受阻，未完成验收
+
+远端复查：`fs.inotify.max_user_instances=128`，宿主监听器探针成功，三个实验 Kind 容器仍 Exited。没有恢复集群，没有部署/SDK 验收后台任务；三条完整 checkpoint/reload 链路仍未完成。
+
+SDK 工具与存储离线准备已在实验分支提交 `0cb6523`。新增宿主参数变更尚待确认，同一阻塞连续三轮后任务已登记 blocked，停止自动重启尝试；这不是已完成交付。组件版本和 gitlink 均未变化。
+
+检查见 `Docs/checks/20261022T-pr119-pod-blocked-recheck.md`。本轮 changelog 仅记录当前阻塞与保留现场，不将重复状态确认包装为功能进展。
+
 ## 2026-10-22 补充准备：SDK 工具和 JuiceFS 离线配置
 
 三个本任务 Kind 容器仍停止，inotify 上限仍为 128。未执行新增宿主参数变更，也未恢复集群。远端已准备 SDK 脚本与状态探针，CLI 帮助预检通过，但 Sandbox 请求数仍为 0。

@@ -1,0 +1,15 @@
+{
+  "sample_utc": "2026-10-22T06:28:31Z",
+  "goal_status": "blocked",
+  "blocker": "pending_confirmation_for_additional_global_inotify_quota_change",
+  "inotify_max_user_instances": 128,
+  "host_inotify_probe": {"success": true, "errno": 0},
+  "private_container_query_rc": 0,
+  "kind_control_container": {"state": "exited", "exit_code": 137},
+  "kind_execution_containers": [{"state": "exited", "exit_code": 130}, {"state": "exited", "exit_code": 130}],
+  "global_parameters_changed": false,
+  "containers_started": 0,
+  "sdk_requests_this_turn": 0,
+  "accepted_sdk_chains": {"runsc": 0, "firecracker": 0, "juicefs_cross_node": 0},
+  "goal_completed": false
+}
