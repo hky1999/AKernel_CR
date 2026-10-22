@@ -1,5 +1,26 @@
 # CrossNode 源码交付版本台账
 
+## 2026-10-22：独立 Pod 集群与网络验证完成，执行 Pod 启动阻塞
+
+本节更新前次预检进度；不改变既有交付版本或三个 submodule 指针。
+
+| 项目 | 本次实际状态 |
+|---|---|
+| 实验源码 | AKernel PR #119 固定 `6ea004125eb4365ba06ba3c7b21c4fd80e4cdaac`；sandboxd `d5acc3b5b673074e20fd8b7733d4035dbaeae1b0`；ADX `59fa7912f875832c8ab053148ae8fd17b7c25a23` |
+| 客户端 | 公共 SDK `0.2.0rc3`、原生 SDK `0.1.0rc2`；已安装，尚无成功的 Sandbox 验收请求 |
+| Kubernetes | Kind `v0.33.0`、Kubernetes `v1.35.8`，同一 BareMetal 上三个容器节点 Ready；未创建额外测试虚拟机 |
+| 网络 | Calico `v3.32.2` 原生 nftables；跨节点允许/拒绝/撤销策略验证通过，探针已回收 |
+| 镜像 | 官方两阶段 Dockerfile 已远端构建并导入；镜像配置 SHA-256 `d1316b767b570f12a2eb5156fd0af80dfbcd783a9ba853a308fe872a4394dee0` |
+| 服务 | Coordinator、Ingress API、Redis 正常；两个执行 Pod 退出码 255，根因尚未确认，不能将 Helm deployed 视为产品验收通过 |
+| 三条完整链路 | runsc、Firecracker、JuiceFS 双节点 checkpoint/reload 均尚未通过；JuiceFS 配套存储尚未部署，无本轮性能结果 |
+| 共享环境边界 | 用户授权网络模块加载；不修改共享服务、全局 sysctl 或共享防火墙规则；清理仅限本任务失败集群，保留失败证据 |
+
+详细检查见 `Docs/checks/20261022T-pr119-pod-cluster-network-and-node-startup.md`；进度见 `Docs/schedules/20261022T-pr119-pod-cluster-network-progress.md`。私有凭据、kubeconfig、原始 Helm 渲染件不入库。
+
+### 本轮 changelog
+
+- 2026-10-22：从“尚未部署”推进到独立 Kubernetes 和网络验证完成、控制面运行；执行 Pod 启动仍阻塞，SDK 验收未完成。
+
 日期：2026-10-21。本文件是本次脱敏 GitHub 交付的版本事实来源。源码提交、历史实测二进制和新构建产物是不同身份，不能混记。
 
 ## 2026-10-22：PR #119 Pod 复现预检，尚未部署

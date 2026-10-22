@@ -1,0 +1,32 @@
+{
+  "stage": "cluster-network-ready-execution-pod-startup-blocked",
+  "date": "2026-10-22",
+  "source": {
+    "akernel": "6ea004125eb4365ba06ba3c7b21c4fd80e4cdaac",
+    "sandboxd": "d5acc3b5b673074e20fd8b7733d4035dbaeae1b0",
+    "adx": "59fa7912f875832c8ab053148ae8fd17b7c25a23",
+    "public_sdk": "0.2.0rc3",
+    "native_sdk": "0.1.0rc2",
+    "source_patched": false
+  },
+  "topology": {"physical_hosts": 1, "kind_container_nodes": 3, "additional_test_vms": 0},
+  "cluster": {
+    "kind": "v0.33.0", "kubernetes": "v1.35.8", "calico": "v3.32.2",
+    "ready_nodes": 3, "calico_dataplane": "Nftables",
+    "outer_cpu_limit": 12, "outer_memory_gib": 40,
+    "node_cpu_limit": 4, "node_memory_limit_gib": 10,
+    "node_schedulable_memory_mib": 8092, "node_schedulable_ephemeral_gib": 29
+  },
+  "cross_node_policy_probe": {
+    "before": {"allowed": 200, "denied": 200},
+    "during": {"allowed": 200, "denied": "timeout_3_seconds"},
+    "after": {"allowed": 200, "denied": 200},
+    "namespace_cleaned": true
+  },
+  "akernel": {"helm_install_rc": 0, "healthy_control_pods": 3, "failed_execution_pods": 2, "execution_exit_code": 255},
+  "accepted_sdk_chains": {"runsc": 0, "firecracker": 0, "juicefs_cross_node": 0},
+  "juicefs_storage_deployed": false,
+  "checkpoint_performance_results": null,
+  "cleanup": {"own_failed_kind_containers_removed": 3, "removed_bytes_measured": false, "other_task_resources_removed": false},
+  "credential_material_included": false
+}
