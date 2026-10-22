@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-22",
+  "stage": "task-cluster-stopped-data-retained-awaiting-global-inotify-quota-change",
+  "supersedes_current_runtime_state_in": "cluster-network-stage.json",
+  "systemd_exit_code": 255,
+  "systemd_failure": "Failed to create control group inotify object: Too many open files",
+  "inotify_limits_unchanged": {"max_user_instances": 128, "max_user_watches": 1048576, "max_queued_events": 16384},
+  "visible_inotify_fd_scan": {"root_fd_references": 129, "current_task_root_fd_references": 94, "unique_instance_count": null},
+  "host_probe_before_task_pause": {"success": false, "errno": 24},
+  "host_probe_after_execution_pods_paused": {"success": false, "errno": 24, "probe_open_fds": 5, "probe_nofile_limit": 65535},
+  "task_kind_containers_stopped": 3,
+  "stop_rc": 0,
+  "control_node_sigkill_after_30_seconds": true,
+  "cluster_data_deleted": false,
+  "host_probe_after_task_cluster_stop": {"success": true, "errno": 0},
+  "global_sysctl_changed": false,
+  "proposed_max_user_instances_pending_confirmation": 1024,
+  "etcd_restart_health_accepted": false,
+  "accepted_sdk_chains": {"runsc": 0, "firecracker": 0, "juicefs_cross_node": 0},
+  "other_task_resources_stopped": false
+}

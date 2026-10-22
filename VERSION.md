@@ -1,5 +1,13 @@
 # CrossNode 源码交付版本台账
 
+## 2026-10-22 最新现场：inotify 配额阻塞，实验集群已停止并保留数据
+
+执行 Pod 的早期 systemd 日志显示创建 inotify 监听器失败，退出 255。宿主 `fs.inotify.max_user_instances=128`；独立探针在仅打开 5 个文件、文件描述符上限 65535 时仍返回 `EMFILE`。本任务停止三个 Kind 节点容器后，宿主探针恢复成功，参数未改。当前集群已停止，下面 Ready/网络通过为停止前的历史实测，不是当前运行状态。
+
+控制节点停止超时 30 秒后由 Podman SIGKILL，仅作用于本任务容器，数据未删除；恢复前必须先验 etcd/API Server 健康。新的宿主全局参数变更尚未执行：建议确认后临时将 `fs.inotify.max_user_instances=1024`，不持久化、不改其他参数、不重启共享服务。源码和镜像未改变，三条完整 SDK 验收仍未通过。
+
+详见 `Docs/checks/20261022T-pr119-pod-inotify-startup-blocker.md`、`Docs/schedules/20261022T-pr119-pod-inotify-pause-progress.md`。本轮 changelog：定位并释放本任务造成的共享 root 监听器配额压力，保留停止状态等待宿主参数变更确认。
+
 ## 2026-10-22：独立 Pod 集群与网络验证完成，执行 Pod 启动阻塞
 
 本节更新前次预检进度；不改变既有交付版本或三个 submodule 指针。
