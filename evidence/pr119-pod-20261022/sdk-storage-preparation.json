@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-22",
+  "stage": "offline-preparation-only-cluster-still-stopped",
+  "kind_containers_stopped": 3,
+  "inotify_max_user_instances": 128,
+  "global_parameters_changed": false,
+  "xfs_available_bytes_sample": 894866792448,
+  "sdk_cli_help_rc": 0,
+  "sdk_requests": 0,
+  "sdk_acceptance_source_sha256": "ce9b8cd994eb9b297239007d545002eb99a8e0e45976231cb1860b5717f2252b",
+  "state_probe_source_sha256": "14ab534bfa8527f0bb2986f156c1121fee8578dba9d964083b7b868355b29792",
+  "reused_state_probe_binary_sha256": "8779ebeb60652c8552710fa7246506c0846a5421fe50bd3b4ab1619a0f1a7b91",
+  "offline_storage_render": {
+    "rc": 0,
+    "rook_chart_version": "1.21.0",
+    "rook_chart_sha256": "c070c7985deee72d7620e0377c07ce2afba28f566fbefe47bf934d00a5692cde",
+    "rook_objects": 59,
+    "juicefs_objects": 9,
+    "csi_operator_install_disabled": true,
+    "csi_resource_generation_disabled": true,
+    "automatic_device_discovery_disabled": true,
+    "raw_block_pvc_requirement_preserved": true,
+    "cluster_resources_created": false,
+    "block_devices_allocated": false,
+    "single_replica_evaluation_only": true
+  },
+  "accepted_sdk_chains": {"runsc": 0, "firecracker": 0, "juicefs_cross_node": 0},
+  "performance_results": null,
+  "credentials_included": false
+}

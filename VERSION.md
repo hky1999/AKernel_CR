@@ -1,5 +1,13 @@
 # CrossNode 源码交付版本台账
 
+## 2026-10-22 补充准备：SDK 工具和 JuiceFS 离线配置
+
+三个本任务 Kind 容器仍停止，inotify 上限仍为 128。未执行新增宿主参数变更，也未恢复集群。远端已准备 SDK 脚本与状态探针，CLI 帮助预检通过，但 Sandbox 请求数仍为 0。
+
+新增 `tools/pr119-pod-20261022/{prepare_storage.py,storage_placement.py}`，复用并保存 `acceptance.py`、`guest_probe.go` 工具快照。固定 Rook chart `1.21.0`，SHA-256 `c070c7985deee72d7620e0377c07ce2afba28f566fbefe47bf934d00a5692cde`；远端离线渲染通过，Rook 59 对象、JuiceFS 9 对象。CSI 安装/资源生成和设备自动发现禁用，Ceph OSD 仍要求原始 Block PVC，不用普通目录替代。
+
+未创建块设备或存储服务；三条 SDK 链路、跨节点一致性及性能均未验收。XFS 最近采样可用约 833 GiB，不清理旧环境。PR 业务源码、镜像和 submodule 指针没有变化。检查见 `Docs/checks/20261022T-pr119-pod-sdk-storage-preparation.md`；本轮 changelog 仅为上述准备工作，不代表产品集成完成。
+
 ## 2026-10-22 最新现场：inotify 配额阻塞，实验集群已停止并保留数据
 
 执行 Pod 的早期 systemd 日志显示创建 inotify 监听器失败，退出 255。宿主 `fs.inotify.max_user_instances=128`；独立探针在仅打开 5 个文件、文件描述符上限 65535 时仍返回 `EMFILE`。本任务停止三个 Kind 节点容器后，宿主探针恢复成功，参数未改。当前集群已停止，下面 Ready/网络通过为停止前的历史实测，不是当前运行状态。
