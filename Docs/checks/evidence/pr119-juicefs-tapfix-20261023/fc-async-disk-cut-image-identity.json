@@ -1,0 +1,44 @@
+{
+  "rc": 0,
+  "read_only_cluster_queries": true,
+  "nodes": [
+    {
+      "node": "akcr119-20261022-control-plane",
+      "verified_chain": [
+        "sha256:ff06cd24c136d5252da0ece6aea74c9db21a38c69c613d0b22651ddf0a921884",
+        "sha256:d5a31f72c3f32c82a871191bb94e20c876e44708e423c6e542f58ca52d92db13",
+        "sha256:6d3ec7472a31e6dab2be5fdb9c63bbea32b547e2bf4eb4a44c950a28f20378b3"
+      ],
+      "platform": "linux/amd64"
+    },
+    {
+      "node": "akcr119-20261022-worker",
+      "verified_chain": [
+        "sha256:ff06cd24c136d5252da0ece6aea74c9db21a38c69c613d0b22651ddf0a921884",
+        "sha256:d5a31f72c3f32c82a871191bb94e20c876e44708e423c6e542f58ca52d92db13",
+        "sha256:6d3ec7472a31e6dab2be5fdb9c63bbea32b547e2bf4eb4a44c950a28f20378b3"
+      ],
+      "platform": "linux/amd64"
+    },
+    {
+      "node": "akcr119-20261022-worker2",
+      "verified_chain": [
+        "sha256:ff06cd24c136d5252da0ece6aea74c9db21a38c69c613d0b22651ddf0a921884",
+        "sha256:d5a31f72c3f32c82a871191bb94e20c876e44708e423c6e542f58ca52d92db13",
+        "sha256:6d3ec7472a31e6dab2be5fdb9c63bbea32b547e2bf4eb4a44c950a28f20378b3"
+      ],
+      "platform": "linux/amd64"
+    }
+  ],
+  "status": "cri-index-leaf-config-and-actual-daemon-verified",
+  "cri_digest": "sha256:ff06cd24c136d5252da0ece6aea74c9db21a38c69c613d0b22651ddf0a921884",
+  "tag_target_digest": "sha256:d5a31f72c3f32c82a871191bb94e20c876e44708e423c6e542f58ca52d92db13",
+  "config_sha256": "6d3ec7472a31e6dab2be5fdb9c63bbea32b547e2bf4eb4a44c950a28f20378b3",
+  "sandboxd_sha256": "c85d58b2efe8c141394877cc73cdb33cd796d7760770a31c808fbd6c22fb5dce",
+  "pod_uids": {
+    "akernel-adx-coordinator-d48d8f8b-m2tft": "dbfca84e-c6c4-493e-9290-692b8ad26a61",
+    "akernel-adx-ingress-api-7894887d7b-jp7n2": "ab411da3-d87d-4ce9-a496-72116f5659fa",
+    "akernel-node-88f77": "793849c1-7aff-4e39-974f-28001a26e199",
+    "akernel-node-mjsm6": "07e36c62-8cb9-4293-a1cd-42e9c90a656b"
+  }
+}

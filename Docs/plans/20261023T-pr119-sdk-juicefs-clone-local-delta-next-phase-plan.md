@@ -126,6 +126,8 @@ JuiceFS 不可变检查点
 
 ADX 存储适配增加显式、默认关闭的实验布局，区分 artifacts、实例运行文件、应用共享卷和节点缓存。实例运行子目录受权威身份管理，不能简单关闭 PR 路径隔离校验或让运行实例写原检查点目录。
 
+实验改动只选择私有 RWFS 的后端。FC 的 live-memory、设备状态、运行时目录与根只读镜像需要分别记录位置，不能把整个 filestore bind 到 JuiceFS 后，未经计量就声称“只改变了 RWFS”。gVisor 也须区分文件数据后端与应用内存。每次 SDK 样本复查实际 FD/映射/文件系统及 S3 字节，避免把运行期间新增的内存写入流量混入私有盘结论。
+
 保持 `writeback=false` 作为可靠性对照。原本地实例首次迁入 JuiceFS 所需的数据上传如实计费，不能只报告后续元数据克隆时间。首次迁移和稳定运行后的连续 checkpoint 分开测。
 
 ### 4.2 两种运行时分别做什么
@@ -135,6 +137,8 @@ ADX 存储适配增加显式、默认关闭的实验布局，区分 artifacts、
 2026-10-24 能力门结果：实际 JuiceFS 1.4.1 的 FICLONE 返回 EOPNOTSUPP，但 copy_file_range 克隆 64 MiB 并 fsync 约 10.4 ms，目标客户端未读源数据，S3 GET/PUT 为零。跨客户端、两代和两个分支、打开后删除的 FD、未刷新 mmap、截断扩展及打洞通过。现有 cloneFileNoSync 的源码单独远端编译，实际函数复制并 fsync 约 4.6 ms，同样零 S3 GET/PUT；返回 reflinked=false 只表示 FICLONE 未成功，不能推断它做了全量数据搬运。均为单样本能力门，不是稳定性能或运行时验收，见 [本轮检查](../checks/20261024T-pr119-juicefs-native-clone-primitives.md)。
 
 因此 FC 先复用现有函数，不新增重复的复制实现。gVisor 的后续 filestore 保存/非消费采纳接口若仅尝试 FICLONE，需要补适当的 copy_file_range 路径、sentry 系统调用过滤及失败处理；实际固定 bundle、源码和兼容门单列，不把原语通过当成这些修改已完成。
+
+实际运行时前置门见 [FC 检查](../checks/20261024T-pr119-fc-native-clone-runtime-preflight.md)：历史 JuiceFS 原型为 Sync，而当前 SDK 为 Async。发现旧代码先复制盘、再由 VMM 保存排空 I/O 的缺口后，已用 e3f402c 修正，完成组件旧红/新绿、源码门、官方 76、双向接管和真实持续直接写/恢复；后续两路线共同使用修复版本。VMM 内部排空错误传播仍单列待验证。实际 manifest 已证 VMM 为 b9a362d 的 fork-source-build，已有 Incremental/SoftDirty 能力；这些模式须另建分组，不混入 Full 后端对照。
 
 | 运行时 | 复用 | 最小修改位置和内容 | 验收重点 |
 |---|---|---|---|

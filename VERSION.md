@@ -1,5 +1,15 @@
 # CrossNode 源码交付版本台账
 
+## 2026-10-24 后续：FC 异步盘一致性修复已完成源码和真实 SDK 验收
+
+sandboxd e3f402c0a18be3ff0b7d90674daae9459464772a（父 10312f2），分支 codex/pr119-fc-drain-order-20261024，已普通 push 并核对远端。三文件将盘复制放到 VMM 保存后、盘失败时失效已消耗的内存基线并更新计时/合同；源码与远端已测文件 SHA 一致，实际 ELF c85d58b2efe8c141394877cc73cdb33cd796d7760770a31c808fbd6c22fb5dce 为提交整理前构建。没有重新发布 runtime bundle。
+
+组件旧红/三轮新绿、fmt/vet、全仓单测、FC 包 race、生产构建通过；当前制品官方 SDK 8+30 / 8+30 共 76，无跳过，两运行时各三轮完整状态及四条双向自动接管通过。真实 FC guest 4 KiB O_DIRECT 写/同步/直接读回、5 次保存/4 次恢复、跨节点双分支持续写和再次保存通过。实际内核完成时机未被人为卡住，与组件确定性屏障分开。
+
+任务镜像 365f7971f895-io-cut01，config 6d3ec747…，实际 CRI ff06cd24…→叶 d5a31f72…→config 已三节点证明，两 Node ELF 均核对。仍用原 Full/Async/Writeback、本地 XFS RWFS/共享 JuiceFS checkpoint；配套 VMM/kernel/initrd/runsc/ADX 未改，实际 VMM manifest 是 b9a362d 的 fork-source-build。
+
+Changelog：补当前源码清单、最终检查/进度/阶段总结、7 份小型回执与 10 个实际验收/构建脚本。组件产品源码从其提交获取，没有把嵌入整份源码的临时构建器复制到父仓。此前 9c74060c… 的十组/80 条性能和本地 XFS checkpoint 官方 SDK 结果移入 previous_pr119_candidate，不混成新制品已重测。当前一次三轮 Full 仍约 3 GiB PUT，无稳定性能收益结论。全部实例/快照删除、Environment=0；旧环境和共享服务未改。生产 HA、VMM I/O 错误传播、内部删除屏障/多 collector 和两条新后端仍有剩余；本次 GitHub check-runs 查询为 0，不冒充云端 CI 已通过。
+
 ## 2026-10-24：PR #119 完整 SDK、故障与十组性能复现交付
 
 本节是独立 PR 候选输入，不替换下方 10 月 21 日五个子模块的源码组合。新清单 `delivery/pr119-20261024.json` 固定 AKernel 365f7971f895f2b94cf390eefaab436600f005f0、实际 ADX/Execd 6fb53d7331811535b6be5787ba026e03072f427b、sandboxd 10312f28c9b3286545eb2e97070cdd08fe994cee、公共/原生 SDK 0.2.0rc3 / 0.1.0rc3。10312f2 已正常 push 到 hky1999/sandboxd 的 codex/pr119-tap-reset-20261024，只有两文件 TAP 修复；与远端原验收源码相同，实际 ELF 仍为提交整理前构建的 9c74060c…，不是另一次重建已复测。

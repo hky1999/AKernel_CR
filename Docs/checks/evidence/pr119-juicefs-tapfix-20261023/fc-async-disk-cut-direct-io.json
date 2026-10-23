@@ -1,0 +1,154 @@
+{
+  "rc": 0,
+  "status": "real-guest-direct-io-stress-passed",
+  "sdk_job_started": true,
+  "data": {
+    "rc": 0,
+    "scope": "real FC guest direct-write/sync/readback under SDK snapshots; not deterministic io_uring stall injection and not a latency benchmark",
+    "same_node": [
+      {
+        "round": 0,
+        "checkpoint_completed": true,
+        "writer_before": {
+          "pid": 36,
+          "cookie": "cd738b41cc624708bac78e6b66895f5a",
+          "salt": "parent",
+          "completed": 1696,
+          "attempted": 1697,
+          "phase": "fdatasync",
+          "error": null,
+          "direct_flag": true,
+          "block_bytes": 4096,
+          "file_bytes": 1048576,
+          "recent_latency_samples": 1696,
+          "recent_p50_ms": 0.4369275,
+          "recent_max_ms": 18.711416
+        },
+        "writer_after": {
+          "pid": 36,
+          "cookie": "cd738b41cc624708bac78e6b66895f5a",
+          "salt": "parent",
+          "completed": 2601,
+          "attempted": 2602,
+          "phase": "pread",
+          "error": null,
+          "direct_flag": true,
+          "block_bytes": 4096,
+          "file_bytes": 1048576,
+          "recent_latency_samples": 2048,
+          "recent_p50_ms": 0.42990799999999996,
+          "recent_max_ms": 876.526459
+        }
+      },
+      {
+        "round": 1,
+        "checkpoint_completed": true,
+        "writer_before": {
+          "pid": 36,
+          "cookie": "cd738b41cc624708bac78e6b66895f5a",
+          "salt": "parent",
+          "completed": 3800,
+          "attempted": 3801,
+          "phase": "pread",
+          "error": null,
+          "direct_flag": true,
+          "block_bytes": 4096,
+          "file_bytes": 1048576,
+          "recent_latency_samples": 2048,
+          "recent_p50_ms": 0.4268065,
+          "recent_max_ms": 876.526459
+        },
+        "writer_after": {
+          "pid": 36,
+          "cookie": "cd738b41cc624708bac78e6b66895f5a",
+          "salt": "parent",
+          "completed": 5840,
+          "attempted": 5841,
+          "phase": "fdatasync",
+          "error": null,
+          "direct_flag": true,
+          "block_bytes": 4096,
+          "file_bytes": 1048576,
+          "recent_latency_samples": 2048,
+          "recent_p50_ms": 0.428736,
+          "recent_max_ms": 75.338585
+        }
+      },
+      {
+        "round": 2,
+        "checkpoint_completed": true,
+        "writer_before": {
+          "pid": 36,
+          "cookie": "cd738b41cc624708bac78e6b66895f5a",
+          "salt": "parent",
+          "completed": 6640,
+          "attempted": 6641,
+          "phase": "pread",
+          "error": null,
+          "direct_flag": true,
+          "block_bytes": 4096,
+          "file_bytes": 1048576,
+          "recent_latency_samples": 2048,
+          "recent_p50_ms": 0.426095,
+          "recent_max_ms": 17.835547
+        },
+        "writer_after": {
+          "pid": 36,
+          "cookie": "cd738b41cc624708bac78e6b66895f5a",
+          "salt": "parent",
+          "completed": 7651,
+          "attempted": 7652,
+          "phase": "pread",
+          "error": null,
+          "direct_flag": true,
+          "block_bytes": 4096,
+          "file_bytes": 1048576,
+          "recent_latency_samples": 2048,
+          "recent_p50_ms": 0.4288805,
+          "recent_max_ms": 1252.271696
+        }
+      }
+    ],
+    "cross_node_branch": true,
+    "runtime": "firecracker",
+    "image": "docker.io/library/python@sha256:e8a38829209aea82774882e5157e1f7c3e8c8393ff53a697b3580896e57f345c",
+    "cross_node": {
+      "source": "akcr119-20261022-worker2",
+      "target": "akcr119-20261022-worker",
+      "child": {
+        "pid": 36,
+        "cookie": "cd738b41cc624708bac78e6b66895f5a",
+        "salt": "child",
+        "completed": 15497,
+        "attempted": 15498,
+        "phase": "fdatasync",
+        "error": null,
+        "direct_flag": true,
+        "block_bytes": 4096,
+        "file_bytes": 1048576,
+        "recent_latency_samples": 2048,
+        "recent_p50_ms": 0.42337250000000004,
+        "recent_max_ms": 1190.188236
+      },
+      "parent": {
+        "pid": 36,
+        "cookie": "cd738b41cc624708bac78e6b66895f5a",
+        "salt": "parent",
+        "completed": 22022,
+        "attempted": 22023,
+        "phase": "pread",
+        "error": null,
+        "direct_flag": true,
+        "block_bytes": 4096,
+        "file_bytes": 1048576,
+        "recent_latency_samples": 2048,
+        "recent_p50_ms": 0.426495,
+        "recent_max_ms": 18.960555
+      }
+    },
+    "status": "real-guest-concurrent-direct-io-and-sdk-reload-passed",
+    "checkpoint_operations": 5,
+    "reload_operations": 4,
+    "resources_deleted": true
+  }
+}

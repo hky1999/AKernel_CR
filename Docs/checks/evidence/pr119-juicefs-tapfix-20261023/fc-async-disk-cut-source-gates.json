@@ -1,0 +1,18 @@
+{
+  "rc": 0,
+  "scope": "candidate source QA; no deployment, no new-backend acceptance",
+  "deployed": false,
+  "steps": [
+    {
+      "name": "fixed-regression-and-quality-gates",
+      "rc": 0
+    }
+  ],
+  "status": "candidate-regression-and-source-gates-passed-not-sdk",
+  "source_files": {
+    "pkg/runtime/firecracker/checkpoint_handler.go": "bdfc26133ed33aacddd12e1d95195f495b18f82b9cac73f0d1610f3f5c2cae14",
+    "pkg/runtime/firecracker/checkpoint_io_cut_linux_test.go": "a93a1abb72c1425e90ee8cd2b6fcf6770cdce7acbfb69a7b5c8ae31fa80e099d",
+    "doc/checkpoint-restore.md": "2b7a5c7eea87ba0234a78a3023a6090fbfce1b2c8b1ca9b2277619f4c0cc6547"
+  },
+  "sandboxd_sha256": "c85d58b2efe8c141394877cc73cdb33cd796d7760770a31c808fbd6c22fb5dce"
+}

@@ -1,0 +1,57 @@
+{
+  "component_source": "hky1999/sandboxd@e3f402c0a18be3ff0b7d90674daae9459464772a",
+  "component_source_not_copied": true,
+  "scope": "historical executed acceptance scripts; fixed private task identities",
+  "files": [
+    {
+      "path": "run-fc-io-cut-image01.py",
+      "sha256": "ff1df25b4e082a28fa0eac71bfa88c10b4f2da4a604e66cdf85c3826ed2d75eb",
+      "bytes": 5278
+    },
+    {
+      "path": "run-fc-io-cut-sdk02.py",
+      "sha256": "9a0bccebe447d90f0e146f55e82341ffb47a7df5705958b6c62e580e632987f6",
+      "bytes": 9360
+    },
+    {
+      "path": "run-fc-direct-io-accept01.py",
+      "sha256": "e92777dfc4a08f054dcd1bf05829d24e9a3916d36551ff198a5a4d9ec819f099",
+      "bytes": 3607
+    },
+    {
+      "path": "guest-direct-io-probe02.py",
+      "sha256": "6fd8b55747cf7f277adb7ff3e82b17c2526b2233e052d3f09252a43393917412",
+      "bytes": 3193
+    },
+    {
+      "path": "sdk-direct-io02.py",
+      "sha256": "03b01af96f23a3cf3f9ba59b531a0309cb02bb3f8faa77776369f8d84ca23879",
+      "bytes": 6951
+    },
+    {
+      "path": "fc-io-cut-sdk02/wait-ready01.py",
+      "sha256": "074ca2d15fe689e4802c8e0e76231b9090e58d4dbb98b30e9b246c7c2239ef2e",
+      "bytes": 5148
+    },
+    {
+      "path": "fc-io-cut-sdk02/sdk-full01.sh",
+      "sha256": "dba2d46a20609fe6935a7befd98b1a6c9f19b00b1cbbcb5a6e85173c0851501e",
+      "bytes": 1192
+    },
+    {
+      "path": "fc-io-cut-sdk02/sdk-performance01.py",
+      "sha256": "14c2e071fb3c17d1ade24503988c4e95f7473adb2cd1f798959a4a1266dde6ed",
+      "bytes": 9992
+    },
+    {
+      "path": "fc-io-cut-sdk02/cross-node01.py",
+      "sha256": "c51559af0f903d00ca2c6eae76f0bfe38a612f0b2ee824a38e599fd2ee95e044",
+      "bytes": 4647
+    },
+    {
+      "path": "qa.sh",
+      "sha256": "d671b07d17a4a0ee37f29a751fa331b69e6baaa728e0311af40416e7f7438203",
+      "bytes": 1079
+    }
+  ]
+}

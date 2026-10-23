@@ -9,7 +9,7 @@
 | 输入 | 本轮固定版本 |
 |---|---|
 | AKernel PR 候选 | 365f7971f895f2b94cf390eefaab436600f005f0 |
-| sandboxd | 10312f28c9b3286545eb2e97070cdd08fe994cee；在候选的 d5acc3b 上仅加 TAP 复位和真实内核回归 |
+| sandboxd | e3f402c0a18be3ff0b7d90674daae9459464772a；继承 TAP 修复，并修正异步 I/O 的盘/内存切面 |
 | 实际 ADX/Execd 发布包 | 6fb53d7331811535b6be5787ba026e03072f427b；不要用 AKernel 源码里的另一个 gitlink 代替 |
 | SDK | 从固定 AKernel 源码构建公共 0.2.0rc3，安装固定 ADX 包内原生 0.1.0rc3 |
 | runsc | 完整 release-20260817.0-akernel.4 包；实际版本输出 .3-2-g7fdef444b108，所有 sidecar 必须配套 |
@@ -28,12 +28,12 @@ git -C "$TASK/AKernel" remote add origin https://github.com/WenYuLuo/akernel.git
 git -C "$TASK/AKernel" fetch --depth=1 origin 365f7971f895f2b94cf390eefaab436600f005f0
 git -C "$TASK/AKernel" checkout --detach FETCH_HEAD
 git -C "$TASK/AKernel" submodule update --init src/sandboxd
-git -C "$TASK/AKernel/src/sandboxd" fetch https://github.com/hky1999/sandboxd.git codex/pr119-tap-reset-20261024
-git -C "$TASK/AKernel/src/sandboxd" checkout --detach 10312f28c9b3286545eb2e97070cdd08fe994cee
+git -C "$TASK/AKernel/src/sandboxd" fetch https://github.com/hky1999/sandboxd.git codex/pr119-fc-drain-order-20261024
+git -C "$TASK/AKernel/src/sandboxd" checkout --detach e3f402c0a18be3ff0b7d90674daae9459464772a
 git -C "$TASK/AKernel/src/sandboxd" show --stat HEAD
 ```
 
-源码覆盖是明确的两文件修复，不声称原始 PR 未修改就通过。需要审阅 ADX 实现时，可另取 `openJiuwen-ai/agent-dx` 的 6fb53d7；镜像本轮使用已固定发布包，不要求先另编译 Rust 控制面。
+源码包含明确的 TAP 修复及盘/内存一致性修复，不声称原始 PR 未修改就通过。源码门、官方 76、双向接管与真实 guest 持续直接 I/O 均通过，见新增修复阶段总结。需要审阅 ADX 实现时，可另取 `openJiuwen-ai/agent-dx` 的 6fb53d7；镜像本轮使用已固定发布包，不要求先另编译 Rust 控制面。
 
 ## 2. 构建、环境与存储
 
@@ -86,7 +86,7 @@ done
 
 ## 4. 结果、局限与下一步
 
-本轮结果见 [10 月 24 日阶段总结](stages/20261024T-pr119-sdk-faults-performance-stage-summary.md)：官方 SDK、双向接管、列出的故障场景及十组 80 次完整状态回滚通过。新版本没有稳定提速；FC 每次约 3 GiB 上传、恢复后再次 Full 保存有约 978 MiB 额外读取。
+当前修复制品结果见 [FC 一致性修复总结](stages/20261024T-pr119-fc-disk-cut-fix-stage-summary.md)；此前版本对照见 [10 月 24 日阶段总结](stages/20261024T-pr119-sdk-faults-performance-stage-summary.md)：官方 SDK、双向接管、列出的故障场景及十组 80 次完整状态回滚通过。新版本没有稳定提速；FC 每次约 3 GiB 上传、恢复后再次 Full 保存有约 978 MiB 额外读取。
 
 JuiceFS 原生克隆与 FC 现有 Go 函数已通过零对象数据传输的 64 MiB 文件能力门，约 10.4 / 4.6 ms 含同步。这不是新的实际运行时布局已验收，更不能与完整 VM checkpoint 数字比较。运行时级原生克隆、远端基线加本地差异、以及本地一致捕获后远端提交均按 [下一阶段计划](plans/20261023T-pr119-sdk-juicefs-clone-local-delta-next-phase-plan.md) 继续。
 

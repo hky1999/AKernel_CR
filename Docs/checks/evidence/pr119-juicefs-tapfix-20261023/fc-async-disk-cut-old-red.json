@@ -1,0 +1,15 @@
+{
+  "rc": 0,
+  "scope": "real sandboxd Handler with deterministic HTTP backend completion fixture; not real KVM/io_uring",
+  "production_source_modified": false,
+  "steps": [
+    {
+      "name": "old-code-deterministic-regression",
+      "rc": 0
+    }
+  ],
+  "status": "old-handler-confirmed-disk-state-mismatch",
+  "old_regression_rc": 1,
+  "regression_sha256": "1105f904a8a26269f108c2d9fed411268cf9450b1240678af71cc03d5c3a534a",
+  "real_kvm_test_performed": false
+}

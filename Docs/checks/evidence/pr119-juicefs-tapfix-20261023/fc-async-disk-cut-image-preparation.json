@@ -1,0 +1,105 @@
+{
+  "rc": 0,
+  "deployed": false,
+  "steps": [
+    {
+      "name": "build-candidate",
+      "rc": 0
+    },
+    {
+      "name": "inspect-candidate",
+      "rc": 0
+    },
+    {
+      "name": "export-candidate",
+      "rc": 0
+    },
+    {
+      "name": "identity-akcr119-20261022-control-plane",
+      "rc": 0
+    },
+    {
+      "name": "import-akcr119-20261022-control-plane",
+      "rc": 0
+    },
+    {
+      "name": "image-table-akcr119-20261022-control-plane",
+      "rc": 0
+    },
+    {
+      "name": "content-akcr119-20261022-control-plane-target",
+      "rc": 0
+    },
+    {
+      "name": "identity-akcr119-20261022-worker",
+      "rc": 0
+    },
+    {
+      "name": "import-akcr119-20261022-worker",
+      "rc": 0
+    },
+    {
+      "name": "image-table-akcr119-20261022-worker",
+      "rc": 0
+    },
+    {
+      "name": "content-akcr119-20261022-worker-target",
+      "rc": 0
+    },
+    {
+      "name": "identity-akcr119-20261022-worker2",
+      "rc": 0
+    },
+    {
+      "name": "import-akcr119-20261022-worker2",
+      "rc": 0
+    },
+    {
+      "name": "image-table-akcr119-20261022-worker2",
+      "rc": 0
+    },
+    {
+      "name": "content-akcr119-20261022-worker2-target",
+      "rc": 0
+    }
+  ],
+  "status": "candidate-built-imported-not-deployed",
+  "image": "localhost/akernel-pr119:365f7971f895-io-cut01",
+  "config_sha256": "6d3ec7472a31e6dab2be5fdb9c63bbea32b547e2bf4eb4a44c950a28f20378b3",
+  "expected_cri_digest": "sha256:d5a31f72c3f32c82a871191bb94e20c876e44708e423c6e542f58ca52d92db13",
+  "mapping": [
+    {
+      "node": "akcr119-20261022-control-plane",
+      "target_digest": "sha256:d5a31f72c3f32c82a871191bb94e20c876e44708e423c6e542f58ca52d92db13",
+      "verified_chain": [
+        "sha256:d5a31f72c3f32c82a871191bb94e20c876e44708e423c6e542f58ca52d92db13"
+      ],
+      "config_sha256": "6d3ec7472a31e6dab2be5fdb9c63bbea32b547e2bf4eb4a44c950a28f20378b3"
+    },
+    {
+      "node": "akcr119-20261022-worker",
+      "target_digest": "sha256:d5a31f72c3f32c82a871191bb94e20c876e44708e423c6e542f58ca52d92db13",
+      "verified_chain": [
+        "sha256:d5a31f72c3f32c82a871191bb94e20c876e44708e423c6e542f58ca52d92db13"
+      ],
+      "config_sha256": "6d3ec7472a31e6dab2be5fdb9c63bbea32b547e2bf4eb4a44c950a28f20378b3"
+    },
+    {
+      "node": "akcr119-20261022-worker2",
+      "target_digest": "sha256:d5a31f72c3f32c82a871191bb94e20c876e44708e423c6e542f58ca52d92db13",
+      "verified_chain": [
+        "sha256:d5a31f72c3f32c82a871191bb94e20c876e44708e423c6e542f58ca52d92db13"
+      ],
+      "config_sha256": "6d3ec7472a31e6dab2be5fdb9c63bbea32b547e2bf4eb4a44c950a28f20378b3"
+    }
+  ],
+  "archive_sha256": "5d1bdf07b416003263c63228dbb118b5d728b6672d29107867059f6023158b9e",
+  "archive_bytes": 724660224,
+  "sandboxd_sha256": "c85d58b2efe8c141394877cc73cdb33cd796d7760770a31c808fbd6c22fb5dce",
+  "source_files": {
+    "pkg/runtime/firecracker/checkpoint_handler.go": "bdfc26133ed33aacddd12e1d95195f495b18f82b9cac73f0d1610f3f5c2cae14",
+    "pkg/runtime/firecracker/checkpoint_io_cut_linux_test.go": "a93a1abb72c1425e90ee8cd2b6fcf6770cdce7acbfb69a7b5c8ae31fa80e099d",
+    "doc/checkpoint-restore.md": "2b7a5c7eea87ba0234a78a3023a6090fbfce1b2c8b1ca9b2277619f4c0cc6547"
+  },
+  "export_note": "expected_cri_digest in this preparation receipt is the tag leaf; actual CRI index is authoritative in fc-async-disk-cut-image-identity.json"
+}
