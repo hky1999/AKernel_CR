@@ -1,0 +1,145 @@
+{
+  "scope": "BareMetal task-only; no raw configuration or credentials; builds and tests remote",
+  "rc": 0,
+  "status": "combined-image-imported-not-deployed",
+  "sandboxd_sha256": "debbf268d1b1a8d4a07b9ac02be7084c3fa53c7cf794f0b1887ec65f7ace313b",
+  "source_files": {
+    "config/config.go": "5ccc4651bc622605ef5b806f2399fbf64df808c4b9eca13544ed6ea49f7a0a51",
+    "doc/checkpoint-restore.md": "1077402f83839155a4d2bde7c21a3710d54d10df80c853316a1599aa5c330e76",
+    "internal/server/server.go": "ce0b7e5361d1554af2020ca9d78a1aeffeb4a18ed2978aa99c5177d6ab41959e",
+    "internal/server/network_retirement.go": "41ea7553cbe1d7a2fe3d814ca6d2f63d2ba15248c3a0fd1a6c46ba0382149431",
+    "internal/server/network_retirement_test.go": "c4b1abeeb92f1914f2e2f91818284b3dc129cf615b1b890faac6336d5453f4d2",
+    "internal/server/network_retirement_acl_linux_test.go": "9270f392ecc28cde205971102dbd43733bf78ce86883d9be073d6a464d8ae27d",
+    "pkg/networkmanager/tap_recovery_test.go": "d780bba037ca89fd335ac5613e12a41d11b4c555ebee54a49a0486e0bbf33290",
+    "pkg/runtime/firecracker/handler.go": "84da1932063eb96fa64983a417468d062f0c3555edd74e42e78717087e69f3d6",
+    "pkg/runtime/firecracker/checkpoint_handler.go": "a5ac5bc999973bf290998245b2e2e3a5662b816fb1533dd4e39b9d7a6e98fd84",
+    "pkg/runtime/firecracker/writable_directory_linux.go": "d3eb1a9fc5ba250f1302ebfe82d4be65df7369d1908d137399dc03ca6242fc23",
+    "pkg/runtime/firecracker/writable_directory_linux_test.go": "800db9b5b009dabebf9e4003642dd8d3f932b3c26682f3fc8e7616ceff8acd70"
+  },
+  "image": "localhost/akernel-pr119:365f7971f895-native-rejoin02",
+  "config_sha256": "6b4f0d927eefe555791ef2ca42dfaa2fbf6322c8ad3c63b2bc396baf699324fc",
+  "expected_cri_digest": "sha256:53669406ddc4f00905dca9eaef2d619a5b0a85046e1d0a5f0511153ef38708e5",
+  "archive_sha256": "78d504d9ec989e317d1fe42c5309b3b1fe2c5fea6efa1633344397fbc4245eba",
+  "archive_bytes": 794235904,
+  "steps": [
+    {
+      "name": "build",
+      "rc": 0
+    },
+    {
+      "name": "inspect",
+      "rc": 0
+    },
+    {
+      "name": "export",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-control-plane-identity",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-control-plane-import",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-control-plane-cri",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-control-plane-index",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-control-plane-leaf",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-control-plane-config",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-control-plane-tags",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-worker-identity",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-worker-import",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-worker-cri",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-worker-index",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-worker-leaf",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-worker-config",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-worker-tags",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-worker2-identity",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-worker2-import",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-worker2-cri",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-worker2-index",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-worker2-leaf",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-worker2-config",
+      "rc": 0
+    },
+    {
+      "name": "akcr119-20261022-worker2-tags",
+      "rc": 0
+    }
+  ],
+  "mapping": [
+    {
+      "node": "akcr119-20261022-control-plane",
+      "cri_digest": "sha256:53669406ddc4f00905dca9eaef2d619a5b0a85046e1d0a5f0511153ef38708e5",
+      "leaf_digest": "sha256:2c28b22e08d16d52d4471d65efe2319b9cb09f6fcaac43a4405b422c7129c036",
+      "config_sha256": "6b4f0d927eefe555791ef2ca42dfaa2fbf6322c8ad3c63b2bc396baf699324fc",
+      "platform": "linux/amd64"
+    },
+    {
+      "node": "akcr119-20261022-worker",
+      "cri_digest": "sha256:53669406ddc4f00905dca9eaef2d619a5b0a85046e1d0a5f0511153ef38708e5",
+      "leaf_digest": "sha256:2c28b22e08d16d52d4471d65efe2319b9cb09f6fcaac43a4405b422c7129c036",
+      "config_sha256": "6b4f0d927eefe555791ef2ca42dfaa2fbf6322c8ad3c63b2bc396baf699324fc",
+      "platform": "linux/amd64"
+    },
+    {
+      "node": "akcr119-20261022-worker2",
+      "cri_digest": "sha256:53669406ddc4f00905dca9eaef2d619a5b0a85046e1d0a5f0511153ef38708e5",
+      "leaf_digest": "sha256:2c28b22e08d16d52d4471d65efe2319b9cb09f6fcaac43a4405b422c7129c036",
+      "config_sha256": "6b4f0d927eefe555791ef2ca42dfaa2fbf6322c8ad3c63b2bc396baf699324fc",
+      "platform": "linux/amd64"
+    }
+  ]
+}

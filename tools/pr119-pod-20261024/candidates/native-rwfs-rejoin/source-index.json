@@ -1,0 +1,95 @@
+{
+  "scope": "原任务执行源码；按 README 区分历史恢复驱动与新环境直接测试入口；不含产品源码或凭据",
+  "files": [
+    {
+      "file": "README.md",
+      "sha256": "69747ea25710250154af096a1b3b5b9a87bea6c5e28a5373b3456d33d0787f73",
+      "bytes": 4200
+    },
+    {
+      "file": "collect-reports.py",
+      "sha256": "72d20162945522abd6a4b4231f6f41fa4ca2565f56241c720942cc38af6ad0c0",
+      "bytes": 3948
+    },
+    {
+      "file": "complete-in-place04.py",
+      "sha256": "ad7e946d4c7f6ef2555e9600e6e7fe848c3dac668156318246d7f1151baef329",
+      "bytes": 6452
+    },
+    {
+      "file": "executed/sdk-full01.sh",
+      "sha256": "97da88948252a6e990474459b89b7c5fa52e4efb90e7aa420fe9694577dfdb4a",
+      "bytes": 1201
+    },
+    {
+      "file": "executed/wait-ready01.py",
+      "sha256": "b6694687ea09f7541fa60caababc5467ed07a03d30ee5861d40f9200f5ff6eb3",
+      "bytes": 5148
+    },
+    {
+      "file": "final-state01.py",
+      "sha256": "4569ad7f5fa51dd19606af2681800ed62012923ab9225b82f2c9340aa064ba22",
+      "bytes": 3964
+    },
+    {
+      "file": "prepare-image01.py",
+      "sha256": "3ffb7e8dba38dc9a83177da3f20fb1ca107041e6d37d8fc839fa6323f7a627f6",
+      "bytes": 7109
+    },
+    {
+      "file": "prepare-image02.py",
+      "sha256": "95d591446d88b1fa6be9476a14abe99770eb1220969a898e0e46ceed6e72fb10",
+      "bytes": 7109
+    },
+    {
+      "file": "qa.sh",
+      "sha256": "cd7ce1429d5326b7911a699a01a70aa3f8d7870decbc05c8bb29d8744802345b",
+      "bytes": 1541
+    },
+    {
+      "file": "rescue-in-place02.py",
+      "sha256": "41a2069488e09800bda819c514ec6aaa08ab2fc545c9a2a1201e3df38616788b",
+      "bytes": 9571
+    },
+    {
+      "file": "rescue-in-place03.py",
+      "sha256": "d46db84690e629eb680c8bb8efc9ff3f635e7e906ce94203e48d8bf2996ad6ec",
+      "bytes": 10012
+    },
+    {
+      "file": "run-forced-bidirectional02.py",
+      "sha256": "9a52d63dba9f6e441678e7f5eedb52b52ac4f33630e033709597ad466a77ccfc",
+      "bytes": 7667
+    },
+    {
+      "file": "run-full-sdk02.py",
+      "sha256": "c5a07a67e36dbce6d038782829b59e33758e8c06050f08aa87dcc864bbcf4aec",
+      "bytes": 11315
+    },
+    {
+      "file": "run-native-rwfs-rejoin-directio02.py",
+      "sha256": "46fa40c198042d3884ca8e7a69cd443e3e6de044cbd1f03f9171fa22ab749d14",
+      "bytes": 3640
+    },
+    {
+      "file": "run-native-rwfs-rejoin-postsdk02.py",
+      "sha256": "96e742fba2e21a158db721c474a8abcd38d2a487b152eda3e27609e5c78a558f",
+      "bytes": 2720
+    },
+    {
+      "file": "sdk-forced-failover02.py",
+      "sha256": "fec0f3838f31f145a5c0fd84aa467d3f35a352b4cf9cdadb571070e84ef36855",
+      "bytes": 19626
+    },
+    {
+      "file": "sdk-writable-performance01.py",
+      "sha256": "c4eb1fe1617f782ecbe5f5555d68e6996956fb6b4ec061f49c5eb548d40d4862",
+      "bytes": 11762
+    },
+    {
+      "file": "sdk-writable-restart01.py",
+      "sha256": "5cf5f4e620a3d0fda71cc43c7f71e6ba1c23da87f67c1d6ace23f9b3d89d0b68",
+      "bytes": 13023
+    }
+  ]
+}

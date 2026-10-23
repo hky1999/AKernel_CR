@@ -1,0 +1,12 @@
+{
+  "rc": 1,
+  "status": "failed",
+  "steps": [
+    {
+      "name": "source-quality",
+      "rc": 1
+    }
+  ],
+  "error_type": "RuntimeError",
+  "error": "QA failed, retain outputs"
+}

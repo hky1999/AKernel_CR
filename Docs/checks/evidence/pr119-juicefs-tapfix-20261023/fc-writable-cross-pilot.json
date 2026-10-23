@@ -1,0 +1,40 @@
+{
+  "rc": 1,
+  "status": "running-shared-io-cut-sdk01-firecracker-cross-1",
+  "coverage": {
+    "runsc": [
+      [
+        "akcr119-20261022-worker",
+        "akcr119-20261022-worker2"
+      ],
+      [
+        "akcr119-20261022-worker2",
+        "akcr119-20261022-worker"
+      ]
+    ]
+  },
+  "attempts": [
+    {
+      "job": "shared-io-cut-sdk01-runsc-cross-1",
+      "runtime": "runsc",
+      "source": "akcr119-20261022-worker2",
+      "target": "akcr119-20261022-worker",
+      "checkpoint_ms": 1451,
+      "first_file_ms": 1213.040114,
+      "full_memory_ms": 3308.825561
+    },
+    {
+      "job": "shared-io-cut-sdk01-runsc-cross-2",
+      "runtime": "runsc",
+      "source": "akcr119-20261022-worker",
+      "target": "akcr119-20261022-worker2",
+      "checkpoint_ms": 1339,
+      "first_file_ms": 1472.786741,
+      "full_memory_ms": 3877.720775
+    }
+  ],
+  "cross_node_accepted": false,
+  "error_type": "RuntimeError",
+  "error": "shared-io-cut-sdk01-firecracker-cross-1 failed; retain failed sandbox and logs",
+  "completed_unix": 1792789582.6648152
+}

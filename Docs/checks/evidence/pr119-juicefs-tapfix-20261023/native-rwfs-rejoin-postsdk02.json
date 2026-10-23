@@ -1,0 +1,26 @@
+{
+  "rc": 0,
+  "status": "continuous-io-and-sandboxd-restart-passed",
+  "restart": {
+    "firecracker": {
+      "rc": 0,
+      "runtime": "firecracker",
+      "restart": "sandboxd",
+      "diagnostic_not_performance": true,
+      "gc_delete_race_tested": false,
+      "fault_mode": "owned-role-sigkill",
+      "old_checkpoint_reader_observed": true,
+      "protected_artifact_count": 2
+    },
+    "runsc": {
+      "rc": 0,
+      "runtime": "runsc",
+      "restart": "sandboxd",
+      "diagnostic_not_performance": true,
+      "gc_delete_race_tested": false,
+      "fault_mode": "owned-role-sigkill",
+      "old_checkpoint_reader_observed": false,
+      "protected_artifact_count": 2
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "scope": "BareMetal task-only; no raw configuration or credentials; builds and tests remote",
+  "rc": 0,
+  "status": "source-rescued-with-same-pod-and-tested-runtime-override",
+  "bootstrap_changed": true,
+  "source_stopped": true,
+  "source_service_restarted": true,
+  "all_pod_uids_unchanged": true,
+  "target_elf_unchanged": true,
+  "target_service_not_stopped": true,
+  "manual_pool_reset": false,
+  "candidate_sha256": "debbf268d1b1a8d4a07b9ac02be7084c3fa53c7cf794f0b1887ec65f7ace313b",
+  "image_base_unchanged": true,
+  "steps": [
+    {
+      "name": "pods-before",
+      "rc": 0
+    },
+    {
+      "name": "old-elf-akernel-node-2knkm",
+      "rc": 0
+    },
+    {
+      "name": "prepare-path-akernel-node-2knkm",
+      "rc": 0
+    },
+    {
+      "name": "verify-candidate-akernel-node-2knkm",
+      "rc": 0
+    },
+    {
+      "name": "old-elf-akernel-node-g524h",
+      "rc": 0
+    },
+    {
+      "name": "prepare-path-akernel-node-g524h",
+      "rc": 0
+    },
+    {
+      "name": "verify-candidate-akernel-node-g524h",
+      "rc": 0
+    },
+    {
+      "name": "bootstrap-before-private",
+      "rc": 0
+    },
+    {
+      "name": "bootstrap-replace",
+      "rc": 0
+    },
+    {
+      "name": "source-runtime-guard",
+      "rc": 0
+    },
+    {
+      "name": "source-stop-sandboxd",
+      "rc": 0
+    },
+    {
+      "name": "source-install-elf",
+      "rc": 0
+    },
+    {
+      "name": "source-start-sandboxd",
+      "rc": 0
+    },
+    {
+      "name": "pods-after",
+      "rc": 0
+    },
+    {
+      "name": "source-new-elf",
+      "rc": 0
+    }
+  ]
+}

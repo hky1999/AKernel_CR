@@ -1,0 +1,81 @@
+{
+  "source_failure_reason": "sandboxd initialization fails: active pooled TAP lease has no device; mount checks pass",
+  "events": [
+    {
+      "event": "source_stopped",
+      "unix_ns": 1792789315999226178,
+      "node": "akcr119-20261022-worker2"
+    },
+    {
+      "event": "disk_rwfs_verified",
+      "unix_ns": 1792789336797278588
+    },
+    {
+      "event": "public_sdk_failover_passed",
+      "unix_ns": 1792789339556289572,
+      "source_node": "akcr119-20261022-worker2",
+      "target_node": "akcr119-20261022-worker",
+      "checkpoint_until_http_completed_ms": 5282,
+      "read_trigger_until_first_verified_file_ms": 1165.155331,
+      "read_trigger_until_full_memory_verified_ms": 3464.216336,
+      "fault_until_full_memory_verified_ms": 34135.622212,
+      "memory_bytes": 536870912,
+      "explicit_reload_called": false,
+      "source_offline": true
+    },
+    {
+      "event": "source_restarted",
+      "unix_ns": 1792789340519438400,
+      "node": "akcr119-20261022-worker2"
+    },
+    {
+      "event": "source_health_check_failed",
+      "unix_ns": 1792789582588855902,
+      "error_type": "TimeoutError",
+      "error": "restarted source did not pass fresh service and mount checks"
+    }
+  ],
+  "source_service": {
+    "sandboxd": {
+      "MainPID": "0",
+      "ExecMainStatus": "1",
+      "ActiveState": "activating",
+      "SubState": "auto-restart",
+      "selected_errors": []
+    },
+    "adx": {
+      "MainPID": "126",
+      "ExecMainStatus": "0",
+      "ActiveState": "active",
+      "SubState": "running",
+      "selected_errors": []
+    },
+    "/mnt/akernel-shared": {
+      "rc": 0,
+      "mount": "fuse.juicefs /mnt/akernel-shared",
+      "exists": true
+    },
+    "/home/akernel/filestore": {
+      "rc": 0,
+      "mount": "xfs    /home/akernel",
+      "exists": true
+    },
+    "/mnt/akernel-shared/akernel/fc-rwfs-native-qbGAw9tp01": {
+      "rc": 0,
+      "mount": "fuse.juicefs /mnt/akernel-shared",
+      "exists": true
+    }
+  },
+  "remaining": {
+    "akernel-node-cvcvq-remaining.stdout": {
+      "runtimes": [],
+      "retained_rwfs_directories": 1,
+      "retained_overlay_files": 1
+    },
+    "akernel-node-sdhvt-remaining.stdout": {
+      "runtimes": [],
+      "retained_rwfs_directories": 1,
+      "retained_overlay_files": 1
+    }
+  }
+}

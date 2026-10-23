@@ -1,0 +1,93 @@
+{
+  "rc": 0,
+  "status": "same-pod-abrupt-exit-retirement-and-bidirectional-sdk-passed",
+  "attempts": [
+    {
+      "name": "shared-native-rejoin-force02-1",
+      "source": "akcr119-20261022-worker2",
+      "target": "akcr119-20261022-worker",
+      "checkpoint_ms": 5601,
+      "first_file_ms": 772.536428,
+      "full_memory_ms": 3060.769253,
+      "proof": {
+        "retired_by_product": true,
+        "same_pod_uid": true,
+        "old_bundle_removed": true,
+        "manual_pool_reset": false
+      }
+    },
+    {
+      "name": "shared-native-rejoin-force02-2",
+      "source": "akcr119-20261022-worker",
+      "target": "akcr119-20261022-worker2",
+      "checkpoint_ms": 5683,
+      "first_file_ms": 53.55071,
+      "full_memory_ms": 2346.795324,
+      "proof": {
+        "retired_by_product": true,
+        "same_pod_uid": true,
+        "old_bundle_removed": true,
+        "manual_pool_reset": false
+      }
+    }
+  ],
+  "coverage": [
+    [
+      "akcr119-20261022-worker",
+      "akcr119-20261022-worker2"
+    ],
+    [
+      "akcr119-20261022-worker2",
+      "akcr119-20261022-worker"
+    ]
+  ],
+  "candidate_sha256": "debbf268d1b1a8d4a07b9ac02be7084c3fa53c7cf794f0b1887ec65f7ace313b",
+  "full_official_sdk_not_run_here": true,
+  "runtime_override": true,
+  "steps": [
+    {
+      "name": "ready-1-pods-private",
+      "rc": 0
+    },
+    {
+      "name": "ready-1-actual-akcr119-20261022-worker",
+      "rc": 0
+    },
+    {
+      "name": "ready-1-actual-akcr119-20261022-worker2",
+      "rc": 0
+    },
+    {
+      "name": "shared-native-rejoin-force02-1",
+      "rc": 0
+    },
+    {
+      "name": "ready-2-pods-private",
+      "rc": 0
+    },
+    {
+      "name": "ready-2-actual-akcr119-20261022-worker",
+      "rc": 0
+    },
+    {
+      "name": "ready-2-actual-akcr119-20261022-worker2",
+      "rc": 0
+    },
+    {
+      "name": "shared-native-rejoin-force02-2",
+      "rc": 0
+    },
+    {
+      "name": "ready-final-pods-private",
+      "rc": 0
+    },
+    {
+      "name": "ready-final-actual-akcr119-20261022-worker",
+      "rc": 0
+    },
+    {
+      "name": "ready-final-actual-akcr119-20261022-worker2",
+      "rc": 0
+    }
+  ]
+}

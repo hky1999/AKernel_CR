@@ -1,0 +1,6 @@
+# 仅是实验片段：合并到已有同名小节，不能替换整个 sandboxd 配置。
+# 启用前替换 TASK_ID，并在真实 JuiceFS 挂载中创建本任务独占目录。
+# 不改内存、ROFS、gVisor filestore 或已有资源隔离配置。
+[plugin.runtime.firecracker]
+writable_storage_dir = "/mnt/akernel-shared/experiments/TASK_ID/fc-rwfs"
+writable_storage_filesystem = "fuse.juicefs"

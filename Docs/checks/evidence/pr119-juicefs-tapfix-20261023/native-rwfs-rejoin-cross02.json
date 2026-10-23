@@ -1,0 +1,65 @@
+{
+  "rc": 0,
+  "status": "bidirectional-sdk-failover-passed",
+  "coverage": {
+    "runsc": [
+      [
+        "akcr119-20261022-worker",
+        "akcr119-20261022-worker2"
+      ],
+      [
+        "akcr119-20261022-worker2",
+        "akcr119-20261022-worker"
+      ]
+    ],
+    "firecracker": [
+      [
+        "akcr119-20261022-worker",
+        "akcr119-20261022-worker2"
+      ],
+      [
+        "akcr119-20261022-worker2",
+        "akcr119-20261022-worker"
+      ]
+    ]
+  },
+  "attempts": [
+    {
+      "job": "shared-native-rejoin-sdk01-runsc-cross-1",
+      "runtime": "runsc",
+      "source": "akcr119-20261022-worker2",
+      "target": "akcr119-20261022-worker",
+      "checkpoint_ms": 1214,
+      "first_file_ms": 2346.745436,
+      "full_memory_ms": 4393.693699
+    },
+    {
+      "job": "shared-native-rejoin-sdk01-runsc-cross-2",
+      "runtime": "runsc",
+      "source": "akcr119-20261022-worker",
+      "target": "akcr119-20261022-worker2",
+      "checkpoint_ms": 1095,
+      "first_file_ms": 1134.797261,
+      "full_memory_ms": 3020.006703
+    },
+    {
+      "job": "shared-native-rejoin-sdk01-firecracker-cross-1",
+      "runtime": "firecracker",
+      "source": "akcr119-20261022-worker2",
+      "target": "akcr119-20261022-worker",
+      "checkpoint_ms": 5078,
+      "first_file_ms": 767.616201,
+      "full_memory_ms": 3061.292931
+    },
+    {
+      "job": "shared-native-rejoin-sdk01-firecracker-cross-2",
+      "runtime": "firecracker",
+      "source": "akcr119-20261022-worker",
+      "target": "akcr119-20261022-worker2",
+      "checkpoint_ms": 5818,
+      "first_file_ms": 59.254359,
+      "full_memory_ms": 2348.252923
+    }
+  ],
+  "cross_node_accepted": true
+}

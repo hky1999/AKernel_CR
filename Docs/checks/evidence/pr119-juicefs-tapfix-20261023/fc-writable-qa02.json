@@ -1,0 +1,19 @@
+{
+  "rc": 0,
+  "status": "source-gates-passed-not-sdk",
+  "steps": [
+    {
+      "name": "source-quality",
+      "rc": 0
+    }
+  ],
+  "source_files": {
+    "config/config.go": "5ccc4651bc622605ef5b806f2399fbf64df808c4b9eca13544ed6ea49f7a0a51",
+    "doc/checkpoint-restore.md": "2bd692c1c5b70ab90a6a6096967c98000a711bf660fcd1fa3e539675d738e9c6",
+    "pkg/runtime/firecracker/handler.go": "9f1b3b9a8f4911c626ba115c14a85a9b79a84d708cd80caff459afba47e17916",
+    "pkg/runtime/firecracker/checkpoint_handler.go": "9e39eec98d820da45f7632ff467f7aceeda5a8abeb7c4ccf9df9cf66672bcaab",
+    "pkg/runtime/firecracker/writable_directory_linux.go": "48cdcd45065645acff63b266965fec2a231b521e8938c64b042e241e0fd09c22",
+    "pkg/runtime/firecracker/writable_directory_linux_test.go": "cdf0a3806c1512063313e4068e0007c809a43ac49e065fe588dd323f15f8ed87"
+  },
+  "sandboxd_sha256": "efa639832d602aced279071deacf81fb334c0adba1d401883c6fa43e5170a3f9"
+}

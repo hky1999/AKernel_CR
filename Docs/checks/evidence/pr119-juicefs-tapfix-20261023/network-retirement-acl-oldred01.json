@@ -1,0 +1,7 @@
+{
+  "scope": "BareMetal task-only; no raw configuration or credentials; builds and tests remote",
+  "rc": 0,
+  "status": "old-code-confirmed-retired-owner-acl-startup-failure",
+  "test_rc": 1,
+  "test_source_sha256": "9270f392ecc28cde205971102dbd43733bf78ce86883d9be073d6a464d8ae27d"
+}

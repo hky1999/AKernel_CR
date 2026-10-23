@@ -1,5 +1,15 @@
 # CrossNode 源码交付版本台账
 
+## 2026-10-24：可选 FC 原生 JuiceFS 私有盘完成功能验收
+
+sandboxd fdb145cf51f340dc46ebea3713c342b4ec93b127（父 e3f402c），分支 codex/pr119-native-rwfs-rejoin-20261024，已推 hky1999/sandboxd 并 ls-remote 核对。11 文件 SHA 与远端 qa02 一致；实际 ELF debbf268… 为提交前构建，镜像 native-rejoin02 / CRI 53669406…，没有重建冒充。其他运行时/SDK/ADX 载荷与基础清单相同。源码、实际制品、基础默认复现和可选实验分别固定。
+
+全仓 fmt/vet/test、相关三轮回归及 server/network/FC race、生产构建通过；官方 76 无跳过，两运行时各三轮状态与双向接管、FC 相同 Pod 两方向即时节点退出、5 次保存/4 次恢复的真实直接 I/O、两运行时 sandboxd SIGKILL 后原运行实例/未保存状态/两份保护引用及后续保存恢复均通过。FC 崩溃时旧输入仍开，gVisor 此时已读完，不外推其尚未结束读取的边界。
+
+FC 实验将私有 overlay.ext4 放 JuiceFS；gVisor 私有层仍本地，内存和 ROFS 机制不变。盘保存 15/14/15 ms、完整 Full 保存仍 5185/7689/7856 ms，每次约 2 GiB PUT；一实例三轮，非后端交替性能结论，也无 SOTA 结论。普通运行写入会进 S3。后端交替、gVisor 原生克隆、本地差异布局、生产容量/孤儿回收和真实故障域仍未完成，不改默认后端。
+
+Changelog：新增独立实验清单、中文配置片段/阶段总结/七节检查、白名单证据和历史执行脚本。`delivery/pr119-native-rwfs-20261024.json` 与基础 `pr119-20261024.json` 分开，历史五个 gitlink 不混改；产品源码只从组件提交获取。最终 Environment/运行时进程为 0，原临时 bootstrap 恢复；同一份初始失败私有盘保留，宿主约 683.0 GiB 可用。全部编译测试仅远端独占环境，旧环境/共享服务/宿主参数未改。没有凭据、原始 OCI/服务日志或二进制进入父仓；新环境不需重放历史坏版本，按工具 README 选择直接测试入口。
+
 ## 2026-10-24 后续：FC 异步盘一致性修复已完成源码和真实 SDK 验收
 
 sandboxd e3f402c0a18be3ff0b7d90674daae9459464772a（父 10312f2），分支 codex/pr119-fc-drain-order-20261024，已普通 push 并核对远端。三文件将盘复制放到 VMM 保存后、盘失败时失效已消耗的内存基线并更新计时/合同；源码与远端已测文件 SHA 一致，实际 ELF c85d58b2efe8c141394877cc73cdb33cd796d7760770a31c808fbd6c22fb5dce 为提交整理前构建。没有重新发布 runtime bundle。

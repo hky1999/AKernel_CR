@@ -1,0 +1,54 @@
+{
+  "scope": "BareMetal task-only; no raw configuration or credentials; builds and tests remote",
+  "rc": 0,
+  "status": "both-runtime-overrides-ready-for-forced-sdk",
+  "target_service_stopped": true,
+  "target_service_restarted": true,
+  "all_pod_uids_unchanged": true,
+  "manual_pool_reset": false,
+  "expected_image_unchanged": true,
+  "source_service_not_stopped": true,
+  "candidate_sha256": "debbf268d1b1a8d4a07b9ac02be7084c3fa53c7cf794f0b1887ec65f7ace313b",
+  "steps": [
+    {
+      "name": "pods-before",
+      "rc": 0
+    },
+    {
+      "name": "elf-before-akcr119-20261022-worker",
+      "rc": 0
+    },
+    {
+      "name": "elf-before-akcr119-20261022-worker2",
+      "rc": 0
+    },
+    {
+      "name": "target-runtime-guard",
+      "rc": 0
+    },
+    {
+      "name": "target-stop",
+      "rc": 0
+    },
+    {
+      "name": "target-install",
+      "rc": 0
+    },
+    {
+      "name": "target-start",
+      "rc": 0
+    },
+    {
+      "name": "elf-after-akcr119-20261022-worker",
+      "rc": 0
+    },
+    {
+      "name": "elf-after-akcr119-20261022-worker2",
+      "rc": 0
+    },
+    {
+      "name": "pods-after",
+      "rc": 0
+    }
+  ]
+}

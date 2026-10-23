@@ -1,0 +1,15 @@
+{
+  "rc": 0,
+  "status": "real-guest-direct-io-stress-passed",
+  "sdk_job_started": true,
+  "data": {
+    "rc": 0,
+    "status": "real-guest-concurrent-direct-io-and-sdk-reload-passed",
+    "scope": "real FC guest direct-write/sync/readback under SDK snapshots; not deterministic io_uring stall injection and not a latency benchmark",
+    "runtime": "firecracker",
+    "cross_node_branch": true,
+    "checkpoint_operations": 5,
+    "reload_operations": 4,
+    "resources_deleted": true
+  }
+}

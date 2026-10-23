@@ -1,0 +1,91 @@
+{
+  "schema": "akernel-pr119-native-rwfs-experiment/v1",
+  "date": "2026-10-24",
+  "language": "zh-CN",
+  "status": "可选 FC 实验布局功能门通过；性能裁决及生产晋升未完成",
+  "base_manifest": "pr119-20261024.json @ parent 97e5d1341608fc10a1585b06811162422acf1cad",
+  "existing_gitlinks": "沿用父仓历史五个 gitlink；实验源码另按此清单获取，不单独改一个组件指针混搭",
+  "source": {
+    "akernel": {
+      "repository": "https://github.com/WenYuLuo/akernel.git",
+      "commit": "365f7971f895f2b94cf390eefaab436600f005f0"
+    },
+    "sandboxd": {
+      "repository": "https://github.com/hky1999/sandboxd.git",
+      "branch": "codex/pr119-native-rwfs-rejoin-20261024",
+      "commit": "fdb145cf51f340dc46ebea3713c342b4ec93b127",
+      "base": "e3f402c0a18be3ff0b7d90674daae9459464772a",
+      "scope": "可选 FC 私有可写盘目录与归属保护；退出网卡租约与网络规则恢复；不改默认后端"
+    },
+    "adx_actual_release_source": {
+      "repository": "https://github.com/openJiuwen-ai/agent-dx.git",
+      "commit": "6fb53d7331811535b6be5787ba026e03072f427b",
+      "note": "镜像使用固定发布包，不能拿 AKernel src/agent-dx 的其他 gitlink 代替"
+    }
+  },
+  "unchanged_assets": "SDK、ADX 发布包、完整 runsc bundle、VMM/内核/initrd/EROFS 与 base_manifest 相同；runtime-versions.env 未变",
+  "measured_payload_sha256": {
+    "sandboxd": "debbf268d1b1a8d4a07b9ac02be7084c3fa53c7cf794f0b1887ec65f7ace313b",
+    "runsc_launcher": "59cdd94eb03dc33a6d4f0a085d76d0cb67bd830caceaa899dfeeebc5b0165656",
+    "firecracker": "41133331123c05d635a1a4a61a1eb41f078e9a216b5a197c1398e4e64e957cbf",
+    "guest_initrd": "360a0b3bc1faf51fefd2e389208622d1343e8e020aa271a306cf8fbf698cad1b",
+    "guest_kernel": "78c482cb6904f12c7de16e434de3e8163e9bb7d8abac982a508250ca59abe9af",
+    "runtime_erofs": "2ecf4e0144686702613e6649d200b175d52d463d55cddba2ee0c36922c95d1a3",
+    "execd": "8f33b59d2be6340a4dd0d5165a65848cc0fd9a483a6bb1e72f693e3b4aa05ce0"
+  },
+  "measured_elf_built_before_commit": true,
+  "source_proof": "11 文件 SHA 与 native-rwfs-rejoin-qa02.json 一致；提交整理后没有重新构建或换实际字节",
+  "image": {
+    "tag": "localhost/akernel-pr119:365f7971f895-native-rejoin02",
+    "actual_cri_digest": "sha256:53669406ddc4f00905dca9eaef2d619a5b0a85046e1d0a5f0511153ef38708e5",
+    "oci_leaf_digest": "sha256:2c28b22e08d16d52d4471d65efe2319b9cb09f6fcaac43a4405b422c7129c036",
+    "config_sha256": "6b4f0d927eefe555791ef2ca42dfaa2fbf6322c8ad3c63b2bc396baf699324fc",
+    "oci_archive_sha256": "78d504d9ec989e317d1fe42c5309b3b1fe2c5fea6efa1633344397fbc4245eba",
+    "oci_archive_bytes": 794235904,
+    "published_registry": false,
+    "temporary_bootstrap_override_removed": true
+  },
+  "storage": {
+    "firecracker_guest": "ext4 + virtio-blk；磁盘格式不变",
+    "firecracker_private_runtime_file": "任务独占 JuiceFS 目录中的 overlay.ext4；普通运行写入也进入对象存储",
+    "gvisor_private_runtime": "保持本地 XFS 试验 profile；未接入 gVisor 的原生克隆",
+    "ordinary_file_memory_restore": "私有映射 JuiceFS checkpoint",
+    "virtiofs_sharedfile_live_memory": "本地 XFS memory.live",
+    "checkpoint_memory": "Full，配置内存 2 GiB；未开启新增量路线",
+    "rofs": "原 Nydus/EROFS 路线",
+    "metadata": "PostgreSQL",
+    "objects": "本任务 Ceph RGW S3",
+    "juicefs_version": "1.4.1+2026-07-30.0b90c7db",
+    "block_kib": 1024,
+    "cache_mib": 4096,
+    "compression": "none",
+    "writeback": false,
+    "profile_fragment": "deploy/experiments/pr119-fc-native-rwfs.toml"
+  },
+  "accepted": {
+    "source_quality_gates": true,
+    "official_sdk_cases": 76,
+    "official_sdk_skipped": 0,
+    "state_rounds_per_runtime": 3,
+    "bidirectional_normal_failover_both_runtimes": true,
+    "firecracker_same_pod_abrupt_node_failure_both_directions": true,
+    "real_guest_direct_io_checkpoints": 5,
+    "real_guest_direct_io_reloads": 4,
+    "sandboxd_sigkill_both_runtimes_vm_and_live_state_preserved": true,
+    "open_checkpoint_input_observed_at_sandboxd_crash": {
+      "firecracker": true,
+      "gvisor": false
+    }
+  },
+  "not_accepted": [
+    "后端交替配对性能；当前是各一实例连续三轮试跑",
+    "gVisor 私有可写层原生 JuiceFS 克隆",
+    "远端只读基线加本地差异层",
+    "全新主机一键重放；历史执行脚本仍需按任务身份适配",
+    "真实双物理机与存储 HA/断电",
+    "生产后端容量准入、Pod 状态清理后的孤儿回收及内部删除并发剩余",
+    "默认后端晋升或超过 E2B/AgentEnv/CubeSandbox 的结论"
+  ],
+  "evidence_root": "Docs/checks/evidence/pr119-juicefs-tapfix-20261023",
+  "acceptance_document": "Docs/checks/20261024T-pr119-native-rwfs-full-sdk-acceptance.md"
+}

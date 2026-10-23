@@ -1,0 +1,43 @@
+{
+  "rc": 0,
+  "read_only": true,
+  "environment_count": 0,
+  "business_pods_current_image": 5,
+  "nodes": [
+    {
+      "running_elf_sha256": "debbf268d1b1a8d4a07b9ac02be7084c3fa53c7cf794f0b1887ec65f7ace313b",
+      "runtime_processes": 0,
+      "filesystems": {
+        "private_filestore": "xfs",
+        "shared": "fuse.juicefs",
+        "native_rwfs": "fuse.juicefs"
+      },
+      "retained_rwfs_directories": 1,
+      "retained_directory_hashes": [
+        "30386ede5c13fd3d7640046c7209a7f6ead547bda88cd092706b4aaab99dfb67"
+      ],
+      "node": "akcr119-20261022-worker",
+      "routable": true,
+      "available": true
+    },
+    {
+      "running_elf_sha256": "debbf268d1b1a8d4a07b9ac02be7084c3fa53c7cf794f0b1887ec65f7ace313b",
+      "runtime_processes": 0,
+      "filesystems": {
+        "private_filestore": "xfs",
+        "shared": "fuse.juicefs",
+        "native_rwfs": "fuse.juicefs"
+      },
+      "retained_rwfs_directories": 1,
+      "retained_directory_hashes": [
+        "30386ede5c13fd3d7640046c7209a7f6ead547bda88cd092706b4aaab99dfb67"
+      ],
+      "node": "akcr119-20261022-worker2",
+      "routable": true,
+      "available": true
+    }
+  ],
+  "temporary_bootstrap_override_present": false,
+  "available_host_bytes": 733385678848,
+  "status": "no-active-environments-or-runtime-processes; retained-old-rwfs-explicit"
+}

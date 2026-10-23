@@ -1,0 +1,51 @@
+{
+  "scope": "BareMetal task-only; no raw configuration or credentials; builds and tests remote",
+  "rc": 1,
+  "status": "failed",
+  "error_type": "RuntimeError",
+  "error": "private bootstrap syntax failed",
+  "bootstrap_changed": false,
+  "source_stopped": false,
+  "steps": [
+    {
+      "name": "pods-before",
+      "rc": 0
+    },
+    {
+      "name": "old-elf-akernel-node-2knkm",
+      "rc": 0
+    },
+    {
+      "name": "prepare-path-akernel-node-2knkm",
+      "rc": 0
+    },
+    {
+      "name": "copy-akernel-node-2knkm",
+      "rc": 0
+    },
+    {
+      "name": "verify-candidate-akernel-node-2knkm",
+      "rc": 0
+    },
+    {
+      "name": "old-elf-akernel-node-g524h",
+      "rc": 0
+    },
+    {
+      "name": "prepare-path-akernel-node-g524h",
+      "rc": 0
+    },
+    {
+      "name": "copy-akernel-node-g524h",
+      "rc": 0
+    },
+    {
+      "name": "verify-candidate-akernel-node-g524h",
+      "rc": 0
+    },
+    {
+      "name": "bootstrap-before-private",
+      "rc": 0
+    }
+  ]
+}

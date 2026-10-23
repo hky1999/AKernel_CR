@@ -1,0 +1,7 @@
+{
+  "rc": 1,
+  "status": "failed",
+  "steps": [],
+  "error_type": "RuntimeError",
+  "error": "SDK dependency failed; retain evidence, no new action"
+}

@@ -1,0 +1,43 @@
+{
+  "rc": 0,
+  "deployed": false,
+  "steps": [],
+  "mapping": [
+    {
+      "node": "akcr119-20261022-control-plane",
+      "cri_digest": "sha256:48d1321cd09c3f06d27eb6124d182b1cda1d7f041648bb26a91ba304f0158b65",
+      "leaf_digest": "sha256:336cdaf97a07a6641bdab9c0ef2b756aadcd17908edbcaed15de0a784bf48a03",
+      "config_sha256": "c63d9f0f677669b49aa968553572d837dfb9eb00b5b175186c13bc4f83a6aa15",
+      "platform": "linux/amd64"
+    },
+    {
+      "node": "akcr119-20261022-worker",
+      "cri_digest": "sha256:48d1321cd09c3f06d27eb6124d182b1cda1d7f041648bb26a91ba304f0158b65",
+      "leaf_digest": "sha256:336cdaf97a07a6641bdab9c0ef2b756aadcd17908edbcaed15de0a784bf48a03",
+      "config_sha256": "c63d9f0f677669b49aa968553572d837dfb9eb00b5b175186c13bc4f83a6aa15",
+      "platform": "linux/amd64"
+    },
+    {
+      "node": "akcr119-20261022-worker2",
+      "cri_digest": "sha256:48d1321cd09c3f06d27eb6124d182b1cda1d7f041648bb26a91ba304f0158b65",
+      "leaf_digest": "sha256:336cdaf97a07a6641bdab9c0ef2b756aadcd17908edbcaed15de0a784bf48a03",
+      "config_sha256": "c63d9f0f677669b49aa968553572d837dfb9eb00b5b175186c13bc4f83a6aa15",
+      "platform": "linux/amd64"
+    }
+  ],
+  "status": "exact-cri-index-leaf-config-platform-proved-not-deployed",
+  "image": "localhost/akernel-pr119:365f7971f895-writable01",
+  "config_sha256": "c63d9f0f677669b49aa968553572d837dfb9eb00b5b175186c13bc4f83a6aa15",
+  "expected_cri_digest": "sha256:48d1321cd09c3f06d27eb6124d182b1cda1d7f041648bb26a91ba304f0158b65",
+  "sandboxd_sha256": "efa639832d602aced279071deacf81fb334c0adba1d401883c6fa43e5170a3f9",
+  "source_files": {
+    "config/config.go": "5ccc4651bc622605ef5b806f2399fbf64df808c4b9eca13544ed6ea49f7a0a51",
+    "doc/checkpoint-restore.md": "2bd692c1c5b70ab90a6a6096967c98000a711bf660fcd1fa3e539675d738e9c6",
+    "pkg/runtime/firecracker/handler.go": "9f1b3b9a8f4911c626ba115c14a85a9b79a84d708cd80caff459afba47e17916",
+    "pkg/runtime/firecracker/checkpoint_handler.go": "9e39eec98d820da45f7632ff467f7aceeda5a8abeb7c4ccf9df9cf66672bcaab",
+    "pkg/runtime/firecracker/writable_directory_linux.go": "48cdcd45065645acff63b266965fec2a231b521e8938c64b042e241e0fd09c22",
+    "pkg/runtime/firecracker/writable_directory_linux_test.go": "cdf0a3806c1512063313e4068e0007c809a43ac49e065fe588dd323f15f8ed87"
+  },
+  "archive_sha256": "20315f65c83543bb15465791141fd9424593b72d5148c21dc80a7f44012e27b4",
+  "archive_bytes": 759479296
+}

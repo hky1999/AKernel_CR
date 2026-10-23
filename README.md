@@ -1,10 +1,12 @@
 # CrossNode checkpoint/restore：已验收源码交付
 
-**本轮后续修复已验收**：[sandboxd e3f402c](https://github.com/hky1999/sandboxd/commit/e3f402c0a18be3ff0b7d90674daae9459464772a) 修正异步磁盘完成与内存保存顺序，源码门、官方 SDK 76、双向接管、真实持续直接 I/O 均通过。[最新修复总结](Docs/stages/20261024T-pr119-fc-disk-cut-fix-stage-summary.md) 与独立清单固定当前 c85d58b2… 制品。此前十组性能仍属于 9c74060c…，分开记账；两条新 RWFS 后端尚未接入。
+**可选 FC 私有盘新实验已完成功能门**：[sandboxd fdb145c](https://github.com/hky1999/sandboxd/commit/fdb145cf51f340dc46ebea3713c342b4ec93b127) 支持运行态 overlay.ext4 放 JuiceFS，并修复源节点退出后的租约/网络规则恢复。官方 76、两运行时状态/双向接管、持续直接 I/O 与管理进程崩溃通过。先读 [中文功能总结](Docs/stages/20261024T-pr119-fc-native-rwfs-functional-stage-summary.md)、[独立实验清单](delivery/pr119-native-rwfs-20261024.json) 和 [配置说明](deploy/experiments/README-pr119-fc-native-rwfs.md)。gVisor 新后端、交替性能与生产晋升未完成，默认复现与实验分开；完整保存仍需数秒，不把盘克隆时间当作整个停顿。
 
-**2026-10-24 PR #119 后续复现**：先读 [本轮中文复现](Docs/reproduction-pr119-20261024.md)、[阶段总结](Docs/stages/20261024T-pr119-sdk-faults-performance-stage-summary.md) 和 [独立版本清单](delivery/pr119-20261024.json)。本轮完整 SDK、双向接管、列出的故障用例及十组 80 次状态回滚通过；没有稳定提速或生产高可用结论。新运行时存储路线尚未通过 SDK。
+**基础组合修复已验收**：[sandboxd e3f402c](https://github.com/hky1999/sandboxd/commit/e3f402c0a18be3ff0b7d90674daae9459464772a) 修正异步磁盘完成与内存保存顺序，源码门、官方 SDK 76、双向接管、真实持续直接 I/O 均通过。[基础修复总结](Docs/stages/20261024T-pr119-fc-disk-cut-fix-stage-summary.md) 与基础清单固定 c85d58b2… 制品。此前十组性能仍属于 9c74060c…，分开记账；当时两条新 RWFS 后端尚未接入；后续可选实验见上文。
 
-下面的五个子模块和 `delivery/manifest.json` 保留 10 月 21 日那套历史交付；PR #119 固定候选按新清单另取源码。不要只升级一个子模块后与其他旧组件混用。两份性能数据也属于不同组合，分别阅读。
+**2026-10-24 PR #119 后续复现**：先读 [本轮中文复现](Docs/reproduction-pr119-20261024.md)、[阶段总结](Docs/stages/20261024T-pr119-sdk-faults-performance-stage-summary.md) 和 [独立版本清单](delivery/pr119-20261024.json)。本轮完整 SDK、双向接管、列出的故障用例及十组 80 次状态回滚通过；没有稳定提速或生产高可用结论。本段为基础组合；后续可选 FC 新布局已另行通过功能 SDK，见上文。
+
+下面的五个子模块和 `delivery/manifest.json` 保留 10 月 21 日那套历史交付；PR #119 固定候选按新清单另取源码。不要只升级一个子模块后与其他旧组件混用。各份性能数据属于不同组合，分别阅读。
 
 本仓库管理 ADX / JuiceFS CrossNode 实验的脱敏交付清单、组件 Git submodule（子模块）、部署辅助脚本、验收探针和配对性能数据。
 
