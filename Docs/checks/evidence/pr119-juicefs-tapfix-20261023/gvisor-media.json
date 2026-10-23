@@ -1,0 +1,24 @@
+{
+  "rc": 0,
+  "diagnostic_not_performance": true,
+  "runtime_source_commit": "7fdef444b108",
+  "source": "akcr119-20261022-worker2",
+  "target": "akcr119-20261022-worker",
+  "memory_verified_bytes": 536870912,
+  "root_rwfs_verified_bytes": 1048576,
+  "source_offline": true,
+  "source_rejoined_without_changing_target": true,
+  "sandbox_deleted": true,
+  "rwfs_filestore": {
+    "path_pattern": "/filestore/runsc-filestore-<id> (deleted)",
+    "filesystem": "xfs",
+    "statfs_rc": 0,
+    "logical_bytes": 1073741824,
+    "held_by": "runsc-sandbox file descriptor"
+  },
+  "application_memory": {
+    "path_pattern": "/memfd:runsc-memory (deleted)",
+    "filesystem": "tmpfs"
+  },
+  "earlier_observer_gap": "only /home/akernel and /mnt checkpoint prefixes were selected; /filestore alias was omitted"
+}

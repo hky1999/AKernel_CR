@@ -1,0 +1,41 @@
+{
+  "rc": 0,
+  "cases": [
+    {
+      "rc": 0,
+      "runtime": "runsc",
+      "diagnostic_not_performance": true,
+      "fault": "verified task SDK caller SIGKILL after unsealed capture directory observed",
+      "full_lifecycle_fault_matrix_passed": false,
+      "memory_bytes": 1073741824,
+      "caller_killed_after_capture_observed": true,
+      "published_snapshot_after_caller_death": true,
+      "outcome_reconciled_without_replay": true,
+      "explicit_source_deletion_rescue": true,
+      "source_writer_exit_verified": true,
+      "selected_snapshot_cross_node_recovery_verified": true,
+      "target_next_checkpoint_reload_verified": true,
+      "failed_capture_directories_removed": true,
+      "resources_deleted": true
+    },
+    {
+      "rc": 0,
+      "runtime": "firecracker",
+      "diagnostic_not_performance": true,
+      "fault": "verified task SDK caller SIGKILL after unsealed capture directory observed",
+      "full_lifecycle_fault_matrix_passed": false,
+      "memory_bytes": 1073741824,
+      "caller_killed_after_capture_observed": true,
+      "published_snapshot_after_caller_death": true,
+      "outcome_reconciled_without_replay": true,
+      "explicit_source_deletion_rescue": true,
+      "source_writer_exit_verified": true,
+      "selected_snapshot_cross_node_recovery_verified": true,
+      "target_next_checkpoint_reload_verified": true,
+      "failed_capture_directories_removed": true,
+      "resources_deleted": true
+    }
+  ],
+  "full_lifecycle_fault_matrix_passed": false,
+  "status": "sdk-caller-death-reconciliation-and-recovery-passed"
+}

@@ -1,0 +1,45 @@
+{
+  "rc": 0,
+  "cases": [
+    {
+      "rc": 0,
+      "runtime": "runsc",
+      "role": "adxlet",
+      "diagnostic_not_performance": true,
+      "full_lifecycle_fault_matrix_passed": false,
+      "reader_barrier_seconds": 3,
+      "memory_bytes": 1073741824,
+      "vm_memory_mb": 2048,
+      "open_input_at_role_crash_proven": true,
+      "original_runtime_preserved": true,
+      "reference_and_named_files_preserved": true,
+      "busy_delete_after_restart": true,
+      "full_state_verified": true,
+      "later_checkpoint_reload_verified": true,
+      "resources_deleted": true,
+      "open_input_fd_count_at_crash": 2,
+      "barrier_scope": "Reader held by SIGSTOP for three seconds, role killed while the input FD remained open, same reader resumed by independent finally path; not a product pause/latency sample."
+    },
+    {
+      "rc": 0,
+      "runtime": "runsc",
+      "role": "coordinator",
+      "diagnostic_not_performance": true,
+      "full_lifecycle_fault_matrix_passed": false,
+      "reader_barrier_seconds": 3,
+      "memory_bytes": 1073741824,
+      "vm_memory_mb": 2048,
+      "open_input_at_role_crash_proven": true,
+      "original_runtime_preserved": true,
+      "reference_and_named_files_preserved": true,
+      "busy_delete_after_restart": true,
+      "full_state_verified": true,
+      "later_checkpoint_reload_verified": true,
+      "resources_deleted": true,
+      "open_input_fd_count_at_crash": 2,
+      "barrier_scope": "Reader held by SIGSTOP for three seconds, role killed while the input FD remained open, same reader resumed by independent finally path; not a product pause/latency sample."
+    }
+  ],
+  "full_lifecycle_fault_matrix_passed": false,
+  "status": "gvisor-open-input-role-crash-two-roles-passed"
+}

@@ -1,0 +1,90 @@
+{
+  "rc": 0,
+  "cases": [
+    {
+      "rc": 0,
+      "runtime": "runsc",
+      "diagnostic_not_performance": true,
+      "concurrent_resume_handles": 8,
+      "rounds": [
+        {
+          "round": 0,
+          "resume_successes": 8,
+          "not_started_conflicts": 0,
+          "logical_requests": 8,
+          "underlying_start_requests": 1,
+          "final_runtime_processes": 1,
+          "full_state_verified": true
+        },
+        {
+          "round": 1,
+          "resume_successes": 8,
+          "not_started_conflicts": 0,
+          "logical_requests": 8,
+          "underlying_start_requests": 1,
+          "final_runtime_processes": 1,
+          "full_state_verified": true
+        },
+        {
+          "round": 2,
+          "resume_successes": 8,
+          "not_started_conflicts": 0,
+          "logical_requests": 8,
+          "underlying_start_requests": 1,
+          "final_runtime_processes": 1,
+          "full_state_verified": true
+        }
+      ],
+      "full_lifecycle_fault_matrix_passed": false,
+      "memory_bytes": 536870912,
+      "native_control_public_sdk_io": true,
+      "resources_deleted": true
+    },
+    {
+      "rc": 0,
+      "runtime": "firecracker",
+      "diagnostic_not_performance": true,
+      "concurrent_resume_handles": 8,
+      "rounds": [
+        {
+          "round": 0,
+          "resume_successes": 8,
+          "not_started_conflicts": 0,
+          "logical_requests": 8,
+          "underlying_start_requests": 1,
+          "final_runtime_processes": 1,
+          "full_state_verified": true
+        },
+        {
+          "round": 1,
+          "resume_successes": 8,
+          "not_started_conflicts": 0,
+          "logical_requests": 8,
+          "underlying_start_requests": 1,
+          "final_runtime_processes": 1,
+          "full_state_verified": true
+        },
+        {
+          "round": 2,
+          "resume_successes": 8,
+          "not_started_conflicts": 0,
+          "logical_requests": 8,
+          "underlying_start_requests": 1,
+          "final_runtime_processes": 1,
+          "full_state_verified": true
+        }
+      ],
+      "full_lifecycle_fault_matrix_passed": false,
+      "memory_bytes": 536870912,
+      "native_control_public_sdk_io": true,
+      "resources_deleted": true
+    }
+  ],
+  "full_lifecycle_fault_matrix_passed": false,
+  "status": "eight-way-concurrent-resume-three-rounds-passed",
+  "fixture_identity": {
+    "sdk-concurrent-resume01.py": "822158828b657edca6977a8a445202110e0d6a6ae78c5430471c51ac53a86e9e",
+    "run-concurrent-resume01.py": "bc0cfb2e3004f719865b3d1bc40dd20759ed301b081dd534f4887a79bd8c0332"
+  },
+  "evidence_read_note": "Remote program produced this complete receipt; local SSH observer then timed out waiting for ControlPersist pipe closure. Remote result is supported by terminal.json, not inferred from SSH exit status."
+}

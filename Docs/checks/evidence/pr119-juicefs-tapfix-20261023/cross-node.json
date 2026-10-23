@@ -1,0 +1,309 @@
+{
+  "scope": "one BareMetal; two independent logical nodes and distinct JuiceFS FUSE mounts; single-OSD loop-backed S3 test store",
+  "source_akernel": "365f797",
+  "actual_adx_release": "6fb53d7",
+  "sandboxd_source": "d5acc3b + uncommitted TAP patch",
+  "full_lifecycle_fault_matrix_passed": false,
+  "storage_route_comparison_started": false,
+  "guest_pause_measured": false,
+  "peer_or_sota_comparison": false,
+  "read_timer_starts_after_source_withdrawal": true,
+  "fault_timer_includes_controlled_shutdown_and_detection": true,
+  "gateway_get_bytes_are_reported_counters_not_unique_ranges": true,
+  "verification_reads_included": true,
+  "resource_per_sandbox": {
+    "cpu_millis": 1000,
+    "ram_mib": 2048,
+    "storage_mib": 1024,
+    "deterministic_memory_bytes": 536870912,
+    "root_rwfs_payload_bytes": 1048576
+  },
+  "cases": [
+    {
+      "runtime": "runsc",
+      "source": "akcr119-20261022-worker2",
+      "target": "akcr119-20261022-worker",
+      "source_offline": true,
+      "explicit_reload_called": false,
+      "deleted": true,
+      "target_survived_source_rejoin": true,
+      "root_payload_bytes": 1048576,
+      "memory_bytes": 536870912,
+      "latencies_ms": {
+        "checkpoint_until_http_completed_ms": 1263,
+        "read_trigger_until_first_verified_file_ms": 1849.253127,
+        "read_trigger_until_full_memory_verified_ms": 3800.18866,
+        "fault_until_full_memory_verified_ms": 36455.144653
+      },
+      "gateway_counter_deltas": {
+        "capture": {
+          "get_obj_ops": 0,
+          "get_obj_bytes": 0,
+          "put_obj_ops": 532,
+          "put_obj_bytes": 554253010,
+          "del_obj_ops": 0
+        },
+        "after_capture_until_read_timer": {
+          "get_obj_ops": 0,
+          "get_obj_bytes": 0,
+          "put_obj_ops": 0,
+          "put_obj_bytes": 0,
+          "del_obj_ops": 0
+        },
+        "read_timer_until_full_state_verified": {
+          "get_obj_ops": 1375,
+          "get_obj_bytes": 891426163,
+          "put_obj_ops": 0,
+          "put_obj_bytes": 0,
+          "del_obj_ops": 0
+        },
+        "after_capture_until_full_state_verified": {
+          "get_obj_ops": 1375,
+          "get_obj_bytes": 891426163,
+          "put_obj_ops": 0,
+          "put_obj_bytes": 0,
+          "del_obj_ops": 0
+        }
+      },
+      "runtime_observation": {
+        "processes": [
+          "runsc-gofer",
+          "runsc-sandbox"
+        ],
+        "memory_file_on_shared_checkpoint": false,
+        "overlay_ext4_in_filestore": false,
+        "runsc_memory_memfd_seen": true,
+        "mount_types": [
+          "xfs"
+        ],
+        "gvisor_rwfs_actual_filestore_media_proven": false
+      }
+    },
+    {
+      "runtime": "runsc",
+      "source": "akcr119-20261022-worker",
+      "target": "akcr119-20261022-worker2",
+      "source_offline": true,
+      "explicit_reload_called": false,
+      "deleted": true,
+      "target_survived_source_rejoin": true,
+      "root_payload_bytes": 1048576,
+      "memory_bytes": 536870912,
+      "latencies_ms": {
+        "checkpoint_until_http_completed_ms": 1365,
+        "read_trigger_until_first_verified_file_ms": 1816.07272,
+        "read_trigger_until_full_memory_verified_ms": 3779.959187,
+        "fault_until_full_memory_verified_ms": 33620.0666
+      },
+      "gateway_counter_deltas": {
+        "capture": {
+          "get_obj_ops": 0,
+          "get_obj_bytes": 0,
+          "put_obj_ops": 532,
+          "put_obj_bytes": 554323998,
+          "del_obj_ops": 0
+        },
+        "after_capture_until_read_timer": {
+          "get_obj_ops": 0,
+          "get_obj_bytes": 0,
+          "put_obj_ops": 0,
+          "put_obj_bytes": 0,
+          "del_obj_ops": 0
+        },
+        "read_timer_until_full_state_verified": {
+          "get_obj_ops": 1412,
+          "get_obj_bytes": 850209434,
+          "put_obj_ops": 0,
+          "put_obj_bytes": 0,
+          "del_obj_ops": 0
+        },
+        "after_capture_until_full_state_verified": {
+          "get_obj_ops": 1412,
+          "get_obj_bytes": 850209434,
+          "put_obj_ops": 0,
+          "put_obj_bytes": 0,
+          "del_obj_ops": 0
+        }
+      },
+      "runtime_observation": {
+        "processes": [
+          "runsc-gofer",
+          "runsc-sandbox"
+        ],
+        "memory_file_on_shared_checkpoint": false,
+        "overlay_ext4_in_filestore": false,
+        "runsc_memory_memfd_seen": true,
+        "mount_types": [
+          "xfs"
+        ],
+        "gvisor_rwfs_actual_filestore_media_proven": false
+      }
+    },
+    {
+      "runtime": "firecracker",
+      "source": "akcr119-20261022-worker2",
+      "target": "akcr119-20261022-worker",
+      "source_offline": true,
+      "explicit_reload_called": false,
+      "deleted": true,
+      "target_survived_source_rejoin": true,
+      "root_payload_bytes": 1048576,
+      "memory_bytes": 536870912,
+      "latencies_ms": {
+        "checkpoint_until_http_completed_ms": 8239,
+        "read_trigger_until_first_verified_file_ms": 92.192571,
+        "read_trigger_until_full_memory_verified_ms": 2591.506736,
+        "fault_until_full_memory_verified_ms": 34804.96345
+      },
+      "gateway_counter_deltas": {
+        "capture": {
+          "get_obj_ops": 0,
+          "get_obj_bytes": 0,
+          "put_obj_ops": 3075,
+          "put_obj_bytes": 3221240428,
+          "del_obj_ops": 0
+        },
+        "after_capture_until_read_timer": {
+          "get_obj_ops": 1201,
+          "get_obj_bytes": 1188980155,
+          "put_obj_ops": 0,
+          "put_obj_bytes": 0,
+          "del_obj_ops": 0
+        },
+        "read_timer_until_full_state_verified": {
+          "get_obj_ops": 522,
+          "get_obj_bytes": 544566774,
+          "put_obj_ops": 0,
+          "put_obj_bytes": 0,
+          "del_obj_ops": 0
+        },
+        "after_capture_until_full_state_verified": {
+          "get_obj_ops": 1723,
+          "get_obj_bytes": 1733546929,
+          "put_obj_ops": 0,
+          "put_obj_bytes": 0,
+          "del_obj_ops": 0
+        }
+      },
+      "runtime_observation": {
+        "processes": [
+          "firecracker"
+        ],
+        "memory_file_on_shared_checkpoint": true,
+        "overlay_ext4_in_filestore": true,
+        "runsc_memory_memfd_seen": false,
+        "mount_types": [
+          "fuse.juicefs",
+          "xfs"
+        ],
+        "gvisor_rwfs_actual_filestore_media_proven": false
+      }
+    },
+    {
+      "runtime": "firecracker",
+      "source": "akcr119-20261022-worker",
+      "target": "akcr119-20261022-worker2",
+      "source_offline": true,
+      "explicit_reload_called": false,
+      "deleted": true,
+      "target_survived_source_rejoin": true,
+      "root_payload_bytes": 1048576,
+      "memory_bytes": 536870912,
+      "latencies_ms": {
+        "checkpoint_until_http_completed_ms": 7933,
+        "read_trigger_until_first_verified_file_ms": 2480.721374,
+        "read_trigger_until_full_memory_verified_ms": 4821.862166,
+        "fault_until_full_memory_verified_ms": 35955.436521
+      },
+      "gateway_counter_deltas": {
+        "capture": {
+          "get_obj_ops": 1,
+          "get_obj_bytes": 14193,
+          "put_obj_ops": 3076,
+          "put_obj_bytes": 3221240427,
+          "del_obj_ops": 0
+        },
+        "after_capture_until_read_timer": {
+          "get_obj_ops": 0,
+          "get_obj_bytes": 0,
+          "put_obj_ops": 0,
+          "put_obj_bytes": 0,
+          "del_obj_ops": 0
+        },
+        "read_timer_until_full_state_verified": {
+          "get_obj_ops": 1764,
+          "get_obj_bytes": 1740534663,
+          "put_obj_ops": 0,
+          "put_obj_bytes": 0,
+          "del_obj_ops": 0
+        },
+        "after_capture_until_full_state_verified": {
+          "get_obj_ops": 1764,
+          "get_obj_bytes": 1740534663,
+          "put_obj_ops": 0,
+          "put_obj_bytes": 0,
+          "del_obj_ops": 0
+        }
+      },
+      "runtime_observation": {
+        "processes": [
+          "firecracker"
+        ],
+        "memory_file_on_shared_checkpoint": true,
+        "overlay_ext4_in_filestore": true,
+        "runsc_memory_memfd_seen": false,
+        "mount_types": [
+          "fuse.juicefs",
+          "xfs"
+        ],
+        "gvisor_rwfs_actual_filestore_media_proven": false
+      }
+    }
+  ],
+  "mounts": [
+    {
+      "node": "akcr119-20261022-control-plane",
+      "rc": 0,
+      "mount": {
+        "filesystems": [
+          {
+            "id": 37742,
+            "maj:min": "0:1468",
+            "fstype": "fuse.juicefs",
+            "source": "JuiceFS:akernel-pr119-checkpoints"
+          }
+        ]
+      }
+    },
+    {
+      "node": "akcr119-20261022-worker",
+      "rc": 0,
+      "mount": {
+        "filesystems": [
+          {
+            "id": 37594,
+            "maj:min": "0:1874",
+            "fstype": "fuse.juicefs",
+            "source": "JuiceFS:akernel-pr119-checkpoints"
+          }
+        ]
+      }
+    },
+    {
+      "node": "akcr119-20261022-worker2",
+      "rc": 0,
+      "mount": {
+        "filesystems": [
+          {
+            "id": 38456,
+            "maj:min": "0:1948",
+            "fstype": "fuse.juicefs",
+            "source": "JuiceFS:akernel-pr119-checkpoints"
+          }
+        ]
+      }
+    }
+  ],
+  "passed_cases": 4,
+  "all_test_sandboxes_deleted": true
+}

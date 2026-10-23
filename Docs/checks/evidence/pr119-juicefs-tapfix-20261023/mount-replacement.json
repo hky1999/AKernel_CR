@@ -1,0 +1,39 @@
+{
+  "rc": 0,
+  "cases": [
+    {
+      "rc": 0,
+      "runtime": "runsc",
+      "diagnostic_not_performance": true,
+      "full_lifecycle_fault_matrix_passed": false,
+      "fault": "task Pod only: complete writable local directory shadows JuiceFS mount",
+      "memory_bytes": 536870912,
+      "request_rejected_inside_shadow_interval": true,
+      "no_published_snapshot": true,
+      "no_local_fallback_entries": true,
+      "original_mount_restored": true,
+      "uncheckpointed_source_state_preserved": true,
+      "new_distinct_snapshot_after_recovery": true,
+      "resources_deleted": true,
+      "mount_fault_restored": true
+    },
+    {
+      "rc": 0,
+      "runtime": "firecracker",
+      "diagnostic_not_performance": true,
+      "full_lifecycle_fault_matrix_passed": false,
+      "fault": "task Pod only: complete writable local directory shadows JuiceFS mount",
+      "memory_bytes": 536870912,
+      "request_rejected_inside_shadow_interval": true,
+      "no_published_snapshot": true,
+      "no_local_fallback_entries": true,
+      "original_mount_restored": true,
+      "uncheckpointed_source_state_preserved": true,
+      "new_distinct_snapshot_after_recovery": true,
+      "resources_deleted": true,
+      "mount_fault_restored": true
+    }
+  ],
+  "full_lifecycle_fault_matrix_passed": false,
+  "status": "mount-replacement-fail-closed-with-live-source-passed"
+}

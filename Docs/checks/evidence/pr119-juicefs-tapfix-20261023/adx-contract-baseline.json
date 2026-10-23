@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "source_identity": "release source agent-dx-6fb53d7331811535b6be5787ba026e03072f427b; all 1320 pre-test source files rehashed unchanged",
+  "source_changed": [],
+  "source_added": [],
+  "source_lock_sha256": "d530a8d42be82feba554f6c49ddc67c78835376c0b190592cd10d51cb5753e2d",
+  "source_toolchain_sha256": "7d21c66a15f41bad66b82ed06a289f5dc8a6e3751951d2696bbf20ce296f2b0f",
+  "rustc": "1.95.0 (59807616e 2026-04-14)",
+  "cargo": "1.95.0 (f2d3ce0bd 2026-03-21)",
+  "base_image_config_id": "cc39c88add68c6e4ed377beccd6a659e59b286954d2c7e5c8e5b1dde2a82a8e8",
+  "base_image_digest": "sha256:3914072ca0c3b8aad871db9169a651ccfce30cf58303e5d6f2db16d1d8a7e58f",
+  "limits": {
+    "cpu.max": "200000 100000\n",
+    "memory.max": "6442450944\n",
+    "memory.swap.max": "0\n",
+    "pids.max": "2048\n",
+    "cpuset.cpus.effective": "0-1\n"
+  },
+  "memory_peak_bytes": 2404335616,
+  "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+  "pids_events": "max 0\n",
+  "scope": "Existing component tests only; no real JuiceFS, SDK race, shared-service, multi-process restart, or end-to-end proof.",
+  "tests": [
+    {
+      "name": "checkpoint-storage-lib",
+      "command": "cargo test --locked -p adx-checkpoint-storage --lib -- --test-threads=2",
+      "rc": 0,
+      "result": "test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s",
+      "stdout": "\nrunning 10 tests\ntest filesystem::mount::tests::accepts_both_shared_filesystems_and_rejects_unrecognized_mounts ... ok\ntest filesystem::mount::tests::escaped_mount_paths_and_exact_mountpoint_are_required ... ok\ntest filesystem::mount::tests::mount_replacement_and_covering_mount_fail_closed ... ok\ntest filesystem::tests::coordinator_reclaims_an_abandoned_capture_reservation ... ok\ntest filesystem::tests::filesystem_keeps_paths_and_node_release_never_deletes_shared_data ... ok\ntest filesystem::tests::incomplete_capture_and_symlinked_inputs_are_rejected ... ok\ntest filesystem::tests::missing_afs_mount_never_falls_back_to_local_directory ... ok\ntest filesystem::tests::shared_filesystem_configuration_is_independent_of_mounted_implementation ... ok\ntest reclaim::tests::object_deletion_is_exact_idempotent_and_independent_of_source_node ... ok\ntest filesystem::tests::shared_namespace_identity_and_manifest_size_are_checked ... ok\n\ntest result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s\n\n"
+    },
+    {
+      "name": "snapshot-busy",
+      "command": "cargo test --locked -p adx-core --test snapshot_busy -- --test-threads=2",
+      "rc": 0,
+      "result": "test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "stdout": "\nrunning 2 tests\ntest busy_delete_reports_users_and_keeps_ready_revision ... ok\ntest unreferenced_delete_closes_new_users ... ok\n\ntest result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n"
+    }
+  ],
+  "initial_preparation_failure_preserved": true,
+  "own_containers_and_cgroup_removed": true,
+  "idle_pid1_stop_timeouts": 3,
+  "shared_services_changed": false
+}

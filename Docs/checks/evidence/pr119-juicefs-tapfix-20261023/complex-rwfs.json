@@ -1,0 +1,67 @@
+{
+  "rc": 0,
+  "cases": [
+    {
+      "rc": 0,
+      "runtime": "runsc",
+      "diagnostic_not_performance": true,
+      "image": "docker.io/library/python@sha256:e8a38829209aea82774882e5157e1f7c3e8c8393ff53a697b3580896e57f345c",
+      "same_node_rounds": [
+        {
+          "round": 0,
+          "checkpoint_completed": true,
+          "state_restored": true
+        },
+        {
+          "round": 1,
+          "checkpoint_completed": true,
+          "state_restored": true
+        },
+        {
+          "round": 2,
+          "checkpoint_completed": true,
+          "state_restored": true
+        }
+      ],
+      "cross_node_branch": true,
+      "full_lifecycle_fault_matrix_passed": false,
+      "checkpoint_operations": 5,
+      "reload_operations": 4,
+      "append_truncate_sparse_hardlink_symlink_verified": true,
+      "mmap_and_open_unlinked_and_renamed_fd_verified": true,
+      "resources_deleted": true
+    },
+    {
+      "rc": 0,
+      "runtime": "firecracker",
+      "diagnostic_not_performance": true,
+      "image": "docker.io/library/python@sha256:e8a38829209aea82774882e5157e1f7c3e8c8393ff53a697b3580896e57f345c",
+      "same_node_rounds": [
+        {
+          "round": 0,
+          "checkpoint_completed": true,
+          "state_restored": true
+        },
+        {
+          "round": 1,
+          "checkpoint_completed": true,
+          "state_restored": true
+        },
+        {
+          "round": 2,
+          "checkpoint_completed": true,
+          "state_restored": true
+        }
+      ],
+      "cross_node_branch": true,
+      "full_lifecycle_fault_matrix_passed": false,
+      "checkpoint_operations": 5,
+      "reload_operations": 4,
+      "append_truncate_sparse_hardlink_symlink_verified": true,
+      "mmap_and_open_unlinked_and_renamed_fd_verified": true,
+      "resources_deleted": true
+    }
+  ],
+  "full_lifecycle_fault_matrix_passed": false,
+  "status": "complex-rwfs-multigeneration-and-cross-node-branch-passed"
+}

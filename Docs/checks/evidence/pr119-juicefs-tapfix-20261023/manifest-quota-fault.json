@@ -1,0 +1,41 @@
+{
+  "rc": 0,
+  "cases": [
+    {
+      "rc": 0,
+      "runtime": "runsc",
+      "fault": "owned-volume manifests directory inode quota",
+      "diagnostic_not_performance": true,
+      "full_lifecycle_fault_matrix_passed": false,
+      "unsealed_nonempty_capture_count": 1,
+      "unsealed_logical_bytes": [
+        551822092
+      ],
+      "failed_snapshot_not_published": true,
+      "live_source_preserved": true,
+      "quota_restored": true,
+      "new_distinct_snapshot_after_recovery": true,
+      "known_snapshots_deleted": true,
+      "environment_count_after_cleanup": 0
+    },
+    {
+      "rc": 0,
+      "runtime": "firecracker",
+      "fault": "owned-volume manifests directory inode quota",
+      "diagnostic_not_performance": true,
+      "full_lifecycle_fault_matrix_passed": false,
+      "unsealed_nonempty_capture_count": 1,
+      "unsealed_logical_bytes": [
+        3221240291
+      ],
+      "failed_snapshot_not_published": true,
+      "live_source_preserved": true,
+      "quota_restored": true,
+      "new_distinct_snapshot_after_recovery": true,
+      "known_snapshots_deleted": true,
+      "environment_count_after_cleanup": 0
+    }
+  ],
+  "full_lifecycle_fault_matrix_passed": false,
+  "status": "real-juicefs-manifest-quota-fault-passed"
+}

@@ -1,0 +1,71 @@
+{
+  "rc": 0,
+  "runtime_generations": [
+    {
+      "pid": 5145,
+      "start_ticks": "210919074",
+      "runtime": "runsc",
+      "still_same_generation": false,
+      "pid_exists": false,
+      "pod": "akernel-node-24x9v"
+    },
+    {
+      "pid": 5238,
+      "start_ticks": "210919992",
+      "runtime": "runsc",
+      "still_same_generation": false,
+      "pid_exists": false,
+      "pod": "akernel-node-24x9v"
+    },
+    {
+      "pid": 5493,
+      "start_ticks": "210921075",
+      "runtime": "runsc",
+      "still_same_generation": false,
+      "pid_exists": false,
+      "pod": "akernel-node-24x9v"
+    },
+    {
+      "pid": 5752,
+      "start_ticks": "210924969",
+      "runtime": "runsc",
+      "still_same_generation": false,
+      "pid_exists": false,
+      "pod": "akernel-node-24x9v"
+    },
+    {
+      "pid": 5232,
+      "start_ticks": "210928484",
+      "runtime": "firecracker",
+      "still_same_generation": false,
+      "pid_exists": false,
+      "pod": "akernel-node-s56tb"
+    },
+    {
+      "pid": 5267,
+      "start_ticks": "210930234",
+      "runtime": "firecracker",
+      "still_same_generation": false,
+      "pid_exists": false,
+      "pod": "akernel-node-s56tb"
+    },
+    {
+      "pid": 5305,
+      "start_ticks": "210932607",
+      "runtime": "firecracker",
+      "still_same_generation": false,
+      "pid_exists": false,
+      "pod": "akernel-node-s56tb"
+    },
+    {
+      "pid": 5347,
+      "start_ticks": "210934955",
+      "runtime": "firecracker",
+      "still_same_generation": false,
+      "pid_exists": false,
+      "pod": "akernel-node-s56tb"
+    }
+  ],
+  "unique_generation_count": 8,
+  "read_only": true
+}

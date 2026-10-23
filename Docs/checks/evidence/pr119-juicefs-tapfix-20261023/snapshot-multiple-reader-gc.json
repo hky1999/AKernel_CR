@@ -1,0 +1,40 @@
+{
+  "rc": 0,
+  "cases": [
+    {
+      "rc": 0,
+      "runtime": "runsc",
+      "diagnostic_not_performance": true,
+      "existing_native_snapshot_api": true,
+      "internal_delete_barrier_tested": false,
+      "reader_first_delete_busy": true,
+      "physical_files_removed_after_reader_exit": true,
+      "delete_first_rejects_new_reader": true,
+      "shared_input_fd_observed": true,
+      "memory_bytes": 1073741824,
+      "root_bytes": 1048576,
+      "snapshots_and_environments_cleaned": true,
+      "multiple_reader_protection_verified": true,
+      "concurrent_delete_requests": 2
+    },
+    {
+      "rc": 0,
+      "runtime": "firecracker",
+      "diagnostic_not_performance": true,
+      "existing_native_snapshot_api": true,
+      "internal_delete_barrier_tested": false,
+      "reader_first_delete_busy": true,
+      "physical_files_removed_after_reader_exit": true,
+      "delete_first_rejects_new_reader": true,
+      "shared_input_fd_observed": true,
+      "memory_bytes": 1073741824,
+      "root_bytes": 1048576,
+      "snapshots_and_environments_cleaned": true,
+      "multiple_reader_protection_verified": true,
+      "concurrent_delete_requests": 2
+    }
+  ],
+  "internal_delete_barrier_tested": false,
+  "full_lifecycle_fault_matrix_passed": false,
+  "status": "real-juicefs-snapshot-reader-delete-orderings-passed"
+}

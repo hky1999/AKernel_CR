@@ -1,0 +1,30 @@
+{
+  "rc": 0,
+  "read_only": true,
+  "archive_manifest": "sha256:a46c88b9dae948bffc410779a871ce629337ceb03c3ea7fb91664346eeff2e06",
+  "expected_config": "sha256:fbfba99f0334584086a3603125903bef1eaba9bd27396a1fe5e4361cfaa2daf8",
+  "verified_import_index": "sha256:9840a277eeb71a1685c3c06b0838b2992434fdc791906751a0d47b9a0c6658f5",
+  "nodes": [
+    {
+      "node": "akcr119-20261022-control-plane",
+      "import_index": "sha256:9840a277eeb71a1685c3c06b0838b2992434fdc791906751a0d47b9a0c6658f5",
+      "archive_manifest": "sha256:a46c88b9dae948bffc410779a871ce629337ceb03c3ea7fb91664346eeff2e06",
+      "config": "sha256:fbfba99f0334584086a3603125903bef1eaba9bd27396a1fe5e4361cfaa2daf8",
+      "content_hashes_verified": true
+    },
+    {
+      "node": "akcr119-20261022-worker",
+      "import_index": "sha256:9840a277eeb71a1685c3c06b0838b2992434fdc791906751a0d47b9a0c6658f5",
+      "archive_manifest": "sha256:a46c88b9dae948bffc410779a871ce629337ceb03c3ea7fb91664346eeff2e06",
+      "config": "sha256:fbfba99f0334584086a3603125903bef1eaba9bd27396a1fe5e4361cfaa2daf8",
+      "content_hashes_verified": true
+    },
+    {
+      "node": "akcr119-20261022-worker2",
+      "import_index": "sha256:9840a277eeb71a1685c3c06b0838b2992434fdc791906751a0d47b9a0c6658f5",
+      "archive_manifest": "sha256:a46c88b9dae948bffc410779a871ce629337ceb03c3ea7fb91664346eeff2e06",
+      "config": "sha256:fbfba99f0334584086a3603125903bef1eaba9bd27396a1fe5e4361cfaa2daf8",
+      "content_hashes_verified": true
+    }
+  ]
+}

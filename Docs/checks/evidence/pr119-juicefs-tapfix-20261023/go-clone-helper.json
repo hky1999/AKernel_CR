@@ -1,0 +1,72 @@
+{
+  "rc": 0,
+  "scope": "exact existing cloneFileNoSync compiled separately with stdlib-only probe; not full runtime integration",
+  "steps": [
+    {
+      "name": "owned-node",
+      "rc": 0
+    },
+    {
+      "name": "remote-build",
+      "rc": 0
+    },
+    {
+      "name": "install-owned-probe",
+      "rc": 0
+    },
+    {
+      "name": "before-copy",
+      "rc": 0
+    },
+    {
+      "name": "actual-helper-copy",
+      "rc": 0
+    },
+    {
+      "name": "after-copy",
+      "rc": 0
+    },
+    {
+      "name": "actual-helper-verify",
+      "rc": 0
+    },
+    {
+      "name": "remove-owned-probe",
+      "rc": 0
+    }
+  ],
+  "runtime_artifacts_changed": false,
+  "source_sha256": "81d641cc729863f33e03f0f89866981cb8c0dbd837ef22239c112631c8654227",
+  "probe_sha256": "536bff013ee213396a242ec3ccb15490e3b911f2a628e140507c1759a5a9be85",
+  "binary_sha256": "96faf740c906e666f81f83d933fde832162bd432e3f93b2572f249d98d678616",
+  "copy": {
+    "exclusive_destination_rejected": true,
+    "helper_ms": 3.500118,
+    "helper_plus_fsync_ms": 4.642155,
+    "logical_bytes": 67108864,
+    "reflinked": false,
+    "role": "copy"
+  },
+  "copy_rgw_delta": {
+    "put_obj_ops": 0,
+    "put_obj_bytes": 0,
+    "get_obj_ops": 0,
+    "get_obj_bytes": 0,
+    "del_obj_ops": 0,
+    "del_obj_bytes": 0,
+    "del_bucket_ops": 0,
+    "copy_obj_ops": 0,
+    "copy_obj_bytes": 0,
+    "list_obj_ops": 0,
+    "list_buckets_ops": 0
+  },
+  "verify": {
+    "role": "verify",
+    "full_hashes_equal": true
+  },
+  "status": "existing-go-helper-native-copy-and-full-content-passed",
+  "full_sdk_route_accepted": false,
+  "probe_binary_removed_from_node": true,
+  "primitive_files_still_retained": true,
+  "probe_sha256_scope": "generated input before gofmt; executed formatted source hash is in tools/pr119-pod-20261024/executed-source-index.json"
+}

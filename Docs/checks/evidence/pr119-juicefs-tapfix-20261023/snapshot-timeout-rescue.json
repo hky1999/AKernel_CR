@@ -1,0 +1,59 @@
+{
+  "rc": 0,
+  "cases": [
+    {
+      "rc": 0,
+      "runtime": "runsc",
+      "diagnostic_not_performance": true,
+      "fault": "native Snapshot timeoutSeconds=1",
+      "full_lifecycle_fault_matrix_passed": false,
+      "memory_bytes": 1073741824,
+      "no_ready_snapshot_for_failed_request": true,
+      "explicit_source_deletion_rescue": true,
+      "source_writer_exit_verified": true,
+      "known_snapshot_cross_node_recovery_verified": true,
+      "target_next_checkpoint_reload_verified": true,
+      "failed_capture_directories_removed": true,
+      "resources_deleted": true,
+      "request_error_event": {
+        "event": "timeout_request_returned_error",
+        "unix_ns": 1792759906154836200,
+        "code": "CONFLICT",
+        "status_code": 409,
+        "retry": "never",
+        "outcome": "not_started",
+        "type": "EnvironmentHTTPError",
+        "elapsed_ms": 1945.9626032039523
+      },
+      "runtime_exit_scope": "Original VMM/runsc-sandbox identity absent after explicit SDK source deletion; not a claim that all host I/O goroutines were independently instrumented."
+    },
+    {
+      "rc": 0,
+      "runtime": "firecracker",
+      "diagnostic_not_performance": true,
+      "fault": "native Snapshot timeoutSeconds=1",
+      "full_lifecycle_fault_matrix_passed": false,
+      "memory_bytes": 1073741824,
+      "no_ready_snapshot_for_failed_request": true,
+      "explicit_source_deletion_rescue": true,
+      "source_writer_exit_verified": true,
+      "known_snapshot_cross_node_recovery_verified": true,
+      "target_next_checkpoint_reload_verified": true,
+      "failed_capture_directories_removed": true,
+      "resources_deleted": true,
+      "request_error_event": {
+        "event": "timeout_request_returned_error",
+        "unix_ns": 1792759965021411300,
+        "code": "CONFLICT",
+        "status_code": 409,
+        "retry": "never",
+        "outcome": "not_started",
+        "type": "EnvironmentHTTPError",
+        "elapsed_ms": 6411.305241286755
+      },
+      "runtime_exit_scope": "Original VMM/runsc-sandbox identity absent after explicit SDK source deletion; not a claim that all host I/O goroutines were independently instrumented."
+    }
+  ],
+  "full_lifecycle_fault_matrix_passed": false,
+  "status": "snapshot-timeout-and-known-point-rescue-passed"
+}

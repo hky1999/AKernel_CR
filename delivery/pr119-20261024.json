@@ -1,0 +1,100 @@
+{
+  "schema": "akernel-pr119-reproduction/v1",
+  "date": "2026-10-24",
+  "language": "zh-CN",
+  "purpose": "PR #119 固定候选的独立 Pod/SDK 验收与探索性能复现；与 2026-10-21 历史子模块交付分别固定",
+  "existing_gitlinks": "保持 delivery/manifest.json 的五个历史 gitlink；本清单是另行获取的 PR 候选组合，不混搭",
+  "source": {
+    "akernel": {
+      "repository": "https://github.com/WenYuLuo/akernel.git",
+      "commit": "365f7971f895f2b94cf390eefaab436600f005f0"
+    },
+    "sandboxd": {
+      "repository": "https://github.com/hky1999/sandboxd.git",
+      "branch": "codex/pr119-tap-reset-20261024",
+      "commit": "10312f28c9b3286545eb2e97070cdd08fe994cee",
+      "base": "d5acc3b5b673074e20fd8b7733d4035dbaeae1b0",
+      "scope": "TAP offload 复位与真实内核回归；两文件与原远端通过源码逐文件相同"
+    },
+    "adx_actual_release_source": {
+      "repository": "https://github.com/openJiuwen-ai/agent-dx.git",
+      "commit": "6fb53d7331811535b6be5787ba026e03072f427b",
+      "note": "镜像使用固定发布包，不能拿 AKernel src/agent-dx 的其他 gitlink 代替"
+    }
+  },
+  "adx_release": {
+    "url": "https://agent-dx.obs.cn-southwest-2.myhuaweicloud.com/adx/daily/20261022184915-6fb53d733181/linux/amd64/adx-release.tar.gz",
+    "sha256": "664c4a7344ca7cf9b9fedefc7f010ae775c35b89148b068ab2dfa532b150b566",
+    "bytes": 74587622,
+    "execd_url": "https://agent-dx.obs.cn-southwest-2.myhuaweicloud.com/adx/daily/20261022184915-6fb53d733181/linux/amd64/adx-execd.tar.gz",
+    "execd_sha256": "47812ee97e842c811c9672e9eee0df0329ba5cd9326d0fc589ce181d83c3ef35"
+  },
+  "sdk": {
+    "public_version": "0.2.0rc3",
+    "native_version": "0.1.0rc3",
+    "public_wheel_sha256": "c6c63276f37fc15e89b039cdb315aaa56df910b84f471decb300b082b3743d8d",
+    "native_wheel_sha256": "244fd2bfd92367dce4ad0b2089e2ce9b53472c68ba2a3c194bce67330cf57c18",
+    "note": "公共包从固定 AKernel 源码制作；原生 wheel 从上述发布包获取；未执行 PyPI 发布"
+  },
+  "runtime": {
+    "runsc_archive_label": "release-20260817.0-akernel.4",
+    "runsc_actual_version": "release-20260817.0-akernel.3-2-g7fdef444b108",
+    "firecracker_bundle": "v1.16.1-akernel.3",
+    "pins_source": "sandboxd/third_party/runtime-versions.env @ 10312f2；完整 runsc/helpers 必须配套"
+  },
+  "historical_measured_payload_sha256": {
+    "sandboxd": "9c74060c3c4edceed6edb746e6b42bdd21116e3663427238fb1dd5067f3c964b",
+    "runsc_launcher": "59cdd94eb03dc33a6d4f0a085d76d0cb67bd830caceaa899dfeeebc5b0165656",
+    "firecracker": "41133331123c05d635a1a4a61a1eb41f078e9a216b5a197c1398e4e64e957cbf",
+    "guest_initrd": "360a0b3bc1faf51fefd2e389208622d1343e8e020aa271a306cf8fbf698cad1b",
+    "guest_kernel": "78c482cb6904f12c7de16e434de3e8163e9bb7d8abac982a508250ca59abe9af",
+    "runtime_erofs": "2ecf4e0144686702613e6649d200b175d52d463d55cddba2ee0c36922c95d1a3",
+    "execd": "8f33b59d2be6340a4dd0d5165a65848cc0fd9a483a6bb1e72f693e3b4aa05ce0"
+  },
+  "historical_image": {
+    "tag": "localhost/akernel-pr119:365f7971f895-tapoffload01",
+    "config_sha256": "7c54b002aaebec6fc6b837d05f8f6eaa9f71e155173b281511c094fa978978c1",
+    "actual_cri_digest": "sha256:20257a27de0137383b1141709fb15dc87f81520f7fe0e41ba17b4e5ee31194a7",
+    "oci_archive_sha256": "404719cabb4d5404685cfb1aa7bfa1928be8baf305c96ad5d22af22df42df008",
+    "published_image_registry": false
+  },
+  "storage": {
+    "topology": "同一物理机、两个独立逻辑执行节点；单 MON/OSD/数据副本，40 GiB 自有测试块文件",
+    "metadata": "PostgreSQL；fsync/synchronous_commit/full_page_writes 实测 on",
+    "objects": "Ceph RGW S3",
+    "juicefs_version": "1.4.1+2026-07-30.0b90c7db",
+    "block_kib": 1024,
+    "client_cache_mib": 4096,
+    "compression": "none",
+    "writeback": false,
+    "running_private_rwfs": "节点本地 XFS",
+    "checkpoint": "JuiceFS",
+    "automatic_new_backend_enabled": false
+  },
+  "accepted": {
+    "official_sdk_local_xfs": 76,
+    "official_sdk_juicefs": 76,
+    "official_sdk_skipped": 0,
+    "cross_node_directions": "gVisor/FC × A→B/B→A",
+    "paired_version_blocks": 10,
+    "performance_full_checkpoint_reload_verifications": 80,
+    "native_clone_primitives": true,
+    "actual_go_clone_helper": true,
+    "actual_new_runtime_backend": false
+  },
+  "limitations": [
+    "未在另一台全新主机重放完整矩阵；历史执行脚本需按新任务身份适配",
+    "未完成内部物理删除屏障/多 collector 及旧 CI 特定对账竞争原样重放",
+    "不等于双物理机、PG/Redis 崩溃持久化、断电或生产 HA",
+    "没有稳定性能提速或超过竞品结论；性能为 Full/无压缩/热基础设施",
+    "JuiceFS 原生克隆和远端基线加本地差异尚未完成运行时级 SDK 验收",
+    "历史制品在源提交整理前已构建；源码相同不等于提交后重建字节已经复测"
+  ],
+  "references": {
+    "reproduction": "Docs/reproduction-pr119-20261024.md",
+    "stage": "Docs/stages/20261024T-pr119-sdk-faults-performance-stage-summary.md",
+    "plan": "Docs/plans/20261023T-pr119-sdk-juicefs-clone-local-delta-next-phase-plan.md",
+    "scripts": "tools/pr119-pod-20261024/",
+    "evidence": "Docs/checks/evidence/pr119-juicefs-tapfix-20261023/"
+  }
+}

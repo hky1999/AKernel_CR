@@ -1,0 +1,53 @@
+{
+  "rc": 0,
+  "cases": [
+    {
+      "rc": 0,
+      "runtime": "runsc",
+      "diagnostic_not_performance": true,
+      "fault": "20-second pause of pinned task-only RGW; independent watchdog resumes it",
+      "full_lifecycle_fault_matrix_passed": false,
+      "s3_unavailability_observed": true,
+      "same_gateway_process_resumed": true,
+      "successful_ack_while_s3_paused": false,
+      "request_returned_success": false,
+      "published_snapshot_after_recovery": false,
+      "memory_bytes": 1073741824,
+      "storage_fault_reconciled_without_replay": true,
+      "explicit_source_deletion_rescue": true,
+      "source_writer_exit_verified": true,
+      "selected_snapshot_cross_node_recovery_verified": true,
+      "target_next_checkpoint_reload_verified": true,
+      "failed_capture_directories_removed": true,
+      "resources_deleted": true,
+      "storage_fault_restored": true,
+      "gateway_pause_duration_ms": 20003.103466,
+      "runtime_exit_scope": "Original VMM/runsc-sandbox absent after explicit source deletion; not independent instrumentation of every host I/O goroutine."
+    },
+    {
+      "rc": 0,
+      "runtime": "firecracker",
+      "diagnostic_not_performance": true,
+      "fault": "20-second pause of pinned task-only RGW; independent watchdog resumes it",
+      "full_lifecycle_fault_matrix_passed": false,
+      "s3_unavailability_observed": true,
+      "same_gateway_process_resumed": true,
+      "successful_ack_while_s3_paused": false,
+      "request_returned_success": false,
+      "published_snapshot_after_recovery": false,
+      "memory_bytes": 1073741824,
+      "storage_fault_reconciled_without_replay": true,
+      "explicit_source_deletion_rescue": true,
+      "source_writer_exit_verified": true,
+      "selected_snapshot_cross_node_recovery_verified": true,
+      "target_next_checkpoint_reload_verified": true,
+      "failed_capture_directories_removed": true,
+      "resources_deleted": true,
+      "storage_fault_restored": true,
+      "gateway_pause_duration_ms": 20003.062573,
+      "runtime_exit_scope": "Original VMM/runsc-sandbox absent after explicit source deletion; not independent instrumentation of every host I/O goroutine."
+    }
+  ],
+  "full_lifecycle_fault_matrix_passed": false,
+  "status": "bounded-s3-pause-durability-and-recovery-passed"
+}

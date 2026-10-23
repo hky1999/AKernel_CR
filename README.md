@@ -1,5 +1,9 @@
 # CrossNode checkpoint/restore：已验收源码交付
 
+**2026-10-24 PR #119 后续复现**：先读 [本轮中文复现](Docs/reproduction-pr119-20261024.md)、[阶段总结](Docs/stages/20261024T-pr119-sdk-faults-performance-stage-summary.md) 和 [独立版本清单](delivery/pr119-20261024.json)。本轮完整 SDK、双向接管、列出的故障用例及十组 80 次状态回滚通过；没有稳定提速或生产高可用结论。新运行时存储路线尚未通过 SDK。
+
+下面的五个子模块和 `delivery/manifest.json` 保留 10 月 21 日那套历史交付；PR #119 固定候选按新清单另取源码。不要只升级一个子模块后与其他旧组件混用。两份性能数据也属于不同组合，分别阅读。
+
 本仓库管理 ADX / JuiceFS CrossNode 实验的脱敏交付清单、组件 Git submodule（子模块）、部署辅助脚本、验收探针和配对性能数据。
 
 ## 从这里开始

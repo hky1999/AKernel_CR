@@ -1,0 +1,166 @@
+{
+  "status": "passed",
+  "source_file_count_checked": 1320,
+  "source_changed": [],
+  "source_added": [],
+  "commands": [
+    {
+      "name": "coordinator-snapshots",
+      "command": "cargo test --locked -p adx-coordinator --test snapshots -- --ignored --test-threads=2",
+      "returncode": 0,
+      "test_result": "test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.23s",
+      "tests": [
+        "test node_snapshot_catalog_retains_deleting_until_physical_deletion ... ok",
+        "test snapshot_busy_delete_is_rejected_and_survives_coordinator_restart ... ok",
+        "test acquire_and_delete_race_has_one_winner_and_deletion_fences_republication ... ok",
+        "test snapshot_identity_is_immutable_and_tenant_checked ... ok"
+      ],
+      "elapsed_seconds_with_compilation": 90.0814278125763
+    },
+    {
+      "name": "failed-collection-age",
+      "command": "cargo test --locked -p adx-coordinator --test storage failed_collection_age_survives_retry_and_coordinator_restart -- --ignored --exact --test-threads=1",
+      "returncode": 0,
+      "test_result": "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 50 filtered out; finished in 0.09s",
+      "tests": [
+        "test failed_collection_age_survives_retry_and_coordinator_restart ... ok"
+      ],
+      "elapsed_seconds_with_compilation": 7.544769525527954
+    },
+    {
+      "name": "invalidated-failed-collection",
+      "command": "cargo test --locked -p adx-coordinator --test storage invalidated_failed_collection_is_atomic_and_fences_replacement -- --ignored --exact --test-threads=1",
+      "returncode": 0,
+      "test_result": "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 50 filtered out; finished in 0.06s",
+      "tests": [
+        "test invalidated_failed_collection_is_atomic_and_fences_replacement ... ok"
+      ],
+      "elapsed_seconds_with_compilation": 0.5824370384216309
+    }
+  ],
+  "environment": {
+    "rustc": "1.95.0 (59807616e 2026-04-14)",
+    "cargo": "1.95.0 (f2d3ce0bd 2026-03-21)",
+    "redis": "7.0.15",
+    "redis_debian_package": "5:7.0.15-1~deb12u10",
+    "redis_sha256": "c2f35b59cb22f17cdfdef50b18a6b273a0044c4c981eb210ef57ffcac44c2610",
+    "protoc": "3.21.12",
+    "derived_image": {
+      "Id": "b27a09face1ddfdfcebcb49b14bba45916423443da8a1660464683ecdc45cb0b",
+      "Digest": "sha256:c8c3da6f0e94477e50341f5749556c241ffffa85eb167c8edf3933c4b2462128",
+      "RepoDigests": [
+        "localhost/pr119-storage-coordinator-tests@sha256:c8c3da6f0e94477e50341f5749556c241ffffa85eb167c8edf3933c4b2462128"
+      ],
+      "RepoTags": [
+        "localhost/pr119-storage-coordinator-tests:contract-tests01-attempt01"
+      ]
+    },
+    "native_env": {
+      "ADX_TEST_REDIS_SERVER": "/out/coordinator-attempt01/redis-wrapper.py",
+      "ADX_TEST_EVIDENCE": "/out/coordinator-attempt01/redis-evidence",
+      "CARGO_BUILD_JOBS": "2",
+      "CARGO_TARGET_DIR": "/out/target",
+      "CARGO_NET_OFFLINE": "true"
+    },
+    "limits": {
+      "cpu.max": "200000 100000\n",
+      "memory.max": "6442450944\n",
+      "memory.swap.max": "0\n",
+      "pids.max": "2048\n",
+      "cpuset.cpus.effective": "0-1\n"
+    },
+    "test_network": "none",
+    "snapshot_test_threads": 2,
+    "storage_test_threads": 1
+  },
+  "redis_evidence": {
+    "preflight": "/mnt/m0-xfs/akernel-pr119-followup-20261022.qbGAw9tp/round-365f797-20261023.clPWh2h0/tap-checksum-fix/storage/contract-tests01/coordinator-attempt01/metadata/redis-isolation-preflight.json",
+    "start_records": "/mnt/m0-xfs/akernel-pr119-followup-20261022.qbGAw9tp/round-365f797-20261023.clPWh2h0/tap-checksum-fix/storage/contract-tests01/coordinator-attempt01/redis-starts.jsonl",
+    "start_record_count": 8,
+    "test_data_directories": 6,
+    "logs": [
+      {
+        "path": "redis-evidence/adx-store-DFTFyj/redis.log",
+        "bytes": 757,
+        "sha256": "8d693075af897302c0c680a42f9d7f6abd688a8964bfff21a9675ffc64559811",
+        "ready_count": 1,
+        "aof_loaded": false
+      },
+      {
+        "path": "redis-evidence/adx-store-GPIEwl/redis.log",
+        "bytes": 2101,
+        "sha256": "2041784927ba605c183b27b1625023db3a5e6f2819427cbe38faa644d9f97c2c",
+        "ready_count": 2,
+        "aof_loaded": true
+      },
+      {
+        "path": "redis-evidence/adx-store-RBbHie/redis.log",
+        "bytes": 757,
+        "sha256": "73da598588e116d6c2bc572360b31f210f105b9fc581aad1ae7821190ee989e6",
+        "ready_count": 1,
+        "aof_loaded": false
+      },
+      {
+        "path": "redis-evidence/adx-store-lInoLU/redis.log",
+        "bytes": 757,
+        "sha256": "7f18de6f00b81b1084d276f5635283e559293722b8087b0afd22b443428d86c0",
+        "ready_count": 1,
+        "aof_loaded": false
+      },
+      {
+        "path": "redis-evidence/adx-store-oItJsU/redis.log",
+        "bytes": 757,
+        "sha256": "bbd9fb1eb9c5439ac872f84719c5974e908352eb6435351d88cf4e7ca163f2e6",
+        "ready_count": 1,
+        "aof_loaded": false
+      },
+      {
+        "path": "redis-evidence/adx-store-uZTTqU/redis.log",
+        "bytes": 757,
+        "sha256": "a098efe533c98017aea0759eeca6fc743bce8f884e26b78e47cf1d87a8cc456e",
+        "ready_count": 1,
+        "aof_loaded": false
+      }
+    ],
+    "restarted_directories": [
+      {
+        "directory": "/tmp/adx-store-GPIEwl",
+        "starts": 2,
+        "data_dir_inode_generations": [
+          56,
+          56
+        ],
+        "pids": [
+          3425,
+          3430
+        ],
+        "start_ticks": [
+          "210214794",
+          "210214799"
+        ]
+      }
+    ],
+    "port": 0,
+    "transport": "exclusive container Unix sockets",
+    "appendonly": true,
+    "appendfsync": "always",
+    "test_temp_data_cleanup": "Native TempDir Drop removed test AOF data after each test; native ADX_TEST_EVIDENCE preserved Redis logs. Preflight AOF files retained."
+  },
+  "cleanup": {
+    "own_remaining_containers": [],
+    "own_derived_image_absent": true,
+    "own_cgroup_exists": false,
+    "stop_stderr": {
+      "logs/stop-pr119-storage-coordinator01-bootstrap.stderr": "time=\"2026-10-23T19:30:07+08:00\" level=warning msg=\"StopSignal SIGTERM failed to stop container pr119-storage-coordinator01-bootstrap in 10 seconds, resorting to SIGKILL\"\n",
+      "logs/stop-pr119-storage-coordinator01-tests.stderr": "time=\"2026-10-23T19:31:58+08:00\" level=warning msg=\"StopSignal SIGTERM failed to stop container pr119-storage-coordinator01-tests in 10 seconds, resorting to SIGKILL\"\n"
+    },
+    "parent_cluster_and_shared_services_changed": false,
+    "caches_retained": true
+  },
+  "memory_peak_bytes": 4821450752,
+  "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+  "pids_events": "max 0\n",
+  "scope": "Six existing coordinator Redis contracts. Tests directly call RedisStore/RedisSession; new sessions model coordinator ownership changes; snapshot_busy also crashes/restarts its private Redis. No Coordinator main-process SIGKILL, real JuiceFS race, SDK, or end-to-end proof. Exact storage filters each excluded 50 other tests.",
+  "finished_unix": 1792755214.3035543,
+  "disk_free_bytes": 747692072960
+}

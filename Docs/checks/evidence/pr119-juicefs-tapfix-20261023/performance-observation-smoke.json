@@ -1,0 +1,196 @@
+{
+  "rc": 0,
+  "cases": [
+    {
+      "rc": 0,
+      "variant": "new-common-tapfix",
+      "runtime": "runsc",
+      "rounds": [
+        {
+          "round": 0,
+          "checkpoint_http_ms": 1750,
+          "checkpoint_outer_command_ms": 2492.0371,
+          "sdk_reload_ms": 1968.672309,
+          "first_verified_root_ms": 2012.469216,
+          "full_memory_verified_ms": 3975.502937,
+          "full_root_and_memory_verified_ms": 4377.506684,
+          "idle_guest_observer": {
+            "samples": 168,
+            "max_mono_gap_ns": 5482994,
+            "max_wall_gap_ns": 5482995,
+            "backwards_wall_samples": 0,
+            "interval_ns": 2000000
+          },
+          "checkpoint_guest_observer": {
+            "samples": 492,
+            "max_mono_gap_ns": 1597239472,
+            "max_wall_gap_ns": 1597239473,
+            "backwards_wall_samples": 0,
+            "interval_ns": 2000000
+          },
+          "checkpoint_rgw_delta": {
+            "put_obj_ops": 604,
+            "put_obj_bytes": 630659688,
+            "get_obj_ops": 0,
+            "get_obj_bytes": 0,
+            "del_obj_ops": 0,
+            "del_obj_bytes": 0,
+            "del_bucket_ops": 0,
+            "copy_obj_ops": 0,
+            "copy_obj_bytes": 0,
+            "list_obj_ops": 0,
+            "list_buckets_ops": 1
+          },
+          "reload_through_full_verification_rgw_delta": {
+            "put_obj_ops": 0,
+            "put_obj_bytes": 0,
+            "get_obj_ops": 12,
+            "get_obj_bytes": 7077876,
+            "del_obj_ops": 0,
+            "del_obj_bytes": 0,
+            "del_bucket_ops": 0,
+            "copy_obj_ops": 0,
+            "copy_obj_bytes": 0,
+            "list_obj_ops": 0,
+            "list_buckets_ops": 0
+          },
+          "checkpoint_host_phases": {
+            "available": false,
+            "reason": "fixed gVisor adapter has no equivalent host phase fields"
+          },
+          "restore_host_phases": {
+            "available": false,
+            "reason": "fixed gVisor adapter has no equivalent host phase fields"
+          },
+          "state_verified": true
+        }
+      ],
+      "scope": "same-node SDK checkpoint/reload; warm infrastructure caches; not node-fault recovery",
+      "samples_are_exploratory": true,
+      "sdk_versions": {
+        "akernel-sdk": "0.2.0rc3",
+        "adx-environment": "0.1.0rc3"
+      },
+      "observer_sha256": "634c4dad69f853adb10ec8cd51542b4aee47b1d2c4268402cea2692244d4d273",
+      "memory_bytes": 536870912,
+      "root_file_bytes": 67108864,
+      "vm_memory_mb": 2048,
+      "private_storage_mb": 1024,
+      "requested_cpu_millis": 1000,
+      "assigned_node": "akcr119-20261022-worker",
+      "resources_deleted": true
+    },
+    {
+      "rc": 0,
+      "variant": "new-common-tapfix",
+      "runtime": "firecracker",
+      "rounds": [
+        {
+          "round": 0,
+          "checkpoint_http_ms": 7790,
+          "checkpoint_outer_command_ms": 7891.609477,
+          "sdk_reload_ms": 4317.74598,
+          "first_verified_root_ms": 4367.677213,
+          "full_memory_verified_ms": 6591.80323,
+          "full_root_and_memory_verified_ms": 6994.003101,
+          "idle_guest_observer": {
+            "samples": 166,
+            "max_mono_gap_ns": 3021711,
+            "max_wall_gap_ns": 3021711,
+            "backwards_wall_samples": 0,
+            "interval_ns": 2000000
+          },
+          "checkpoint_guest_observer": {
+            "samples": 289,
+            "max_mono_gap_ns": 7399209846,
+            "max_wall_gap_ns": 7399209846,
+            "backwards_wall_samples": 0,
+            "interval_ns": 2000000
+          },
+          "checkpoint_rgw_delta": {
+            "put_obj_ops": 3076,
+            "put_obj_bytes": 3221240428,
+            "get_obj_ops": 0,
+            "get_obj_bytes": 0,
+            "del_obj_ops": 0,
+            "del_obj_bytes": 0,
+            "del_bucket_ops": 0,
+            "copy_obj_ops": 0,
+            "copy_obj_bytes": 0,
+            "list_obj_ops": 0,
+            "list_buckets_ops": 1
+          },
+          "reload_through_full_verification_rgw_delta": {
+            "put_obj_ops": 0,
+            "put_obj_bytes": 0,
+            "get_obj_ops": 797,
+            "get_obj_bytes": 785915107,
+            "del_obj_ops": 0,
+            "del_obj_bytes": 0,
+            "del_bucket_ops": 0,
+            "copy_obj_ops": 0,
+            "copy_obj_bytes": 0,
+            "list_obj_ops": 0,
+            "list_buckets_ops": 1
+          },
+          "checkpoint_host_phases": {
+            "available": true,
+            "records": [
+              {
+                "kind": "checkpoint",
+                "values_ms": {
+                  "layout": 0,
+                  "flush": 3,
+                  "pause": 0,
+                  "snapshot": 5025,
+                  "overlay": 2371,
+                  "resume": 1,
+                  "seal": 182,
+                  "total": 7585
+                },
+                "snapshot_type": "Full"
+              }
+            ],
+            "pause_field_scope": "pause is API-call phase only; not the entire guest stop window"
+          },
+          "restore_host_phases": {
+            "available": true,
+            "records": [
+              {
+                "kind": "restore",
+                "values_ms": {
+                  "open": 0,
+                  "prepare": 0,
+                  "instantiate": 1340,
+                  "vmm_ready": 10,
+                  "load": 10,
+                  "agent": 171,
+                  "total": 1533
+                },
+                "snapshot_type": null
+              }
+            ],
+            "pause_field_scope": "pause is API-call phase only; not the entire guest stop window"
+          },
+          "state_verified": true
+        }
+      ],
+      "scope": "same-node SDK checkpoint/reload; warm infrastructure caches; not node-fault recovery",
+      "samples_are_exploratory": true,
+      "sdk_versions": {
+        "akernel-sdk": "0.2.0rc3",
+        "adx-environment": "0.1.0rc3"
+      },
+      "observer_sha256": "634c4dad69f853adb10ec8cd51542b4aee47b1d2c4268402cea2692244d4d273",
+      "memory_bytes": 536870912,
+      "root_file_bytes": 67108864,
+      "vm_memory_mb": 2048,
+      "private_storage_mb": 1024,
+      "requested_cpu_millis": 1000,
+      "assigned_node": "akcr119-20261022-worker",
+      "resources_deleted": true
+    }
+  ],
+  "paired_performance_complete": false,
+  "status": "measurement-smoke-two-runtimes-passed"
+}

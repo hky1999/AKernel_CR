@@ -1,0 +1,220 @@
+{
+  "rc": 0,
+  "scope": "JuiceFS file primitives only; no runtime integration or SDK route acceptance",
+  "cases": [
+    {
+      "role": "init",
+      "root": {
+        "mount_id": 38848,
+        "fstype": "fuse.juicefs",
+        "dev": 7340114,
+        "inode": 6559,
+        "size": 4096,
+        "nlink": 2
+      },
+      "base_sha256": "6e0722a16ae40d8fe00a54d43f600ec337f45868d7a2c5277c65b9caaa06a2fb",
+      "bytes": 67108864
+    },
+    {
+      "role": "preflight",
+      "root": {
+        "mount_id": 38946,
+        "fstype": "fuse.juicefs",
+        "dev": 7340152,
+        "inode": 6559,
+        "size": 4096,
+        "nlink": 2
+      },
+      "base_size": 67108864
+    },
+    {
+      "role": "cold-clone",
+      "ficlone": {
+        "supported": false,
+        "errno": 95
+      },
+      "copy_file_range": {
+        "copied_logical_bytes": 67108864,
+        "copy_calls": 1,
+        "copy_and_fsync_ms": 10.410287,
+        "source": {
+          "mount_id": 38946,
+          "fstype": "fuse.juicefs",
+          "dev": 7340152,
+          "inode": 6561,
+          "size": 67108864,
+          "nlink": 1
+        },
+        "destination": {
+          "mount_id": 38946,
+          "fstype": "fuse.juicefs",
+          "dev": 7340152,
+          "inode": 7569,
+          "size": 67108864,
+          "nlink": 1
+        }
+      }
+    },
+    {
+      "role": "branch-b",
+      "next_snapshot": {
+        "copied_logical_bytes": 67108864,
+        "copy_calls": 1,
+        "copy_and_fsync_ms": 2.647267,
+        "source": {
+          "mount_id": 38946,
+          "fstype": "fuse.juicefs",
+          "dev": 7340152,
+          "inode": 7569,
+          "size": 67108864,
+          "nlink": 1
+        },
+        "destination": {
+          "mount_id": 38946,
+          "fstype": "fuse.juicefs",
+          "dev": 7340152,
+          "inode": 7570,
+          "size": 67108864,
+          "nlink": 1
+        }
+      },
+      "first_snapshot_immutable": true
+    },
+    {
+      "role": "branch-a",
+      "own_clone": {
+        "copied_logical_bytes": 67108864,
+        "copy_calls": 1,
+        "copy_and_fsync_ms": 5.919396,
+        "source": {
+          "mount_id": 38848,
+          "fstype": "fuse.juicefs",
+          "dev": 7340114,
+          "inode": 6561,
+          "size": 67108864,
+          "nlink": 1
+        },
+        "destination": {
+          "mount_id": 38848,
+          "fstype": "fuse.juicefs",
+          "dev": 7340114,
+          "inode": 6562,
+          "size": 67108864,
+          "nlink": 1
+        }
+      },
+      "second_generation_restore": {
+        "copied_logical_bytes": 67108864,
+        "copy_calls": 1,
+        "copy_and_fsync_ms": 1.946097,
+        "source": {
+          "mount_id": 38848,
+          "fstype": "fuse.juicefs",
+          "dev": 7340114,
+          "inode": 7570,
+          "size": 67108864,
+          "nlink": 1
+        },
+        "destination": {
+          "mount_id": 38848,
+          "fstype": "fuse.juicefs",
+          "dev": 7340114,
+          "inode": 6563,
+          "size": 67108864,
+          "nlink": 1
+        }
+      },
+      "cross_client_branch_isolation": true,
+      "parent_unchanged": true
+    },
+    {
+      "role": "anonymous",
+      "unnamed_open_fd_copy": {
+        "copied_logical_bytes": 67108864,
+        "copy_calls": 1,
+        "copy_and_fsync_ms": 1.706206,
+        "source": {
+          "mount_id": 38946,
+          "fstype": "fuse.juicefs",
+          "dev": 7340152,
+          "inode": 7571,
+          "size": 67108864,
+          "nlink": 0
+        },
+        "destination": {
+          "mount_id": 38946,
+          "fstype": "fuse.juicefs",
+          "dev": 7340152,
+          "inode": 7572,
+          "size": 67108864,
+          "nlink": 1
+        }
+      },
+      "state_verified": true
+    },
+    {
+      "role": "mmap",
+      "unflushed_map_dirty_kib": 8,
+      "copy": {
+        "copied_logical_bytes": 67108864,
+        "copy_calls": 1,
+        "copy_and_fsync_ms": 8.54611,
+        "source": {
+          "mount_id": 38946,
+          "fstype": "fuse.juicefs",
+          "dev": 7340152,
+          "inode": 7573,
+          "size": 67108864,
+          "nlink": 1
+        },
+        "destination": {
+          "mount_id": 38946,
+          "fstype": "fuse.juicefs",
+          "dev": 7340152,
+          "inode": 7574,
+          "size": 67108864,
+          "nlink": 1
+        }
+      },
+      "saved_state_and_later_writes_isolated": true
+    },
+    {
+      "role": "truncate-hole",
+      "truncate_expand_zeroes_preserved": true,
+      "punch_hole": {
+        "supported": true
+      },
+      "parent_unchanged": true
+    }
+  ],
+  "runtime_artifacts_changed": false,
+  "root": "/mnt/akernel-shared/pr119-native-clone-707fe9d21c67408cb32cc71cb2759651",
+  "nonce": "707fe9d21c67408cb32cc71cb2759651",
+  "nodes": {
+    "a": {
+      "pod": "akernel-node-5fb6x",
+      "uid": "a71bc095-c674-4059-9051-3c81fae4b5c4"
+    },
+    "b": {
+      "pod": "akernel-node-vnc46",
+      "uid": "1332358e-579d-4115-825c-2acbcfa8a271"
+    }
+  },
+  "cold_clone_rgw_delta": {
+    "put_obj_ops": 0,
+    "put_obj_bytes": 0,
+    "get_obj_ops": 0,
+    "get_obj_bytes": 0,
+    "del_obj_ops": 0,
+    "del_obj_bytes": 0,
+    "del_bucket_ops": 0,
+    "copy_obj_ops": 0,
+    "copy_obj_bytes": 0,
+    "list_obj_ops": 0,
+    "list_buckets_ops": 0
+  },
+  "status": "native-file-clone-primitives-passed",
+  "files_retained_for_actual_go_clone_check": true,
+  "all_short_command_processes_returned": true,
+  "full_sdk_route_accepted": false
+}

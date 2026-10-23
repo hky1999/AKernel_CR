@@ -1,0 +1,196 @@
+{
+  "scope": "Historical executed scripts, fixed task paths; see README before use",
+  "source_root": "Q/tap-checksum-fix",
+  "files": [
+    {
+      "path": "wait-adx-ready01.py",
+      "bytes": 5067,
+      "sha256": "39c927d3b565f4925e804f3515e9daa69753ff2f248bb541456787166f178a55"
+    },
+    {
+      "path": "qa03.sh",
+      "bytes": 1774,
+      "sha256": "969ef0f417c1ad54d19859dc3336089ea274f66e7cce8e1da042157b49501e51"
+    },
+    {
+      "path": "storage/sdk-full02.sh",
+      "bytes": 1161,
+      "sha256": "6cc7f7bb90482b85c5e341f5b14714bf439c80cdc1af7e9d25575265dc5f0384"
+    },
+    {
+      "path": "storage/sdk-failover03.py",
+      "bytes": 16230,
+      "sha256": "2d0daf03113f50a513f92f6822d312d10ab767d6b3cceefc61abb18e918a7cf3"
+    },
+    {
+      "path": "storage/cross-node05.py",
+      "bytes": 4525,
+      "sha256": "cc1ac63954fbaba93959725bc3320c15bb588a063038ff48fbe9e1086ae3988d"
+    },
+    {
+      "path": "storage/sdk-reader-restart02.py",
+      "bytes": 12843,
+      "sha256": "2b829f93e1a2de0a4123c3eaeadfefc85b6520b173a940b8bd2e94043c8f65f7"
+    },
+    {
+      "path": "storage/run-restart-matrix02.py",
+      "bytes": 3232,
+      "sha256": "5337f5f1ee3043121fdc3d05b86d43ce88d9ea64ade7c589c50d3007f45bd24c"
+    },
+    {
+      "path": "storage/sdk-snapshot-gc02.py",
+      "bytes": 11979,
+      "sha256": "c3d72e4cb01fe918ffac3497a13aee3dc1f627a7faad01a2b07b008f97e98d6a"
+    },
+    {
+      "path": "storage/run-snapshot-gc02.py",
+      "bytes": 2054,
+      "sha256": "13df868733433b9c0bc8393b675e89a04da0ec513244941a45b0ac9a21c02576"
+    },
+    {
+      "path": "storage/sdk-seal-quota02.py",
+      "bytes": 10738,
+      "sha256": "4fe22b93a12b2f967960800b9b5de445eb7bbcb71795aaefef3c4d521ac43187"
+    },
+    {
+      "path": "storage/run-seal-quota02.py",
+      "bytes": 2100,
+      "sha256": "4d32c1470c4d2a7c7c9c19fcb6a4f644e042d1b83a911cc6ab81cb28a2397b61"
+    },
+    {
+      "path": "storage/guest-rwfs-contract02.py",
+      "bytes": 3356,
+      "sha256": "bd0c4fa9a430d10d55bdb56add30369217d312408b832fca5c96c4c049096044"
+    },
+    {
+      "path": "storage/sdk-rwfs-contract02.py",
+      "bytes": 6108,
+      "sha256": "7e8115a2869453da800b04411e96d9fe8bbc3aa75758b3a968de730d22882c7c"
+    },
+    {
+      "path": "storage/run-rwfs-contract02.py",
+      "bytes": 2110,
+      "sha256": "f1d3477999ec8c29879389265df9af4d769c9abb03899bb92a3fdc3d990adccf"
+    },
+    {
+      "path": "storage/sdk-snapshot-timeout02.py",
+      "bytes": 10649,
+      "sha256": "428395c7777065491af865ed4b866823b1507e6c3fd351df215b498bb3ed21ce"
+    },
+    {
+      "path": "storage/run-snapshot-timeout02.py",
+      "bytes": 2245,
+      "sha256": "8424e6ecec79be04abe09242a6e0634e96d0751330b08c5cad2f7db2f4cb3c18"
+    },
+    {
+      "path": "storage/sdk-capture-client01.py",
+      "bytes": 1076,
+      "sha256": "9fc5db79cbded8f612fe5f25cf02ae19dd98a9b118267ab8acefe8701507ec73"
+    },
+    {
+      "path": "storage/sdk-caller-death01.py",
+      "bytes": 12547,
+      "sha256": "66f328698ede338f84deeba84718c1e96e0b7518f87d8dc1ca658f8b16634ab3"
+    },
+    {
+      "path": "storage/run-caller-death01.py",
+      "bytes": 2113,
+      "sha256": "5decc35176f7d0fafc12ecc381589bf2d745f1a7c9c89e19e170bc7970b4cdfe"
+    },
+    {
+      "path": "storage/pause-owned-rgw01.py",
+      "bytes": 2330,
+      "sha256": "f61f5405ac88bf0104b0abaad656ed07b0eeb74d76c1dbaba15d369490bd3dec"
+    },
+    {
+      "path": "storage/sdk-s3-pause01.py",
+      "bytes": 14585,
+      "sha256": "1ba1153321f3e0d694ea63d5c223ef9b60d14551ef0c410d013087b592a364b9"
+    },
+    {
+      "path": "storage/run-s3-pause01.py",
+      "bytes": 2091,
+      "sha256": "e711e564489b9e6d63a2d35999fa99517e296be3d6a43cf0f4c1c4563a265e4f"
+    },
+    {
+      "path": "storage/sdk-concurrent-resume01.py",
+      "bytes": 8555,
+      "sha256": "822158828b657edca6977a8a445202110e0d6a6ae78c5430471c51ac53a86e9e"
+    },
+    {
+      "path": "storage/run-concurrent-resume01.py",
+      "bytes": 2110,
+      "sha256": "bc0cfb2e3004f719865b3d1bc40dd20759ed301b081dd534f4887a79bd8c0332"
+    },
+    {
+      "path": "storage/hold-reader-crash-role03.py",
+      "bytes": 5024,
+      "sha256": "2117c635ad30c926e9d94af28a5d045fa643f4bf981f3ac67a1c225962321d3d"
+    },
+    {
+      "path": "storage/sdk-held-reader-restart03.py",
+      "bytes": 11722,
+      "sha256": "8e67d3fcf1480867d8c9422fabd93c1608e5f58a162091cae448e3cdc5c37c72"
+    },
+    {
+      "path": "storage/run-held-reader-restart03.py",
+      "bytes": 2208,
+      "sha256": "b16de47c6749bee4467f478f73a1c2a452b682477a7f3bbd8dd1ce3cd0e1a37f"
+    },
+    {
+      "path": "storage/shadow-owned-shared-mount01.py",
+      "bytes": 4593,
+      "sha256": "777eefc8a76e8fb50c3910be4fbc41feec27862afe4767ac7ee548e8e2b90eb7"
+    },
+    {
+      "path": "storage/sdk-mount-shadow01.py",
+      "bytes": 9367,
+      "sha256": "b45d91bdca082c191072e1f6625ce25aa09ec3561422d2f8708bb7ec5cd30c37"
+    },
+    {
+      "path": "storage/run-mount-shadow01.py",
+      "bytes": 2123,
+      "sha256": "8b53140b8f9ff83436c999504b1c66fd6a3cca27185071a7f3c51f40dbe3c795"
+    },
+    {
+      "path": "storage/sdk-performance01.py",
+      "bytes": 9969,
+      "sha256": "b44d29f4bc26cb3b09f504917cd31f0fe6eb3c1556ba0468582582fbeae50899"
+    },
+    {
+      "path": "storage/wait-perf-ready02.py",
+      "bytes": 5222,
+      "sha256": "23fbb49b63eddbb3156fe1c7922d5018846209cb587b454f0bd9b4a0715ec61c"
+    },
+    {
+      "path": "storage/run-performance-pairs02.py",
+      "bytes": 8525,
+      "sha256": "e2c08d1c304481fb465730e1a68237c9245d4ef5e79c63f0c51eef95301a18bd"
+    },
+    {
+      "path": "storage/native-clone-helper01.py",
+      "bytes": 7164,
+      "sha256": "1c753491d4462153edb6ed5d4df6f4950e96db55ac38dd83ffb829fa20ad06de"
+    },
+    {
+      "path": "storage/run-native-clone-capability01.py",
+      "bytes": 4453,
+      "sha256": "40b8d60cf6dea99a0a78725a3df451fd02a1d5e46d9bc6a1489ae7db74e7bbe8"
+    },
+    {
+      "path": "storage/run-go-clone-helper01.py",
+      "bytes": 8271,
+      "sha256": "e6ecfc87312ad9476b82487cfdafab3134ab2a43544b982dfc67223d65b88e7c"
+    },
+    {
+      "path": "storage/performance-observation02/observer.go",
+      "bytes": 2488,
+      "sha256": "dbc0b0b6829e5cc31a38d6c59c14af8e646b5bc004c751fc11dfae4a64bbfffb"
+    },
+    {
+      "path": "storage/go-clone-helper01/clone_probe_test.go",
+      "bytes": 2795,
+      "sha256": "75188b60bb8cb36404945417be68a617c92a5f4af3e1cc893a8d8e9c4900afe2"
+    }
+  ]
+}

@@ -1,0 +1,306 @@
+{
+  "source_akernel": "365f7971f895f2b94cf390eefaab436600f005f0",
+  "actual_adx_release": "6fb53d7331811535b6be5787ba026e03072f427b",
+  "sandboxd_source": "d5acc3b + uncommitted TAP patch",
+  "scope": "one BareMetal, private logical nodes; runtime files on local XFS; single-OSD loop-backed JuiceFS checkpoint store",
+  "resource_per_sandbox": {
+    "cpu_millis": 1000,
+    "ram_mib": 2048,
+    "storage_mib": 1024
+  },
+  "latency_scope": "checkpoint request through completion and SDK reload; not guest pause",
+  "performance_paired_or_sota_claim": false,
+  "groups": {
+    "local_xfs": {
+      "runsc-five": {
+        "passed_rounds": 5,
+        "deleted": true,
+        "latencies_ms": {
+          "checkpoint_until_http_completed_ms": [
+            74,
+            68,
+            68,
+            80,
+            78
+          ],
+          "sdk_reload_ms": [
+            271.256145,
+            241.471403,
+            257.356338,
+            234.658691,
+            245.292528
+          ],
+          "first_verified_file_ms": [
+            315.205424,
+            284.286224,
+            300.255103,
+            279.348756,
+            290.073785
+          ],
+          "full_memory_verified_ms": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "p50_ms": {
+          "checkpoint_until_http_completed_ms": 74,
+          "sdk_reload_ms": 245.292528,
+          "first_verified_file_ms": 290.073785,
+          "full_memory_verified_ms": null
+        }
+      },
+      "runsc-memory": {
+        "passed_rounds": 1,
+        "deleted": true,
+        "latencies_ms": {
+          "checkpoint_until_http_completed_ms": [
+            789
+          ],
+          "sdk_reload_ms": [
+            1027.360545
+          ],
+          "first_verified_file_ms": [
+            1072.560355
+          ],
+          "full_memory_verified_ms": [
+            2755.866309
+          ]
+        },
+        "p50_ms": {
+          "checkpoint_until_http_completed_ms": 789,
+          "sdk_reload_ms": 1027.360545,
+          "first_verified_file_ms": 1072.560355,
+          "full_memory_verified_ms": 2755.866309
+        }
+      },
+      "fc-five": {
+        "passed_rounds": 5,
+        "deleted": true,
+        "latencies_ms": {
+          "checkpoint_until_http_completed_ms": [
+            2499,
+            2370,
+            2285,
+            2094,
+            1881
+          ],
+          "sdk_reload_ms": [
+            2137.037484,
+            2636.473638,
+            2679.608444,
+            2665.380855,
+            2702.425461
+          ],
+          "first_verified_file_ms": [
+            2181.894554,
+            2681.267444,
+            2723.594511,
+            2709.077156,
+            2747.372429
+          ],
+          "full_memory_verified_ms": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "p50_ms": {
+          "checkpoint_until_http_completed_ms": 2285,
+          "sdk_reload_ms": 2665.380855,
+          "first_verified_file_ms": 2709.077156,
+          "full_memory_verified_ms": null
+        }
+      },
+      "fc-memory": {
+        "passed_rounds": 1,
+        "deleted": true,
+        "latencies_ms": {
+          "checkpoint_until_http_completed_ms": [
+            2309
+          ],
+          "sdk_reload_ms": [
+            2698.081116
+          ],
+          "first_verified_file_ms": [
+            2743.24757
+          ],
+          "full_memory_verified_ms": [
+            4623.370362
+          ]
+        },
+        "p50_ms": {
+          "checkpoint_until_http_completed_ms": 2309,
+          "sdk_reload_ms": 2698.081116,
+          "first_verified_file_ms": 2743.24757,
+          "full_memory_verified_ms": 4623.370362
+        }
+      }
+    },
+    "juicefs": {
+      "runsc-five": {
+        "passed_rounds": 5,
+        "deleted": true,
+        "latencies_ms": {
+          "checkpoint_until_http_completed_ms": [
+            94,
+            94,
+            94,
+            104,
+            98
+          ],
+          "sdk_reload_ms": [
+            296.255004,
+            315.025652,
+            272.193335,
+            251.552434,
+            390.487041
+          ],
+          "first_verified_file_ms": [
+            340.227436,
+            359.712702,
+            315.054827,
+            295.239566,
+            433.267308
+          ],
+          "full_memory_verified_ms": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "p50_ms": {
+          "checkpoint_until_http_completed_ms": 94,
+          "sdk_reload_ms": 296.255004,
+          "first_verified_file_ms": 340.227436,
+          "full_memory_verified_ms": null
+        }
+      },
+      "runsc-memory": {
+        "passed_rounds": 1,
+        "deleted": true,
+        "latencies_ms": {
+          "checkpoint_until_http_completed_ms": [
+            1294
+          ],
+          "sdk_reload_ms": [
+            1598.483359
+          ],
+          "first_verified_file_ms": [
+            1641.640132
+          ],
+          "full_memory_verified_ms": [
+            3402.151304
+          ]
+        },
+        "p50_ms": {
+          "checkpoint_until_http_completed_ms": 1294,
+          "sdk_reload_ms": 1598.483359,
+          "first_verified_file_ms": 1641.640132,
+          "full_memory_verified_ms": 3402.151304
+        }
+      },
+      "fc-five": {
+        "passed_rounds": 5,
+        "deleted": true,
+        "latencies_ms": {
+          "checkpoint_until_http_completed_ms": [
+            8603,
+            13260,
+            14349,
+            13614,
+            14041
+          ],
+          "sdk_reload_ms": [
+            4905.022537,
+            4858.240378,
+            5185.783358,
+            6175.463865,
+            4774.884267
+          ],
+          "first_verified_file_ms": [
+            4950.106449,
+            4904.097842,
+            5231.726194,
+            6221.480117,
+            4820.777409
+          ],
+          "full_memory_verified_ms": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "p50_ms": {
+          "checkpoint_until_http_completed_ms": 13614,
+          "sdk_reload_ms": 4905.022537,
+          "first_verified_file_ms": 4950.106449,
+          "full_memory_verified_ms": null
+        }
+      },
+      "fc-memory": {
+        "passed_rounds": 1,
+        "deleted": true,
+        "latencies_ms": {
+          "checkpoint_until_http_completed_ms": [
+            8216
+          ],
+          "sdk_reload_ms": [
+            4435.683638
+          ],
+          "first_verified_file_ms": [
+            4480.760328
+          ],
+          "full_memory_verified_ms": [
+            6710.314539
+          ]
+        },
+        "p50_ms": {
+          "checkpoint_until_http_completed_ms": 8216,
+          "sdk_reload_ms": 4435.683638,
+          "first_verified_file_ms": 4480.760328,
+          "full_memory_verified_ms": 6710.314539
+        }
+      }
+    }
+  },
+  "official_sdk": [
+    {
+      "runtime": "firecracker",
+      "suite": "integration",
+      "passed": 8,
+      "seconds": 75.164,
+      "skipped": 0
+    },
+    {
+      "runtime": "firecracker",
+      "suite": "standalone",
+      "passed": 30,
+      "seconds": 193.113,
+      "skipped": 0
+    },
+    {
+      "runtime": "runsc",
+      "suite": "integration",
+      "passed": 8,
+      "seconds": 19.605,
+      "skipped": 0
+    },
+    {
+      "runtime": "runsc",
+      "suite": "standalone",
+      "passed": 30,
+      "seconds": 139.062,
+      "skipped": 0
+    }
+  ],
+  "official_sdk_count": 76
+}

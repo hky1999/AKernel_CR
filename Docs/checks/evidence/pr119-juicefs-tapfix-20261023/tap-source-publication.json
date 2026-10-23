@@ -1,0 +1,26 @@
+{
+  "commit": "10312f28c9b3286545eb2e97070cdd08fe994cee",
+  "parent": "d5acc3b5b673074e20fd8b7733d4035dbaeae1b0",
+  "repository": "https://github.com/hky1999/sandboxd",
+  "branch": "codex/pr119-tap-reset-20261024",
+  "normal_push_acknowledged": true,
+  "files": {
+    "pkg/runtime/runsc/network.go": "f873f94d6bebd993f25ea23a106bdd83277283c0acacf31fb77fd958a889e0c2",
+    "pkg/runtime/runsc/network_tap_reuse_linux_test.go": "4c6f5a0a16c863993dc01f6a889d81a087a69827dfccc874ec908451136fbf81"
+  },
+  "binary_rebuilt_after_commit": false,
+  "tested_sandboxd_binary_sha256": "9c74060c3c4edceed6edb746e6b42bdd21116e3663427238fb1dd5067f3c964b",
+  "remote_gates": [
+    "fmt",
+    "vet",
+    "full unit tests",
+    "runsc race",
+    "original TAP regression red",
+    "fixed TAP regression green",
+    "official local SDK 76 no skips",
+    "official JuiceFS SDK 76 no skips",
+    "bidirectional public SDK failover both runtimes"
+  ],
+  "local_compile_or_test": false,
+  "parent_gitlink_updated": false
+}

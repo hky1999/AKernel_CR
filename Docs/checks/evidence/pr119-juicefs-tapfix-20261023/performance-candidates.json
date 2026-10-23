@@ -1,0 +1,55 @@
+{
+  "rc": 0,
+  "deployed": false,
+  "sdk_executed": false,
+  "steps": [
+    {
+      "name": "observer-build-supervised",
+      "rc": 0
+    },
+    {
+      "name": "load-readonly-old-archive",
+      "rc": 0
+    },
+    {
+      "name": "inspect-old-base",
+      "rc": 0
+    },
+    {
+      "name": "build-old-control-with-common-tapfix",
+      "rc": 0
+    },
+    {
+      "name": "inspect-old-candidate",
+      "rc": 0
+    },
+    {
+      "name": "export-old-candidate",
+      "rc": 0
+    }
+  ],
+  "observer": {
+    "source_sha256": "dbc0b0b6829e5cc31a38d6c59c14af8e646b5bc004c751fc11dfae4a64bbfffb",
+    "binary_sha256": "634c4dad69f853adb10ec8cd51542b4aee47b1d2c4268402cea2692244d4d273",
+    "supervised_build_rc": 0,
+    "interval_ns": 2000000,
+    "measurement": "Guest-observed scheduling gap; scheduling and clock semantics apply; not exact host pause.",
+    "sample_and_reset_time_serialized": true
+  },
+  "status": "performance-candidates-built-not-deployed",
+  "old_candidate": {
+    "image": "localhost/akernel-pr119:6ea004125eb4-tapoffload-perf04",
+    "config_id": "fbfba99f0334584086a3603125903bef1eaba9bd27396a1fe5e4361cfaa2daf8",
+    "manifest_digest": "sha256:7b186d79949ea653c879869a2ceb849c0c4e56154063ea5272c53c12ac18753f",
+    "archive_sha256": "15c4c3a0c3fe37566c679323138251d18e8530e352aee5a257bf861358a3792c",
+    "archive_bytes": 688119296,
+    "sandboxd_sha256": "9c74060c3c4edceed6edb746e6b42bdd21116e3663427238fb1dd5067f3c964b",
+    "scope": "old AKernel/ADX/Execd, common corrected sandboxd and runtime bundle in both variants; not original unmodified old image",
+    "kind_expected_oci_manifest": "sha256:a46c88b9dae948bffc410779a871ce629337ceb03c3ea7fb91664346eeff2e06"
+  },
+  "new_candidate": {
+    "image": "localhost/akernel-pr119:365f7971f895-tapoffload01",
+    "config_id": "7c54b002aaebec6fc6b837d05f8f6eaa9f71e155173b281511c094fa978978c1"
+  },
+  "old_files_read_only": true
+}

@@ -1,0 +1,852 @@
+{
+  "rc": 0,
+  "source_terminal_sha256": "70b70d0cac36392d8ad19061e7f3d004ce56c308b4e42eb21d41e04480ae25f3",
+  "pairs": 10,
+  "instances_per_runtime_version": 10,
+  "rounds_per_instance": 2,
+  "checkpoint_reload_pairs_verified": 80,
+  "source_profile_restored": "new-common-tapfix",
+  "groups": [
+    {
+      "runtime": "runsc",
+      "variant": "old-common-tapfix",
+      "round": 0,
+      "n": 10,
+      "metrics": {
+        "checkpoint_http_ms": {
+          "p50": 1557,
+          "min": 1297,
+          "max": 1667
+        },
+        "sdk_reload_ms": {
+          "p50": 1788.0364795,
+          "min": 1681.681723,
+          "max": 2551.019035
+        },
+        "first_verified_root_ms": {
+          "p50": 1831.8675965,
+          "min": 1724.462554,
+          "max": 2592.937563
+        },
+        "full_memory_verified_ms": {
+          "p50": 3689.807945,
+          "min": 3488.524772,
+          "max": 4380.973589
+        },
+        "full_root_and_memory_verified_ms": {
+          "p50": 4088.6852595,
+          "min": 3888.590649,
+          "max": 4782.168375
+        },
+        "guest_max_gap_ms": {
+          "p50": 1435.327225,
+          "min": 1193.167945,
+          "max": 1547.87842
+        },
+        "checkpoint_get_mib": {
+          "p50": 0,
+          "min": 0,
+          "max": 0
+        },
+        "checkpoint_put_mib": {
+          "p50": 601.1165232658386,
+          "min": 600.9609136581421,
+          "max": 601.2270975112915
+        },
+        "reload_full_validation_get_mib": {
+          "p50": 7.626941204071045,
+          "min": 1.2499971389770508,
+          "max": 12.757793426513672
+        },
+        "reload_full_validation_put_mib": {
+          "p50": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "runtime": "runsc",
+      "variant": "old-common-tapfix",
+      "round": 1,
+      "n": 10,
+      "metrics": {
+        "checkpoint_http_ms": {
+          "p50": 1599.5,
+          "min": 1332,
+          "max": 1859
+        },
+        "sdk_reload_ms": {
+          "p50": 1726.873494,
+          "min": 1691.592772,
+          "max": 1927.507517
+        },
+        "first_verified_root_ms": {
+          "p50": 1770.6281365,
+          "min": 1742.246515,
+          "max": 1970.237888
+        },
+        "full_memory_verified_ms": {
+          "p50": 3589.6615575,
+          "min": 3574.467648,
+          "max": 3788.016249
+        },
+        "full_root_and_memory_verified_ms": {
+          "p50": 3989.1747800000003,
+          "min": 3975.192874,
+          "max": 4187.851482
+        },
+        "guest_max_gap_ms": {
+          "p50": 1438.78836,
+          "min": 1208.465763,
+          "max": 1715.185526
+        },
+        "checkpoint_get_mib": {
+          "p50": 0,
+          "min": 0,
+          "max": 0
+        },
+        "checkpoint_put_mib": {
+          "p50": 601.4421949386597,
+          "min": 601.3878793716431,
+          "max": 601.5627546310425
+        },
+        "reload_full_validation_get_mib": {
+          "p50": 8.626940250396729,
+          "min": 0,
+          "max": 26.972606658935547
+        },
+        "reload_full_validation_put_mib": {
+          "p50": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "runtime": "runsc",
+      "variant": "new-common-tapfix",
+      "round": 0,
+      "n": 10,
+      "metrics": {
+        "checkpoint_http_ms": {
+          "p50": 1498,
+          "min": 1210,
+          "max": 1766
+        },
+        "sdk_reload_ms": {
+          "p50": 1771.7304215,
+          "min": 1730.589243,
+          "max": 1871.530414
+        },
+        "first_verified_root_ms": {
+          "p50": 1814.994877,
+          "min": 1775.227431,
+          "max": 1914.386451
+        },
+        "full_memory_verified_ms": {
+          "p50": 3596.2565985,
+          "min": 3578.597514,
+          "max": 3873.45718
+        },
+        "full_root_and_memory_verified_ms": {
+          "p50": 3994.619537,
+          "min": 3978.665724,
+          "max": 4273.39392
+        },
+        "guest_max_gap_ms": {
+          "p50": 1386.1749595,
+          "min": 1104.940219,
+          "max": 1659.677409
+        },
+        "checkpoint_get_mib": {
+          "p50": 0,
+          "min": 0,
+          "max": 0
+        },
+        "checkpoint_put_mib": {
+          "p50": 601.5207824707031,
+          "min": 601.2578430175781,
+          "max": 601.6261882781982
+        },
+        "reload_full_validation_get_mib": {
+          "p50": 6.93943977355957,
+          "min": 2.124997138977051,
+          "max": 17.503878593444824
+        },
+        "reload_full_validation_put_mib": {
+          "p50": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "runtime": "runsc",
+      "variant": "new-common-tapfix",
+      "round": 1,
+      "n": 10,
+      "metrics": {
+        "checkpoint_http_ms": {
+          "p50": 1656.5,
+          "min": 1417,
+          "max": 2645
+        },
+        "sdk_reload_ms": {
+          "p50": 1732.3750325,
+          "min": 1695.212396,
+          "max": 1987.054067
+        },
+        "first_verified_root_ms": {
+          "p50": 1775.8953815,
+          "min": 1738.8582,
+          "max": 2029.750113
+        },
+        "full_memory_verified_ms": {
+          "p50": 3594.711777,
+          "min": 3581.485729,
+          "max": 3988.706897
+        },
+        "full_root_and_memory_verified_ms": {
+          "p50": 4010.227935,
+          "min": 3980.686492,
+          "max": 4389.59884
+        },
+        "guest_max_gap_ms": {
+          "p50": 1548.352121,
+          "min": 1272.358357,
+          "max": 2533.906878
+        },
+        "checkpoint_get_mib": {
+          "p50": 0,
+          "min": 0,
+          "max": 0
+        },
+        "checkpoint_put_mib": {
+          "p50": 601.9182810783386,
+          "min": 601.5879335403442,
+          "max": 602.0282402038574
+        },
+        "reload_full_validation_get_mib": {
+          "p50": 7.876938819885254,
+          "min": 0,
+          "max": 18.88669204711914
+        },
+        "reload_full_validation_put_mib": {
+          "p50": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "runtime": "firecracker",
+      "variant": "old-common-tapfix",
+      "round": 0,
+      "n": 10,
+      "metrics": {
+        "checkpoint_http_ms": {
+          "p50": 8317,
+          "min": 7829,
+          "max": 13302
+        },
+        "sdk_reload_ms": {
+          "p50": 4715.997042,
+          "min": 4115.004157,
+          "max": 5142.051159
+        },
+        "first_verified_root_ms": {
+          "p50": 4761.379516499999,
+          "min": 4160.683156,
+          "max": 5187.81
+        },
+        "full_memory_verified_ms": {
+          "p50": 6913.924117500001,
+          "min": 6396.582129,
+          "max": 7359.081471
+        },
+        "full_root_and_memory_verified_ms": {
+          "p50": 7313.250813000001,
+          "min": 6795.27442,
+          "max": 7754.136313
+        },
+        "guest_max_gap_ms": {
+          "p50": 7755.977964,
+          "min": 7251.428187,
+          "max": 12796.14058
+        },
+        "checkpoint_get_mib": {
+          "p50": 0,
+          "min": 0,
+          "max": 0.013535499572753906
+        },
+        "checkpoint_put_mib": {
+          "p50": 3072.014263153076,
+          "min": 3072.014262199402,
+          "max": 3072.014263153076
+        },
+        "reload_full_validation_get_mib": {
+          "p50": 722.3234992027283,
+          "min": 591.792384147644,
+          "max": 863.2999248504639
+        },
+        "reload_full_validation_put_mib": {
+          "p50": 0,
+          "min": 0,
+          "max": 0
+        },
+        "host_layout_ms": {
+          "p50": 153,
+          "min": 152,
+          "max": 154
+        },
+        "host_flush_ms": {
+          "p50": 3,
+          "min": 3,
+          "max": 4
+        },
+        "host_pause_ms": {
+          "p50": 0,
+          "min": 0,
+          "max": 0
+        },
+        "host_snapshot_ms": {
+          "p50": 5158.5,
+          "min": 4770,
+          "max": 8217
+        },
+        "host_overlay_ms": {
+          "p50": 2555.5,
+          "min": 2451,
+          "max": 4576
+        },
+        "host_resume_ms": {
+          "p50": 1,
+          "min": 1,
+          "max": 7
+        },
+        "host_seal_ms": {
+          "p50": 223,
+          "min": 152,
+          "max": 293
+        },
+        "host_total_ms": {
+          "p50": 8141,
+          "min": 7651,
+          "max": 13139
+        }
+      }
+    },
+    {
+      "runtime": "firecracker",
+      "variant": "old-common-tapfix",
+      "round": 1,
+      "n": 10,
+      "metrics": {
+        "checkpoint_http_ms": {
+          "p50": 10970,
+          "min": 10242,
+          "max": 19122
+        },
+        "sdk_reload_ms": {
+          "p50": 5034.0697585,
+          "min": 4563.988816,
+          "max": 5189.490207
+        },
+        "first_verified_root_ms": {
+          "p50": 5079.7609025,
+          "min": 4607.676058,
+          "max": 5235.220775
+        },
+        "full_memory_verified_ms": {
+          "p50": 7458.9793505,
+          "min": 6792.848823,
+          "max": 7958.386148
+        },
+        "full_root_and_memory_verified_ms": {
+          "p50": 7858.0222905,
+          "min": 7193.994464,
+          "max": 8357.24122
+        },
+        "guest_max_gap_ms": {
+          "p50": 10609.473522,
+          "min": 9734.996623,
+          "max": 18697.190981
+        },
+        "checkpoint_get_mib": {
+          "p50": 979.8304815292358,
+          "min": 907.2491331100464,
+          "max": 1098.2483377456665
+        },
+        "checkpoint_put_mib": {
+          "p50": 3072.011833190918,
+          "min": 3072.011833190918,
+          "max": 3072.011833190918
+        },
+        "reload_full_validation_get_mib": {
+          "p50": 1100.3133597373962,
+          "min": 959.5810785293579,
+          "max": 1148.0847883224487
+        },
+        "reload_full_validation_put_mib": {
+          "p50": 0,
+          "min": 0,
+          "max": 0
+        },
+        "host_layout_ms": {
+          "p50": 1,
+          "min": 0,
+          "max": 1
+        },
+        "host_flush_ms": {
+          "p50": 3,
+          "min": 1,
+          "max": 141
+        },
+        "host_pause_ms": {
+          "p50": 0,
+          "min": 0,
+          "max": 0
+        },
+        "host_snapshot_ms": {
+          "p50": 8125,
+          "min": 7449,
+          "max": 14567
+        },
+        "host_overlay_ms": {
+          "p50": 2535.5,
+          "min": 2282,
+          "max": 4127
+        },
+        "host_resume_ms": {
+          "p50": 2,
+          "min": 1,
+          "max": 3
+        },
+        "host_seal_ms": {
+          "p50": 208,
+          "min": 120,
+          "max": 226
+        },
+        "host_total_ms": {
+          "p50": 10777,
+          "min": 9961,
+          "max": 18934
+        }
+      }
+    },
+    {
+      "runtime": "firecracker",
+      "variant": "new-common-tapfix",
+      "round": 0,
+      "n": 10,
+      "metrics": {
+        "checkpoint_http_ms": {
+          "p50": 8305,
+          "min": 8018,
+          "max": 13394
+        },
+        "sdk_reload_ms": {
+          "p50": 4587.084729,
+          "min": 4072.670545,
+          "max": 5277.799752
+        },
+        "first_verified_root_ms": {
+          "p50": 4633.488342000001,
+          "min": 4119.61152,
+          "max": 5324.713113
+        },
+        "full_memory_verified_ms": {
+          "p50": 6840.7617145,
+          "min": 6290.993656,
+          "max": 7667.94456
+        },
+        "full_root_and_memory_verified_ms": {
+          "p50": 7240.46127,
+          "min": 6689.79778,
+          "max": 8269.120232
+        },
+        "guest_max_gap_ms": {
+          "p50": 7771.2245485,
+          "min": 7472.640933,
+          "max": 12837.397872
+        },
+        "checkpoint_get_mib": {
+          "p50": 0,
+          "min": 0,
+          "max": 0.013535499572753906
+        },
+        "checkpoint_put_mib": {
+          "p50": 3072.014263153076,
+          "min": 3072.014263153076,
+          "max": 3072.014263153076
+        },
+        "reload_full_validation_get_mib": {
+          "p50": 708.4934420585632,
+          "min": 573.725996017456,
+          "max": 995.1786975860596
+        },
+        "reload_full_validation_put_mib": {
+          "p50": 0,
+          "min": 0,
+          "max": 0
+        },
+        "host_layout_ms": {
+          "p50": 153,
+          "min": 152,
+          "max": 154
+        },
+        "host_flush_ms": {
+          "p50": 3,
+          "min": 3,
+          "max": 4
+        },
+        "host_pause_ms": {
+          "p50": 0,
+          "min": 0,
+          "max": 0
+        },
+        "host_snapshot_ms": {
+          "p50": 5292,
+          "min": 4835,
+          "max": 8321
+        },
+        "host_overlay_ms": {
+          "p50": 2552.5,
+          "min": 2281,
+          "max": 4513
+        },
+        "host_resume_ms": {
+          "p50": 3,
+          "min": 1,
+          "max": 7
+        },
+        "host_seal_ms": {
+          "p50": 216,
+          "min": 178,
+          "max": 235
+        },
+        "host_total_ms": {
+          "p50": 8134.5,
+          "min": 7859,
+          "max": 13227
+        }
+      }
+    },
+    {
+      "runtime": "firecracker",
+      "variant": "new-common-tapfix",
+      "round": 1,
+      "n": 10,
+      "metrics": {
+        "checkpoint_http_ms": {
+          "p50": 11054,
+          "min": 10421,
+          "max": 16512
+        },
+        "sdk_reload_ms": {
+          "p50": 5166.7155955,
+          "min": 3791.749816,
+          "max": 6569.552193
+        },
+        "first_verified_root_ms": {
+          "p50": 5216.660239,
+          "min": 3853.448638,
+          "max": 6618.436769
+        },
+        "full_memory_verified_ms": {
+          "p50": 7470.515295,
+          "min": 6091.938371,
+          "max": 9368.798762
+        },
+        "full_root_and_memory_verified_ms": {
+          "p50": 7856.9111379999995,
+          "min": 6689.81848,
+          "max": 9768.634553
+        },
+        "guest_max_gap_ms": {
+          "p50": 10605.1222375,
+          "min": 10127.197737,
+          "max": 15870.318312
+        },
+        "checkpoint_get_mib": {
+          "p50": 978.0124287605286,
+          "min": 901.6397609710693,
+          "max": 1093.260061264038
+        },
+        "checkpoint_put_mib": {
+          "p50": 3072.011833190918,
+          "min": 3072.0118322372437,
+          "max": 3072.011833190918
+        },
+        "reload_full_validation_get_mib": {
+          "p50": 1057.125898361206,
+          "min": 961.944356918335,
+          "max": 1199.2839670181274
+        },
+        "reload_full_validation_put_mib": {
+          "p50": 0,
+          "min": 0,
+          "max": 0
+        },
+        "host_layout_ms": {
+          "p50": 1,
+          "min": 0,
+          "max": 1
+        },
+        "host_flush_ms": {
+          "p50": 3,
+          "min": 2,
+          "max": 258
+        },
+        "host_pause_ms": {
+          "p50": 0,
+          "min": 0,
+          "max": 0
+        },
+        "host_snapshot_ms": {
+          "p50": 8074,
+          "min": 7714,
+          "max": 11609
+        },
+        "host_overlay_ms": {
+          "p50": 2482,
+          "min": 2231,
+          "max": 4258
+        },
+        "host_resume_ms": {
+          "p50": 2,
+          "min": 1,
+          "max": 11
+        },
+        "host_seal_ms": {
+          "p50": 212,
+          "min": 100,
+          "max": 333
+        },
+        "host_total_ms": {
+          "p50": 10831,
+          "min": 10232,
+          "max": 16106
+        }
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "runtime": "runsc",
+      "round": 0,
+      "metrics": {
+        "checkpoint_http_ms": {
+          "old_p50": 1557,
+          "new_p50": 1498,
+          "change_of_p50_percent": -3.789338471419401,
+          "paired_median_ratio": 1.042236267674464,
+          "paired_min_ratio": 0.7711918419375399,
+          "paired_max_ratio": 1.1727062451811874,
+          "paired_median_delta_ms": 62
+        },
+        "guest_max_gap_ms": {
+          "old_p50": 1435.327225,
+          "new_p50": 1386.1749595,
+          "change_of_p50_percent": -3.4244640973768115,
+          "paired_median_ratio": 1.0402837969754626,
+          "paired_min_ratio": 0.7761310953168388,
+          "paired_max_ratio": 1.191945874811446,
+          "paired_median_delta_ms": 54.9317585
+        },
+        "sdk_reload_ms": {
+          "old_p50": 1788.0364795,
+          "new_p50": 1771.7304215,
+          "change_of_p50_percent": -0.9119533178965078,
+          "paired_median_ratio": 1.001402549068521,
+          "paired_min_ratio": 0.6848256869239708,
+          "paired_max_ratio": 1.0619538151109216,
+          "paired_median_delta_ms": 2.5440304999999626
+        },
+        "first_verified_root_ms": {
+          "old_p50": 1831.8675965,
+          "new_p50": 1814.994877,
+          "change_of_p50_percent": -0.9210665406297558,
+          "paired_median_ratio": 0.9982537608052394,
+          "paired_min_ratio": 0.6906508905397812,
+          "paired_max_ratio": 1.060393132546805,
+          "paired_median_delta_ms": -3.2359824999999773
+        },
+        "full_root_and_memory_verified_ms": {
+          "old_p50": 4088.6852595,
+          "new_p50": 3994.619537,
+          "change_of_p50_percent": -2.300634960380965,
+          "paired_median_ratio": 0.9936881754441277,
+          "paired_min_ratio": 0.8349567298537455,
+          "paired_max_ratio": 1.0728277515008944,
+          "paired_median_delta_ms": -25.641201499999852
+        }
+      }
+    },
+    {
+      "runtime": "runsc",
+      "round": 1,
+      "metrics": {
+        "checkpoint_http_ms": {
+          "old_p50": 1599.5,
+          "new_p50": 1656.5,
+          "change_of_p50_percent": 3.5636136292591436,
+          "paired_median_ratio": 1.0666023426081217,
+          "paired_min_ratio": 0.8545780969479354,
+          "paired_max_ratio": 1.943423952975753,
+          "paired_median_delta_ms": 98
+        },
+        "guest_max_gap_ms": {
+          "old_p50": 1438.78836,
+          "new_p50": 1548.352121,
+          "change_of_p50_percent": 7.615001903407115,
+          "paired_median_ratio": 1.0775525620000947,
+          "paired_min_ratio": 0.8417015606052988,
+          "paired_max_ratio": 2.016769686926132,
+          "paired_median_delta_ms": 103.85946950000005
+        },
+        "sdk_reload_ms": {
+          "old_p50": 1726.873494,
+          "new_p50": 1732.3750325,
+          "change_of_p50_percent": 0.31858375955824414,
+          "paired_median_ratio": 1.0021935991125894,
+          "paired_min_ratio": 0.9667889992097548,
+          "paired_max_ratio": 1.0794868044916532,
+          "paired_median_delta_ms": 3.7443214999999554
+        },
+        "first_verified_root_ms": {
+          "old_p50": 1770.6281365,
+          "new_p50": 1775.8953815,
+          "change_of_p50_percent": 0.2974788941517481,
+          "paired_median_ratio": 1.0008531653535968,
+          "paired_min_ratio": 0.9669815633794555,
+          "paired_max_ratio": 1.0780912933645395,
+          "paired_median_delta_ms": 1.5029429999999593
+        },
+        "full_root_and_memory_verified_ms": {
+          "old_p50": 3989.1747800000003,
+          "new_p50": 4010.227935,
+          "change_of_p50_percent": 0.5277571468051745,
+          "paired_median_ratio": 1.0081825477593584,
+          "paired_min_ratio": 0.9513710049472093,
+          "paired_max_ratio": 1.0529814803144568,
+          "paired_median_delta_ms": 32.54874799999993
+        }
+      }
+    },
+    {
+      "runtime": "firecracker",
+      "round": 0,
+      "metrics": {
+        "checkpoint_http_ms": {
+          "old_p50": 8317,
+          "new_p50": 8305,
+          "change_of_p50_percent": -0.14428279427678437,
+          "paired_median_ratio": 1.0082694197262188,
+          "paired_min_ratio": 0.632461284017441,
+          "paired_max_ratio": 1.6038797748772602,
+          "paired_median_delta_ms": 70
+        },
+        "guest_max_gap_ms": {
+          "old_p50": 7755.977964,
+          "new_p50": 7771.2245485,
+          "change_of_p50_percent": 0.19657849172300956,
+          "paired_median_ratio": 1.00396921768568,
+          "paired_min_ratio": 0.6169660019474403,
+          "paired_max_ratio": 1.645686727545649,
+          "paired_median_delta_ms": 31.3116785000002
+        },
+        "sdk_reload_ms": {
+          "old_p50": 4715.997042,
+          "new_p50": 4587.084729,
+          "change_of_p50_percent": -2.733511320128601,
+          "paired_median_ratio": 0.9969269917974997,
+          "paired_min_ratio": 0.795650396989759,
+          "paired_max_ratio": 1.2825745857442155,
+          "paired_median_delta_ms": -25.137793500000498
+        },
+        "first_verified_root_ms": {
+          "old_p50": 4761.379516499999,
+          "new_p50": 4633.488342000001,
+          "change_of_p50_percent": -2.6860109356292017,
+          "paired_median_ratio": 0.9977552647767618,
+          "paired_min_ratio": 0.7980518833573318,
+          "paired_max_ratio": 1.2797689497988776,
+          "paired_median_delta_ms": -21.563072999999804
+        },
+        "full_root_and_memory_verified_ms": {
+          "old_p50": 7313.250813000001,
+          "new_p50": 7240.46127,
+          "change_of_p50_percent": -0.9953103600742197,
+          "paired_median_ratio": 1.0040640749991039,
+          "paired_min_ratio": 0.8672243705937077,
+          "paired_max_ratio": 1.216892758247135,
+          "paired_median_delta_ms": 22.798569000000498
+        }
+      }
+    },
+    {
+      "runtime": "firecracker",
+      "round": 1,
+      "metrics": {
+        "checkpoint_http_ms": {
+          "old_p50": 10970,
+          "new_p50": 11054,
+          "change_of_p50_percent": 0.7657247037374582,
+          "paired_median_ratio": 1.0006591578445845,
+          "paired_min_ratio": 0.5801694383432695,
+          "paired_max_ratio": 1.5318675201781242,
+          "paired_median_delta_ms": 6.5
+        },
+        "guest_max_gap_ms": {
+          "old_p50": 10609.473522,
+          "new_p50": 10605.1222375,
+          "change_of_p50_percent": -0.04101319910905232,
+          "paired_median_ratio": 0.9770865360276517,
+          "paired_min_ratio": 0.5679195995158028,
+          "paired_max_ratio": 1.5176901467908774,
+          "paired_median_delta_ms": -241.6695534999999
+        },
+        "sdk_reload_ms": {
+          "old_p50": 5034.0697585,
+          "new_p50": 5166.7155955,
+          "change_of_p50_percent": 2.6349622346020896,
+          "paired_median_ratio": 1.0415336771672101,
+          "paired_min_ratio": 0.7306594028996113,
+          "paired_max_ratio": 1.276613100968113,
+          "paired_median_delta_ms": 202.9957134999995
+        },
+        "first_verified_root_ms": {
+          "old_p50": 5079.7609025,
+          "new_p50": 5216.660239,
+          "change_of_p50_percent": 2.6949956725842217,
+          "paired_median_ratio": 1.0419994228824927,
+          "paired_min_ratio": 0.7360622987289395,
+          "paired_max_ratio": 1.2750166464756534,
+          "paired_median_delta_ms": 207.17905949999977
+        },
+        "full_root_and_memory_verified_ms": {
+          "old_p50": 7858.0222905,
+          "new_p50": 7856.9111379999995,
+          "change_of_p50_percent": -0.014140358208758474,
+          "paired_median_ratio": 0.9889275534486327,
+          "paired_min_ratio": 0.8595512875883331,
+          "paired_max_ratio": 1.231372814238137,
+          "paired_median_delta_ms": -86.0723165000004
+        }
+      }
+    }
+  ],
+  "scope": {
+    "pairs": 10,
+    "order": "odd old/new; even new/old",
+    "rounds_per_runtime_per_deployment": 2,
+    "rounds_are_clustered_by_instance": true,
+    "runtime_memory_mb": 2048,
+    "application_memory_bytes": 536870912,
+    "root_file_bytes": 67108864,
+    "kind": "same-node shared-checkpoint exploratory version comparison",
+    "cold_object_storage_claim": false
+  }
+}
