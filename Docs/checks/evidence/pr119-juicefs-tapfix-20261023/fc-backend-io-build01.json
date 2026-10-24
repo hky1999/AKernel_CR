@@ -1,0 +1,9 @@
+{
+  "rc": 0,
+  "status": "guest-probe-built-and-independent-sha-clock-shape-verified-not-sdk",
+  "source_sha256": "844a7d60669dd339dce9538c175c8cedd24fa844c73dc8b48ec1c390be50d375",
+  "elf_sha256": "f11e2a32602ef80cadecb664086562f4367e92bd79a8df63c934088e8f13cc94",
+  "smoke_bytes": 65536,
+  "smoke_ops": 4,
+  "matching_seed_sha": "f2998d2396eaa1099376cb80bd05c8667ab860a237a7d47f0dcf5da482592417"
+}

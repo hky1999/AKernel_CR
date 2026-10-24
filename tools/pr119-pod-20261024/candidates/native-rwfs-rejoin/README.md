@@ -8,7 +8,7 @@
 
 - `executed/wait-ready01.py`：实际已执行的会话、路由、资源、Pod/镜像与二进制检查。新构建的镜像/ELF 摘要会不同，应把自己的完整构建回执固定进去；不能删除检查或允许任意摘要。
 - `executed/sdk-full01.sh`：本轮直接运行的官方 76 项，无须原现场故障依赖。执行前适配任务路径、SDK Python、源码路径、凭据环境文件和全新输出目录；保留 TLS 与原隔离。
-- `sdk-writable-performance01.py`：每运行时一个实例、可配置节点和轮数的完整内存/根文件及分相测量。每轮相互依赖，不能标成独立实例；普通写入时间含 SDK 写入与 guest sync。
+- `sdk-writable-performance01.py`：每运行时一个实例、可配置节点和轮数的完整内存/根文件及分相测量。每轮相互依赖，不能标成独立实例；历史普通写入时间含 SDK 命令往返和 guest 的随机数据生成/write/fsync。
 - `sdk-forced-failover02.py`：即时停止身份匹配的源 Kind、公共 SDK 自动接管、相同源 Pod 的产品退休与重新加入。先按新现场固定节点和容器身份，仅在独占任务执行。
 - `sdk-writable-restart01.py`：只杀身份已核对的任务管理进程，验证原 VM/运行实例、未保存状态、快照保护和后续保存恢复。
 - 真实直接 I/O 复用 `../../executed/fc-async-disk-cut/sdk-direct-io02.py` 及配套 guest 脚本；本轮没有重复实现。

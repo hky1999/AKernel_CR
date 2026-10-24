@@ -1,0 +1,55 @@
+{
+  "repository": "https://github.com/containerd/overlaybd",
+  "tag": "v1.0.18",
+  "commit": "cee2186ca75670f6c3d48a4b79c2b43a7134fba5",
+  "method": "GitHub tag ref and git tree resolved; file blob SHAs verified; source-only, no daemon/device/build on BareMetal",
+  "files": [
+    {
+      "path": "README.md",
+      "blob_sha": "0bc654249b71e3be7abf2c04b1b507ed2287f879",
+      "bytes": 23677,
+      "url": "https://github.com/containerd/overlaybd/blob/cee2186ca75670f6c3d48a4b79c2b43a7134fba5/README.md"
+    },
+    {
+      "path": "src/api_server.cpp",
+      "blob_sha": "37aaa8d68620a785500620155db039f6947aa6d1",
+      "bytes": 6139,
+      "url": "https://github.com/containerd/overlaybd/blob/cee2186ca75670f6c3d48a4b79c2b43a7134fba5/src/api_server.cpp"
+    },
+    {
+      "path": "src/image_file.cpp",
+      "blob_sha": "20f2b1f9273c38307cb537d1cda33be5a3127d94",
+      "bytes": 23923,
+      "url": "https://github.com/containerd/overlaybd/blob/cee2186ca75670f6c3d48a4b79c2b43a7134fba5/src/image_file.cpp"
+    },
+    {
+      "path": "src/image_service.cpp",
+      "blob_sha": "e754770a1b085bcd7b04d2764f548c6ff4cc3c73",
+      "bytes": 25994,
+      "url": "https://github.com/containerd/overlaybd/blob/cee2186ca75670f6c3d48a4b79c2b43a7134fba5/src/image_service.cpp"
+    },
+    {
+      "path": "src/main.cpp",
+      "blob_sha": "e151dd38db846a3b597d73fd74975f94532c81ff",
+      "bytes": 15965,
+      "url": "https://github.com/containerd/overlaybd/blob/cee2186ca75670f6c3d48a4b79c2b43a7134fba5/src/main.cpp"
+    },
+    {
+      "path": "src/overlaybd/lsmt/file.cpp",
+      "blob_sha": "0bac3181d39f2823036d4fbf6d3216c7ba1a50e7",
+      "bytes": 69878,
+      "url": "https://github.com/containerd/overlaybd/blob/cee2186ca75670f6c3d48a4b79c2b43a7134fba5/src/overlaybd/lsmt/file.cpp"
+    }
+  ],
+  "not_run": [
+    "TCMU startup",
+    "block device creation",
+    "fault injection",
+    "SDK integration"
+  ],
+  "source_findings": [
+    "image_file.cpp:587-614 mutates layer state before config rename; later failure can be ambiguous",
+    "lsmt/file.cpp:997-1000 ignores underlying data/index fsync results",
+    "main.cpp:477-512 invokes module-level netlink parameter setters"
+  ]
+}

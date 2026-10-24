@@ -1,5 +1,11 @@
 # CrossNode 源码交付版本台账
 
+## 2026-10-24：后端对照试跑与时钟更正，正式十组在途
+
+源码/制品保持 fdb145c、native-rejoin02 / debbf268…。两个后端实际 SDK 试跑整体 rc=0，各两次 checkpoint/reload 和完整内存/根文件校验、真实盘 FD 位置通过；测量新增 guest 内分开 write/fsync 和固定 64 次小块同步。十组交替已启动，尚无正式终态，本提交不宣称配对性能裁决。
+
+Changelog：更正历史 513 ms 是 SDK 命令往返加 guest 随机生成/write/fsync，原数值保留；发布新测量脚本、探针源码（仅验收负载）、时钟/实时容量检查与白名单试跑数据。OverlayBD 固定发布源码调查与 gVisor 原生克隆候选边界仅为源码结论/未验收状态，不混入交付实现。未复制候选产品源码、二进制、原始 YAML、凭据或内部文档链接，未改基础/可选产品清单与历史 gitlink。正式测量结束前不在 BareMetal 并行编译，旧环境/共享服务未变。
+
 ## 2026-10-24：可选 FC 原生 JuiceFS 私有盘完成功能验收
 
 sandboxd fdb145cf51f340dc46ebea3713c342b4ec93b127（父 e3f402c），分支 codex/pr119-native-rwfs-rejoin-20261024，已推 hky1999/sandboxd 并 ls-remote 核对。11 文件 SHA 与远端 qa02 一致；实际 ELF debbf268… 为提交前构建，镜像 native-rejoin02 / CRI 53669406…，没有重建冒充。其他运行时/SDK/ADX 载荷与基础清单相同。源码、实际制品、基础默认复现和可选实验分别固定。

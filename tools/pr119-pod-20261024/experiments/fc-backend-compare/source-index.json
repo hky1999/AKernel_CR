@@ -1,0 +1,45 @@
+{
+  "scope": "远端实际构建/执行的测量源码；Go 仅验收工作负载，不含产品运行时代码或凭据",
+  "files": [
+    {
+      "file": "README.md",
+      "sha256": "425fd65b77b3cd293915b1ec91e26ba1dedc0f1c54176974123adcfbecf777e8",
+      "bytes": 3675
+    },
+    {
+      "file": "build-driver01.py",
+      "sha256": "8fa9647b1d2e986030919c8d02e7b1e02ea56981a053c94aeeac061cd0fd18fd",
+      "bytes": 2373
+    },
+    {
+      "file": "build-qa01.sh",
+      "sha256": "244b46f13251d232c51741cbc58ce85aaf285a56b0dd33afd1a3170ab8d1bba8",
+      "bytes": 505
+    },
+    {
+      "file": "guest-storage-io.go",
+      "sha256": "844a7d60669dd339dce9538c175c8cedd24fa844c73dc8b48ec1c390be50d375",
+      "bytes": 4508
+    },
+    {
+      "file": "run-backend-compare01.py",
+      "sha256": "851f2f3ea7733052417d95d08d30d1ced4a93ad145f7d0de378a96d712389d51",
+      "bytes": 14470
+    },
+    {
+      "file": "run-pairs-after-smoke01.py",
+      "sha256": "e62d0562d15dea1b4d20bd3e9fa4352fe6391a48bead30d5404c4710db5d8fd0",
+      "bytes": 3735
+    },
+    {
+      "file": "sdk-backend-compare01.py",
+      "sha256": "17a9d76b60657b54da93b980c8ca2f9a388c11e51c6c50ec8f5e508a3a8d8338",
+      "bytes": 13502
+    },
+    {
+      "file": "summarize-pairs01.py",
+      "sha256": "312b226ec98665cdb4d05fe669b8d7b72a4855f259cc43cf102890c2cae5183c",
+      "bytes": 7410
+    }
+  ]
+}

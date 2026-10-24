@@ -658,5 +658,11 @@
     "original_driver_field": "unchanged local filestore",
     "actual_unchanged_mechanism": "ordinary File restore privately maps JuiceFS checkpoint memory; virtio-fs SharedFile memory.live remains local XFS",
     "original_remote_receipt_preserved": true
+  },
+  "write_clock_scope_correction": {
+    "source": "sdk-writable-performance01.py: root_write_begin wraps commands.run(dd if=/dev/urandom ... conv=fsync)",
+    "actual_clock_scope": "SDK command round-trip plus guest random generation/write/fsync; not SDK file upload or isolated fsync",
+    "historical_numeric_values_unchanged": true,
+    "new_comparison": "guest-storage-io records generation, write and fsync separately; do not merge historical and new fixtures"
   }
 }
