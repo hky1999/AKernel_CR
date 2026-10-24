@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "kind": "gvisor-three-group-backend-performance-addendum",
+  "test_history_only": true,
+  "runtime_tuple_manifest": "delivery/pr119-cgroup-durable-leases-20261024.json",
+  "sandboxd_commit": "91dff2f686d4f3f18540d33c0851b127212d8567",
+  "gvisor_commit": "218d85378357f9726fc3c0f7cf878cf19772d360",
+  "sandboxd_elf_sha256": "433574033952b1ad9106b125e085302b9c5268fea179609975de7d722c2f6c83",
+  "cri_digest": "sha256:0bde46ba9cbbee107af01d085919c012c9d38094910d2a4761716de7f1c9dcb4",
+  "products_not_rebuilt": true,
+  "formal_runtime_pin_and_defaults_unchanged": true,
+  "historical_gitlinks_unchanged": true,
+  "accepted": {
+    "instances": 30,
+    "checkpoint_reload_rounds": 60,
+    "final_native_profile_restored": true,
+    "final_audit_rc": 0
+  },
+  "scope": [
+    "same product bytes; A local XFS/full, B JuiceFS/full, C JuiceFS/native clone",
+    "two logical nodes on one physical host; reload on original logical node",
+    "natural caches; not object-cold or SOTA comparison",
+    "client actual 4GiB, template still 2GiB; no new OOM but memory.max events increased",
+    "remote read-only baseline plus local delta not implemented"
+  ],
+  "source_archive_sha256": "8111169dc5be1ccd34f342ceedd44d60c8b75c9cbae35c0c41d76f73bff5d41f",
+  "source_archive_bytes": 84626,
+  "evidence": [
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/artifact-index.json",
+      "bytes": 5935,
+      "sha256": "729878986499671e6421a6e97d1ca43c6d3ee67b77f94dbe568c2d1664016b64"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-01-clone-native-juicefs.json",
+      "bytes": 17360,
+      "sha256": "d21341ea3dfb0be75f5fb90a86d077e3f1c46869e4a7dbb6669d650fe61adaa5"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-01-full-local-xfs.json",
+      "bytes": 17224,
+      "sha256": "e6f4b65878d336089f132a23a9d42ddc05652d492e2268a87090c6003cd3b692"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-01-full-native-juicefs.json",
+      "bytes": 17395,
+      "sha256": "dd10837eb475bb47f4c4079549b30797bcd7e4f84065cacd7d36bc6bcd5c907b"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-02-clone-native-juicefs.json",
+      "bytes": 17408,
+      "sha256": "07c10670c293397a5064fb680bb9617209e7f39cb9335da6db9bfd5e5308447b"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-02-full-local-xfs.json",
+      "bytes": 17244,
+      "sha256": "40e40c25df419dfb12655e8cd1299a100d1b9f40fc70b7db17f8252a73be6768"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-02-full-native-juicefs.json",
+      "bytes": 17403,
+      "sha256": "16aba030e6204130aac456494e11cf55c8e715415a5d23b4bd36f15e10bc17a9"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-03-clone-native-juicefs.json",
+      "bytes": 17375,
+      "sha256": "c8b6bba3eb5276c5b1c7bf37004a0eb0ed690867e912e59d572ddb343436c4e0"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-03-full-local-xfs.json",
+      "bytes": 17244,
+      "sha256": "c32b614e20182f107284434f7e5b6393f400729e33b579eeb06d61328a35941e"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-03-full-native-juicefs.json",
+      "bytes": 17402,
+      "sha256": "90abb8ad11f71ede5541d27dd7c14a3c44a2cb2f41d038fd8f28c1a23a69b523"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-04-clone-native-juicefs.json",
+      "bytes": 17399,
+      "sha256": "aa890075567f2c1bbb001bb121ebe1162c58e074e0ef6514b50f05e130139701"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-04-full-local-xfs.json",
+      "bytes": 17242,
+      "sha256": "bda3f78edb2416a2fa5e41cb174648b645c5d8f1eba684fdf30ade90716cae4e"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-04-full-native-juicefs.json",
+      "bytes": 17388,
+      "sha256": "fc778714b9bdce9579375c5c7374f8eed4bdbb5461e46abfd402d3ea67e1d6ba"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-05-clone-native-juicefs.json",
+      "bytes": 17417,
+      "sha256": "9a958d46cb220c3ba854a792200fd480d2a2a5087f9ccb22d84d2bc863e49f54"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-05-full-local-xfs.json",
+      "bytes": 17247,
+      "sha256": "5070ec47e81b2152b161b82d1af6faf9a3b33e7e708f72976537651e097324f0"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-05-full-native-juicefs.json",
+      "bytes": 17423,
+      "sha256": "33af35309067f309289aef82845fd53acbcfc13d84bb78815ae38c8f363acc41"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-06-clone-native-juicefs.json",
+      "bytes": 17429,
+      "sha256": "501c2dd0e11f7242058f6e6d89555c45619a3e989b759109e6be588b2687d0da"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-06-full-local-xfs.json",
+      "bytes": 17252,
+      "sha256": "f3d74aca20de78085444e4d4b87102fe718ace5060082ee0c265ab3f9c87df51"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-06-full-native-juicefs.json",
+      "bytes": 17432,
+      "sha256": "a22093cc718ce8e1cb4a2b7884532cd355b08dae1835f61a7ad88905468dabae"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-07-clone-native-juicefs.json",
+      "bytes": 17369,
+      "sha256": "8c06935e2b3551f5a23b8767eb3f44fbd371f9c95bfccac51a182250f0494c44"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-07-full-local-xfs.json",
+      "bytes": 17243,
+      "sha256": "e1c2b92cee9d0b50a5400fc3f132093bbc26067219d5768025793ca07ffd414d"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-07-full-native-juicefs.json",
+      "bytes": 17371,
+      "sha256": "212c6fa67a9427355ac7b8e6ef516f84195984d2a21f05b1aa7b61fd801aa687"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-08-clone-native-juicefs.json",
+      "bytes": 17423,
+      "sha256": "80bb0b3de4c33ac84272ae30ce09ba669d3d671347b7b83862d43ff6240443a7"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-08-full-local-xfs.json",
+      "bytes": 17236,
+      "sha256": "11b506cd4f6b645b79010065ab68f4abe2f864960f2e9f3b2836d7829a064fbb"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-08-full-native-juicefs.json",
+      "bytes": 17379,
+      "sha256": "1b13d872de52ce43d3d7756b01ed29136fa5af70b96ac71e3263de44f6dd43fc"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-09-clone-native-juicefs.json",
+      "bytes": 17360,
+      "sha256": "1c9e8061176aa8148b7e66be95f92382b8f73119926935e0c810c0875173dfb9"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-09-full-local-xfs.json",
+      "bytes": 17243,
+      "sha256": "1399f8e241efb3d3a3c1a9ccfd4ee1f5f077e78ab7eebc09c54144caa10a1282"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-09-full-native-juicefs.json",
+      "bytes": 17413,
+      "sha256": "40c82536751642ba999454d9d86105d38ba2b791b540ef4899249adeb15955d0"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-10-clone-native-juicefs.json",
+      "bytes": 17447,
+      "sha256": "aeda9d92ad0f8f514415b0ce5b02a47c5f81bb4cf4742789c01f17cd4548a82d"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-10-full-local-xfs.json",
+      "bytes": 17234,
+      "sha256": "606183d4c3493d826ffea95d166c0817a7bf2bbf5250955d340783e58791526d"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/case-10-full-native-juicefs.json",
+      "bytes": 17421,
+      "sha256": "0c4ec3398b9e563f3dbe55008b1e374997f5599b199c60f5ac0675a94d581fe2"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/client-stability.json",
+      "bytes": 859,
+      "sha256": "6fea1bc7a34e6be68c3a329fad8004a3495f2870451595fbc6b7cba4223bbc7e"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/final-state.json",
+      "bytes": 1867,
+      "sha256": "6d196d2edf6a3c2496022add7c29914fdb0dc7f930f77baf4c3f567ee8080d7d"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/script-source-index.json",
+      "bytes": 1888,
+      "sha256": "adb0623606683a77c57c513a0b8538bf53606af68ab1b46c6e981146a413f690"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/statistics.json",
+      "bytes": 121340,
+      "sha256": "5b40aa1017c4f9b707d60404ba1de32551bbd5c2236d54e3d442af3a41725067"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/summary.json",
+      "bytes": 319,
+      "sha256": "b38691345c47126eabe74c843f641a3a29b2cbfd4ef899f9f874b5d21abecd8e"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-gvisor-trios-20261024/trial-history.json",
+      "bytes": 593,
+      "sha256": "0453f6009d1abd1304114582c98cc7ddeca17417137c283ff0d385462a38fcf2"
+    }
+  ],
+  "remaining": [
+    "attribute native/full second reload PUT per object",
+    "client-death/resource-failure causal isolation and capacity budget",
+    "remote read-only baseline plus local delta capability, integration and SDK acceptance",
+    "internal deletion interleavings, shared volume and physical failure domains"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "rc": 0,
+  "clients": [
+    {
+      "execution_node": "B",
+      "actual_memory_limit_bytes": 4294967296,
+      "same_processes_and_start_ticks": true,
+      "process_count": 2,
+      "memory_event_delta": {
+        "low": 0,
+        "high": 0,
+        "max": 1537,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0,
+        "sock_throttled": 0
+      }
+    },
+    {
+      "execution_node": "A",
+      "actual_memory_limit_bytes": 4294967296,
+      "same_processes_and_start_ticks": true,
+      "process_count": 2,
+      "memory_event_delta": {
+        "low": 0,
+        "high": 0,
+        "max": 1432,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0,
+        "sock_throttled": 0
+      }
+    }
+  ],
+  "daemonset_template_bytes": 2147483648,
+  "cache_configuration_unchanged": true,
+  "no_global_cache_clear": true
+}

@@ -1,0 +1,22 @@
+{
+  "first_trial": {
+    "rc": 1,
+    "error_type": "RuntimeError"
+  },
+  "first_trial_failed_before_checkpoint": true,
+  "observer_mount_alias_fixed_without_relaxing_device_identity": true,
+  "original_failed_source_verified_and_retired": {
+    "rc": 0,
+    "original_64MiB_root_file_verified": true,
+    "resources_retired": true,
+    "no_checkpoint_request_had_been_issued": true,
+    "source_already_absent": false
+  },
+  "accepted_trial": {
+    "rc": 0,
+    "instances": 3,
+    "state_rounds": 6,
+    "final_profile": "clone-native-juicefs"
+  },
+  "formal_samples_exclude_trials": true
+}

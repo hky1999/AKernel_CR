@@ -1,0 +1,10 @@
+{
+  "rc": 0,
+  "instances": 30,
+  "checkpoint_reload_rounds": 60,
+  "same_product_bytes": true,
+  "final_native_profile_restored": true,
+  "final_audit_rc": 0,
+  "scope": "same physical machine, same logical node reload; not remote baseline plus local delta",
+  "no_competitor_or_physical_failure_domain_claim": true
+}

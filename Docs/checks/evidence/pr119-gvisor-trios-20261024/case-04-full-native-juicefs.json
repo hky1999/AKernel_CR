@@ -1,0 +1,657 @@
+{
+  "pair": 4,
+  "position": 2,
+  "backend": "full-native-juicefs",
+  "execution_node": "B",
+  "data": {
+    "rc": 0,
+    "runtime": "runsc",
+    "variant": "full-native-juicefs",
+    "scope": "same code/image; 3 groups separate RWFS medium from external-clone mode; identical background memory restore; guest I/O clocks; natural infrastructure caches; two rounds clustered per instance",
+    "samples_are_exploratory": true,
+    "sdk_versions": {
+      "akernel-sdk": "0.2.0rc3",
+      "adx-environment": "0.1.0rc3"
+    },
+    "create_ms": 399.705048,
+    "create_clock_scope": "SDK constructor only; excludes post-create RGW query",
+    "create_rgw_delta": {
+      "put_obj_ops": 0,
+      "put_obj_bytes": 0,
+      "get_obj_ops": 0,
+      "get_obj_bytes": 0,
+      "del_obj_ops": 0,
+      "del_obj_bytes": 0,
+      "del_bucket_ops": 0,
+      "copy_obj_ops": 0,
+      "copy_obj_bytes": 0,
+      "list_obj_ops": 0,
+      "list_buckets_ops": 0
+    },
+    "io_probe_sha256": "f11e2a32602ef80cadecb664086562f4367e92bd79a8df63c934088e8f13cc94",
+    "observer_sha256": "634c4dad69f853adb10ec8cd51542b4aee47b1d2c4268402cea2692244d4d273",
+    "io_probe_command_ms": 915.640267,
+    "guest_io": {
+      "bytes": 67108864,
+      "seed": 20261024,
+      "block_bytes": 4096,
+      "buffer_fill_ns": 126299739,
+      "open_ns": 132558,
+      "sequential_write_ns": 82686899,
+      "sequential_file_sync_ns": 16342,
+      "sequential_directory_sync_ns": 150838,
+      "sequential_total_ns": 82987618,
+      "random_sync_operations": [
+        {
+          "offset": 58671104,
+          "write_ns": 80830,
+          "sync_ns": 14913,
+          "total_ns": 96103
+        },
+        {
+          "offset": 65044480,
+          "write_ns": 59002,
+          "sync_ns": 14741,
+          "total_ns": 74078
+        },
+        {
+          "offset": 42741760,
+          "write_ns": 87289,
+          "sync_ns": 21010,
+          "total_ns": 108613
+        },
+        {
+          "offset": 4157440,
+          "write_ns": 203799,
+          "sync_ns": 15743,
+          "total_ns": 219809
+        },
+        {
+          "offset": 66428928,
+          "write_ns": 61189,
+          "sync_ns": 7515,
+          "total_ns": 68988
+        },
+        {
+          "offset": 73728,
+          "write_ns": 47770,
+          "sync_ns": 4883,
+          "total_ns": 52845
+        },
+        {
+          "offset": 30400512,
+          "write_ns": 33719,
+          "sync_ns": 4105,
+          "total_ns": 37983
+        },
+        {
+          "offset": 18395136,
+          "write_ns": 58806,
+          "sync_ns": 9749,
+          "total_ns": 68850
+        },
+        {
+          "offset": 65273856,
+          "write_ns": 67022,
+          "sync_ns": 78084,
+          "total_ns": 145496
+        },
+        {
+          "offset": 31285248,
+          "write_ns": 78716,
+          "sync_ns": 5090,
+          "total_ns": 92292
+        },
+        {
+          "offset": 62464000,
+          "write_ns": 62194,
+          "sync_ns": 5795,
+          "total_ns": 68150
+        },
+        {
+          "offset": 10080256,
+          "write_ns": 53273,
+          "sync_ns": 4548,
+          "total_ns": 58005
+        },
+        {
+          "offset": 23760896,
+          "write_ns": 77570,
+          "sync_ns": 8221,
+          "total_ns": 86037
+        },
+        {
+          "offset": 2514944,
+          "write_ns": 54563,
+          "sync_ns": 4662,
+          "total_ns": 59382
+        },
+        {
+          "offset": 29847552,
+          "write_ns": 54325,
+          "sync_ns": 4736,
+          "total_ns": 59224
+        },
+        {
+          "offset": 38264832,
+          "write_ns": 42225,
+          "sync_ns": 7025,
+          "total_ns": 49405
+        },
+        {
+          "offset": 19431424,
+          "write_ns": 194498,
+          "sync_ns": 12995,
+          "total_ns": 207728
+        },
+        {
+          "offset": 28901376,
+          "write_ns": 53276,
+          "sync_ns": 6162,
+          "total_ns": 59687
+        },
+        {
+          "offset": 16310272,
+          "write_ns": 56003,
+          "sync_ns": 6814,
+          "total_ns": 62998
+        },
+        {
+          "offset": 16896000,
+          "write_ns": 45894,
+          "sync_ns": 5258,
+          "total_ns": 51314
+        },
+        {
+          "offset": 17006592,
+          "write_ns": 65963,
+          "sync_ns": 7789,
+          "total_ns": 73980
+        },
+        {
+          "offset": 40906752,
+          "write_ns": 57056,
+          "sync_ns": 4412,
+          "total_ns": 61627
+        },
+        {
+          "offset": 40767488,
+          "write_ns": 31795,
+          "sync_ns": 4099,
+          "total_ns": 36055
+        },
+        {
+          "offset": 39268352,
+          "write_ns": 36172,
+          "sync_ns": 4054,
+          "total_ns": 40387
+        },
+        {
+          "offset": 59056128,
+          "write_ns": 31378,
+          "sync_ns": 3983,
+          "total_ns": 35523
+        },
+        {
+          "offset": 3231744,
+          "write_ns": 27113,
+          "sync_ns": 3824,
+          "total_ns": 31093
+        },
+        {
+          "offset": 32555008,
+          "write_ns": 55477,
+          "sync_ns": 20211,
+          "total_ns": 75956
+        },
+        {
+          "offset": 43233280,
+          "write_ns": 51997,
+          "sync_ns": 6354,
+          "total_ns": 58532
+        },
+        {
+          "offset": 53977088,
+          "write_ns": 73146,
+          "sync_ns": 8801,
+          "total_ns": 82237
+        },
+        {
+          "offset": 50651136,
+          "write_ns": 59063,
+          "sync_ns": 4794,
+          "total_ns": 64036
+        },
+        {
+          "offset": 33296384,
+          "write_ns": 49813,
+          "sync_ns": 5227,
+          "total_ns": 55211
+        },
+        {
+          "offset": 9666560,
+          "write_ns": 53131,
+          "sync_ns": 9101,
+          "total_ns": 62526
+        },
+        {
+          "offset": 56066048,
+          "write_ns": 35335,
+          "sync_ns": 4343,
+          "total_ns": 39852
+        },
+        {
+          "offset": 46927872,
+          "write_ns": 28187,
+          "sync_ns": 4039,
+          "total_ns": 32383
+        },
+        {
+          "offset": 13545472,
+          "write_ns": 34102,
+          "sync_ns": 4309,
+          "total_ns": 38570
+        },
+        {
+          "offset": 35913728,
+          "write_ns": 45153,
+          "sync_ns": 4861,
+          "total_ns": 50192
+        },
+        {
+          "offset": 51482624,
+          "write_ns": 30006,
+          "sync_ns": 4081,
+          "total_ns": 34249
+        },
+        {
+          "offset": 48566272,
+          "write_ns": 25476,
+          "sync_ns": 4243,
+          "total_ns": 29881
+        },
+        {
+          "offset": 41062400,
+          "write_ns": 25160,
+          "sync_ns": 4034,
+          "total_ns": 29346
+        },
+        {
+          "offset": 41041920,
+          "write_ns": 50472,
+          "sync_ns": 4734,
+          "total_ns": 55390
+        },
+        {
+          "offset": 19075072,
+          "write_ns": 26179,
+          "sync_ns": 3935,
+          "total_ns": 30268
+        },
+        {
+          "offset": 24924160,
+          "write_ns": 28745,
+          "sync_ns": 4083,
+          "total_ns": 32982
+        },
+        {
+          "offset": 4022272,
+          "write_ns": 24132,
+          "sync_ns": 4118,
+          "total_ns": 28405
+        },
+        {
+          "offset": 62926848,
+          "write_ns": 28661,
+          "sync_ns": 4000,
+          "total_ns": 32817
+        },
+        {
+          "offset": 2101248,
+          "write_ns": 31187,
+          "sync_ns": 4056,
+          "total_ns": 35398
+        },
+        {
+          "offset": 22396928,
+          "write_ns": 53448,
+          "sync_ns": 4743,
+          "total_ns": 58377
+        },
+        {
+          "offset": 17297408,
+          "write_ns": 27444,
+          "sync_ns": 4243,
+          "total_ns": 31849
+        },
+        {
+          "offset": 34148352,
+          "write_ns": 38409,
+          "sync_ns": 14858,
+          "total_ns": 53428
+        },
+        {
+          "offset": 23502848,
+          "write_ns": 57190,
+          "sync_ns": 12066,
+          "total_ns": 69429
+        },
+        {
+          "offset": 42991616,
+          "write_ns": 28523,
+          "sync_ns": 4671,
+          "total_ns": 33347
+        },
+        {
+          "offset": 63934464,
+          "write_ns": 27015,
+          "sync_ns": 4697,
+          "total_ns": 31866
+        },
+        {
+          "offset": 23990272,
+          "write_ns": 32812,
+          "sync_ns": 6039,
+          "total_ns": 39018
+        },
+        {
+          "offset": 2215936,
+          "write_ns": 29819,
+          "sync_ns": 5314,
+          "total_ns": 35286
+        },
+        {
+          "offset": 33386496,
+          "write_ns": 29531,
+          "sync_ns": 3817,
+          "total_ns": 33502
+        },
+        {
+          "offset": 57950208,
+          "write_ns": 28425,
+          "sync_ns": 4747,
+          "total_ns": 33342
+        },
+        {
+          "offset": 58826752,
+          "write_ns": 29776,
+          "sync_ns": 5025,
+          "total_ns": 34954
+        },
+        {
+          "offset": 24076288,
+          "write_ns": 24975,
+          "sync_ns": 4521,
+          "total_ns": 29650
+        },
+        {
+          "offset": 28946432,
+          "write_ns": 51148,
+          "sync_ns": 13645,
+          "total_ns": 65071
+        },
+        {
+          "offset": 46727168,
+          "write_ns": 53971,
+          "sync_ns": 8542,
+          "total_ns": 62790
+        },
+        {
+          "offset": 59904000,
+          "write_ns": 78049,
+          "sync_ns": 9637,
+          "total_ns": 87953
+        },
+        {
+          "offset": 49508352,
+          "write_ns": 75273,
+          "sync_ns": 7349,
+          "total_ns": 82924
+        },
+        {
+          "offset": 26583040,
+          "write_ns": 69438,
+          "sync_ns": 5067,
+          "total_ns": 74700
+        },
+        {
+          "offset": 22151168,
+          "write_ns": 47395,
+          "sync_ns": 8343,
+          "total_ns": 55922
+        },
+        {
+          "offset": 54730752,
+          "write_ns": 59461,
+          "sync_ns": 24085,
+          "total_ns": 83853
+        }
+      ],
+      "file_sha256_after": "06e7dfb9243dc4c60b4df0e7483f8a6cc82b5e28e581ff7e7ed2e774787ea432",
+      "readback_verified": true,
+      "clock_scope": "guest monotonic clock; excludes SDK RPC, buffer generation and final verification; total sequential includes create/write/file fsync/directory fsync"
+    },
+    "root_write_fsync_ms": 82.987618,
+    "root_write_fsync_scope": "guest monotonic create/write/file+directory fsync; excludes generation, SDK RPC and random overwrites",
+    "memory_bytes": 536870912,
+    "root_file_bytes": 67108864,
+    "vm_memory_mb": 2048,
+    "private_storage_mb": 1024,
+    "requested_cpu_millis": 1000,
+    "prepare_rgw_delta": {
+      "put_obj_ops": 128,
+      "put_obj_bytes": 67371008,
+      "get_obj_ops": 0,
+      "get_obj_bytes": 0,
+      "del_obj_ops": 0,
+      "del_obj_bytes": 0,
+      "del_bucket_ops": 0,
+      "copy_obj_ops": 0,
+      "copy_obj_bytes": 0,
+      "list_obj_ops": 0,
+      "list_buckets_ops": 0
+    },
+    "backing_media": [
+      {
+        "phase": "before-checkpoint",
+        "round": 0,
+        "backend": "full-native-juicefs",
+        "actual_private_rwfs_fds": [
+          {
+            "device": 6291677,
+            "inode": 28867,
+            "logical_bytes": 1073741824,
+            "filesystem_reported_allocated_bytes": 1073741824,
+            "anonymous": true,
+            "legacy_gofer_mount_alias": false
+          }
+        ],
+        "private_medium_verified": true,
+        "checkpoint_mode": "full"
+      },
+      {
+        "phase": "after-reload",
+        "round": 0,
+        "backend": "full-native-juicefs",
+        "actual_private_rwfs_fds": [
+          {
+            "device": 6291677,
+            "inode": 28873,
+            "logical_bytes": 1073741824,
+            "filesystem_reported_allocated_bytes": 1073741824,
+            "anonymous": true,
+            "legacy_gofer_mount_alias": false
+          }
+        ],
+        "private_medium_verified": true,
+        "checkpoint_mode": "full"
+      },
+      {
+        "phase": "before-checkpoint",
+        "round": 1,
+        "backend": "full-native-juicefs",
+        "actual_private_rwfs_fds": [
+          {
+            "device": 6291677,
+            "inode": 28873,
+            "logical_bytes": 1073741824,
+            "filesystem_reported_allocated_bytes": 1073741824,
+            "anonymous": true,
+            "legacy_gofer_mount_alias": false
+          }
+        ],
+        "private_medium_verified": true,
+        "checkpoint_mode": "full"
+      },
+      {
+        "phase": "after-reload",
+        "round": 1,
+        "backend": "full-native-juicefs",
+        "actual_private_rwfs_fds": [
+          {
+            "device": 6291677,
+            "inode": 28879,
+            "logical_bytes": 1073741824,
+            "filesystem_reported_allocated_bytes": 1073741824,
+            "anonymous": true,
+            "legacy_gofer_mount_alias": false
+          }
+        ],
+        "private_medium_verified": true,
+        "checkpoint_mode": "full"
+      }
+    ],
+    "rounds": [
+      {
+        "round": 0,
+        "checkpoint_http_ms": 1637,
+        "checkpoint_outer_command_ms": 1734.309813,
+        "sdk_reload_ms": 1829.188026,
+        "first_verified_root_ms": 1873.009014,
+        "full_memory_verified_ms": 3676.345143,
+        "full_root_and_memory_verified_ms": 4075.158878,
+        "idle_guest_observer": {
+          "samples": 164,
+          "max_mono_gap_ns": 8882550,
+          "max_wall_gap_ns": 8882558,
+          "backwards_wall_samples": 0,
+          "interval_ns": 2000000
+        },
+        "checkpoint_guest_observer": {
+          "samples": 141,
+          "max_mono_gap_ns": 1534015534,
+          "max_wall_gap_ns": 1534015511,
+          "backwards_wall_samples": 0,
+          "interval_ns": 2000000
+        },
+        "checkpoint_rgw_delta": {
+          "put_obj_ops": 672,
+          "put_obj_bytes": 699955922,
+          "get_obj_ops": 0,
+          "get_obj_bytes": 0,
+          "del_obj_ops": 128,
+          "del_obj_bytes": 67371008,
+          "del_bucket_ops": 0,
+          "copy_obj_ops": 0,
+          "copy_obj_bytes": 0,
+          "list_obj_ops": 0,
+          "list_buckets_ops": 0
+        },
+        "reload_through_full_verification_rgw_delta": {
+          "put_obj_ops": 0,
+          "put_obj_bytes": 0,
+          "get_obj_ops": 10,
+          "get_obj_bytes": 5898230,
+          "del_obj_ops": 66,
+          "del_obj_bytes": 67108900,
+          "del_bucket_ops": 0,
+          "copy_obj_ops": 0,
+          "copy_obj_bytes": 0,
+          "list_obj_ops": 0,
+          "list_buckets_ops": 0
+        },
+        "checkpoint_host_phases": {
+          "available": false,
+          "reason": "fixed gVisor adapter has no equivalent host phase fields"
+        },
+        "restore_host_phases": {
+          "available": false,
+          "reason": "fixed gVisor adapter has no equivalent host phase fields"
+        },
+        "state_verified": true
+      },
+      {
+        "round": 1,
+        "checkpoint_http_ms": 1636,
+        "checkpoint_outer_command_ms": 1845.634115,
+        "sdk_reload_ms": 2565.279833,
+        "first_verified_root_ms": 2607.994896,
+        "full_memory_verified_ms": 4584.000215,
+        "full_root_and_memory_verified_ms": 4984.082133,
+        "idle_guest_observer": {
+          "samples": 150,
+          "max_mono_gap_ns": 4679368,
+          "max_wall_gap_ns": 4679355,
+          "backwards_wall_samples": 0,
+          "interval_ns": 2000000
+        },
+        "checkpoint_guest_observer": {
+          "samples": 319,
+          "max_mono_gap_ns": 1284863969,
+          "max_wall_gap_ns": 1284863950,
+          "backwards_wall_samples": 0,
+          "interval_ns": 2000000
+        },
+        "checkpoint_rgw_delta": {
+          "put_obj_ops": 608,
+          "put_obj_bytes": 633237766,
+          "get_obj_ops": 0,
+          "get_obj_bytes": 0,
+          "del_obj_ops": 0,
+          "del_obj_bytes": 0,
+          "del_bucket_ops": 0,
+          "copy_obj_ops": 0,
+          "copy_obj_bytes": 0,
+          "list_obj_ops": 0,
+          "list_buckets_ops": 0
+        },
+        "reload_through_full_verification_rgw_delta": {
+          "put_obj_ops": 502,
+          "put_obj_bytes": 190971904,
+          "get_obj_ops": 45,
+          "get_obj_bytes": 34340819,
+          "del_obj_ops": 1112,
+          "del_obj_bytes": 823823079,
+          "del_bucket_ops": 0,
+          "copy_obj_ops": 0,
+          "copy_obj_bytes": 0,
+          "list_obj_ops": 0,
+          "list_buckets_ops": 1
+        },
+        "checkpoint_host_phases": {
+          "available": false,
+          "reason": "fixed gVisor adapter has no equivalent host phase fields"
+        },
+        "restore_host_phases": {
+          "available": false,
+          "reason": "fixed gVisor adapter has no equivalent host phase fields"
+        },
+        "state_verified": true
+      }
+    ],
+    "lifetime_rgw_delta": {
+      "put_obj_ops": 2524,
+      "put_obj_bytes": 1836518402,
+      "get_obj_ops": 55,
+      "get_obj_bytes": 40239049,
+      "del_obj_ops": 1917,
+      "del_obj_bytes": 1203280651,
+      "del_bucket_ops": 0,
+      "copy_obj_ops": 0,
+      "copy_obj_bytes": 0,
+      "list_obj_ops": 0,
+      "list_buckets_ops": 3
+    },
+    "resources_deleted": true
+  }
+}
