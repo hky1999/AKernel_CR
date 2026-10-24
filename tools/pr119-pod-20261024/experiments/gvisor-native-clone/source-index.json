@@ -1,0 +1,20 @@
+{
+  "scope": "远端实际执行的独立函数门；非完整运行时/SDK资格，候选组件源码尚未交付",
+  "files": [
+    {
+      "file": "README.md",
+      "sha256": "533c63bbe399524430fe9914471bb7b59e77c6e44185be58859f30655df8fbb7",
+      "bytes": 1530
+    },
+    {
+      "file": "helper-driver01.py",
+      "sha256": "f2e56c3a1fd38e8bf5246df83ff9498be5e59afe4b6347f2522bae42fd0361d4",
+      "bytes": 6977
+    },
+    {
+      "file": "helper-qa01.sh",
+      "sha256": "545a9e40c238041e83cccd073e3e7b96c9b1d6c903ec57748a207e888c89f8ba",
+      "bytes": 680
+    }
+  ]
+}

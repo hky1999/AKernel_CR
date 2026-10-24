@@ -1,0 +1,81 @@
+{
+  "rc": 0,
+  "status": "standalone-helper-and-two-real-juicefs-clients-passed-not-runsc-sdk",
+  "product_baseline": "87e8441b6db18219fbb941378cfcb2883750b07c",
+  "deployed_product_unchanged": true,
+  "steps": [
+    {
+      "name": "isolated-helper-qa",
+      "rc": 0
+    },
+    {
+      "name": "pods-private",
+      "rc": 0
+    },
+    {
+      "name": "all-pods-private",
+      "rc": 0
+    },
+    {
+      "name": "prepare-0",
+      "rc": 0
+    },
+    {
+      "name": "install-0",
+      "rc": 0
+    },
+    {
+      "name": "juicefs-helper-0",
+      "rc": 0
+    },
+    {
+      "name": "remove-helper-0",
+      "rc": 0
+    },
+    {
+      "name": "prepare-1",
+      "rc": 0
+    },
+    {
+      "name": "install-1",
+      "rc": 0
+    },
+    {
+      "name": "juicefs-helper-1",
+      "rc": 0
+    },
+    {
+      "name": "remove-helper-1",
+      "rc": 0
+    },
+    {
+      "name": "remove-shared-test-root",
+      "rc": 0
+    }
+  ],
+  "formal_source_terminal_sha256": "75b9dba774cc875a30fe1c71d20fd83067d317d55e658b5544f275572ab0b983",
+  "helper_elf_sha256": "5605d610dd864571d480aeb67f6ecdb6342eab2f9b59ff5268f0d12bc9abffad",
+  "formatted_sources": {
+    "runsc/container/filestore_snapshot.go": "e992fa81e5c5a7d1c73494141c407bac274450f07b029e7844def8e29ba510cf",
+    "runsc/boot/filter/config/config_main.go": "3eaab891551837d0b4c20fbc60b8273e4db4d9c6b8e98040b2be0d27ce54beee",
+    "runsc/boot/filter/config/config_test.go": "3e5839aa4f515dbf79065dedf7f663970cfcc85bb0ecb691907f9ba53a8a279e",
+    "pkg/sentry/checkpoint/BUILD": "f2f58ea95b6a111ab18a7322b939eb7f6d9926fdcbdc0b53f49c8b1f339a8116",
+    "pkg/sentry/checkpoint/clone_filestore.go": "7e31e5e262ec15e69912c4f84642e2e771fbbd59b463a58bc29c8a4d2baa5afd",
+    "pkg/sentry/checkpoint/clone_filestore_test.go": "69d4bba3f8dde39897ab870f7ab9a3fd212c539484b6142941671ad5626c07ba",
+    "pkg/sentry/pgalloc/save_restore.go": "d4d850b0c7a05df69c926a49e9fbe6b5be9b405e3670dd100f2d1cb774dd8944"
+  },
+  "nodes": [
+    {
+      "execution_node": "A",
+      "helper_tests_rc": 0,
+      "iterations": 3
+    },
+    {
+      "execution_node": "B",
+      "helper_tests_rc": 0,
+      "iterations": 3
+    }
+  ],
+  "scope": "actual candidate CloneFilestore; Go 1.25.5 and exact x/sys v0.43.0; not full Bazel or sentry/seccomp/SDK qualification",
+  "test_resources_removed": true
+}

@@ -1,6 +1,6 @@
 # CrossNode checkpoint/restore：已验收源码交付
 
-**可选 FC 私有盘新实验已完成功能门**：[sandboxd fdb145c](https://github.com/hky1999/sandboxd/commit/fdb145cf51f340dc46ebea3713c342b4ec93b127) 支持运行态 overlay.ext4 放 JuiceFS，并修复源节点退出后的租约/网络规则恢复。官方 76、两运行时状态/双向接管、持续直接 I/O 与管理进程崩溃通过。先读 [中文功能总结](Docs/stages/20261024T-pr119-fc-native-rwfs-functional-stage-summary.md)、[独立实验清单](delivery/pr119-native-rwfs-20261024.json) 和 [配置说明](deploy/experiments/README-pr119-fc-native-rwfs.md)。gVisor 新后端、交替性能与生产晋升未完成，默认复现与实验分开；完整保存仍需数秒，不把盘克隆时间当作整个停顿。
+**可选 FC 私有盘实验完成功能与十组后端对照**：[sandboxd fdb145c](https://github.com/hky1999/sandboxd/commit/fdb145cf51f340dc46ebea3713c342b4ec93b127) 支持运行态 overlay.ext4 放 JuiceFS，并修复源节点退出后的租约/网络规则恢复。官方 76、两运行时状态/双向接管、持续直接 I/O 与管理进程崩溃通过。先读 [中文功能总结](Docs/stages/20261024T-pr119-fc-native-rwfs-functional-stage-summary.md)、[独立实验清单](delivery/pr119-native-rwfs-20261024.json) 和 [配置说明](deploy/experiments/README-pr119-fc-native-rwfs.md)。新增 [十组对照总结](Docs/stages/20261024T-pr119-fc-backend-comparison-stage-summary.md)：同代码二十实例/四十次状态通过，checkpoint 约快三分之一，但 4 KiB 逐次同步约慢 32 倍。gVisor 完整新后端、本地差异路线与生产晋升未完成；不把盘克隆时间当作整个停顿。
 
 **基础组合修复已验收**：[sandboxd e3f402c](https://github.com/hky1999/sandboxd/commit/e3f402c0a18be3ff0b7d90674daae9459464772a) 修正异步磁盘完成与内存保存顺序，源码门、官方 SDK 76、双向接管、真实持续直接 I/O 均通过。[基础修复总结](Docs/stages/20261024T-pr119-fc-disk-cut-fix-stage-summary.md) 与基础清单固定 c85d58b2… 制品。此前十组性能仍属于 9c74060c…，分开记账；当时两条新 RWFS 后端尚未接入；后续可选实验见上文。
 
@@ -13,10 +13,10 @@
 ## 从这里开始
 
 ```bash
-git clone --recurse-submodules git@github.com:hky1999/AKernel_CR.git
+git clone --branch repro/pr119-pod-baremetal-20261022 --recurse-submodules git@github.com:hky1999/AKernel_CR.git
 cd AKernel_CR
 cat VERSION.md
-cat Docs/reproduction.md
+cat Docs/reproduction-pr119-20261024.md
 ```
 
 不要使用 `git submodule update --remote`：父仓的子模块提交指针已经固定交付版本。两套 SDK 都应从指定源码安装，不能仅安装当前 PyPI 包。详见 `Docs/reproduction.md`。
@@ -26,7 +26,7 @@ cat Docs/reproduction.md
 - ADX 负责 Environment 生命周期、快照引用、持久化的读者预留和共享卷挂载准入。
 - JuiceFS 通过各节点独立挂载提供共同命名空间。JuiceFS 的文件元数据与 S3 对象数据，不等同于 ADX 使用的 Redis 控制状态。
 - 应用共享卷与沙箱私有可写根文件系统是不同契约。恢复 checkpoint 不会回滚共享卷内容。
-- 已验收性能实验中，Firecracker 的私有可写盘仍为本地 XFS 上的 ext4 镜像，checkpoint 工件发布到 JuiceFS；不是生产 OverlayBD 集成。
+- 历史性能实验的 Firecracker 私有盘在本地 XFS；最新可选实验将其放 JuiceFS，并与本地路径完成十组对照。两者仍为 ext4/virtio-blk，尚无生产 OverlayBD 集成。
 - 已验收环境是一台物理机上的两个隔离逻辑节点，不能据此宣称真实跨物理机迁移、存储高可用或生产尾延迟已经验收。
 - Firecracker 在登记的恢复指标上有收益；gVisor 的收益仍不确定。原始样本见 `evidence/performance-six-pairs.json`。
 - 未验收的 Coordinator 退出候选、无关 AFS 修改、私有配置、凭据、进程清单和内部历史文档，不进入本次交付。

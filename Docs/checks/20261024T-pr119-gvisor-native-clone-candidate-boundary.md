@@ -19,8 +19,10 @@
 | 新 checkpoint/clone_filestore.go | 先 FICLONE；只对不支持/同文件系统挂载边界错误尝试 copy_file_range。要求不同 inode、空目标、普通文件与同文件系统，不做用户态整文件复制回退；短复制继续，EINTR 重试，零进度/部分错误失败。调用者仍负责冻结、失败目标弃置、发布前同步 |
 | sentry seccomp | 增加两个非负已持有 FD、flags=0 的 copy_file_range 规则；不关闭过滤。仍需真正 sentry 运行证明 |
 | kernel/kernel.go:saveMemoryFiles | 先以原选项保存 k.mf 应用内存，再对 private MemoryFiles 设置 ExternalContent；原生克隆只替代私有文件数据的序列化，应用内存捕获/恢复逻辑不改 |
-| 新回归源码 | 准备短复制/中断、读写错误不得吞掉、部分失败与零进度、空文件、同 inode/非空目标拒绝。尚未执行，不算通过 |
+| 新回归源码 | 克隆函数的短复制/中断、读写错误不得吞掉、部分失败与零进度、空文件、同 inode/非空目标拒绝已三轮 race/两客户端通过；seccomp 和整条捕获/采纳回归待完整 Bazel |
 | sandboxd 消费层 | 现役 fdb145c 尚不含 #78 的 reflink 模式。可从已存在的 #78 复用 client/handler、清单验证和对应回归；不整包混入别的修复或控制面 |
+
+还有一个性能比较的语义边界：【源码】runsc/boot/vfs.go:770–795 将私有 MemoryFile 注入 tmpfs upper；overlay/regular_file.go:351–369 的同步调用转发给 upper，而 tmpfs/tmpfs.go:1286–1290 与 tmpfs/filesystem.go:42–45 明确同步为 no-op（状态在内存）。因此 gVisor 私有根目录的应用 fsync 返回，不等于宿主 filestore 已同步到 JuiceFS，更不等于整个执行状态已发布。持久化确认仍须依赖冻结内捕获、目标 fsync、内核/文件系统状态与 ADX 提交。不能把这种 fsync 与 FC guest ext4 的逐层同步延迟直接比较，也不能把共享 JuiceFS 挂载的 gofer I/O 混为同一链路。该行为属于既有 tmpfs upper 语义，本候选不自行重写它。
 
 copy_file_range 是内核文件范围复制入口，本身不保证元数据克隆；本任务已有 JuiceFS 原语实测为零对象 GET/PUT，但候选 gVisor 仍须重新验证实际 FD、S3 流量和暂停时钟。
 
@@ -28,11 +30,15 @@ copy_file_range 是内核文件范围复制入口，本身不保证元数据克�
 
 【源码】可以沿已有冻结与采纳协议做小范围适配，无需重写 gVisor 文件系统或应用内存恢复。必须同时覆盖捕获与非消费式采纳，不能只把 filestore 路径改成 JuiceFS 就宣布完成。
 
-【状态】只有未提交候选，尚未编译、测试、部署或推送。FC 的当前十组对照仍在跑，为避免资源竞争，此时不在 BareMetal 编译候选。
+【实测状态】FC 对照整轮完成后，克隆函数已在 Go 1.25.5/x/sys v0.43.0 私有容器三轮 race 单测、两个真实 JuiceFS 客户端各三轮通过，含匿名脏 mmap、短复制/中断/错误和私有分支。helper ELF 5605d610…，临时资源删除，见 [函数回执](evidence/pr119-juicefs-tapfix-20261023/gvisor-native-clone-helper01.json)。完整候选的 SnapshotToFd/采纳/seccomp 路径尚未通过 Bazel/匹配 bundle/SDK，未提交部署推送；不能将独立函数 gate 转记为整体通过。
 
 ## 5. 建议与改进项
 
 正式 FC 测量结束、恢复布局并确认无 Environment 后，在远端独立容器依次验证克隆 helper、pgalloc/采纳/seccomp 相关回归，构建完整匹配的 runsc/四 helper/shim bundle。再以精确版本接入 sandboxd 的已有 #78 适配，保留默认 full 分支，更新合同与制品清单。
+
+后台恢复到外部快照的顺序另有源码窗口待确定性复现，见 [后台加载顺序检查](20261024T-pr119-gvisor-snapshot-background-load-order.md)；必须在实际克隆前确认私有页加载完成并传播错误，不能用后续 SaveTo 的等待替代。当前 helper 验证不覆盖该顺序。
+
+消费层另需运行时专有的 filestore 位置选择与挂载校验：现有 plugin.runtime.filestore_dir 同时被 FC 使用，不能为了 gVisor 原生克隆将全局目录 bind 到 JuiceFS，导致 FC live-memory/staging 一并迁移。优先复用 #78 的 checkpoint_mode/full 分支和现有目录管理，只新增必要的 runsc 专有可选覆盖，默认不变，配置挂载缺失/替换要失败，不能默默写到裸露的本地目录。该消费层改动尚未实施。
 
 SDK 必须覆盖两代、两分支、打开后删除、mmap、截断/打洞、恢复后再写、保存失败与进程死亡；核对文件数据位置与应用内存位置，确认原工件不变。原 `.5` 与候选的能力/错误对照单列，不能把替换整个 bundle 的变化当成一个配置开关收益。
 
@@ -51,4 +57,4 @@ git -C /home/keyang/AKernelWorkspace/codex-pr119-gvisor-native-clone-20261024 st
 
 ## 7. 现场清理披露
 
-只创建独立本地 Git 工作树和未提交源码/文档，不修改原开发工作树、子模块、运行制品或共享环境；没有本地编译测试。远端唯一在途测量仍为 FC 本地/原生布局十组对照，候选构建不会与其重叠。
+只创建独立本地 Git 工作树和未提交源码/文档，不修改原开发工作树、子模块、运行制品或共享环境；没有本地编译测试。正式 FC 对照终态成功后才执行独立 helper，未与性能负载重叠；两客户端临时二进制/目录已清理，产品制品未更换。

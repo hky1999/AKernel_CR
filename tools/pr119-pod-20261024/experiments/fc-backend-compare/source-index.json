@@ -3,8 +3,8 @@
   "files": [
     {
       "file": "README.md",
-      "sha256": "425fd65b77b3cd293915b1ec91e26ba1dedc0f1c54176974123adcfbecf777e8",
-      "bytes": 3675
+      "sha256": "398af09ccec597dbfe1f35d0681b7cd6b1d45a982ea6a592620c8c29024679dd",
+      "bytes": 3804
     },
     {
       "file": "build-driver01.py",
@@ -15,6 +15,11 @@
       "file": "build-qa01.sh",
       "sha256": "244b46f13251d232c51741cbc58ce85aaf285a56b0dd33afd1a3170ab8d1bba8",
       "bytes": 505
+    },
+    {
+      "file": "final-state01.py",
+      "sha256": "c8ed8a322ffb9418095287cad184340ae3f87d000106851d74917c50e5213ef2",
+      "bytes": 4431
     },
     {
       "file": "guest-storage-io.go",

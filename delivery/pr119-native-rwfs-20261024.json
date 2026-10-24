@@ -2,7 +2,7 @@
   "schema": "akernel-pr119-native-rwfs-experiment/v1",
   "date": "2026-10-24",
   "language": "zh-CN",
-  "status": "可选 FC 实验布局功能门通过；性能裁决及生产晋升未完成",
+  "status": "可选 FC 布局功能与同代码十组后端对照完成；gVisor/本地差异路线及生产晋升未完成",
   "base_manifest": "pr119-20261024.json @ parent 97e5d1341608fc10a1585b06811162422acf1cad",
   "existing_gitlinks": "沿用父仓历史五个 gitlink；实验源码另按此清单获取，不单独改一个组件指针混搭",
   "source": {
@@ -75,10 +75,10 @@
     "open_checkpoint_input_observed_at_sandboxd_crash": {
       "firecracker": true,
       "gvisor": false
-    }
+    },
+    "fc_backend_ab_ba": "FC 同代码/内存模式十组 AB/BA：20 实例/40 次完整保存与同节点 reload；相同实际产品字节，仅两个配置字段变化，正式原始样本与配对统计在档"
   },
   "not_accepted": [
-    "后端交替配对性能；当前是各一实例连续三轮试跑",
     "gVisor 私有可写层原生 JuiceFS 克隆",
     "远端只读基线加本地差异层",
     "全新主机一键重放；历史执行脚本仍需按任务身份适配",
@@ -87,5 +87,21 @@
     "默认后端晋升或超过 E2B/AgentEnv/CubeSandbox 的结论"
   ],
   "evidence_root": "Docs/checks/evidence/pr119-juicefs-tapfix-20261023",
-  "acceptance_document": "Docs/checks/20261024T-pr119-native-rwfs-full-sdk-acceptance.md"
+  "acceptance_document": "Docs/checks/20261024T-pr119-native-rwfs-full-sdk-acceptance.md",
+  "performance": {
+    "evidence": "Docs/checks/evidence/pr119-juicefs-tapfix-20261023/fc-backend-pairs01.json",
+    "document": "Docs/checks/20261024T-pr119-fc-backend-ten-pair-performance.md",
+    "scope": "每后端十个独立 FC 实例，各两轮；2 GiB配置/512 MiB应用内存/64 MiB根文件/1 GiB盘；同一BareMetal两逻辑节点、同节点reload、自然缓存、Full无压缩；不代表跨物理机或SOTA",
+    "checkpoint_p50_ms": {
+      "first_local": 8404.5,
+      "first_juicefs": 5507.5,
+      "after_reload_local": 11307,
+      "after_reload_juicefs": 7574
+    },
+    "random_4k_write_sync_per_instance_median_then_group_median_ms": {
+      "local": 0.2997415,
+      "juicefs": 9.58750025
+    },
+    "default_backend_promoted": false
+  }
 }

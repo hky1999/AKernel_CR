@@ -8,7 +8,7 @@
 
 只读 GitHub 官方仓库，经 tag 引用与 Git tree 双重解析，v1.0.18 对应完整 commit `cee2186ca75670f6c3d48a4b79c2b43a7134fba5`。按该 commit 读取源码，逐一核对返回的 blob SHA 与 tree；不是拿最新 main 当发布版本。
 
-读取 README、src/api_server.cpp、src/image_file.cpp、src/image_service.cpp、src/main.cpp、src/overlaybd/lsmt/file.cpp。未在 BareMetal 编译、启动或创建 OverlayBD 设备；此时正在运行 FC 后端交替测量，避免叠加负载或触及共享内核。
+读取 README、src/api_server.cpp、src/image_file.cpp、src/image_service.cpp、src/main.cpp、src/overlaybd/lsmt/file.cpp。未在 BareMetal 编译、启动或创建 OverlayBD 设备；最初源码检查时正在运行 FC 后端交替测量，避免叠加负载或触及共享内核。
 
 ## 3. 数据
 
@@ -26,6 +26,8 @@
 
 补充【实测，只读宿主盘点】：target_core_user 已加载，block_netlink 显示 unblocked；reset_netlink 为写入型/读权限不足，本次未读取到值。未发现可见的 overlaybd-tcmu/tcmu-runner 进程、TCMU UIO 名称或 configfs user_* backstore。此刻没有现役使用者的可见证据，不证明将来可任意修改全局参数；真正启动前还须重新检查并约束独占，当前没有启动或写入。
 
+补充【源码】：同一版本 lsmt/file.cpp:800–814 的 group commit 只把索引写入文件，并不包含 fsync；因此不能用它消解上述同步返回值缺口。append_index:820–828 另有忽略 append/group commit 错误的路径，需要与 I/O 故障回归一并审查，尚未做动态损坏复现。官方 latest release 仍为 v1.0.18，不能假定存在已发布的新版本修复。
+
 ## 4. 结论
 
 【源码】OverlayBD 已有文件 lower、局部写层、封存与在线切层，可复用，不需要重新开发块级 COW。它不是把任意 raw ext4 文件直接作为 LSMT 层；初始模板转换和格式身份仍需验证/计费。
@@ -41,6 +43,8 @@
 3. 接入操作使用独立 nonce/代次和日志；API 超时/后段失败先对账。现有调用可已切层，未确认前不释放新旧数据或默认继续旧路径；与 SDB 的暂停/恢复、失败基线失效统一处理。
 4. 每份发布工件包含自洽的全部层成员，或显式登记父依赖到 ADX 原有引用模型。可以评估 JuiceFS 文件克隆形成自包含层集合；不能隐藏绝对父路径、另建权威 catalog，或把本地未上传的写层当作远端已持久化。
 5. 通过两个分支、至少两代、后台/按需读时写入、同步故障、重启/进程死亡和回收门后，才与原生克隆按相同协议比较。当前 FC 本地/原生基线十组还不是本条路线的实现。
+
+作为可选成熟替代，QEMU 官方提供 storage daemon 的单文件 FUSE raw 导出，可把已有 raw 基线叠加 qcow2 差异后呈现为普通盘文件，源见 [官方说明](https://www.qemu.org/2021/08/22/fuse-blkexport/) 与 [storage daemon 文档](https://www.qemu.org/docs/master/tools/qemu-storage-daemon.html)。这只是能力入口，不是本任务验证：需要固定实际版本、证明导出后持有 FD 的在线切层、flush/错误传播、后端死亡恢复、VMM Async 兼容和层依赖；FUSE 又增加一跳，也不能直接用于 gVisor 的 MemoryFile。未选择替换 OverlayBD，未下载、安装或启动 QEMU。若 OverlayBD 为修复同步/隔离需要较多自研，可按既定计划 5.2 的成熟替代条款做成本比较，不先开发自研块映射服务。
 
 ## 6. 可复现步骤
 
@@ -58,4 +62,4 @@ git show cee2186ca75670f6c3d48a4b79c2b43a7134fba5:src/main.cpp
 
 ## 7. 现场清理披露
 
-本检查只读外部官方源码并写本地文档/小型来源索引；没有在 BareMetal 下载、构建或启动 OverlayBD，没有新块设备、模块、全局参数或共享配置变更。当前唯一远端测量仍是 fdb145c 的本地/原生盘交替任务；不与编译负载混跑。
+本检查只读外部官方源码并写本地文档/小型来源索引；没有在 BareMetal 下载、构建或启动 OverlayBD，没有新块设备、模块、全局参数或共享配置变更。源码检查期间远端仅既定 FC 对照；正式测量结束后才执行 gVisor 独立克隆函数门，未启动任何 OverlayBD/QEMU 实验或修改其宿主参数。
