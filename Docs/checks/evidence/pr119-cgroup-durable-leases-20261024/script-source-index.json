@@ -1,0 +1,61 @@
+{
+  "schema": "executed-cgroup-lease-probes/v1",
+  "files": {
+    "driver01.py": {
+      "sha256": "324f609bad9edaa4e971f866358ead83ed1630c918c453d3d9aec89d24a910ef",
+      "bytes": 5626,
+      "executed_task_relative_path": "cgroup-durable-leases-qa01/driver01.py"
+    },
+    "qa01.sh": {
+      "sha256": "921ae54a76cdab08b18cb1fef2f9d51c5283eb54614c271ba572e0901a8bc438",
+      "bytes": 1601,
+      "executed_task_relative_path": "cgroup-durable-leases-qa01/qa.sh"
+    },
+    "prepare-image01.py": {
+      "sha256": "7a1f5455419ead3556cbe63c013cc9ff4eebf6f9cd96fb8e9656109cdecc4e82",
+      "bytes": 10144,
+      "executed_task_relative_path": "prepare-cgroup-leases-image01.py"
+    },
+    "run-full-sdk01.py": {
+      "sha256": "fe61bd83a333dbdab5ecddd5eb62959b39cb80e59a48c8a5a06087f1c73b3020",
+      "bytes": 14230,
+      "executed_task_relative_path": "cgroup-durable-leases-sdk-input01/run-full-sdk01.py"
+    },
+    "sdk-held-reader03.py": {
+      "sha256": "b559b42139fcde21b92c9851d5350277ad5a79081738f95a930fbbb45afa07b5",
+      "bytes": 11841,
+      "executed_task_relative_path": "cgroup-durable-leases-sdk-input01/sdk-held-reader03.py"
+    },
+    "hold-reader-role02.py": {
+      "sha256": "ec4cad0c493e949ca07e63bce18ab313ea106d3411e8ea9c00fc63231bd96798",
+      "bytes": 6720,
+      "executed_task_relative_path": "cgroup-durable-leases-sdk-input01/hold-reader-role02.py"
+    },
+    "check-preserved-snapshot01.py": {
+      "sha256": "7d3b4126cbcf1547847af0ae4bb3c73ec295a401d210a72fee2c8e1230adfe02",
+      "bytes": 673,
+      "executed_task_relative_path": "cgroup-durable-leases-sdk-input01/check-preserved-snapshot01.py"
+    },
+    "run-postsdk01.py": {
+      "sha256": "966f77050249e378a46efbf9bd3fc6e44d9de0d343f759c7dd249b6e20516188",
+      "bytes": 5999,
+      "executed_task_relative_path": "cgroup-durable-leases-postsdk01/run-postsdk01.py"
+    },
+    "sdk-ordinary-restart01.py": {
+      "sha256": "1f3e89365e664f9a8360dae512d76780315c5b63f87793ac5ae50588e4ce8575",
+      "bytes": 15528,
+      "executed_task_relative_path": "cgroup-durable-leases-postsdk01/sdk-ordinary-restart01.py"
+    },
+    "sdk-retire-diagnostic01.py": {
+      "sha256": "aab1084266e04d3c75efefbc6a5862fb82e39b49a4b7bcb3cd911b4ebe0f5bde",
+      "bytes": 3073,
+      "executed_task_relative_path": "cgroup-durable-leases-postsdk01/sdk-retire-diagnostic01.py"
+    },
+    "final-state01.py": {
+      "sha256": "361395078183d0476c478bb2afb9af82fe6241742b5752517badc27565b6705f",
+      "bytes": 6108,
+      "executed_task_relative_path": "cgroup-leases-final-state01.py"
+    }
+  },
+  "source_count": 11
+}

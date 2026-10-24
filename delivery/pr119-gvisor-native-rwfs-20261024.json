@@ -139,5 +139,6 @@
   "configuration_document": "deploy/experiments/README-pr119-gvisor-native-rwfs.md",
   "extended_evidence_root": "Docs/checks/evidence/pr119-gvisor-native-extended-20261024",
   "extended_failure_check": "Docs/checks/20261024T-pr119-gvisor-open-input-sandboxd-restart-failure.md",
-  "retained_diagnostic_snapshot_count": 1
+  "retained_diagnostic_snapshot_count": 1,
+  "superseded_for_current_sandboxd_and_acceptance_by": "pr119-cgroup-durable-leases-20261024.json"
 }

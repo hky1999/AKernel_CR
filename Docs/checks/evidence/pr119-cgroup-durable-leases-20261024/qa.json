@@ -1,0 +1,61 @@
+{
+  "rc": 0,
+  "status": "cgroup-lease-old-red-and-candidate-gates-passed-not-sdk",
+  "steps": [
+    {
+      "name": "git-clone",
+      "rc": 0
+    },
+    {
+      "name": "git-base",
+      "rc": 0
+    },
+    {
+      "name": "old-red",
+      "rc": 0
+    },
+    {
+      "name": "candidate",
+      "rc": 0
+    },
+    {
+      "name": "final-source-status",
+      "rc": 0
+    }
+  ],
+  "deployed": false,
+  "base_commit": "21fb4668431cef88d05b7a789a2bd9a5e19e827c",
+  "elapsed_seconds": 60,
+  "host_available_bytes": 719538757632,
+  "old_regressions_failed_as_expected": true,
+  "sandboxd_sha256": "433574033952b1ad9106b125e085302b9c5268fea179609975de7d722c2f6c83",
+  "source_files": {
+    "doc/checkpoint-restore.md": "a858b479ff16b7ee05cd0b7d64904407dfdb224fa81abc40bf53de8bcdec3d53",
+    "pkg/cgroupmanager/cgroup.go": "cd4d1b85e1000845a2d5a0ed8be3e44a664f1564f29002a3562d9616da9eb7dc",
+    "pkg/cgroupmanager/ops.go": "b2dd2d0d651e6399e7178f39d7089a8b8f06c0d33948c8c10bc557c48f38c47c",
+    "pkg/cgroupmanager/ops_v1.go": "a950beae2ef2289d4adc4bea6566cff4b95d1cb26a91a486a0fc1e695d7f9f63",
+    "pkg/cgroupmanager/ops_v2.go": "c5fb5da1c12b678288327a9be3a126b896a5652de42dea65ada00c36dd9fa476",
+    "pkg/cgroupmanager/ops_test.go": "0456161221426e8e4d44e0cf9e4dbe5187576997a6dd051de1dc811ed3083f38",
+    "pkg/cgroupmanager/leases_persistence_test.go": "d743ad5ef97f33c33092da6113fb5813f413b7d820bd97fc6666eb42da509e28",
+    "pkg/cgroupmanager/leases_recovery_test.go": "3fd25874b86a1495e87248f7c024913bd26dde037c25a8e45ec5a84cc916d57f"
+  },
+  "expected_old_go_test_rc": 1,
+  "old_failed_regression_groups": [
+    "TestAllocatePersistsLeaseBeforeReturn",
+    "TestAllocateWaitsForDurableLeaseCommit",
+    "TestAllocateStoreFailureDoesNotAdmitOrLoseCapacity",
+    "TestOlderStoreCannotOverwriteCommittedAllocation"
+  ],
+  "measured_binary_built_before_source_commit": true,
+  "noncompiled_source_alias_restoration": {
+    "scope": "noncompiled instruction alias only",
+    "original_status": "T CLAUDE.md",
+    "git_target": "AGENTS.md",
+    "content_equals_target": true,
+    "content_sha256": "a6156aef678deeb485a2d05118fceb6c7b9d74163bf4ca54427f384e1a361300",
+    "cause": "shutil.copytree followed source symlink",
+    "product_source_changed": false,
+    "binary_rebuilt": false,
+    "canonical_status_verified": true
+  }
+}

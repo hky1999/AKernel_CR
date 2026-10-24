@@ -1,0 +1,20 @@
+{
+  "schema": "cgroup-lease-qualified-sdk-evidence/v1",
+  "source_base": "21fb4668431cef88d05b7a789a2bd9a5e19e827c",
+  "sandboxd_sha256": "433574033952b1ad9106b125e085302b9c5268fea179609975de7d722c2f6c83",
+  "image_cri_digest": "sha256:0bde46ba9cbbee107af01d085919c012c9d38094910d2a4761716de7f1c9dcb4",
+  "full_sdk_cases": 76,
+  "strict_input_cases": 4,
+  "state_rounds_each_runtime": 3,
+  "bidirectional_each_runtime": true,
+  "live_state_restarts_each_runtime": true,
+  "original_failure_snapshot_recovered_and_retired": true,
+  "final_environment_count": 0,
+  "product_default_or_runtime_pin_promoted": false,
+  "remaining": [
+    "native mount/sync faults and checkpoint during loading",
+    "same-code backend paired performance",
+    "remote read-only baseline plus local delta route",
+    "production orphan reconciliation and physical fault domains"
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "rc": 0,
+  "full_sdk_accepted": true,
+  "official": [
+    {
+      "name": "firecracker-integration",
+      "tests": 8,
+      "skipped": 0,
+      "seconds": 53.484,
+      "OK": true
+    },
+    {
+      "name": "firecracker-standalone",
+      "tests": 30,
+      "skipped": 0,
+      "seconds": 196.309,
+      "OK": true
+    },
+    {
+      "name": "runsc-integration",
+      "tests": 8,
+      "skipped": 0,
+      "seconds": 21.756,
+      "OK": true
+    },
+    {
+      "name": "runsc-standalone",
+      "tests": 30,
+      "skipped": 0,
+      "seconds": 139.565,
+      "OK": true
+    }
+  ],
+  "official_case_count": 76,
+  "strict_reader_restarts": [
+    {
+      "rc": 0,
+      "runtime": "runsc",
+      "role": "sandboxd",
+      "diagnostic_not_performance": true,
+      "full_lifecycle_fault_matrix_passed": false,
+      "reader_barrier_seconds": 3,
+      "target_node": "akcr119-20261022-worker",
+      "memory_bytes": 1073741824,
+      "vm_memory_mb": 2048,
+      "open_input_at_role_crash_proven": true,
+      "original_runtime_preserved": true,
+      "reference_and_named_files_preserved": true,
+      "busy_delete_after_restart": true,
+      "full_state_verified": true,
+      "later_checkpoint_reload_verified": true,
+      "resources_deleted": true,
+      "barrier": {
+        "rc": 0,
+        "role": "sandboxd",
+        "barrier_seconds": 3,
+        "reader_barrier_entered_unix_ns": 1792815941379231209,
+        "shared_input_fd_count_at_role_crash": 1,
+        "role_crash_unix_ns": 1792815941379399814,
+        "reader_resumed_unix_ns": 1792815944380523674,
+        "same_reader_resumed": true
+      }
+    },
+    {
+      "rc": 0,
+      "runtime": "runsc",
+      "role": "sandboxd",
+      "diagnostic_not_performance": true,
+      "full_lifecycle_fault_matrix_passed": false,
+      "reader_barrier_seconds": 3,
+      "target_node": "akcr119-20261022-worker2",
+      "memory_bytes": 1073741824,
+      "vm_memory_mb": 2048,
+      "open_input_at_role_crash_proven": true,
+      "original_runtime_preserved": true,
+      "reference_and_named_files_preserved": true,
+      "busy_delete_after_restart": true,
+      "full_state_verified": true,
+      "later_checkpoint_reload_verified": true,
+      "resources_deleted": true,
+      "barrier": {
+        "rc": 0,
+        "role": "sandboxd",
+        "barrier_seconds": 3,
+        "reader_barrier_entered_unix_ns": 1792816018507398349,
+        "shared_input_fd_count_at_role_crash": 1,
+        "role_crash_unix_ns": 1792816018507571687,
+        "reader_resumed_unix_ns": 1792816021510084668,
+        "same_reader_resumed": true
+      }
+    },
+    {
+      "rc": 0,
+      "runtime": "runsc",
+      "role": "adxlet",
+      "diagnostic_not_performance": true,
+      "full_lifecycle_fault_matrix_passed": false,
+      "reader_barrier_seconds": 3,
+      "target_node": "akcr119-20261022-worker",
+      "memory_bytes": 1073741824,
+      "vm_memory_mb": 2048,
+      "open_input_at_role_crash_proven": true,
+      "original_runtime_preserved": true,
+      "reference_and_named_files_preserved": true,
+      "busy_delete_after_restart": true,
+      "full_state_verified": true,
+      "later_checkpoint_reload_verified": true,
+      "resources_deleted": true,
+      "barrier": {
+        "rc": 0,
+        "role": "adxlet",
+        "barrier_seconds": 3,
+        "reader_barrier_entered_unix_ns": 1792816093812064513,
+        "shared_input_fd_count_at_role_crash": 1,
+        "role_crash_unix_ns": 1792816093812204747,
+        "reader_resumed_unix_ns": 1792816096814259961,
+        "same_reader_resumed": true
+      }
+    },
+    {
+      "rc": 0,
+      "runtime": "runsc",
+      "role": "coordinator",
+      "diagnostic_not_performance": true,
+      "full_lifecycle_fault_matrix_passed": false,
+      "reader_barrier_seconds": 3,
+      "target_node": "akcr119-20261022-worker2",
+      "memory_bytes": 1073741824,
+      "vm_memory_mb": 2048,
+      "open_input_at_role_crash_proven": true,
+      "original_runtime_preserved": true,
+      "reference_and_named_files_preserved": true,
+      "busy_delete_after_restart": true,
+      "full_state_verified": true,
+      "later_checkpoint_reload_verified": true,
+      "resources_deleted": true,
+      "barrier": {
+        "rc": 0,
+        "role": "coordinator",
+        "barrier_seconds": 3,
+        "reader_barrier_entered_unix_ns": 1792816133159916724,
+        "shared_input_fd_count_at_role_crash": 1,
+        "role_crash_unix_ns": 1792816133160157527,
+        "reader_resumed_unix_ns": 1792816136161445493,
+        "same_reader_resumed": true
+      }
+    }
+  ],
+  "state_cases": [
+    {
+      "rc": 0,
+      "runtime": "firecracker",
+      "memory_bytes": 536870912,
+      "root_file_bytes": 67108864,
+      "vm_memory_mb": 2048,
+      "private_storage_mb": 1024,
+      "requested_cpu_millis": 1000,
+      "assigned_node": "akcr119-20261022-worker2",
+      "state_rounds_verified": 3,
+      "not_a_paired_performance_sample": true
+    },
+    {
+      "rc": 0,
+      "runtime": "runsc",
+      "memory_bytes": 536870912,
+      "root_file_bytes": 67108864,
+      "vm_memory_mb": 2048,
+      "private_storage_mb": 1024,
+      "requested_cpu_millis": 1000,
+      "assigned_node": "akcr119-20261022-worker",
+      "state_rounds_verified": 3,
+      "not_a_paired_performance_sample": true
+    }
+  ],
+  "cross_node": {
+    "rc": 0,
+    "status": "bidirectional-sdk-failover-passed",
+    "coverage": {
+      "runsc": [
+        [
+          "akcr119-20261022-worker",
+          "akcr119-20261022-worker2"
+        ],
+        [
+          "akcr119-20261022-worker2",
+          "akcr119-20261022-worker"
+        ]
+      ],
+      "firecracker": [
+        [
+          "akcr119-20261022-worker",
+          "akcr119-20261022-worker2"
+        ],
+        [
+          "akcr119-20261022-worker2",
+          "akcr119-20261022-worker"
+        ]
+      ]
+    },
+    "cross_node_accepted": true
+  },
+  "source_node_offline_and_rejoin_verified": true,
+  "explicit_reload_for_failover": false
+}

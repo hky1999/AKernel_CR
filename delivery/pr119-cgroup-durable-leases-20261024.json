@@ -1,0 +1,371 @@
+{
+  "schema": "akernel-pr119-cgroup-durable-leases-experiment/v1",
+  "date": "2026-10-24",
+  "language": "zh-CN",
+  "status": "组件旧红/新绿、完整SDK、严格输入崩溃和两运行时原进程接管均通过；原生存储剩余故障和后端性能对照继续",
+  "extends": "pr119-gvisor-native-rwfs-20261024.json",
+  "historical_gitlinks_unchanged": true,
+  "default_backend_promoted": false,
+  "formal_runtime_release_promoted": false,
+  "source": {
+    "gvisor": {
+      "repository": "https://github.com/hky1999/gvisor.git",
+      "branch": "codex/pr119-juicefs-native-clone-20261024",
+      "commit": "218d85378357f9726fc3c0f7cf878cf19772d360",
+      "build_base": "87e8441b6db18219fbb941378cfcb2883750b07c",
+      "qualified_source_files": {
+        "pkg/sentry/checkpoint/BUILD": "f2f58ea95b6a111ab18a7322b939eb7f6d9926fdcbdc0b53f49c8b1f339a8116",
+        "pkg/sentry/checkpoint/clone_filestore.go": "7e31e5e262ec15e69912c4f84642e2e771fbbd59b463a58bc29c8a4d2baa5afd",
+        "pkg/sentry/checkpoint/clone_filestore_test.go": "69d4bba3f8dde39897ab870f7ab9a3fd212c539484b6142941671ad5626c07ba",
+        "pkg/sentry/pgalloc/BUILD": "cc7aeca914f5adc8d1cbd1f120111603bfe206261f5a1094f73012cc5f206699",
+        "pkg/sentry/pgalloc/save_restore.go": "d43b467212ceefbb1399ad03987bf779bf727271820f7d0e4d2e72e369251a4c",
+        "pkg/sentry/pgalloc/snapshot_async_load_test.go": "7942e2274353ef9bcb3d1f63367d62c0a1e05289f90905b39a1db7a35569037c",
+        "runsc/container/filestore_snapshot.go": "e992fa81e5c5a7d1c73494141c407bac274450f07b029e7844def8e29ba510cf",
+        "runsc/boot/filter/config/config_main.go": "3eaab891551837d0b4c20fbc60b8273e4db4d9c6b8e98040b2be0d27ce54beee",
+        "runsc/boot/filter/config/config_test.go": "3e5839aa4f515dbf79065dedf7f663970cfcc85bb0ecb691907f9ba53a8a279e",
+        "pkg/sentry/pgalloc/save_restore_external_test.go": "043d2113437f50299580b6cfe7646da0c96af0b5615f54ed5ffea885fd5558f8"
+      }
+    },
+    "sandboxd": {
+      "repository": "https://github.com/hky1999/sandboxd.git",
+      "branch": "codex/pr119-cgroup-durable-leases-20261024",
+      "commit": "91dff2f686d4f3f18540d33c0851b127212d8567",
+      "build_base": "21fb4668431cef88d05b7a789a2bd9a5e19e827c",
+      "qualified_changed_files": {
+        "doc/checkpoint-restore.md": "a858b479ff16b7ee05cd0b7d64904407dfdb224fa81abc40bf53de8bcdec3d53",
+        "pkg/cgroupmanager/cgroup.go": "cd4d1b85e1000845a2d5a0ed8be3e44a664f1564f29002a3562d9616da9eb7dc",
+        "pkg/cgroupmanager/ops.go": "b2dd2d0d651e6399e7178f39d7089a8b8f06c0d33948c8c10bc557c48f38c47c",
+        "pkg/cgroupmanager/ops_v1.go": "a950beae2ef2289d4adc4bea6566cff4b95d1cb26a91a486a0fc1e695d7f9f63",
+        "pkg/cgroupmanager/ops_v2.go": "c5fb5da1c12b678288327a9be3a126b896a5652de42dea65ada00c36dd9fa476",
+        "pkg/cgroupmanager/ops_test.go": "0456161221426e8e4d44e0cf9e4dbe5187576997a6dd051de1dc811ed3083f38",
+        "pkg/cgroupmanager/leases_persistence_test.go": "d743ad5ef97f33c33092da6113fb5813f413b7d820bd97fc6666eb42da509e28",
+        "pkg/cgroupmanager/leases_recovery_test.go": "3fd25874b86a1495e87248f7c024913bd26dde037c25a8e45ec5a84cc916d57f"
+      },
+      "qualified_native_and_lease_source_files": {
+        "config/config.go": "8f7f131047cca7658ca1b2c22217a90f3ee3451da01aea4e1171b32f8507b210",
+        "config/config_test.go": "2ea9f5b296e59dba7ab593f71752fbc1f3248a743105fe6445d14c7c75e606c7",
+        "configs/sandboxd.toml": "762713b89bd37ac5bd3aa632503e1cd36a3fd6475de9418306a2cccee8c5da14",
+        "doc/checkpoint-restore.md": "a858b479ff16b7ee05cd0b7d64904407dfdb224fa81abc40bf53de8bcdec3d53",
+        "pkg/runtime/runsc/client.go": "a26048a870357c3948af4aab5a4dca1f36e2242db3c370f019b39dae75244baa",
+        "pkg/runtime/runsc/client_test.go": "9b92cc65f28f05038366fea535dfda19d6cf7e267abaaef86e471d4b18a3f1ed",
+        "pkg/runtime/runsc/filestore_checkpoint.go": "9acf533d705961614d8f94a2c1e792e3d19f5bbac0fcd384aa6cd449937a9116",
+        "pkg/runtime/runsc/filestore_checkpoint_test.go": "a09c63aada48f52f3dfb220783815e503350a55d086e773c646dbd5dc661e859",
+        "pkg/runtime/runsc/handler.go": "f50ea803c6e0c613a4a50793a79df227f816783f695a7011ac4929c891d1aa3b",
+        "pkg/runtime/runsc/writable_directory_linux.go": "43333c391cabf3f6913bc09729b5d3c2a9e97ca69bb392ca98895811fce165b7",
+        "pkg/runtime/runsc/writable_directory_linux_test.go": "7fdb8809b0f44380a7a3e83d8af174402c210421d9c99c0102ecbe4ac5672075",
+        "pkg/cgroupmanager/cgroup.go": "cd4d1b85e1000845a2d5a0ed8be3e44a664f1564f29002a3562d9616da9eb7dc",
+        "pkg/cgroupmanager/ops.go": "b2dd2d0d651e6399e7178f39d7089a8b8f06c0d33948c8c10bc557c48f38c47c",
+        "pkg/cgroupmanager/ops_v1.go": "a950beae2ef2289d4adc4bea6566cff4b95d1cb26a91a486a0fc1e695d7f9f63",
+        "pkg/cgroupmanager/ops_v2.go": "c5fb5da1c12b678288327a9be3a126b896a5652de42dea65ada00c36dd9fa476",
+        "pkg/cgroupmanager/ops_test.go": "0456161221426e8e4d44e0cf9e4dbe5187576997a6dd051de1dc811ed3083f38",
+        "pkg/cgroupmanager/leases_persistence_test.go": "d743ad5ef97f33c33092da6113fb5813f413b7d820bd97fc6666eb42da509e28",
+        "pkg/cgroupmanager/leases_recovery_test.go": "3fd25874b86a1495e87248f7c024913bd26dde037c25a8e45ec5a84cc916d57f"
+      }
+    }
+  },
+  "measured_binaries_built_before_source_commit": true,
+  "measured_binaries_not_rebuilt_after_commit": true,
+  "sandboxd_sha256": "433574033952b1ad9106b125e085302b9c5268fea179609975de7d722c2f6c83",
+  "runtime_bundle": {
+    "bundle_sha256": "63aa235350012e44020c8a9b404c677d2ce8894f167249ca7e5516ba3970cafa",
+    "bundle_bytes": 67566256,
+    "assets": {
+      "containerd-shim-runsc-v1": {
+        "sha256": "25a66de2f80b3f98fabc97fafb1e6afe7c8527e4b73c281aa78ef8d5d261e08a",
+        "bytes": 29802658
+      },
+      "runsc": {
+        "sha256": "0a7c6571cac94b861ec857190dc5b9c168c2026e08a27eb5ba7e92a2f3317ab3",
+        "bytes": 82620578
+      },
+      "gvisor-bin/checkpointgofer": {
+        "sha256": "1b7563a645d005939be4b857148e221e4437e373850f63ca0e4cb3409ea81724",
+        "bytes": 47095970
+      },
+      "gvisor-bin/gvisor-sentry-prewarmer": {
+        "sha256": "0fbf47023fa85c30687b0578c56bf93c64d053b90fffc6bc0f8a1fde41d7995d",
+        "bytes": 1176
+      },
+      "gvisor-bin/gvisor_sentry": {
+        "sha256": "30bf445ce1c5f09ab7a28582fe0cebd7390cb49f27211d503390f33bef1cbd10",
+        "bytes": 32489634
+      },
+      "gvisor-bin/runsc-metric-server": {
+        "sha256": "c2424af5dd3e8947a09934dfb3a1dcbbdd66f98d1fc569a5b29dccbcb8043a58",
+        "bytes": 35877026
+      }
+    }
+  },
+  "image": {
+    "rc": 0,
+    "status": "combined-image-imported-not-deployed",
+    "deployed": false,
+    "image": "localhost/akernel-pr119:365f7971f895-cgroup-leases01",
+    "config_sha256": "8990eb27c2be533fa7df7043367d04b2ae6cfdda0d052379e7dc457629795941",
+    "expected_cri_digest": "sha256:0bde46ba9cbbee107af01d085919c012c9d38094910d2a4761716de7f1c9dcb4",
+    "sandboxd_sha256": "433574033952b1ad9106b125e085302b9c5268fea179609975de7d722c2f6c83",
+    "source_files": {
+      "doc/checkpoint-restore.md": "a858b479ff16b7ee05cd0b7d64904407dfdb224fa81abc40bf53de8bcdec3d53",
+      "pkg/cgroupmanager/cgroup.go": "cd4d1b85e1000845a2d5a0ed8be3e44a664f1564f29002a3562d9616da9eb7dc",
+      "pkg/cgroupmanager/ops.go": "b2dd2d0d651e6399e7178f39d7089a8b8f06c0d33948c8c10bc557c48f38c47c",
+      "pkg/cgroupmanager/ops_v1.go": "a950beae2ef2289d4adc4bea6566cff4b95d1cb26a91a486a0fc1e695d7f9f63",
+      "pkg/cgroupmanager/ops_v2.go": "c5fb5da1c12b678288327a9be3a126b896a5652de42dea65ada00c36dd9fa476",
+      "pkg/cgroupmanager/ops_test.go": "0456161221426e8e4d44e0cf9e4dbe5187576997a6dd051de1dc811ed3083f38",
+      "pkg/cgroupmanager/leases_persistence_test.go": "d743ad5ef97f33c33092da6113fb5813f413b7d820bd97fc6666eb42da509e28",
+      "pkg/cgroupmanager/leases_recovery_test.go": "3fd25874b86a1495e87248f7c024913bd26dde037c25a8e45ec5a84cc916d57f"
+    },
+    "archive_sha256": "7c001a2e4d4c53908bec78eaf54da6f03880776efbbb30699bbfa9ac2eb371b9",
+    "archive_bytes": 942070272,
+    "runtime_bundle_sha256": "63aa235350012e44020c8a9b404c677d2ce8894f167249ca7e5516ba3970cafa",
+    "runtime_assets": {
+      "containerd-shim-runsc-v1": {
+        "sha256": "25a66de2f80b3f98fabc97fafb1e6afe7c8527e4b73c281aa78ef8d5d261e08a",
+        "bytes": 29802658
+      },
+      "runsc": {
+        "sha256": "0a7c6571cac94b861ec857190dc5b9c168c2026e08a27eb5ba7e92a2f3317ab3",
+        "bytes": 82620578
+      },
+      "gvisor-bin/checkpointgofer": {
+        "sha256": "1b7563a645d005939be4b857148e221e4437e373850f63ca0e4cb3409ea81724",
+        "bytes": 47095970
+      },
+      "gvisor-bin/gvisor-sentry-prewarmer": {
+        "sha256": "0fbf47023fa85c30687b0578c56bf93c64d053b90fffc6bc0f8a1fde41d7995d",
+        "bytes": 1176
+      },
+      "gvisor-bin/gvisor_sentry": {
+        "sha256": "30bf445ce1c5f09ab7a28582fe0cebd7390cb49f27211d503390f33bef1cbd10",
+        "bytes": 32489634
+      },
+      "gvisor-bin/runsc-metric-server": {
+        "sha256": "c2424af5dd3e8947a09934dfb3a1dcbbdd66f98d1fc569a5b29dccbcb8043a58",
+        "bytes": 35877026
+      }
+    },
+    "mapping": [
+      {
+        "node": "akcr119-20261022-control-plane",
+        "cri_digest": "sha256:0bde46ba9cbbee107af01d085919c012c9d38094910d2a4761716de7f1c9dcb4",
+        "leaf_digest": "sha256:2e6fba41461b17509aafe0e8683b454cbcf2222b3e50999b92fe34491696f34a",
+        "config_sha256": "8990eb27c2be533fa7df7043367d04b2ae6cfdda0d052379e7dc457629795941",
+        "platform": "linux/amd64"
+      },
+      {
+        "node": "akcr119-20261022-worker",
+        "cri_digest": "sha256:0bde46ba9cbbee107af01d085919c012c9d38094910d2a4761716de7f1c9dcb4",
+        "leaf_digest": "sha256:2e6fba41461b17509aafe0e8683b454cbcf2222b3e50999b92fe34491696f34a",
+        "config_sha256": "8990eb27c2be533fa7df7043367d04b2ae6cfdda0d052379e7dc457629795941",
+        "platform": "linux/amd64"
+      },
+      {
+        "node": "akcr119-20261022-worker2",
+        "cri_digest": "sha256:0bde46ba9cbbee107af01d085919c012c9d38094910d2a4761716de7f1c9dcb4",
+        "leaf_digest": "sha256:2e6fba41461b17509aafe0e8683b454cbcf2222b3e50999b92fe34491696f34a",
+        "config_sha256": "8990eb27c2be533fa7df7043367d04b2ae6cfdda0d052379e7dc457629795941",
+        "platform": "linux/amd64"
+      }
+    ]
+  },
+  "image_published_to_registry": false,
+  "storage": {
+    "runsc_private_data": "原有tmpfs/MemoryFile，匿名后端文件选择JuiceFS；capture和非消费式adopt使用共享克隆函数",
+    "firecracker": "延续fdb145c实验的JuiceFS overlay.ext4，Async/Writeback；未迁移其内存/staging",
+    "common_filestore": "本地XFS",
+    "objects": "本任务S3/Ceph RGW",
+    "metadata": "PostgreSQL",
+    "juicefs_version": "1.4.1+2026-07-30.0b90c7db",
+    "cache_mib": 4096,
+    "writeback": false,
+    "application_memory_mechanisms_unchanged": true,
+    "profile_fragment": "deploy/experiments/pr119-gvisor-native-rwfs.toml"
+  },
+  "unchanged_assets": "ADX/Execd/SDK/VMM/guest kernel/initrd/EROFS与所继承基础清单相同；正式runtime-versions.env不改",
+  "accepted": {
+    "component_full_fmt_vet_unit_and_related_race": true,
+    "old_persistence_regression_groups_failed": 4,
+    "official_sdk_cases": 76,
+    "official_sdk_skipped": 0,
+    "strict_real_open_input_crashes": [
+      {
+        "rc": 0,
+        "runtime": "runsc",
+        "role": "sandboxd",
+        "diagnostic_not_performance": true,
+        "full_lifecycle_fault_matrix_passed": false,
+        "reader_barrier_seconds": 3,
+        "target_node": "akcr119-20261022-worker",
+        "memory_bytes": 1073741824,
+        "vm_memory_mb": 2048,
+        "open_input_at_role_crash_proven": true,
+        "original_runtime_preserved": true,
+        "reference_and_named_files_preserved": true,
+        "busy_delete_after_restart": true,
+        "full_state_verified": true,
+        "later_checkpoint_reload_verified": true,
+        "resources_deleted": true,
+        "barrier": {
+          "rc": 0,
+          "role": "sandboxd",
+          "barrier_seconds": 3,
+          "reader_barrier_entered_unix_ns": 1792815941379231209,
+          "shared_input_fd_count_at_role_crash": 1,
+          "role_crash_unix_ns": 1792815941379399814,
+          "reader_resumed_unix_ns": 1792815944380523674,
+          "same_reader_resumed": true
+        }
+      },
+      {
+        "rc": 0,
+        "runtime": "runsc",
+        "role": "sandboxd",
+        "diagnostic_not_performance": true,
+        "full_lifecycle_fault_matrix_passed": false,
+        "reader_barrier_seconds": 3,
+        "target_node": "akcr119-20261022-worker2",
+        "memory_bytes": 1073741824,
+        "vm_memory_mb": 2048,
+        "open_input_at_role_crash_proven": true,
+        "original_runtime_preserved": true,
+        "reference_and_named_files_preserved": true,
+        "busy_delete_after_restart": true,
+        "full_state_verified": true,
+        "later_checkpoint_reload_verified": true,
+        "resources_deleted": true,
+        "barrier": {
+          "rc": 0,
+          "role": "sandboxd",
+          "barrier_seconds": 3,
+          "reader_barrier_entered_unix_ns": 1792816018507398349,
+          "shared_input_fd_count_at_role_crash": 1,
+          "role_crash_unix_ns": 1792816018507571687,
+          "reader_resumed_unix_ns": 1792816021510084668,
+          "same_reader_resumed": true
+        }
+      },
+      {
+        "rc": 0,
+        "runtime": "runsc",
+        "role": "adxlet",
+        "diagnostic_not_performance": true,
+        "full_lifecycle_fault_matrix_passed": false,
+        "reader_barrier_seconds": 3,
+        "target_node": "akcr119-20261022-worker",
+        "memory_bytes": 1073741824,
+        "vm_memory_mb": 2048,
+        "open_input_at_role_crash_proven": true,
+        "original_runtime_preserved": true,
+        "reference_and_named_files_preserved": true,
+        "busy_delete_after_restart": true,
+        "full_state_verified": true,
+        "later_checkpoint_reload_verified": true,
+        "resources_deleted": true,
+        "barrier": {
+          "rc": 0,
+          "role": "adxlet",
+          "barrier_seconds": 3,
+          "reader_barrier_entered_unix_ns": 1792816093812064513,
+          "shared_input_fd_count_at_role_crash": 1,
+          "role_crash_unix_ns": 1792816093812204747,
+          "reader_resumed_unix_ns": 1792816096814259961,
+          "same_reader_resumed": true
+        }
+      },
+      {
+        "rc": 0,
+        "runtime": "runsc",
+        "role": "coordinator",
+        "diagnostic_not_performance": true,
+        "full_lifecycle_fault_matrix_passed": false,
+        "reader_barrier_seconds": 3,
+        "target_node": "akcr119-20261022-worker2",
+        "memory_bytes": 1073741824,
+        "vm_memory_mb": 2048,
+        "open_input_at_role_crash_proven": true,
+        "original_runtime_preserved": true,
+        "reference_and_named_files_preserved": true,
+        "busy_delete_after_restart": true,
+        "full_state_verified": true,
+        "later_checkpoint_reload_verified": true,
+        "resources_deleted": true,
+        "barrier": {
+          "rc": 0,
+          "role": "coordinator",
+          "barrier_seconds": 3,
+          "reader_barrier_entered_unix_ns": 1792816133159916724,
+          "shared_input_fd_count_at_role_crash": 1,
+          "role_crash_unix_ns": 1792816133160157527,
+          "reader_resumed_unix_ns": 1792816136161445493,
+          "same_reader_resumed": true
+        }
+      }
+    ],
+    "state_rounds_per_runtime": 3,
+    "bidirectional_sdk_failover_each_runtime": true,
+    "two_runtime_live_state_daemon_restarts": {
+      "firecracker": {
+        "rc": 0,
+        "runtime": "firecracker",
+        "restart": "sandboxd",
+        "diagnostic_not_performance": true,
+        "gc_delete_race_tested": false,
+        "fault_mode": "owned-role-sigkill",
+        "private_anonymous_filestore_identity_preserved": false,
+        "old_checkpoint_reader_observed": true,
+        "protected_artifact_count": 2,
+        "vm_process_unchanged": true
+      },
+      "runsc": {
+        "rc": 0,
+        "runtime": "runsc",
+        "restart": "sandboxd",
+        "diagnostic_not_performance": true,
+        "gc_delete_race_tested": false,
+        "fault_mode": "owned-role-sigkill",
+        "private_anonymous_filestore_identity_preserved": true,
+        "old_checkpoint_reader_observed": false,
+        "protected_artifact_count": 2,
+        "vm_process_unchanged": true
+      }
+    },
+    "original_failure_snapshot_full_recovery_and_sdk_retirement": {
+      "rc": 0,
+      "runtime": "runsc",
+      "diagnostic_not_performance": true,
+      "memory_bytes": 1073741824,
+      "root_file_bytes": 1048576,
+      "original_failure_snapshot_recovered_with_fixed_daemon": true,
+      "full_state_verified": true,
+      "target_private_write_verified": true,
+      "reader_deleted": true,
+      "diagnostic_snapshot_deleted_via_sdk": true
+    },
+    "final_environments_and_runtime_processes": 0
+  },
+  "remaining": [
+    "native mount/sync faults and checkpoint during loading",
+    "same-code backend paired performance",
+    "remote read-only baseline plus local delta route",
+    "production orphan reconciliation and physical fault domains"
+  ],
+  "performance": "本轮为正确性修复；三轮状态测试不作配对提速结论，保留历史FC十组后端数据并等待gVisor同代码对照",
+  "evidence_root": "Docs/checks/evidence/pr119-cgroup-durable-leases-20261024",
+  "summary": "Docs/stages/20261024T-pr119-cgroup-durable-leases-stage-summary.md",
+  "source_alias_note": "构建复制曾将CLAUDE.md链接解引用，内容与AGENTS.md完全相同，已恢复原链接并单独留证；未改变编译源码或重新构建",
+  "inherits_only": [
+    "gvisor bundle and source",
+    "ADX/Execd/SDK/FC/guest assets",
+    "native writable storage profile"
+  ],
+  "parent_acceptance_is_historical": true,
+  "resolved_parent_findings": [
+    "newly admitted cgroup missing from periodic ownership snapshot caused live reader termination on daemon recovery"
+  ],
+  "actual_deployment": {
+    "sdk_and_final_audit_use_this_image": true,
+    "business_pods": 5,
+    "execution_nodes": 2,
+    "actual_asset_hashes_per_node": 15,
+    "artifact_build_receipt_precedes_deployment": true
+  }
+}

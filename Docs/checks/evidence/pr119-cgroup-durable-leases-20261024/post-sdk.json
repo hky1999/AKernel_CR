@@ -1,0 +1,53 @@
+{
+  "rc": 0,
+  "status": "two-runtime-live-state-restarts-and-original-diagnostic-snapshot-passed",
+  "steps": [
+    {
+      "name": "firecracker",
+      "rc": 0
+    },
+    {
+      "name": "runsc",
+      "rc": 0
+    }
+  ],
+  "new_product_build": false,
+  "roles": {
+    "firecracker": {
+      "rc": 0,
+      "runtime": "firecracker",
+      "restart": "sandboxd",
+      "diagnostic_not_performance": true,
+      "gc_delete_race_tested": false,
+      "fault_mode": "owned-role-sigkill",
+      "private_anonymous_filestore_identity_preserved": false,
+      "old_checkpoint_reader_observed": true,
+      "protected_artifact_count": 2,
+      "vm_process_unchanged": true
+    },
+    "runsc": {
+      "rc": 0,
+      "runtime": "runsc",
+      "restart": "sandboxd",
+      "diagnostic_not_performance": true,
+      "gc_delete_race_tested": false,
+      "fault_mode": "owned-role-sigkill",
+      "private_anonymous_filestore_identity_preserved": true,
+      "old_checkpoint_reader_observed": false,
+      "protected_artifact_count": 2,
+      "vm_process_unchanged": true
+    }
+  },
+  "diagnostic": {
+    "rc": 0,
+    "runtime": "runsc",
+    "diagnostic_not_performance": true,
+    "memory_bytes": 1073741824,
+    "root_file_bytes": 1048576,
+    "original_failure_snapshot_recovered_with_fixed_daemon": true,
+    "full_state_verified": true,
+    "target_private_write_verified": true,
+    "reader_deleted": true,
+    "diagnostic_snapshot_deleted_via_sdk": true
+  }
+}

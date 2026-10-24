@@ -1,0 +1,40 @@
+[
+  {
+    "target_node": "akcr119-20261022-worker",
+    "rows": [
+      {
+        "unix_ns": 1792815939076000000,
+        "message": "store cgroup 1 using ids cost: 0 ms"
+      },
+      {
+        "unix_ns": 1792815946636000000,
+        "message": "load cgroup using id num: 1"
+      },
+      {
+        "unix_ns": 1792815946636000000,
+        "message": "load existing cgroup num: 2"
+      }
+    ]
+  },
+  {
+    "target_node": "akcr119-20261022-worker2",
+    "rows": [
+      {
+        "unix_ns": 1792816016055000064,
+        "message": "store cgroup 1 using ids cost: 0 ms"
+      },
+      {
+        "unix_ns": 1792816018476000000,
+        "message": "store cgroup 1 using ids cost: 0 ms"
+      },
+      {
+        "unix_ns": 1792816023645999872,
+        "message": "load cgroup using id num: 1"
+      },
+      {
+        "unix_ns": 1792816023645999872,
+        "message": "load existing cgroup num: 2"
+      }
+    ]
+  }
+]

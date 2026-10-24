@@ -1,0 +1,71 @@
+{
+  "rc": 0,
+  "status": "combined-image-imported-not-deployed",
+  "deployed": false,
+  "image": "localhost/akernel-pr119:365f7971f895-cgroup-leases01",
+  "config_sha256": "8990eb27c2be533fa7df7043367d04b2ae6cfdda0d052379e7dc457629795941",
+  "expected_cri_digest": "sha256:0bde46ba9cbbee107af01d085919c012c9d38094910d2a4761716de7f1c9dcb4",
+  "sandboxd_sha256": "433574033952b1ad9106b125e085302b9c5268fea179609975de7d722c2f6c83",
+  "source_files": {
+    "doc/checkpoint-restore.md": "a858b479ff16b7ee05cd0b7d64904407dfdb224fa81abc40bf53de8bcdec3d53",
+    "pkg/cgroupmanager/cgroup.go": "cd4d1b85e1000845a2d5a0ed8be3e44a664f1564f29002a3562d9616da9eb7dc",
+    "pkg/cgroupmanager/ops.go": "b2dd2d0d651e6399e7178f39d7089a8b8f06c0d33948c8c10bc557c48f38c47c",
+    "pkg/cgroupmanager/ops_v1.go": "a950beae2ef2289d4adc4bea6566cff4b95d1cb26a91a486a0fc1e695d7f9f63",
+    "pkg/cgroupmanager/ops_v2.go": "c5fb5da1c12b678288327a9be3a126b896a5652de42dea65ada00c36dd9fa476",
+    "pkg/cgroupmanager/ops_test.go": "0456161221426e8e4d44e0cf9e4dbe5187576997a6dd051de1dc811ed3083f38",
+    "pkg/cgroupmanager/leases_persistence_test.go": "d743ad5ef97f33c33092da6113fb5813f413b7d820bd97fc6666eb42da509e28",
+    "pkg/cgroupmanager/leases_recovery_test.go": "3fd25874b86a1495e87248f7c024913bd26dde037c25a8e45ec5a84cc916d57f"
+  },
+  "archive_sha256": "7c001a2e4d4c53908bec78eaf54da6f03880776efbbb30699bbfa9ac2eb371b9",
+  "archive_bytes": 942070272,
+  "runtime_bundle_sha256": "63aa235350012e44020c8a9b404c677d2ce8894f167249ca7e5516ba3970cafa",
+  "runtime_assets": {
+    "containerd-shim-runsc-v1": {
+      "sha256": "25a66de2f80b3f98fabc97fafb1e6afe7c8527e4b73c281aa78ef8d5d261e08a",
+      "bytes": 29802658
+    },
+    "runsc": {
+      "sha256": "0a7c6571cac94b861ec857190dc5b9c168c2026e08a27eb5ba7e92a2f3317ab3",
+      "bytes": 82620578
+    },
+    "gvisor-bin/checkpointgofer": {
+      "sha256": "1b7563a645d005939be4b857148e221e4437e373850f63ca0e4cb3409ea81724",
+      "bytes": 47095970
+    },
+    "gvisor-bin/gvisor-sentry-prewarmer": {
+      "sha256": "0fbf47023fa85c30687b0578c56bf93c64d053b90fffc6bc0f8a1fde41d7995d",
+      "bytes": 1176
+    },
+    "gvisor-bin/gvisor_sentry": {
+      "sha256": "30bf445ce1c5f09ab7a28582fe0cebd7390cb49f27211d503390f33bef1cbd10",
+      "bytes": 32489634
+    },
+    "gvisor-bin/runsc-metric-server": {
+      "sha256": "c2424af5dd3e8947a09934dfb3a1dcbbdd66f98d1fc569a5b29dccbcb8043a58",
+      "bytes": 35877026
+    }
+  },
+  "mapping": [
+    {
+      "node": "akcr119-20261022-control-plane",
+      "cri_digest": "sha256:0bde46ba9cbbee107af01d085919c012c9d38094910d2a4761716de7f1c9dcb4",
+      "leaf_digest": "sha256:2e6fba41461b17509aafe0e8683b454cbcf2222b3e50999b92fe34491696f34a",
+      "config_sha256": "8990eb27c2be533fa7df7043367d04b2ae6cfdda0d052379e7dc457629795941",
+      "platform": "linux/amd64"
+    },
+    {
+      "node": "akcr119-20261022-worker",
+      "cri_digest": "sha256:0bde46ba9cbbee107af01d085919c012c9d38094910d2a4761716de7f1c9dcb4",
+      "leaf_digest": "sha256:2e6fba41461b17509aafe0e8683b454cbcf2222b3e50999b92fe34491696f34a",
+      "config_sha256": "8990eb27c2be533fa7df7043367d04b2ae6cfdda0d052379e7dc457629795941",
+      "platform": "linux/amd64"
+    },
+    {
+      "node": "akcr119-20261022-worker2",
+      "cri_digest": "sha256:0bde46ba9cbbee107af01d085919c012c9d38094910d2a4761716de7f1c9dcb4",
+      "leaf_digest": "sha256:2e6fba41461b17509aafe0e8683b454cbcf2222b3e50999b92fe34491696f34a",
+      "config_sha256": "8990eb27c2be533fa7df7043367d04b2ae6cfdda0d052379e7dc457629795941",
+      "platform": "linux/amd64"
+    }
+  ]
+}
