@@ -2,7 +2,7 @@
   "schema": "akernel-pr119-gvisor-native-rwfs-experiment/v1",
   "date": "2026-10-24",
   "language": "zh-CN",
-  "status": "核心组件/完整包/SDK/三轮状态/双向跨节点已通过；完整故障/分支与同代码性能尚未关闭",
+  "status": "核心 SDK、双恢复分支与普通三角色重启通过；真实页输入期间 sandboxd 崩溃组合失败，根因待定位；未开始同代码性能对照",
   "extends": [
     "pr119-20261024.json",
     "pr119-native-rwfs-20261024.json"
@@ -111,12 +111,23 @@
     "official_sdk_skipped": 0,
     "state_rounds_per_runtime": 3,
     "bidirectional_sdk_failover_each_runtime": true,
-    "final_environments_and_runtime_processes": 0
+    "final_environments_and_runtime_processes": 0,
+    "same_snapshot_two_restored_branches": true,
+    "original_snapshot_reopened_and_unchanged": true,
+    "ordinary_control_role_crashes": [
+      "sandboxd",
+      "adxlet",
+      "coordinator"
+    ],
+    "ordinary_restart_memory_bytes": 536870912,
+    "reader_only_open_input_barrier_control": true,
+    "reader_only_control_memory_bytes": 1073741824,
+    "final_count_scope": "core SDK and extended-probe final audits; retained diagnostic snapshot is recorded separately"
   },
   "not_accepted_or_not_done": [
     "production release/pin or backend default promotion",
-    "new gVisor full branch and fault matrix",
-    "native layout sandboxd process death and unfinished-reader interleavings",
+    "native layout real open pages input plus sandboxd crash: failed, root cause unresolved",
+    "native layout remaining mount/sync faults and strict adxlet/Coordinator reader interleavings",
     "same-code paired backend performance",
     "cold-cache or separate physical host benchmarks",
     "remote read-only baseline plus local delta route"
@@ -125,5 +136,8 @@
   "performance": "仅每运行时一实例三轮功能试跑，无同代码配对基线，不作提速结论",
   "evidence_root": "Docs/checks/evidence/pr119-gvisor-native-20261024",
   "summary": "Docs/stages/20261024T-pr119-gvisor-native-sdk-stage-summary.md",
-  "configuration_document": "deploy/experiments/README-pr119-gvisor-native-rwfs.md"
+  "configuration_document": "deploy/experiments/README-pr119-gvisor-native-rwfs.md",
+  "extended_evidence_root": "Docs/checks/evidence/pr119-gvisor-native-extended-20261024",
+  "extended_failure_check": "Docs/checks/20261024T-pr119-gvisor-open-input-sandboxd-restart-failure.md",
+  "retained_diagnostic_snapshot_count": 1
 }

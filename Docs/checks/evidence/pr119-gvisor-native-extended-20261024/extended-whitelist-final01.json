@@ -1,0 +1,296 @@
+{
+  "schema": "akernel-native-gvisor-extended-evidence/v1",
+  "collected_unix_ns": 1792814523386085871,
+  "product_changed": false,
+  "two_branches": {
+    "rc": 0,
+    "status": "native-dual-branch-multigeneration-passed",
+    "steps": [
+      {
+        "name": "two-branches",
+        "rc": 0
+      }
+    ],
+    "new_product_build": false,
+    "two_branches": {
+      "rc": 0,
+      "runtime": "runsc",
+      "diagnostic_not_performance": true,
+      "image": "docker.io/library/python@sha256:e8a38829209aea82774882e5157e1f7c3e8c8393ff53a697b3580896e57f345c",
+      "same_node_rounds": [
+        {
+          "round": 0,
+          "checkpoint_completed": true,
+          "state_restored": true
+        },
+        {
+          "round": 1,
+          "checkpoint_completed": true,
+          "state_restored": true
+        },
+        {
+          "round": 2,
+          "checkpoint_completed": true,
+          "state_restored": true
+        }
+      ],
+      "cross_node_branch": true,
+      "two_restored_branches": true,
+      "full_lifecycle_fault_matrix_passed": false,
+      "original_snapshot_reopened_and_unchanged": true,
+      "snapshot_busy_with_two_branches": true,
+      "checkpoint_operations": 6,
+      "reload_operations": 5,
+      "append_truncate_sparse_hardlink_symlink_verified": true,
+      "mmap_and_open_unlinked_and_renamed_fd_verified": true,
+      "resources_deleted": true
+    }
+  },
+  "ordinary_restarts": {
+    "rc": 0,
+    "status": "native-gvisor-three-role-crashes-preserve-private-files-live-state-and-references",
+    "steps": [
+      {
+        "name": "sandboxd",
+        "rc": 0
+      },
+      {
+        "name": "adxlet",
+        "rc": 0
+      },
+      {
+        "name": "coordinator",
+        "rc": 0
+      }
+    ],
+    "new_product_build": false,
+    "roles": {
+      "sandboxd": {
+        "rc": 0,
+        "runtime": "runsc",
+        "restart": "sandboxd",
+        "diagnostic_not_performance": true,
+        "gc_delete_race_tested": false,
+        "fault_mode": "owned-role-sigkill",
+        "private_anonymous_filestore_identity_preserved": true,
+        "old_checkpoint_reader_observed": false,
+        "protected_artifact_count": 2,
+        "vm_process_unchanged": true
+      },
+      "adxlet": {
+        "rc": 0,
+        "runtime": "runsc",
+        "restart": "adxlet",
+        "diagnostic_not_performance": true,
+        "gc_delete_race_tested": false,
+        "fault_mode": "owned-role-sigkill",
+        "private_anonymous_filestore_identity_preserved": true,
+        "old_checkpoint_reader_observed": false,
+        "protected_artifact_count": 2,
+        "vm_process_unchanged": true
+      },
+      "coordinator": {
+        "rc": 0,
+        "runtime": "runsc",
+        "restart": "coordinator",
+        "diagnostic_not_performance": true,
+        "gc_delete_race_tested": false,
+        "fault_mode": "owned-role-sigkill",
+        "private_anonymous_filestore_identity_preserved": true,
+        "old_checkpoint_reader_observed": false,
+        "protected_artifact_count": 2,
+        "vm_process_unchanged": true
+      }
+    }
+  },
+  "ordinary_preflight_recovery": {
+    "rc": 0,
+    "fault_injected": false,
+    "pre_injection_failure_verified": true,
+    "main_runtime_count": 1,
+    "live_uncheckpointed_root_verified": true,
+    "memory_bytes": 536870912,
+    "sdk_resource_deleted": true
+  },
+  "first_input_probe_recovery": {
+    "rc": 0,
+    "fault_injected": false,
+    "original_reader_not_stopped": true,
+    "memory_bytes": 1073741824,
+    "full_state_verified": true,
+    "snapshot_busy_while_reader_alive": true,
+    "sdk_resources_deleted": true
+  },
+  "strict_input_restart_failure": {
+    "rc": 1,
+    "runtime": "runsc",
+    "role": "sandboxd",
+    "diagnostic_not_performance": true,
+    "full_lifecycle_fault_matrix_passed": false,
+    "reader_barrier_seconds": 3,
+    "error_type": "TimeoutError",
+    "error": "role did not reconcile the existing reader",
+    "barrier": {
+      "rc": 0,
+      "role": "sandboxd",
+      "barrier_seconds": 3,
+      "reader_barrier_entered_unix_ns": 1792813355679644432,
+      "shared_input_fd_count_at_role_crash": 1,
+      "role_crash_unix_ns": 1792813355679852275,
+      "reader_resumed_unix_ns": 1792813358680876573,
+      "same_reader_resumed": true
+    }
+  },
+  "reader_only_control": {
+    "rc": 0,
+    "runtime": "runsc",
+    "role": "sandboxd",
+    "diagnostic_not_performance": true,
+    "full_lifecycle_fault_matrix_passed": false,
+    "reader_barrier_seconds": 3,
+    "role_crash_injected": false,
+    "memory_bytes": 1073741824,
+    "vm_memory_mb": 2048,
+    "open_input_control_exercised": true,
+    "original_runtime_preserved": true,
+    "reference_and_named_files_preserved": true,
+    "busy_delete_after_restart": true,
+    "full_state_verified": true,
+    "later_checkpoint_reload_verified": true,
+    "resources_deleted": true,
+    "barrier": {
+      "rc": 0,
+      "role": "sandboxd",
+      "barrier_seconds": 3,
+      "reader_barrier_entered_unix_ns": 1792814201437069293,
+      "shared_input_fd_count_at_control": 1,
+      "control_barrier_unix_ns": 1792814201437184772,
+      "role_crash_injected": false,
+      "reader_resumed_unix_ns": 1792814204439358675,
+      "same_reader_resumed": true,
+      "same_role_preserved": true
+    }
+  },
+  "probe_failures": [
+    {
+      "probe": "role-restart01",
+      "injected": false,
+      "error": "auxiliary processes sharing the Sentry ELF were counted as runtimes"
+    },
+    {
+      "probe": "held-reader01",
+      "injected": false,
+      "error": "Sentry chroot cannot resolve the original mount name; named identity must use node sandboxd mount view"
+    },
+    {
+      "probe": "reader-barrier-control01",
+      "injected": false,
+      "error": "previous Failed Environment had already retired; no resource created"
+    }
+  ],
+  "executed_script_sources": {
+    "driver01.py": {
+      "sha256": "975e826c0488489977df9f07bbd28d141e5d27899a8ac3839fd83612e43becb6",
+      "bytes": 4386
+    },
+    "sdk-two-branches01.py": {
+      "sha256": "7304abff5c1e294703e7f7d2bcf3c5dadfd1c86adc898037d832a14b8af24489",
+      "bytes": 8609
+    },
+    "driver02.py": {
+      "sha256": "8b5ebf2c815e7f3704cdf20985bda904f3efd5539ded52dc4e685ef377d504e6",
+      "bytes": 4640
+    },
+    "sdk-role-restart01.py": {
+      "sha256": "ee7858c6f23e9fa3a1279fd234b1f98185dbb0acfc6ddcd04ddf98525c01d4f4",
+      "bytes": 15361
+    },
+    "driver03.py": {
+      "sha256": "f75b608e9d00a08d17f921991041f24277059aff3ee2055a75a5ad0ab4967ca2",
+      "bytes": 5388
+    },
+    "sdk-role-restart02.py": {
+      "sha256": "1f3e89365e664f9a8360dae512d76780315c5b63f87793ac5ae50588e4ce8575",
+      "bytes": 15528
+    },
+    "recover-role-preflight01.py": {
+      "sha256": "93c05271a4b4487f400f19a1dba0ce0541cfaf5ff1fa0b8143a50afbfb82ae1e",
+      "bytes": 3166
+    },
+    "driver04.py": {
+      "sha256": "89eb218152ac069d7a2eb602f8d0201036abeca65d8fd815be22c16c65ff9326",
+      "bytes": 4595
+    },
+    "sdk-held-reader01.py": {
+      "sha256": "af4e4f05dc0ffe99cb22baa679af15e65f2871c7decb97e06a82e286be3b544c",
+      "bytes": 11278
+    },
+    "hold-reader-role01.py": {
+      "sha256": "6425f200a26b7e01c0f3ee6a06cb6f349e4b9936d7f26ac160c028266bf9ef6e",
+      "bytes": 6265
+    },
+    "driver05.py": {
+      "sha256": "8765bed6f92dcbe70ef2af90df10efb4225a5a9350298affee8f98068db83057",
+      "bytes": 5242
+    },
+    "sdk-held-reader02.py": {
+      "sha256": "17702934459942bccafc59b2f993c616bc3beb1078a4c8862ad5aef601876700",
+      "bytes": 11616
+    },
+    "hold-reader-role02.py": {
+      "sha256": "ec4cad0c493e949ca07e63bce18ab313ea106d3411e8ea9c00fc63231bd96798",
+      "bytes": 6720
+    },
+    "recover-held-preflight01.py": {
+      "sha256": "80263db18ef3373a199379c48036e8baf49682f7f9947a01e0fd4002c785ed3b",
+      "bytes": 3028
+    },
+    "hold-reader-control01.py": {
+      "sha256": "4d6f9436b849cc0247bc645c554da71b408698b2bd29d75c449617ae15fe3cf2",
+      "bytes": 6889
+    },
+    "sdk-reader-barrier-control01.py": {
+      "sha256": "e05169166227edf784faa32c750971e3bbad32327c25a7061672acdfaced0831",
+      "bytes": 5198
+    },
+    "sdk-reader-barrier-control02.py": {
+      "sha256": "b4711781af820eba4d0bbf3d8b3923eac2ebf8d0d3f386069e0c15d39ed80969",
+      "bytes": 11735
+    }
+  },
+  "final_state": {
+    "environment_count": 0,
+    "host_available_bytes": 719719391232,
+    "nodes": [
+      {
+        "node": "akcr119-20261022-worker",
+        "routable_and_available": true,
+        "actual_asset_hash_count": 15,
+        "runtime_count": 0,
+        "runtime_zombie_count": 0,
+        "runsc_private_root_only_owner_marker": true,
+        "preserved_fc_private_file_count": 1
+      },
+      {
+        "node": "akcr119-20261022-worker2",
+        "routable_and_available": true,
+        "actual_asset_hash_count": 15,
+        "runtime_count": 0,
+        "runtime_zombie_count": 0,
+        "runsc_private_root_only_owner_marker": true,
+        "preserved_fc_private_file_count": 1
+      }
+    ],
+    "core_pods": 5,
+    "core_pods_same_expected_image": true,
+    "expected_cri_digest": "sha256:0806341c5c1939a52497c4dfb28d6b111819322405b33e0f1bb344145fc38660"
+  },
+  "preserved_for_diagnosis": {
+    "reusable_snapshot_count": 1,
+    "snapshot_id_sha256": "57459cae6a3e70a929775f1e6662c1984b86a7b2d1b6dd9c39e745294cefa337",
+    "retained_snapshot_retrievable": true,
+    "original_failure_records_and_private_logs_retained": true,
+    "whole_lifecycle_accepted": false,
+    "same_code_performance_started": false
+  }
+}
