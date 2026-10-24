@@ -1,5 +1,15 @@
 # CrossNode 源码交付版本台账
 
+## 2026-10-24：gVisor 原生克隆候选核心 SDK 完成，源码已推个人 fork
+
+gVisor218d85378357f9726fc3c0f7cf878cf19772d360（基于87e8441b6）和sandboxd21fb4668431cef88d05b7a789a2bd9a5e19e827c（基于fdb145c）分别在个人fork的codex/pr119-juicefs-native-clone-20261024、codex/pr119-gvisor-native-consumer-20261024；普通push和ls-remote精确一致，两树干净。源逐文件匹配被测输入；实际包/ELF为提交整理前构建的同一字节，不因提交重新构建冒充验收。
+
+完整amd64六程序包67566256字节/SHA63aa235350012e44020c8a9b404c677d2ce8894f167249ca7e5516ba3970cafa，sandboxd f81eec47352f3ec71843f585da758b75862e8139f2025c0db9159cd29b8c059b；候选镜像gvisor-native02 / CRI0806341c… / configf8036516…。实际gVisor私有数据后端为JuiceFS，公共filestore仍本地XFS，FC与内存机制不连带迁移；只增加runsc三字段，保留背景恢复、最终sync和原bootstrap/Secret。
+
+新组合远端组件/全仓质量门、完整包、官方76项、两运行时各三轮512MiB内存/64MiB根文件回滚，以及各两个方向512MiB内存/1MiB文件自动接管全绿；部署前新会话/真实路由/可调度资源三次稳定与15文件摘要门通过。最终Environment0，两端运行时与僵尸0，五Pod/实际字节一致，gVisor根仅marker；原FC失败盘一份保留，宿主约670GiB可用。
+
+Changelog：新增可选实验清单、中文配置/阶段总结/检查、9份30315字节白名单与实际脚本来源。原工具依赖失败、旧测试整文件读取导致任务cgroup OOM、镜像RUN的cgroup拒绝均保留并定位，不静默忽略；测试辅助改为有界读取后pgalloc三轮race通过，打包改只读检查旧helper再COPY完整六程序，不改宿主配置。未复制产品Go源码、二进制、原始YAML/日志或凭据；历史gitlink/基础清单/正式runtime pin/default不变。新gVisor完整故障/分支、同代码配对性能、远端基线加本地差异与生产HA/容量仍未完成，不宣称性能已提升或整条路线产品化。
+
 ## 2026-10-24：FC 十组后端性能对照与 gVisor 克隆函数门完成
 
 产品仍 fdb145c / image02 / debbf268…，基础清单、历史 gitlink、默认后端和制品字节均不变。20 独立实例/40 次完整保存与同节点 reload 通过，最终恢复 native 配置。512 MiB应用状态/64 MiB根文件/2 GiB配置/1 GiB盘、Full无压缩、自然缓存，同一BareMetal两逻辑节点：首次 checkpoint P50 8404.5→5507.5 ms，再次 11307→7574 ms，配对比 0.664/0.680、两轮各10/10更快；小块逐次同步的实例中位数由0.300→9.588 ms。每轮PUT约3→2 GiB，普通写入另计，停顿仍约5.0/7.3秒，不作SOTA或跨物理机结论。

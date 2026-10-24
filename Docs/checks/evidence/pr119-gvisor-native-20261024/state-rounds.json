@@ -1,0 +1,485 @@
+{
+  "scope": "one instance per runtime, three sequential Full/uncompressed rounds; 512MiB application state, 64MiB root file, 2GiB configured RAM, 1GiB private storage; natural/warm caches; no paired baseline",
+  "performance_improvement_claimed": false,
+  "cases": [
+    {
+      "runtime": "runsc",
+      "rc": 0,
+      "rounds": [
+        {
+          "round": 0,
+          "checkpoint_http_ms": 1634,
+          "checkpoint_outer_command_ms": 1843.385942,
+          "sdk_reload_ms": 1634.875267,
+          "first_verified_root_ms": 1677.639141,
+          "full_memory_verified_ms": 3477.736823,
+          "full_root_and_memory_verified_ms": 3876.827282,
+          "idle_guest_observer": {
+            "samples": 168,
+            "max_mono_gap_ns": 3166893,
+            "max_wall_gap_ns": 3166892,
+            "backwards_wall_samples": 0,
+            "interval_ns": 2000000
+          },
+          "checkpoint_guest_observer": {
+            "samples": 195,
+            "max_mono_gap_ns": 1534358220,
+            "max_wall_gap_ns": 1534358221,
+            "backwards_wall_samples": 0,
+            "interval_ns": 2000000
+          },
+          "checkpoint_rgw_delta": {
+            "put_obj_ops": 542,
+            "put_obj_bytes": 563341142,
+            "get_obj_ops": 0,
+            "get_obj_bytes": 0,
+            "del_obj_ops": 0,
+            "del_obj_bytes": 0,
+            "del_bucket_ops": 0,
+            "copy_obj_ops": 0,
+            "copy_obj_bytes": 0,
+            "list_obj_ops": 0,
+            "list_buckets_ops": 0
+          },
+          "reload_through_full_verification_rgw_delta": {
+            "put_obj_ops": 1,
+            "put_obj_bytes": 15,
+            "get_obj_ops": 6,
+            "get_obj_bytes": 5373946,
+            "del_obj_ops": 1,
+            "del_obj_bytes": 21,
+            "del_bucket_ops": 0,
+            "copy_obj_ops": 0,
+            "copy_obj_bytes": 0,
+            "list_obj_ops": 0,
+            "list_buckets_ops": 1
+          },
+          "checkpoint_host_phases": {
+            "available": false,
+            "reason": "fixed gVisor adapter has no equivalent host phase fields"
+          },
+          "restore_host_phases": {
+            "available": false,
+            "reason": "fixed gVisor adapter has no equivalent host phase fields"
+          },
+          "state_verified": true
+        },
+        {
+          "round": 1,
+          "checkpoint_http_ms": 1426,
+          "checkpoint_outer_command_ms": 1637.808399,
+          "sdk_reload_ms": 1611.914375,
+          "first_verified_root_ms": 1655.700891,
+          "full_memory_verified_ms": 3493.621964,
+          "full_root_and_memory_verified_ms": 3919.814903,
+          "idle_guest_observer": {
+            "samples": 168,
+            "max_mono_gap_ns": 3167527,
+            "max_wall_gap_ns": 3167524,
+            "backwards_wall_samples": 0,
+            "interval_ns": 2000000
+          },
+          "checkpoint_guest_observer": {
+            "samples": 206,
+            "max_mono_gap_ns": 1310780124,
+            "max_wall_gap_ns": 1310780107,
+            "backwards_wall_samples": 0,
+            "interval_ns": 2000000
+          },
+          "checkpoint_rgw_delta": {
+            "put_obj_ops": 542,
+            "put_obj_bytes": 563728389,
+            "get_obj_ops": 0,
+            "get_obj_bytes": 0,
+            "del_obj_ops": 0,
+            "del_obj_bytes": 0,
+            "del_bucket_ops": 0,
+            "copy_obj_ops": 0,
+            "copy_obj_bytes": 0,
+            "list_obj_ops": 0,
+            "list_buckets_ops": 0
+          },
+          "reload_through_full_verification_rgw_delta": {
+            "put_obj_ops": 1,
+            "put_obj_bytes": 15,
+            "get_obj_ops": 12,
+            "get_obj_bytes": 8658932,
+            "del_obj_ops": 544,
+            "del_obj_bytes": 563341178,
+            "del_bucket_ops": 0,
+            "copy_obj_ops": 0,
+            "copy_obj_bytes": 0,
+            "list_obj_ops": 0,
+            "list_buckets_ops": 1
+          },
+          "checkpoint_host_phases": {
+            "available": false,
+            "reason": "fixed gVisor adapter has no equivalent host phase fields"
+          },
+          "restore_host_phases": {
+            "available": false,
+            "reason": "fixed gVisor adapter has no equivalent host phase fields"
+          },
+          "state_verified": true
+        },
+        {
+          "round": 2,
+          "checkpoint_http_ms": 1525,
+          "checkpoint_outer_command_ms": 1786.915134,
+          "sdk_reload_ms": 1653.531821,
+          "first_verified_root_ms": 1697.191739,
+          "full_memory_verified_ms": 3485.203035,
+          "full_root_and_memory_verified_ms": 3886.288966,
+          "idle_guest_observer": {
+            "samples": 169,
+            "max_mono_gap_ns": 3430273,
+            "max_wall_gap_ns": 3430274,
+            "backwards_wall_samples": 0,
+            "interval_ns": 2000000
+          },
+          "checkpoint_guest_observer": {
+            "samples": 236,
+            "max_mono_gap_ns": 1405518939,
+            "max_wall_gap_ns": 1405518908,
+            "backwards_wall_samples": 0,
+            "interval_ns": 2000000
+          },
+          "checkpoint_rgw_delta": {
+            "put_obj_ops": 543,
+            "put_obj_bytes": 563905108,
+            "get_obj_ops": 0,
+            "get_obj_bytes": 0,
+            "del_obj_ops": 0,
+            "del_obj_bytes": 0,
+            "del_bucket_ops": 0,
+            "copy_obj_ops": 0,
+            "copy_obj_bytes": 0,
+            "list_obj_ops": 0,
+            "list_buckets_ops": 0
+          },
+          "reload_through_full_verification_rgw_delta": {
+            "put_obj_ops": 1,
+            "put_obj_bytes": 15,
+            "get_obj_ops": 6,
+            "get_obj_bytes": 5903458,
+            "del_obj_ops": 544,
+            "del_obj_bytes": 563728425,
+            "del_bucket_ops": 0,
+            "copy_obj_ops": 0,
+            "copy_obj_bytes": 0,
+            "list_obj_ops": 0,
+            "list_buckets_ops": 1
+          },
+          "checkpoint_host_phases": {
+            "available": false,
+            "reason": "fixed gVisor adapter has no equivalent host phase fields"
+          },
+          "restore_host_phases": {
+            "available": false,
+            "reason": "fixed gVisor adapter has no equivalent host phase fields"
+          },
+          "state_verified": true
+        }
+      ]
+    },
+    {
+      "runtime": "firecracker",
+      "rc": 0,
+      "rounds": [
+        {
+          "round": 0,
+          "checkpoint_http_ms": 5403,
+          "checkpoint_outer_command_ms": 5611.734226,
+          "sdk_reload_ms": 3040.196879,
+          "first_verified_root_ms": 3090.130524,
+          "full_memory_verified_ms": 5292.369072,
+          "full_root_and_memory_verified_ms": 5652.43109,
+          "idle_guest_observer": {
+            "samples": 169,
+            "max_mono_gap_ns": 2503599,
+            "max_wall_gap_ns": 2503597,
+            "backwards_wall_samples": 0,
+            "interval_ns": 2000000
+          },
+          "checkpoint_guest_observer": {
+            "samples": 316,
+            "max_mono_gap_ns": 5071381104,
+            "max_wall_gap_ns": 5071381103,
+            "backwards_wall_samples": 0,
+            "interval_ns": 2000000
+          },
+          "checkpoint_rgw_delta": {
+            "put_obj_ops": 2065,
+            "put_obj_bytes": 2147613292,
+            "get_obj_ops": 1,
+            "get_obj_bytes": 14193,
+            "del_obj_ops": 0,
+            "del_obj_bytes": 0,
+            "del_bucket_ops": 0,
+            "copy_obj_ops": 0,
+            "copy_obj_bytes": 0,
+            "list_obj_ops": 0,
+            "list_buckets_ops": 1
+          },
+          "reload_through_full_verification_rgw_delta": {
+            "put_obj_ops": 1,
+            "put_obj_bytes": 33,
+            "get_obj_ops": 230,
+            "get_obj_bytes": 214269722,
+            "del_obj_ops": 4,
+            "del_obj_bytes": 12321,
+            "del_bucket_ops": 0,
+            "copy_obj_ops": 0,
+            "copy_obj_bytes": 0,
+            "list_obj_ops": 0,
+            "list_buckets_ops": 0
+          },
+          "checkpoint_host_phases": {
+            "available": true,
+            "records": [
+              {
+                "kind": "checkpoint",
+                "values_ms": {
+                  "layout": 1,
+                  "flush": 18,
+                  "pause": 0,
+                  "snapshot": 5054,
+                  "overlay": 13,
+                  "resume": 2,
+                  "seal": 225,
+                  "total": 5316
+                },
+                "snapshot_type": "Full"
+              }
+            ],
+            "pause_field_scope": "pause is API-call phase only; not the entire guest stop window"
+          },
+          "restore_host_phases": {
+            "available": true,
+            "records": [
+              {
+                "kind": "restore",
+                "values_ms": {
+                  "open": 0,
+                  "prepare": 8,
+                  "instantiate": 11,
+                  "vmm_ready": 16,
+                  "load": 11,
+                  "agent": 145,
+                  "total": 194
+                },
+                "snapshot_type": null
+              }
+            ],
+            "pause_field_scope": "pause is API-call phase only; not the entire guest stop window"
+          },
+          "state_verified": true
+        },
+        {
+          "round": 1,
+          "checkpoint_http_ms": 7172,
+          "checkpoint_outer_command_ms": 7344.54114,
+          "sdk_reload_ms": 3052.016599,
+          "first_verified_root_ms": 3101.933223,
+          "full_memory_verified_ms": 5283.233392,
+          "full_root_and_memory_verified_ms": 5682.140287,
+          "idle_guest_observer": {
+            "samples": 160,
+            "max_mono_gap_ns": 2590318,
+            "max_wall_gap_ns": 2590318,
+            "backwards_wall_samples": 0,
+            "interval_ns": 2000000
+          },
+          "checkpoint_guest_observer": {
+            "samples": 293,
+            "max_mono_gap_ns": 6849563412,
+            "max_wall_gap_ns": 6849563412,
+            "backwards_wall_samples": 0,
+            "interval_ns": 2000000
+          },
+          "checkpoint_rgw_delta": {
+            "put_obj_ops": 2057,
+            "put_obj_bytes": 2147537016,
+            "get_obj_ops": 583,
+            "get_obj_bytes": 611319225,
+            "del_obj_ops": 0,
+            "del_obj_bytes": 0,
+            "del_bucket_ops": 0,
+            "copy_obj_ops": 0,
+            "copy_obj_bytes": 0,
+            "list_obj_ops": 0,
+            "list_buckets_ops": 1
+          },
+          "reload_through_full_verification_rgw_delta": {
+            "put_obj_ops": 1,
+            "put_obj_bytes": 33,
+            "get_obj_ops": 381,
+            "get_obj_bytes": 362413699,
+            "del_obj_ops": 2,
+            "del_obj_bytes": 4129,
+            "del_bucket_ops": 0,
+            "copy_obj_ops": 0,
+            "copy_obj_bytes": 0,
+            "list_obj_ops": 0,
+            "list_buckets_ops": 0
+          },
+          "checkpoint_host_phases": {
+            "available": true,
+            "records": [
+              {
+                "kind": "restore",
+                "values_ms": {
+                  "open": 0,
+                  "prepare": 8,
+                  "instantiate": 11,
+                  "vmm_ready": 16,
+                  "load": 11,
+                  "agent": 145,
+                  "total": 194
+                },
+                "snapshot_type": null
+              },
+              {
+                "kind": "checkpoint",
+                "values_ms": {
+                  "layout": 1,
+                  "flush": 13,
+                  "pause": 0,
+                  "snapshot": 6832,
+                  "overlay": 15,
+                  "resume": 1,
+                  "seal": 221,
+                  "total": 7086
+                },
+                "snapshot_type": "Full"
+              }
+            ],
+            "pause_field_scope": "pause is API-call phase only; not the entire guest stop window"
+          },
+          "restore_host_phases": {
+            "available": true,
+            "records": [
+              {
+                "kind": "restore",
+                "values_ms": {
+                  "open": 0,
+                  "prepare": 8,
+                  "instantiate": 13,
+                  "vmm_ready": 14,
+                  "load": 10,
+                  "agent": 157,
+                  "total": 205
+                },
+                "snapshot_type": null
+              }
+            ],
+            "pause_field_scope": "pause is API-call phase only; not the entire guest stop window"
+          },
+          "state_verified": true
+        },
+        {
+          "round": 2,
+          "checkpoint_http_ms": 8022,
+          "checkpoint_outer_command_ms": 8278.437108,
+          "sdk_reload_ms": 2536.492967,
+          "first_verified_root_ms": 2583.137721,
+          "full_memory_verified_ms": 4782.105852,
+          "full_root_and_memory_verified_ms": 5182.496405,
+          "idle_guest_observer": {
+            "samples": 162,
+            "max_mono_gap_ns": 2489839,
+            "max_wall_gap_ns": 2489839,
+            "backwards_wall_samples": 0,
+            "interval_ns": 2000000
+          },
+          "checkpoint_guest_observer": {
+            "samples": 297,
+            "max_mono_gap_ns": 7772578916,
+            "max_wall_gap_ns": 7772578917,
+            "backwards_wall_samples": 0,
+            "interval_ns": 2000000
+          },
+          "checkpoint_rgw_delta": {
+            "put_obj_ops": 2058,
+            "put_obj_bytes": 2147537016,
+            "get_obj_ops": 743,
+            "get_obj_bytes": 779091225,
+            "del_obj_ops": 210,
+            "del_obj_bytes": 220200960,
+            "del_bucket_ops": 0,
+            "copy_obj_ops": 0,
+            "copy_obj_bytes": 0,
+            "list_obj_ops": 0,
+            "list_buckets_ops": 1
+          },
+          "reload_through_full_verification_rgw_delta": {
+            "put_obj_ops": 1,
+            "put_obj_bytes": 33,
+            "get_obj_ops": 362,
+            "get_obj_bytes": 339484310,
+            "del_obj_ops": 2,
+            "del_obj_bytes": 4129,
+            "del_bucket_ops": 0,
+            "copy_obj_ops": 0,
+            "copy_obj_bytes": 0,
+            "list_obj_ops": 0,
+            "list_buckets_ops": 1
+          },
+          "checkpoint_host_phases": {
+            "available": true,
+            "records": [
+              {
+                "kind": "restore",
+                "values_ms": {
+                  "open": 0,
+                  "prepare": 8,
+                  "instantiate": 13,
+                  "vmm_ready": 14,
+                  "load": 10,
+                  "agent": 157,
+                  "total": 205
+                },
+                "snapshot_type": null
+              },
+              {
+                "kind": "checkpoint",
+                "values_ms": {
+                  "layout": 2,
+                  "flush": 14,
+                  "pause": 0,
+                  "snapshot": 7755,
+                  "overlay": 14,
+                  "resume": 2,
+                  "seal": 136,
+                  "total": 7926
+                },
+                "snapshot_type": "Full"
+              }
+            ],
+            "pause_field_scope": "pause is API-call phase only; not the entire guest stop window"
+          },
+          "restore_host_phases": {
+            "available": true,
+            "records": [
+              {
+                "kind": "restore",
+                "values_ms": {
+                  "open": 0,
+                  "prepare": 8,
+                  "instantiate": 12,
+                  "vmm_ready": 12,
+                  "load": 10,
+                  "agent": 151,
+                  "total": 196
+                },
+                "snapshot_type": null
+              }
+            ],
+            "pause_field_scope": "pause is API-call phase only; not the entire guest stop window"
+          },
+          "state_verified": true
+        }
+      ]
+    }
+  ]
+}

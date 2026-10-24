@@ -1,0 +1,8 @@
+# 仅是待合并到独立实验配置的片段，不覆盖公共 filestore 或 FC 配置。
+# 需要匹配的 sandboxd21fb466 / gVisor218d85378 及完整六程序包。
+# 管理员先在各节点的同一 JuiceFS 挂载内创建任务独占目录；不使用共享卷业务目录。
+[plugin.runtime.runsc]
+background_restore = true
+checkpoint_mode = "reflink"
+writable_storage_dir = "/mnt/akernel-shared/experiments/runsc-private"
+writable_storage_filesystem = "fuse.juicefs"

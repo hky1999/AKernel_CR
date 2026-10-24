@@ -1,0 +1,38 @@
+{
+  "files": {
+    "gvisor-component-gates.json": {
+      "sha256": "5659b9f75b7e134d503a546dd88a1d76c493cc032fb63e294a4cc75304dd0759",
+      "bytes": 3615
+    },
+    "sandboxd-consumer-gates.json": {
+      "sha256": "9d83781ee9814f0e8ffaed2b1c2e12a9a8486ae2673a4f85fd92f109882cb239",
+      "bytes": 1834
+    },
+    "image.json": {
+      "sha256": "f4b90db02023a6c43605beaf5007d0ee65b512b1a6dba10072a78a6ca59ea7d1",
+      "bytes": 1537
+    },
+    "sdk-core.json": {
+      "sha256": "b1a028835cd0bcd87599adf8d069cb295c6342bf11de947ef8dd6915396709e4",
+      "bytes": 1209
+    },
+    "state-rounds.json": {
+      "sha256": "e51e4b5a10a179f4239dbbb8be0a656f51608329777c9e0abe4aa23539a95907",
+      "bytes": 16007
+    },
+    "cross-node.json": {
+      "sha256": "ed7346f5b4258c5adc23637c95bbee8052e8165cc1599f129b144355e2d42842",
+      "bytes": 2033
+    },
+    "final-state.json": {
+      "sha256": "d7d8cf189933a5d1eeb4e32b8b5730177beaeb2460aa3fefb48d777fb9337e47",
+      "bytes": 1769
+    },
+    "scope.json": {
+      "sha256": "893550fd69a534320df30c150ffbaf7cedfaafabf29562cd816e4beed6af5e1b",
+      "bytes": 1114
+    }
+  },
+  "whitelist_only": true,
+  "no_credentials_or_raw_service_logs": true
+}

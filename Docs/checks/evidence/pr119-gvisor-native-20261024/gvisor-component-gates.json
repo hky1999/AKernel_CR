@@ -1,0 +1,112 @@
+{
+  "rc": 0,
+  "base": "87e8441b6db18219fbb941378cfcb2883750b07c",
+  "status": "verified-regression-reused-related-tests-race-and-complete-amd64-bundle-passed-not-sdk",
+  "build_image_id": "147178fbc1464e4f4d2b65ff91ac1e52683430cd11e188d1d37659b24cb53148",
+  "build_packages": [
+    "binutils=2.40-2",
+    "binutils-aarch64-linux-gnu=2.40-2",
+    "clang=1:14.0-55.7~deb12u1",
+    "clang-14=1:14.0.6-12",
+    "crossbuild-essential-arm64=12.9",
+    "g++-aarch64-linux-gnu=4:12.2.0-3",
+    "gcc=4:12.2.0-3",
+    "gcc-aarch64-linux-gnu=4:12.2.0-3",
+    "libbpf-dev=1:1.1.2-0+deb12u1",
+    "libc6-dev=2.36-9+deb12u14",
+    "libc6-dev-i386=2.36-9+deb12u14",
+    "libnuma-dev=2.0.16-1",
+    "pkg-config=1.8.1-1",
+    "python3=3.11.2-1+b1"
+  ],
+  "steps": [
+    {
+      "name": "git-init",
+      "rc": 0
+    },
+    {
+      "name": "git-origin",
+      "rc": 0
+    },
+    {
+      "name": "git-fetch",
+      "rc": 0
+    },
+    {
+      "name": "git-checkout",
+      "rc": 0
+    },
+    {
+      "name": "git-base",
+      "rc": 0
+    },
+    {
+      "name": "git-clean",
+      "rc": 0
+    },
+    {
+      "name": "format",
+      "rc": 0
+    },
+    {
+      "name": "related-tests",
+      "rc": 0
+    },
+    {
+      "name": "related-race",
+      "rc": 0
+    },
+    {
+      "name": "release",
+      "rc": 0
+    },
+    {
+      "name": "final-source-status",
+      "rc": 0
+    },
+    {
+      "name": "final-source-diff",
+      "rc": 0
+    }
+  ],
+  "bundle_sha256": "63aa235350012e44020c8a9b404c677d2ce8894f167249ca7e5516ba3970cafa",
+  "bundle_bytes": 67566256,
+  "assets": {
+    "containerd-shim-runsc-v1": {
+      "sha256": "25a66de2f80b3f98fabc97fafb1e6afe7c8527e4b73c281aa78ef8d5d261e08a",
+      "bytes": 29802658
+    },
+    "runsc": {
+      "sha256": "0a7c6571cac94b861ec857190dc5b9c168c2026e08a27eb5ba7e92a2f3317ab3",
+      "bytes": 82620578
+    },
+    "gvisor-bin/checkpointgofer": {
+      "sha256": "1b7563a645d005939be4b857148e221e4437e373850f63ca0e4cb3409ea81724",
+      "bytes": 47095970
+    },
+    "gvisor-bin/gvisor-sentry-prewarmer": {
+      "sha256": "0fbf47023fa85c30687b0578c56bf93c64d053b90fffc6bc0f8a1fde41d7995d",
+      "bytes": 1176
+    },
+    "gvisor-bin/gvisor_sentry": {
+      "sha256": "30bf445ce1c5f09ab7a28582fe0cebd7390cb49f27211d503390f33bef1cbd10",
+      "bytes": 32489634
+    },
+    "gvisor-bin/runsc-metric-server": {
+      "sha256": "c2424af5dd3e8947a09934dfb3a1dcbbdd66f98d1fc569a5b29dccbcb8043a58",
+      "bytes": 35877026
+    }
+  },
+  "formatted_sources": {
+    "pkg/sentry/checkpoint/BUILD": "f2f58ea95b6a111ab18a7322b939eb7f6d9926fdcbdc0b53f49c8b1f339a8116",
+    "pkg/sentry/checkpoint/clone_filestore.go": "7e31e5e262ec15e69912c4f84642e2e771fbbd59b463a58bc29c8a4d2baa5afd",
+    "pkg/sentry/checkpoint/clone_filestore_test.go": "69d4bba3f8dde39897ab870f7ab9a3fd212c539484b6142941671ad5626c07ba",
+    "pkg/sentry/pgalloc/BUILD": "cc7aeca914f5adc8d1cbd1f120111603bfe206261f5a1094f73012cc5f206699",
+    "pkg/sentry/pgalloc/save_restore.go": "d43b467212ceefbb1399ad03987bf779bf727271820f7d0e4d2e72e369251a4c",
+    "pkg/sentry/pgalloc/snapshot_async_load_test.go": "7942e2274353ef9bcb3d1f63367d62c0a1e05289f90905b39a1db7a35569037c",
+    "runsc/container/filestore_snapshot.go": "e992fa81e5c5a7d1c73494141c407bac274450f07b029e7844def8e29ba510cf",
+    "runsc/boot/filter/config/config_main.go": "3eaab891551837d0b4c20fbc60b8273e4db4d9c6b8e98040b2be0d27ce54beee",
+    "runsc/boot/filter/config/config_test.go": "3e5839aa4f515dbf79065dedf7f663970cfcc85bb0ecb691907f9ba53a8a279e",
+    "pkg/sentry/pgalloc/save_restore_external_test.go": "043d2113437f50299580b6cfe7646da0c96af0b5615f54ed5ffea885fd5558f8"
+  }
+}

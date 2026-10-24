@@ -1,0 +1,50 @@
+{
+  "rc": 0,
+  "status": "candidate-full-sdk-state-and-bidirectional-failover-passed",
+  "full_sdk_accepted": true,
+  "suites": [
+    {
+      "runtime": "firecracker",
+      "suite": "integration",
+      "rc": 0,
+      "tests": 8,
+      "suite_seconds": 53.746,
+      "skipped": 0
+    },
+    {
+      "runtime": "firecracker",
+      "suite": "e2e/standalone",
+      "rc": 0,
+      "tests": 30,
+      "suite_seconds": 195.386,
+      "skipped": 0
+    },
+    {
+      "runtime": "runsc",
+      "suite": "integration",
+      "rc": 0,
+      "tests": 8,
+      "suite_seconds": 40.916,
+      "skipped": 0
+    },
+    {
+      "runtime": "runsc",
+      "suite": "e2e/standalone",
+      "rc": 0,
+      "tests": 30,
+      "suite_seconds": 139.148,
+      "skipped": 0
+    }
+  ],
+  "actual_node_payload_files_checked": 15,
+  "new_sessions_routable_resources_stable_samples": 3,
+  "secret_identity_unchanged": true,
+  "source_and_target_same_physical_host": true,
+  "both_private_backends": "JuiceFS",
+  "production_promoted": false,
+  "source_commits": {
+    "gvisor": "218d85378357f9726fc3c0f7cf878cf19772d360",
+    "sandboxd": "21fb4668431cef88d05b7a789a2bd9a5e19e827c"
+  },
+  "binaries_built_before_these_commits": true
+}

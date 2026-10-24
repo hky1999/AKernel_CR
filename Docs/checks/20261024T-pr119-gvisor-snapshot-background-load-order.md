@@ -1,5 +1,8 @@
 # gVisor 文件数据快照与后台恢复的顺序检查
 
+2026-10-24续记：本检查提出的复制顺序窗口已用真实后台加载器确定性复现两项旧成功返回，复制前等待/传播错误修复通过组件与三轮race，并与匹配消费层通过76SDK、三轮状态及双向跨节点。源码为gVisor218d85378/sandboxd21fb466（已推个人fork），完整包63aa2353…；[动态检查](20261024T-pr119-gvisor-bazel-async-snapshot-regression.md)与[核心阶段总结](../stages/20261024T-pr119-gvisor-native-sdk-stage-summary.md)。下文保留当时源码分析，不代表问题仍未修复。
+
+
 ## 1. 问题
 
 复用现有 filestore 捕获/采纳时，后台恢复尚未装入全部私有文件数据就再次 checkpoint，是否仍能得到同一时刻的完整文件副本；不能仅证明空闲状态下 JuiceFS 克隆能成功。

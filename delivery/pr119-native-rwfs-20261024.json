@@ -103,5 +103,6 @@
       "juicefs": 9.58750025
     },
     "default_backend_promoted": false
-  }
+  },
+  "next_experiment_manifest": "pr119-gvisor-native-rwfs-20261024.json（新gVisor核心SDK另行验收，本文件保留fdb145c/旧runsc的历史元组与性能）"
 }

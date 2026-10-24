@@ -1,0 +1,37 @@
+{
+  "rc": 0,
+  "status": "combined-image-imported-not-deployed",
+  "image": "localhost/akernel-pr119:365f7971f895-gvisor-native02",
+  "config_sha256": "f8036516cd9af8cdd2934bc4b43f0d18e3e67d7128b79f36928221aeafeea069",
+  "expected_cri_digest": "sha256:0806341c5c1939a52497c4dfb28d6b111819322405b33e0f1bb344145fc38660",
+  "runtime_bundle_sha256": "63aa235350012e44020c8a9b404c677d2ce8894f167249ca7e5516ba3970cafa",
+  "runtime_assets": {
+    "containerd-shim-runsc-v1": {
+      "sha256": "25a66de2f80b3f98fabc97fafb1e6afe7c8527e4b73c281aa78ef8d5d261e08a",
+      "bytes": 29802658
+    },
+    "runsc": {
+      "sha256": "0a7c6571cac94b861ec857190dc5b9c168c2026e08a27eb5ba7e92a2f3317ab3",
+      "bytes": 82620578
+    },
+    "gvisor-bin/checkpointgofer": {
+      "sha256": "1b7563a645d005939be4b857148e221e4437e373850f63ca0e4cb3409ea81724",
+      "bytes": 47095970
+    },
+    "gvisor-bin/gvisor-sentry-prewarmer": {
+      "sha256": "0fbf47023fa85c30687b0578c56bf93c64d053b90fffc6bc0f8a1fde41d7995d",
+      "bytes": 1176
+    },
+    "gvisor-bin/gvisor_sentry": {
+      "sha256": "30bf445ce1c5f09ab7a28582fe0cebd7390cb49f27211d503390f33bef1cbd10",
+      "bytes": 32489634
+    },
+    "gvisor-bin/runsc-metric-server": {
+      "sha256": "c2424af5dd3e8947a09934dfb3a1dcbbdd66f98d1fc569a5b29dccbcb8043a58",
+      "bytes": 35877026
+    }
+  },
+  "sandboxd_sha256": "f81eec47352f3ec71843f585da758b75862e8139f2025c0db9159cd29b8c059b",
+  "archive_sha256": "4c26b0fd7dcde7b45c980d99cc0e78a31e0bb43245c7eeeea241c42cf8df4f3a",
+  "archive_bytes": 907290112
+}

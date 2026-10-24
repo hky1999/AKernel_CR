@@ -1,0 +1,27 @@
+{
+  "accepted": [
+    "component targeted normal/race gates",
+    "complete matched amd64 bundle",
+    "consumer fmt/vet/all unit/race/build",
+    "76 official SDK tests",
+    "three full state rounds per runtime",
+    "both failover directions per runtime",
+    "final no environments or runtime processes"
+  ],
+  "not_accepted_or_not_done": [
+    "production release/pin or backend default promotion",
+    "new gVisor full branch and fault matrix",
+    "native layout sandboxd process death and unfinished-reader interleavings",
+    "same-code paired backend performance",
+    "cold-cache or separate physical host benchmarks",
+    "remote read-only baseline plus local delta route"
+  ],
+  "prior_race_failure_preserved": {
+    "cause": "old helper read 1GiB sparse file to inspect 1MiB; own cgroup OOM",
+    "fix": "read exactly the asserted length, retain byte/short-read assertions",
+    "other_three_targets_reused": "same exact product/test inputs",
+    "pgalloc_modified_test_retested": "normal plus three full race rounds"
+  },
+  "shared_services_modified": false,
+  "all_builds_and_tests_remote": true
+}

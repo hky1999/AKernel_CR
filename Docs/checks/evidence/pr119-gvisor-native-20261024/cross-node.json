@@ -1,0 +1,63 @@
+{
+  "rc": 0,
+  "cross_node_accepted": true,
+  "scope": "logical nodes on one BareMetal host, two independent JuiceFS clients; times from read trigger exclude previous failure detection/offline wait; not physical-node/SOTA numbers",
+  "cases": [
+    {
+      "runtime": "runsc",
+      "source": "B",
+      "target": "A",
+      "memory_bytes": 536870912,
+      "root_file_bytes": 1048576,
+      "source_offline": true,
+      "explicit_reload_called": false,
+      "checkpoint_http_ms": 1446,
+      "first_verified_file_from_read_trigger_ms": 70.214874,
+      "full_memory_from_read_trigger_ms": 2016.117822,
+      "target_survived_source_rejoin": true,
+      "sandbox_deleted": true
+    },
+    {
+      "runtime": "runsc",
+      "source": "A",
+      "target": "B",
+      "memory_bytes": 536870912,
+      "root_file_bytes": 1048576,
+      "source_offline": true,
+      "explicit_reload_called": false,
+      "checkpoint_http_ms": 1466,
+      "first_verified_file_from_read_trigger_ms": 710.33775,
+      "full_memory_from_read_trigger_ms": 2670.150984,
+      "target_survived_source_rejoin": true,
+      "sandbox_deleted": true
+    },
+    {
+      "runtime": "firecracker",
+      "source": "B",
+      "target": "A",
+      "memory_bytes": 536870912,
+      "root_file_bytes": 1048576,
+      "source_offline": true,
+      "explicit_reload_called": false,
+      "checkpoint_http_ms": 6045,
+      "first_verified_file_from_read_trigger_ms": 290.459079,
+      "full_memory_from_read_trigger_ms": 2590.724266,
+      "target_survived_source_rejoin": true,
+      "sandbox_deleted": true
+    },
+    {
+      "runtime": "firecracker",
+      "source": "A",
+      "target": "B",
+      "memory_bytes": 536870912,
+      "root_file_bytes": 1048576,
+      "source_offline": true,
+      "explicit_reload_called": false,
+      "checkpoint_http_ms": 4947,
+      "first_verified_file_from_read_trigger_ms": 1205.950516,
+      "full_memory_from_read_trigger_ms": 3494.323225,
+      "target_survived_source_rejoin": true,
+      "sandbox_deleted": true
+    }
+  ]
+}

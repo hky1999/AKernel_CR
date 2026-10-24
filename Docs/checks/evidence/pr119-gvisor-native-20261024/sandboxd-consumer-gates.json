@@ -1,0 +1,42 @@
+{
+  "rc": 0,
+  "status": "consumer-source-gates-passed-not-sdk",
+  "base_commit": "fdb145cf51f340dc46ebea3713c342b4ec93b127",
+  "runtime_bundle_sha256": "63aa235350012e44020c8a9b404c677d2ce8894f167249ca7e5516ba3970cafa",
+  "steps": [
+    {
+      "name": "no-runtime-build-container",
+      "rc": 0
+    },
+    {
+      "name": "git-clone",
+      "rc": 0
+    },
+    {
+      "name": "git-base",
+      "rc": 0
+    },
+    {
+      "name": "quality",
+      "rc": 0
+    },
+    {
+      "name": "final-source-status",
+      "rc": 0
+    }
+  ],
+  "sandboxd_sha256": "f81eec47352f3ec71843f585da758b75862e8139f2025c0db9159cd29b8c059b",
+  "source_files": {
+    "config/config.go": "8f7f131047cca7658ca1b2c22217a90f3ee3451da01aea4e1171b32f8507b210",
+    "config/config_test.go": "2ea9f5b296e59dba7ab593f71752fbc1f3248a743105fe6445d14c7c75e606c7",
+    "configs/sandboxd.toml": "762713b89bd37ac5bd3aa632503e1cd36a3fd6475de9418306a2cccee8c5da14",
+    "doc/checkpoint-restore.md": "65611905bf8b3c5aee253a43fecb52fd5923233cd93102eb58677358346a43eb",
+    "pkg/runtime/runsc/client.go": "a26048a870357c3948af4aab5a4dca1f36e2242db3c370f019b39dae75244baa",
+    "pkg/runtime/runsc/client_test.go": "9b92cc65f28f05038366fea535dfda19d6cf7e267abaaef86e471d4b18a3f1ed",
+    "pkg/runtime/runsc/filestore_checkpoint.go": "9acf533d705961614d8f94a2c1e792e3d19f5bbac0fcd384aa6cd449937a9116",
+    "pkg/runtime/runsc/filestore_checkpoint_test.go": "a09c63aada48f52f3dfb220783815e503350a55d086e773c646dbd5dc661e859",
+    "pkg/runtime/runsc/handler.go": "f50ea803c6e0c613a4a50793a79df227f816783f695a7011ac4929c891d1aa3b",
+    "pkg/runtime/runsc/writable_directory_linux.go": "43333c391cabf3f6913bc09729b5d3c2a9e97ca69bb392ca98895811fce165b7",
+    "pkg/runtime/runsc/writable_directory_linux_test.go": "7fdb8809b0f44380a7a3e83d8af174402c210421d9c99c0102ecbe4ac5672075"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "schema": "akernel-pr119-native-script-provenance/v1",
+  "source": "actually executed remote task; 17 exact local/remote hashes",
+  "scope": "historical failed/successful steps retained for audit; fixed task identities require adaptation, not a one-command new host installer",
+  "product_source_in_component_repositories": true,
+  "scripts": {
+    "gvisor-native-clone-bazel/bazel-entry01.sh": {
+      "remote_relative_to_round": "gvisor-native-clone-bazel05/entry.sh",
+      "sha256": "1f42e0cfc2183ce1f167ac94016a7438980533c42401b16fb45cbda7e23a3c46",
+      "bytes": 863
+    },
+    "gvisor-native-clone-bazel/driver01.py": {
+      "remote_relative_to_round": "gvisor-native-clone-bazel01/driver.py",
+      "sha256": "4f0e75ed90e60e0f8452f700dadfe13834654ba8b49fd6012d1489c923318ec9",
+      "bytes": 10617
+    },
+    "gvisor-native-clone-bazel/driver02.py": {
+      "remote_relative_to_round": "gvisor-native-clone-bazel02/driver.py",
+      "sha256": "4832ea715a73710ea59d5b67123e099a4d4a7f2b0ced059a2369086a05920e13",
+      "bytes": 11573
+    },
+    "gvisor-native-clone-bazel/driver03.py": {
+      "remote_relative_to_round": "gvisor-native-clone-bazel03/driver.py",
+      "sha256": "a537c090ad294c7515231756ce84e482c6c644851e26648d6083d6a38cff7c1d",
+      "bytes": 12608
+    },
+    "gvisor-native-clone-bazel/driver04.py": {
+      "remote_relative_to_round": "gvisor-native-clone-bazel04/driver.py",
+      "sha256": "544c8df7a172afc46cbd5b82a8da42aea60769cf3df06c0ba8eec84a390868ef",
+      "bytes": 12931
+    },
+    "gvisor-native-clone-bazel/driver05.py": {
+      "remote_relative_to_round": "gvisor-native-clone-bazel05/driver.py",
+      "sha256": "6ec14e29e99d23c7f72fa767504a95e4b5846ccd4e4b9e541910995e81f8c84a",
+      "bytes": 13513
+    },
+    "gvisor-native-clone-bazel/setup-clang01.sh": {
+      "remote_relative_to_round": "gvisor-clang-builder01/setup.sh",
+      "sha256": "11b85f86a9869c9e27363a24d78fcbecf7a48371a0f43f5e98a04d2b07a69ab4",
+      "bytes": 735
+    },
+    "gvisor-native-clone-bazel/setup-clang01.py": {
+      "remote_relative_to_round": "gvisor-clang-builder01/driver.py",
+      "sha256": "776d3a00e9c28a38a679ebd4d855a7080a238ecf4c054c1156aed2e41d25d8f1",
+      "bytes": 4571
+    },
+    "gvisor-native-clone-bazel/setup-clang02.sh": {
+      "remote_relative_to_round": "gvisor-clang-builder02/setup.sh",
+      "sha256": "46fd9f6f0149e23ec4e94d96787b5dce136091ca0fc1e132ae76b1b781f587c1",
+      "bytes": 902
+    },
+    "gvisor-native-clone-bazel/setup-clang02.py": {
+      "remote_relative_to_round": "gvisor-clang-builder02/driver.py",
+      "sha256": "293c51fc7c6930f9449662010256cab42f614b50948be333639f6c50d4cd838e",
+      "bytes": 4687
+    },
+    "gvisor-native-consumer/qa01.sh": {
+      "remote_relative_to_round": "gvisor-native-consumer-qa02/qa.sh",
+      "sha256": "5999ec5ee7eb0aa6538b169d63aa8321c1db130cc2fc875f131e47682b70ed2d",
+      "bytes": 1179
+    },
+    "gvisor-native-consumer/driver01.py": {
+      "remote_relative_to_round": "gvisor-native-consumer-qa01/driver.py",
+      "sha256": "78c74eafc158e8f745de7ee4ec4ec37c77312d873fd0f63f5d1e1168e4fca69b",
+      "bytes": 5952
+    },
+    "gvisor-native-consumer/driver02.py": {
+      "remote_relative_to_round": "gvisor-native-consumer-qa02/driver.py",
+      "sha256": "09dc95ed9c9f6446ba7f226064864b07b38c1b34851c7cdd7b394c94f9cfb4c6",
+      "bytes": 5952
+    },
+    "gvisor-native-consumer/prepare-image01.py": {
+      "remote_relative_to_round": "prepare-gvisor-native-consumer-image01.py",
+      "sha256": "90031ca6cacecf229d23a14885aff4740279421a12e86aef827865185c9548e3",
+      "bytes": 9142
+    },
+    "gvisor-native-consumer/prepare-image02.py": {
+      "remote_relative_to_round": "prepare-gvisor-native-consumer-image02.py",
+      "sha256": "bc9c23d2fbbebba51fffc0ecc8bf5fe8fca8530746136357f45a217e3102f864",
+      "bytes": 10771
+    },
+    "gvisor-native-consumer/run-full-sdk01.py": {
+      "remote_relative_to_round": "run-gvisor-native-consumer-sdk01.py",
+      "sha256": "4567a14ec82ae5768f1f598f7859ecf77a9100d7a1ff4c6d625bd1bad98ed422",
+      "bytes": 13841
+    },
+    "gvisor-native-consumer/final-state01.py": {
+      "remote_relative_to_round": "gvisor-native-final-state01.py",
+      "sha256": "d2ec2c1fbe8b05623d65eef5ed90fd10df4c9349cde750bb417c0d77fb72ed19",
+      "bytes": 5879
+    }
+  }
+}

@@ -1,6 +1,9 @@
 # CrossNode checkpoint/restore：已验收源码交付
 
-**可选 FC 私有盘实验完成功能与十组后端对照**：[sandboxd fdb145c](https://github.com/hky1999/sandboxd/commit/fdb145cf51f340dc46ebea3713c342b4ec93b127) 支持运行态 overlay.ext4 放 JuiceFS，并修复源节点退出后的租约/网络规则恢复。官方 76、两运行时状态/双向接管、持续直接 I/O 与管理进程崩溃通过。先读 [中文功能总结](Docs/stages/20261024T-pr119-fc-native-rwfs-functional-stage-summary.md)、[独立实验清单](delivery/pr119-native-rwfs-20261024.json) 和 [配置说明](deploy/experiments/README-pr119-fc-native-rwfs.md)。新增 [十组对照总结](Docs/stages/20261024T-pr119-fc-backend-comparison-stage-summary.md)：同代码二十实例/四十次状态通过，checkpoint 约快三分之一，但 4 KiB 逐次同步约慢 32 倍。gVisor 完整新后端、本地差异路线与生产晋升未完成；不把盘克隆时间当作整个停顿。
+**最新：gVisor 原生克隆核心 SDK 已通过**。[gVisor218d85378](https://github.com/hky1999/gvisor/commit/218d85378357f9726fc3c0f7cf878cf19772d360)与[sandboxd21fb466](https://github.com/hky1999/sandboxd/commit/21fb4668431cef88d05b7a789a2bd9a5e19e827c)已推个人fork；完整匹配包/组件门、官方76项、两运行时各三轮状态和双向跨节点通过。见[中文总结](Docs/stages/20261024T-pr119-gvisor-native-sdk-stage-summary.md)、[可选清单](delivery/pr119-gvisor-native-rwfs-20261024.json)、[配置与远端构建说明](deploy/experiments/README-pr119-gvisor-native-rwfs.md)。新布局完整故障/分支、同代码性能与生产推广尚未完成，不将三轮功能试跑写成提速结论。
+
+
+**可选 FC 私有盘实验完成功能与十组后端对照**：[sandboxd fdb145c](https://github.com/hky1999/sandboxd/commit/fdb145cf51f340dc46ebea3713c342b4ec93b127) 支持运行态 overlay.ext4 放 JuiceFS，并修复源节点退出后的租约/网络规则恢复。官方 76、两运行时状态/双向接管、持续直接 I/O 与管理进程崩溃通过。先读 [中文功能总结](Docs/stages/20261024T-pr119-fc-native-rwfs-functional-stage-summary.md)、[独立实验清单](delivery/pr119-native-rwfs-20261024.json) 和 [配置说明](deploy/experiments/README-pr119-fc-native-rwfs.md)。新增 [十组对照总结](Docs/stages/20261024T-pr119-fc-backend-comparison-stage-summary.md)：同代码二十实例/四十次状态通过，checkpoint 约快三分之一，但 4 KiB 逐次同步约慢 32 倍。本段数据属于fdb145c/旧runsc；新gVisor核心SDK见上文，其全故障/配对、本地差异与生产晋升仍未完成。不把盘克隆时间当作整个停顿。
 
 **基础组合修复已验收**：[sandboxd e3f402c](https://github.com/hky1999/sandboxd/commit/e3f402c0a18be3ff0b7d90674daae9459464772a) 修正异步磁盘完成与内存保存顺序，源码门、官方 SDK 76、双向接管、真实持续直接 I/O 均通过。[基础修复总结](Docs/stages/20261024T-pr119-fc-disk-cut-fix-stage-summary.md) 与基础清单固定 c85d58b2… 制品。此前十组性能仍属于 9c74060c…，分开记账；当时两条新 RWFS 后端尚未接入；后续可选实验见上文。
 

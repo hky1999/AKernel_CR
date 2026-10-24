@@ -1,0 +1,53 @@
+{
+  "rc": 0,
+  "read_only": true,
+  "nodes": [
+    {
+      "running_elf_sha256": "f81eec47352f3ec71843f585da758b75862e8139f2025c0db9159cd29b8c059b",
+      "runtime_process_count": 0,
+      "runtime_zombie_count": 0,
+      "filesystems": {
+        "private_filestore": "xfs",
+        "shared": "fuse.juicefs"
+      },
+      "final_fc_backend": "native-juicefs",
+      "final_runsc_backend": "native-juicefs",
+      "runsc_root_has_only_task_marker": true,
+      "retained_rwfs_directories": 1,
+      "retained_directory_hashes": [
+        "30386ede5c13fd3d7640046c7209a7f6ead547bda88cd092706b4aaab99dfb67"
+      ],
+      "helper_resources_removed": true,
+      "execution_node": "A",
+      "routable": true,
+      "available": true,
+      "all_15_payload_hashes_verified": true
+    },
+    {
+      "running_elf_sha256": "f81eec47352f3ec71843f585da758b75862e8139f2025c0db9159cd29b8c059b",
+      "runtime_process_count": 0,
+      "runtime_zombie_count": 0,
+      "filesystems": {
+        "private_filestore": "xfs",
+        "shared": "fuse.juicefs"
+      },
+      "final_fc_backend": "native-juicefs",
+      "final_runsc_backend": "native-juicefs",
+      "runsc_root_has_only_task_marker": true,
+      "retained_rwfs_directories": 1,
+      "retained_directory_hashes": [
+        "30386ede5c13fd3d7640046c7209a7f6ead547bda88cd092706b4aaab99dfb67"
+      ],
+      "helper_resources_removed": true,
+      "execution_node": "B",
+      "routable": true,
+      "available": true,
+      "all_15_payload_hashes_verified": true
+    }
+  ],
+  "environment_count": 0,
+  "business_pods_current_image": 5,
+  "kubernetes_api_ready": true,
+  "available_host_bytes": 719370366976,
+  "status": "native-both-runtimes-two-ready-nodes-no-environments-or-runtime-processes-old-orphan-retained"
+}
