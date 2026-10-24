@@ -1,0 +1,42 @@
+{
+  "rc": 0,
+  "same_containers_without_restart": true,
+  "new_client_memory_limit_bytes": 4294967296,
+  "cache_configuration_changed": false,
+  "template_changed": false,
+  "task_40GiB_limit_unchanged": true,
+  "sandbox_limits_unchanged": true,
+  "independent_pods_only": true,
+  "daemonset_template_still_bytes": 2147483648,
+  "scope": "two existing worker-node client Pods only; control-node client unchanged",
+  "pending_capture_clients": [
+    {
+      "execution_node": "B",
+      "same_client_processes_and_start_ticks": true,
+      "client_process_count": 2,
+      "memory_event_delta": {
+        "low": 0,
+        "high": 0,
+        "max": 16,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0,
+        "sock_throttled": 0
+      }
+    },
+    {
+      "execution_node": "A",
+      "same_client_processes_and_start_ticks": true,
+      "client_process_count": 2,
+      "memory_event_delta": {
+        "low": 0,
+        "high": 0,
+        "max": 36,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0,
+        "sock_throttled": 0
+      }
+    }
+  ]
+}

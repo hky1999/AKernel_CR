@@ -1,0 +1,79 @@
+{
+  "scripts": [
+    {
+      "path": "tools/pr119-pod-20261024/candidates/native-storage-faults/run-native-storage-faults01.py",
+      "sha256": "407df283e560402ecd2fcd39848f9fb1d10b76af7bf7c25742b95aa09b8b39f8"
+    },
+    {
+      "path": "tools/pr119-pod-20261024/candidates/native-storage-faults/sdk-pending-capture01.py",
+      "sha256": "a0a7571e7af55ce9d483a9ac0cf95af45c03a4101f4838075462e3e854fa0cbd"
+    },
+    {
+      "path": "tools/pr119-pod-20261024/candidates/native-storage-faults/hold-reader-control01.py",
+      "sha256": "4d6f9436b849cc0247bc645c554da71b408698b2bd29d75c449617ae15fe3cf2"
+    },
+    {
+      "path": "tools/pr119-pod-20261024/candidates/native-storage-faults/run-pending-capture01.py",
+      "sha256": "3201d75d8699091d78bec72d1f7fa1eeae19441ab98e606993bfc5f3987d1b33"
+    },
+    {
+      "path": "tools/pr119-pod-20261024/candidates/native-storage-faults/rescue-pending01.py",
+      "sha256": "ce2c0803b619915614e06592c7c56ac66c868443c2a38acfe4ff6d465e9c4ed4"
+    },
+    {
+      "path": "tools/pr119-pod-20261024/candidates/native-storage-faults/rescue-pending02.py",
+      "sha256": "6469e49a305feef52d90d72e81207560a415fd764d1fcc6f21657a2d4039551c"
+    },
+    {
+      "path": "tools/pr119-pod-20261024/candidates/native-storage-faults/rescue-pending03.py",
+      "sha256": "739b0ad8af41ae9a119b153c875a350c12c6edd41c49625060a81feee4800569"
+    },
+    {
+      "path": "tools/pr119-pod-20261024/candidates/native-storage-faults/resize-owned-juicefs-pods01.py",
+      "sha256": "ed2e0bc57441137e1220e3808dfa07c13f97b12c514e63b7cf320c898fd1df17"
+    },
+    {
+      "path": "tools/pr119-pod-20261024/candidates/native-storage-faults/sdk-pending-capture02.py",
+      "sha256": "428bfa9f773b84b9fc75ea5cf44a2434e00680d9558536642cee9c9500de1def"
+    },
+    {
+      "path": "tools/pr119-pod-20261024/candidates/native-storage-faults/hold-reader-control02.py",
+      "sha256": "7f2a0b4714a16d8255ca02baa47983530838c6e78fa55eebc0d33d1a9c1fa27a"
+    },
+    {
+      "path": "tools/pr119-pod-20261024/candidates/native-storage-faults/run-pending-capture02.py",
+      "sha256": "3fa2fb21b35065de17bdb5adabf3e21ebdd8e1c7264ea2be1ebbbfb108fa0917"
+    },
+    {
+      "path": "tools/pr119-pod-20261024/executed/storage/sdk-mount-shadow01.py",
+      "sha256": "b45d91bdca082c191072e1f6625ce25aa09ec3561422d2f8708bb7ec5cd30c37",
+      "reused_without_edits": true
+    },
+    {
+      "path": "tools/pr119-pod-20261024/executed/storage/shadow-owned-shared-mount01.py",
+      "sha256": "777eefc8a76e8fb50c3910be4fbc41feec27862afe4767ac7ee548e8e2b90eb7",
+      "reused_without_edits": true
+    },
+    {
+      "path": "tools/pr119-pod-20261024/executed/storage/sdk-s3-pause01.py",
+      "sha256": "1ba1153321f3e0d694ea63d5c223ef9b60d14551ef0c410d013087b592a364b9",
+      "reused_without_edits": true
+    },
+    {
+      "path": "tools/pr119-pod-20261024/executed/storage/pause-owned-rgw01.py",
+      "sha256": "f61f5405ac88bf0104b0abaad656ed07b0eeb74d76c1dbaba15d369490bd3dec",
+      "reused_without_edits": true
+    },
+    {
+      "path": "tools/pr119-pod-20261024/candidates/native-storage-faults/executed/storage-faults-final-state01.py",
+      "sha256": "7d493e35254cfe38e0270cc8c6466f43dee114e98a5cae8413a7110af0cb5de2",
+      "generated_and_executed": true
+    },
+    {
+      "path": "tools/pr119-pod-20261024/candidates/native-storage-faults/executed/pending-capture-final-state01.py",
+      "sha256": "dbeaa5ea3da8db0cee8d3fea23ba05093fd692479c3cdf961d0de71ec728152e",
+      "generated_and_executed": true
+    }
+  ],
+  "collector_is_metadata_only_and_listed_separately": true
+}

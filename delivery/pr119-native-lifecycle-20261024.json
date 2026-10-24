@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "kind": "native-private-layout-lifecycle-acceptance-addendum",
+  "test_history_only": true,
+  "runtime_tuple_manifest": "delivery/pr119-cgroup-durable-leases-20261024.json",
+  "source_and_actual_binaries_unchanged": true,
+  "sandboxd_commit": "91dff2f686d4f3f18540d33c0851b127212d8567",
+  "gvisor_commit": "218d85378357f9726fc3c0f7cf878cf19772d360",
+  "sandboxd_elf_sha256": "433574033952b1ad9106b125e085302b9c5268fea179609975de7d722c2f6c83",
+  "cri_digest": "sha256:0bde46ba9cbbee107af01d085919c012c9d38094910d2a4761716de7f1c9dcb4",
+  "accepted_cases": {
+    "storage_faults": 4,
+    "pending_input_capture_directions": 2,
+    "retained_snapshot_rescue": true
+  },
+  "client_resources": {
+    "storage_fault_tests_limit_bytes": 2147483648,
+    "pending_capture_tests_limit_bytes": 4294967296,
+    "cache_configuration_unchanged": true,
+    "two_existing_worker_client_pods_resized_without_restart": true,
+    "daemonset_template_still_bytes": 2147483648,
+    "control_node_client_unchanged": true,
+    "outer_task_limit_bytes": 42949672960,
+    "sandbox_limits_unchanged": true
+  },
+  "performance_results_included": false,
+  "current_task_profile_is_separate_from_test_history": true,
+  "formal_runtime_pin_and_defaults_unchanged": true,
+  "historical_gitlinks_unchanged": true,
+  "metadata_collector_sha256": "4c8a48c266238c26cf533e73e23428bdb51317f90ce960866905a50e01107bcf",
+  "evidence": [
+    {
+      "path": "Docs/checks/evidence/pr119-native-lifecycle-20261024/artifact-index.json",
+      "bytes": 1260,
+      "sha256": "5573c5969568dc1e6e5d18f4d396f6d2411cd45e9b5d4ba164ba1361a650d8da"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-native-lifecycle-20261024/client-resources.json",
+      "bytes": 1090,
+      "sha256": "aee01b38a9e97a620d0c42ee446e4917d9f2f53fab21bfdba5dbc521992e94d4"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-native-lifecycle-20261024/final-state.json",
+      "bytes": 3945,
+      "sha256": "887fcd698b109115483af9d9b677dee868e9d53dbdcab802d9a8f246b8950520"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-native-lifecycle-20261024/overlap-proof.json",
+      "bytes": 639,
+      "sha256": "216bf23cb6463c7e0732c3158edfb4d6f59efb41c2d9c5abf2409a6df2729553"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-native-lifecycle-20261024/pending-capture.json",
+      "bytes": 1523,
+      "sha256": "1311c0f4afa56b6ec021a59431085dcdcd6d07c96f2e59cf3ec1afd2616b06f9"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-native-lifecycle-20261024/rescue-and-original-failures.json",
+      "bytes": 872,
+      "sha256": "96e3770a6a1fea2ef5313ce061a552d9b6f84ab0dd9151ce56a29d2aafb929ec"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-native-lifecycle-20261024/script-source-index.json",
+      "bytes": 3592,
+      "sha256": "cff1da2ac2d2c319a1da4daa12d78dea00d3beee09f66ca664851a8b8111d85b"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-native-lifecycle-20261024/storage-faults.json",
+      "bytes": 2984,
+      "sha256": "4c1a9e966ac965633a84623409add061790a750e9482ad6d11d6904aac18e206"
+    },
+    {
+      "path": "Docs/checks/evidence/pr119-native-lifecycle-20261024/summary.json",
+      "bytes": 393,
+      "sha256": "a3089fdbdadc139b1ec94e8de83269c13deb84fb7598d54fafe9fa1db742b0ea"
+    }
+  ],
+  "remaining": [
+    "isolated JuiceFS client death/resource-failure recovery and original causal isolation",
+    "same-code three-group performance",
+    "remote read-only baseline plus local delta implementation/acceptance",
+    "physical node failure domains and production HA"
+  ],
+  "original_acceptance_probe_legacy_busy_field_normalized": true,
+  "metadata_archive_sha256": "2cee47e44d72e5b764c4707968bbda88b5a117ec8dbc0442e8f30e298c595a82"
+}

@@ -1,0 +1,25 @@
+{
+  "rc": 0,
+  "cases": [
+    {
+      "execution_node": "A",
+      "actual_input_fds": 1,
+      "reader_stopped": true,
+      "sdk_call_pending": true,
+      "same_reader_resumed": true,
+      "role_crash_injected": false,
+      "request_spanned_real_input_barrier": true,
+      "return_after_original_reader_resume": true
+    },
+    {
+      "execution_node": "B",
+      "actual_input_fds": 1,
+      "reader_stopped": true,
+      "sdk_call_pending": true,
+      "same_reader_resumed": true,
+      "role_crash_injected": false,
+      "request_spanned_real_input_barrier": true,
+      "return_after_original_reader_resume": true
+    }
+  ]
+}

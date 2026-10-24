@@ -1,0 +1,84 @@
+{
+  "rc": 0,
+  "client_limit_at_execution_bytes": 2147483648,
+  "product_commit": "91dff2f686d4f3f18540d33c0851b127212d8567",
+  "sandboxd_sha256": "433574033952b1ad9106b125e085302b9c5268fea179609975de7d722c2f6c83",
+  "cri_digest": "sha256:0bde46ba9cbbee107af01d085919c012c9d38094910d2a4761716de7f1c9dcb4",
+  "diagnostic_not_performance": true,
+  "cases": [
+    {
+      "case": "mount-shadow-runsc",
+      "result": {
+        "rc": 0,
+        "runtime": "runsc",
+        "memory_bytes": 536870912,
+        "request_rejected_inside_shadow_interval": true,
+        "no_published_snapshot": true,
+        "no_local_fallback_entries": true,
+        "original_mount_restored": true,
+        "uncheckpointed_source_state_preserved": true,
+        "new_distinct_snapshot_after_recovery": true,
+        "mount_fault_restored": true,
+        "resources_deleted": true
+      }
+    },
+    {
+      "case": "mount-shadow-firecracker",
+      "result": {
+        "rc": 0,
+        "runtime": "firecracker",
+        "memory_bytes": 536870912,
+        "request_rejected_inside_shadow_interval": true,
+        "no_published_snapshot": true,
+        "no_local_fallback_entries": true,
+        "original_mount_restored": true,
+        "uncheckpointed_source_state_preserved": true,
+        "new_distinct_snapshot_after_recovery": true,
+        "mount_fault_restored": true,
+        "resources_deleted": true
+      }
+    },
+    {
+      "case": "s3-pause-runsc",
+      "result": {
+        "rc": 0,
+        "runtime": "runsc",
+        "memory_bytes": 1073741824,
+        "s3_unavailability_observed": true,
+        "same_gateway_process_resumed": true,
+        "successful_ack_while_s3_paused": false,
+        "request_returned_success": false,
+        "published_snapshot_after_recovery": false,
+        "storage_fault_reconciled_without_replay": true,
+        "explicit_source_deletion_rescue": true,
+        "source_writer_exit_verified": true,
+        "selected_snapshot_cross_node_recovery_verified": true,
+        "target_next_checkpoint_reload_verified": true,
+        "failed_capture_directories_removed": true,
+        "storage_fault_restored": true,
+        "resources_deleted": true
+      }
+    },
+    {
+      "case": "s3-pause-firecracker",
+      "result": {
+        "rc": 0,
+        "runtime": "firecracker",
+        "memory_bytes": 1073741824,
+        "s3_unavailability_observed": true,
+        "same_gateway_process_resumed": true,
+        "successful_ack_while_s3_paused": false,
+        "request_returned_success": false,
+        "published_snapshot_after_recovery": false,
+        "storage_fault_reconciled_without_replay": true,
+        "explicit_source_deletion_rescue": true,
+        "source_writer_exit_verified": true,
+        "selected_snapshot_cross_node_recovery_verified": true,
+        "target_next_checkpoint_reload_verified": true,
+        "failed_capture_directories_removed": true,
+        "storage_fault_restored": true,
+        "resources_deleted": true
+      }
+    }
+  ]
+}

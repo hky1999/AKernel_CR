@@ -1,0 +1,13 @@
+{
+  "rc": 0,
+  "accepted_storage_fault_cases": 4,
+  "accepted_pending_capture_directions": 2,
+  "source_commits_unchanged": true,
+  "performance_not_included": true,
+  "remaining": [
+    "client-death and resource-failure recovery isolation",
+    "same-code three-group performance",
+    "remote read-only baseline plus local delta implementation and acceptance",
+    "physical-node HA"
+  ]
+}

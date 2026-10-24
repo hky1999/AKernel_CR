@@ -1,0 +1,44 @@
+{
+  "rc": 0,
+  "client_limit_at_execution_bytes": 4294967296,
+  "diagnostic_not_performance": true,
+  "internal_await_line_execution_proven": false,
+  "cases": [
+    {
+      "execution_node": "A",
+      "control_role_restart_injected": false,
+      "snapshot_delete_rejected_while_reader_alive": true,
+      "rc": 0,
+      "runtime": "runsc",
+      "memory_bytes": 1073741824,
+      "vm_memory_mb": 2048,
+      "reader_barrier_seconds": 3,
+      "sdk_snapshot_requested_with_real_pending_input": true,
+      "no_success_ack_before_reader_resume": true,
+      "captured_snapshot_full_memory_and_root_readback_verified": true,
+      "original_runtime_preserved": true,
+      "reference_and_named_files_preserved": true,
+      "full_state_verified": true,
+      "later_checkpoint_reload_verified": true,
+      "resources_deleted": true
+    },
+    {
+      "execution_node": "B",
+      "control_role_restart_injected": false,
+      "snapshot_delete_rejected_while_reader_alive": true,
+      "rc": 0,
+      "runtime": "runsc",
+      "memory_bytes": 1073741824,
+      "vm_memory_mb": 2048,
+      "reader_barrier_seconds": 3,
+      "sdk_snapshot_requested_with_real_pending_input": true,
+      "no_success_ack_before_reader_resume": true,
+      "captured_snapshot_full_memory_and_root_readback_verified": true,
+      "original_runtime_preserved": true,
+      "reference_and_named_files_preserved": true,
+      "full_state_verified": true,
+      "later_checkpoint_reload_verified": true,
+      "resources_deleted": true
+    }
+  ]
+}

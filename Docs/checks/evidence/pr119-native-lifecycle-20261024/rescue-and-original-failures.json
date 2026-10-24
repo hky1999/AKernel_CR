@@ -1,0 +1,29 @@
+{
+  "original_failures_retained": [
+    {
+      "case": "initial-pending-probe-before-capture-request",
+      "rc": 1,
+      "error_type": "RuntimeError"
+    },
+    {
+      "case": "first-rescue-file-stream-interruption",
+      "rc": 1,
+      "error_type": "EnvironmentError"
+    },
+    {
+      "case": "second-rescue-no-longer-present-failed-record-precheck",
+      "rc": 1,
+      "error_type": "AssertionError"
+    }
+  ],
+  "third_rescue": {
+    "rc": 0,
+    "failed_record_already_absent": true,
+    "failed_environment_retired_via_sdk": false,
+    "original_snapshot_root_1MiB_verified": true,
+    "original_snapshot_full_1GiB_memory_verified": true,
+    "later_checkpoint_reload_verified": true,
+    "resources_retired_via_sdk": true
+  },
+  "causality_limit": "client 2GiB OOM/worker replacement and failure are correlated; no isolated client-death acceptance yet"
+}
